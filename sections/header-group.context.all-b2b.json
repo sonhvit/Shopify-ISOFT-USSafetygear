@@ -1,0 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "all-b2b"
+  },
+  "parent": "header-group.json",
+  "sections": {
+    "topbar_3YD96h": {
+      "disabled": false,
+      "settings": {
+        "show_separator_line": true
+      },
+      "blocks": {
+        "link_list_En8dpz": {
+          "settings": {
+            "menu": "main-menu",
+            "position": "left"
+          }
+        }
+      }
+    }
+  }
+}
