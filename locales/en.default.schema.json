@@ -3887,6 +3887,14 @@
         },
         "lookbook_card": {
           "name": "Lookbook card"
+        },
+        "collections": {
+          "name": "Collections",
+          "settings": {
+            "auto_generate_title": {
+              "label": "Auto-generate collection names as headings",
+            }
+          }
         }
       }
     },
@@ -4094,13 +4102,13 @@
       }
     },
     "highlight-text-with-image": {
-          "name": "Highlight text with image",
-          "settings": {
-            "text": {
-              "info": "Use a specific placeholder format `[imgX]` where you want the image to appear. X is the image index. For example: `[img1]` will be replaced by the first image."
-            }
-          }
-        },
+      "name": "Highlight text with image",
+      "settings": {
+        "text": {
+          "info": "Use a specific placeholder format `[imgX]` where you want the image to appear. X is the image index. For example: `[img1]` will be replaced by the first image."
+        }
+      }
+    },
     "scrolling-promotion": {
       "name": "Scrolling promotion",
       "settings": {

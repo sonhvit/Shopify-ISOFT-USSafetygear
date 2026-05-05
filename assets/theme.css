@@ -1278,6 +1278,10 @@ hr {
   overflow: hidden;
   background-color: rgba(var(--color-foreground), 0.03);
 }
+
+.product-card__image img{
+  object-fit: contain !important;
+}
 .media-wrapper > img {
   object-fit: cover;
   object-position: center center;
@@ -7653,6 +7657,10 @@ body:not(.header-pinned) .header-scrolled .header {
   height: auto;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .footer .list-social {
   justify-content: flex-end;
 }
@@ -7679,6 +7687,9 @@ body:not(.header-pinned) .header-scrolled .header {
 .footer__top summary {
   padding-top: 0;
   padding-bottom: 1.2rem;
+}
+.footer__top summary h3{
+  text-transform: uppercase;
 }
 .footer__bottom {
   --element-gap: 2.4rem;

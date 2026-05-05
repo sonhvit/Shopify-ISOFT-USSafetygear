@@ -1,3 +1,4 @@
+{{ 'section-custom-content.css' | asset_url | stylesheet_tag }}
 {%- liquid
   assign enable_sticky_column = section.settings.enable_sticky_column
   assign swipe_on_mobile = section.settings.swipe_on_mobile
@@ -294,7 +295,7 @@
                 <div class="collecion-list__sliders block w-full" data>
                   {%- if block.settings.collection_list != blank -%}
                     {%- for collection in block.settings.collection_list -%}
-                      {%- render 'collection-item-slider', collection: collection, block: block -%}
+                      {%- render 'collection-item-slider', collection: collection, block: block, index: forloop.index -%}
                     {% endfor %}
                   {%- else -%}
                     {%- render 'collection-item-slider', block: block -%}
@@ -2947,6 +2948,17 @@
       "type": "collections",
       "name": "t:general.collection.name",
       "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:general.heading.label",
+        },
+        {
+          "type": "checkbox",
+          "id": "auto_generate_title",
+          "label": "t:sections.custom-content.blocks.collections.settings.auto_generate_title.label",
+          "default": true,
+        },
         {
           "type": "collection_list",
           "id": "collection_list",

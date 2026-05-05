@@ -109,7 +109,7 @@
       </motion-element>
     </div>
     <div class="collection-card__inner w-full pointer-events-none{% if card_style == 'card' %} flex items-center gap-x-2{% endif %}">
-      <h3 class="collection-card__title {{ heading_size }} flex-1 text-limit-{{ card_text_line_limit }}-line">
+      <h3 class="collection-card__title uppercase {{ heading_size }} flex-1 text-limit-{{ card_text_line_limit }}-line">
         <span>
           {{- collection_title_default -}}
           {% if card_style == 'standard' %}{% render 'icon-caret-right', classes: 'hidden md:block' %}{% endif %}

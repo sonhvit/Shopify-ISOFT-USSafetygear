@@ -1,1 +1,4 @@
 
+.section--custom-content .card-media__content-wrapper .card-media__heading{ 
+    max-width: 100% !important;
+}

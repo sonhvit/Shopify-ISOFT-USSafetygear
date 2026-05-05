@@ -52,6 +52,9 @@
   --text-margin-top: 0.4rem;
   --child-margin-top: 1.6rem;
 }
+.multicolumn-card__title{
+  text-transform: uppercase;
+}
 .multicolumn-card__title, .multicolumn-card__text {
   word-break: break-word;
 }

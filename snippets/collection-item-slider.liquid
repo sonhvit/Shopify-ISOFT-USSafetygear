@@ -1,11 +1,23 @@
 {%- liquid
   assign collection_title = 'onboarding.collection_title' | t
+  assign custom_title = block.settings.title | strip
+  assign auto_generate_title = block.settings.auto_generate_title
   assign products_to_display = block.settings.product_limit
 
   if collection != blank
     assign collection_title = collection.title
     if collection.all_products_count < products_to_display
       assign products_to_display = collection.all_products_count
+    endif
+  endif
+
+  if auto_generate_title == false and custom_title != blank
+    assign custom_titles = custom_title | split: ','
+    if index > 0
+      assign title_index = index | minus: 1
+      assign collection_title = custom_titles[title_index] | strip
+    else
+      assign collection_title = custom_title
     endif
   endif
 
