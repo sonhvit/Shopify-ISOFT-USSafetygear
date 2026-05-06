@@ -75,12 +75,24 @@
 -%}
 <div
   class="{{ card_wrapper_class }} color-{{ settings.pcard_color_scheme }}{% if color_inherit %} color-inherit{% endif %}"
+  style="--pcard-hover-overlay-opacity: {{ settings.pcard_hover_overlay_opacity | divided_by: 100.0 }};"
 >
   <div class="product-card__wrapper">
     <div class="product-card__image-wrapper product-card__image-wrapper--main-only">
       <a href="{{ product.url }}" aria-label="{{ product.title | escape }}" tabindex="-1">
         {%- if featured_media -%}
-          {%- unless featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}
+          {%- if featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}
+            <div class="media media--adapt" style="--media-ratio: {{ image_ratio }};">
+              {% render 'video',
+                video: featured_media,
+                muted: true,
+                autoplay: true,
+                loop: true,
+                cover_image: featured_media,
+                show_play_button: false
+              %}
+            </div>
+          {%- else -%}
             <div
               class="media-wrapper product-card__image product-card__image--main"
               style="--aspect-ratio: {{ image_ratio }}"
@@ -97,18 +109,7 @@
                   is: 'image-lazy'
               }}
             </div>
-          {%- else -%}
-            <div class="media media--adapt" style="--media-ratio: {{ image_ratio }};">
-              {% render 'video',
-                video: featured_media,
-                muted: true,
-                autoplay: true,
-                loop: true,
-                cover_image: featured_media,
-                show_play_button: false
-              %}
-            </div>
-          {%- endunless -%}
+          {%- endif -%}
         {%- else -%}
           <div class="product-card__image product-card__image--main" style="--aspect-ratio: 1;">
             {{- 'product-1' | placeholder_svg_tag: 'placeholder-svg' -}}

@@ -4261,6 +4261,19 @@ input:is([type=radio])::after {
   overflow: hidden;
   border-radius: var(--pcard-radius);
 }
+.product-card__image-wrapper > a {
+  position: relative;
+  display: block;
+}
+.product-card__image-wrapper > a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
 .product-card__image-wrapper video {
   object-fit: cover;
 }
@@ -4423,6 +4436,9 @@ input:is([type=radio])::after {
   }
   .product-card .product-card__image-wrapper--main-only:hover .product-card__image {
     transform: scale(1.08, 1.08);
+  }
+  .product-card__image-wrapper:hover > a::after {
+    opacity: var(--pcard-hover-overlay-opacity, 0);
   }
 }
 .product-card--simple .product-card__info {

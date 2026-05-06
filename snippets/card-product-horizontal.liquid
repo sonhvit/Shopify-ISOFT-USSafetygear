@@ -81,6 +81,7 @@
 -%}
 <div
   class="product-card product-card--horizontal color-{{ settings.pcard_color_scheme }} btn-hover-wrapper h-full{% if color_inherit %} color-inherit{% endif %}"
+  style="--pcard-hover-overlay-opacity: {{ settings.pcard_hover_overlay_opacity | divided_by: 100.0 }};"
 >
   <div class="product-card__wrapper flex items-center gap-x-3 h-full">
     <div class="product-card__image-wrapper product-card__image-wrapper--main-only">

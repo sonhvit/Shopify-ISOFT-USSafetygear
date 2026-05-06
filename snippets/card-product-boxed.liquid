@@ -95,6 +95,7 @@
 -%}
 <div
   class="product-card product-card-style-boxed color-{{ settings.pcard_color_scheme }} {{ card_wrapper_class }}"
+  style="--pcard-hover-overlay-opacity: {{ settings.pcard_hover_overlay_opacity | divided_by: 100.0 }};"
 >
   <div class="product-card__wrapper h-full">
     <div class="product-card__image-wrapper{% if second_image == blank %} product-card__image-wrapper--main-only{% endif %} color-{{ settings.pcard_overlay_color_scheme }} bg-none">

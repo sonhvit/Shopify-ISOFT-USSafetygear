@@ -17,14 +17,14 @@
       {
         "type": "checkbox",
         "id": "enable_rtl",
-        "label": "t:settings_schema.general.settings.enable_rtl.label",  
+        "label": "t:settings_schema.general.settings.enable_rtl.label",
         "default": false
       },
       {
         "type": "text",
         "id": "language_support_rtl",
         "label": "t:settings_schema.general.settings.language_support_rtl.label",
-        "default": "he,ar", 
+        "default": "he,ar",
         "info": "t:settings_schema.general.settings.language_support_rtl.info"
       },
       {
@@ -200,7 +200,7 @@
           },
           {
             "type": "header",
-            "content": "Other colors" 
+            "content": "Other colors"
           },
           {
             "type": "color",
@@ -1060,7 +1060,7 @@
           {
             "value": "card",
             "label": "t:settings_schema.product_cards.settings.style.options__2.label"
-          } 
+          }
         ],
         "default": "standard",
         "label": "t:settings_schema.product_cards.settings.style.label"
@@ -1084,7 +1084,7 @@
           }
         ],
         "default": "left"
-      }, 
+      },
       {
         "type": "select",
         "id": "pcard_title_line_limit",
@@ -1184,7 +1184,7 @@
           {
             "value": "card",
             "label": "t:settings_schema.product_cards.settings.list_layout.style.options__2.label"
-          } 
+          }
         ],
         "default": "standard",
         "label": "t:settings_schema.product_cards.settings.list_layout.style.label"
@@ -1200,10 +1200,20 @@
         "default": "scheme-1"
       },
       {
+        "type": "range",
+        "id": "pcard_hover_overlay_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Hover image overlay opacity",
+        "default": 0
+      },
+      {
         "type": "header",
         "content": "t:settings_schema.product_cards.settings.header__quick_add.content"
       },
-      { 
+      {
         "type": "checkbox",
         "id": "pcard_show_cart_button",
         "label": "t:settings_schema.product_cards.settings.action_show_add_to_cart.label",
