@@ -115,6 +115,7 @@
     href="{{ link }}"
     class="card-media--link focus-inset"
     aria-label="{{ heading | default: shop.name }}"
+    {% if link_target_blank %}target="_blank" rel="noopener noreferrer"{% endif %}
   >
 {%- endif -%}
 <div class="{{ card_classes }}{% if rounded %} blocks-radius{% endif %}">

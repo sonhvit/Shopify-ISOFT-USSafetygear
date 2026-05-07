@@ -1220,6 +1220,9 @@
         "label": "Video height"
       }
     },
+    "card_link_target_blank": {
+      "label": "Open card link in new tab"
+    },
     "overlay_opacity": {
       "label": "Overlay opacity"
     },
@@ -2690,6 +2693,9 @@
         "content": "Edit your logo in [theme settings](/editor?context=theme&category=logo)."
       },
       "settings": {
+        "scroll_color_scheme": "Scroll color scheme",
+        "scroll_logo": "Scroll logo",
+        "scroll_logo_mobile": "Scroll logo mobile",
         "menu_trigger": {
           "label": "Dropdown menu trigger",
           "options__1": {

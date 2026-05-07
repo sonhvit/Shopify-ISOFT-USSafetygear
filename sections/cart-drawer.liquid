@@ -33,7 +33,7 @@
           {%- endif -%}
           <div class="drawer__header-inner cart-drawer__header flex items-center justify-between gap-3">
             <h2 class="drawer__heading h4">
-              <span>{{ 'general.cart.title' | t }}</span>
+              <span class="upercase">{{ 'general.cart.title' | t }}</span>
               <cart-count
                 class="cart-count cart-count--blank"
                 aria-label="{{ 'general.cart.cart_count' | t: count: cart.item_count | escape }}"

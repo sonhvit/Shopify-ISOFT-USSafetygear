@@ -131,6 +131,29 @@ class StickyHeader extends BasicHeader {
   initStickyHeader() {
     this.headerSection.classList.add(this.classes.headerSticky);
     this.headerSection.dataset.stickyType = this.dataset.stickyType;
+    // Also add headerSticky to the header element
+    this.classList.add(this.classes.headerSticky);
+    this.dataset.stickyType = this.dataset.stickyType;
+    // Store original color scheme class (eg. "color-...") on the header element so we can restore it
+    const originalColorClass = Array.from(this.classList).find((c) => c.indexOf('color-') === 0) || '';
+    this.dataset.originalColorScheme = originalColorClass ? originalColorClass.replace('color-', '') : '';
+    // Store original logo src/srcset so we can swap when scrolled
+    try {
+      const logoDesktop = this.querySelector('.header__logo--desktop');
+      const logoMobile = this.querySelector('.header__logo--mobile');
+      if (logoDesktop) {
+        logoDesktop.dataset.originalSrc = logoDesktop.getAttribute('src') || '';
+        const srcset = logoDesktop.getAttribute('srcset');
+        if (srcset) logoDesktop.dataset.originalSrcset = srcset;
+      }
+      if (logoMobile) {
+        logoMobile.dataset.originalSrc = logoMobile.getAttribute('src') || '';
+        const srcsetMobile = logoMobile.getAttribute('srcset');
+        if (srcsetMobile) logoMobile.dataset.originalSrcset = srcsetMobile;
+      }
+    } catch (e) {
+      // ignore
+    }
     window.addEventListener('scroll', this.handleScroll.bind(this), { passive: true });
   }
 
@@ -204,6 +227,39 @@ class StickyHeader extends BasicHeader {
   handleScrolledPastHeader(scrollTop, headerBoundsBottom) {
     this.headerSection.classList.add(this.classes.headerScrolled);
 
+    // Add pinned class to the header element as well as body
+    this.classList.add(this.classes.pinned);
+    document.body.classList.add(this.classes.pinned);
+
+    // If a scroll color scheme is provided via data attribute on the header, swap the color class
+    const scrollScheme = this.dataset.scrollColorScheme || this.getAttribute('data-scroll-color-scheme');
+    if (scrollScheme) {
+      Array.from(this.classList).forEach((c) => {
+        if (c.indexOf('color-') === 0) this.classList.remove(c);
+      });
+      this.classList.add(`color-${scrollScheme}`);
+    }
+
+    // Swap logos if scroll logos are provided on the img elements
+    try {
+      const logoDesktop = this.querySelector('.header__logo--desktop');
+      const logoMobile = this.querySelector('.header__logo--mobile');
+      if (logoDesktop) {
+        const scrollSrc = logoDesktop.getAttribute('data-scroll-src');
+        const scrollSrcset = logoDesktop.getAttribute('data-scroll-srcset');
+        if (scrollSrc) logoDesktop.setAttribute('src', scrollSrc);
+        if (scrollSrcset) logoDesktop.setAttribute('srcset', scrollSrcset);
+      }
+      if (logoMobile) {
+        const scrollSrc = logoMobile.getAttribute('data-scroll-src');
+        const scrollSrcset = logoMobile.getAttribute('data-scroll-srcset');
+        if (scrollSrc) logoMobile.setAttribute('src', scrollSrc);
+        if (scrollSrcset) logoMobile.setAttribute('srcset', scrollSrcset);
+      }
+    } catch (e) {
+      // ignore
+    }
+
     // Handle collapse on scroll behavior
     if (this.collapseOnScroll) {
       this.navigationToggleButton.classList.add(this.classes.show);
@@ -224,9 +280,11 @@ class StickyHeader extends BasicHeader {
 
       if (isScrollingUp || isNearHeader) {
         document.body.classList.add(this.classes.pinned);
+        this.classList.add(this.classes.pinned);
       } else if (!this.navigationManuallyToggled && hasScrolledEnough) {
         // Only unpin when scrolled down enough and not manually toggled
         document.body.classList.remove(this.classes.pinned);
+        this.classList.remove(this.classes.pinned);
       }
     }
   }
@@ -247,6 +305,34 @@ class StickyHeader extends BasicHeader {
 
     if (this.isAlwaysSticky) {
       document.body.classList.remove(this.classes.pinned);
+      this.classList.remove(this.classes.pinned);
+    }
+
+    // Restore original color scheme if one was stored on the header element
+    const original = this.dataset.originalColorScheme;
+    if (original !== undefined) {
+      Array.from(this.classList).forEach((c) => {
+        if (c.indexOf('color-') === 0) this.classList.remove(c);
+      });
+      if (original) this.classList.add(`color-${original}`);
+    }
+
+    // Restore original logos if we swapped them
+    try {
+      const logoDesktop = this.querySelector('.header__logo--desktop');
+      const logoMobile = this.querySelector('.header__logo--mobile');
+      if (logoDesktop && logoDesktop.dataset.originalSrc) {
+        logoDesktop.setAttribute('src', logoDesktop.dataset.originalSrc);
+        if (logoDesktop.dataset.originalSrcset) logoDesktop.setAttribute('srcset', logoDesktop.dataset.originalSrcset);
+        else logoDesktop.removeAttribute('srcset');
+      }
+      if (logoMobile && logoMobile.dataset.originalSrc) {
+        logoMobile.setAttribute('src', logoMobile.dataset.originalSrc);
+        if (logoMobile.dataset.originalSrcset) logoMobile.setAttribute('srcset', logoMobile.dataset.originalSrcset);
+        else logoMobile.removeAttribute('srcset');
+      }
+    } catch (e) {
+      // ignore
     }
   }
 }

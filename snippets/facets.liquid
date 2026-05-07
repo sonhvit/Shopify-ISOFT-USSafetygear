@@ -79,7 +79,7 @@
             {% endif %}
           >
             <summary class="accordion-details__summary flex items-center justify-between">
-              <span class="h6">
+              <span class="h6 uppercase">
                 {{- filter.label | escape -}}
                 {%- if filter.operator == 'AND' -%}
                   <small class="accordion-details__helptext block text-subtext text-sm overflow-hidden">
@@ -234,7 +234,7 @@
             {% endif %}
           >
             <summary class="accordion-details__summary flex items-center justify-between">
-              <span class="h6">{{- filter.label | escape -}}</span>
+              <span class="h6 uppercase">{{- filter.label | escape -}}</span>
               {%- render 'icon-plus-toggle', size: 'small' -%}
             </summary>
             <div class="accordion-details__content accordion-details__content--price">

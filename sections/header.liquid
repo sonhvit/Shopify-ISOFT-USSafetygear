@@ -56,6 +56,7 @@
 <header
   data-section-id="{{ section.id }}"
   class="{{ classes }}"
+  data-scroll-color-scheme="{{ section.settings.scroll_color_scheme }}"
   {% if sticky_header != 'none' %}
     is="sticky-header" data-sticky-type="{{ sticky_header }}"
     data-collapse-on-scroll="{{ section.settings.enable_collapse_on_scroll }}"
@@ -109,10 +110,16 @@
             assign logo_mobile = logo
           endif
         -%}
+        {%- assign scroll_logo_desktop = section.settings.scroll_logo -%}
+        {%- assign scroll_logo_mobile_selected = section.settings.scroll_logo_mobile | default: section.settings.scroll_logo -%}
         {%- if logo_mobile -%}
           <img
             srcset="{{ logo_mobile | image_url: width: logo_width_mobile }} 1x, {{ logo_mobile | image_url: width: logo_width_mobile_2x }} 2x"
             src="{{ logo_mobile | image_url: width: logo_width_mobile }}"
+            {% if scroll_logo_mobile_selected %}
+              data-scroll-srcset="{{ scroll_logo_mobile_selected | image_url: width: logo_width_mobile }} 1x, {{ scroll_logo_mobile_selected | image_url: width: logo_width_mobile_2x }} 2x"
+              data-scroll-src="{{ scroll_logo_mobile_selected | image_url: width: logo_width_mobile }}"
+            {% endif %}
             loading="eager"
             width="{{ logo_mobile.width }}"
             height="{{ logo_mobile.height }}"
@@ -123,6 +130,10 @@
         <img
           srcset="{{ logo | image_url: width: logo_width }} 1x, {{ logo | image_url: width: logo_width_2x }} 2x"
           src="{{ logo | image_url: width: logo_width }}"
+          {% if scroll_logo_desktop %}
+            data-scroll-srcset="{{ scroll_logo_desktop | image_url: width: logo_width }} 1x, {{ scroll_logo_desktop | image_url: width: logo_width_2x }} 2x"
+            data-scroll-src="{{ scroll_logo_desktop | image_url: width: logo_width }}"
+          {% endif %}
           loading="eager"
           width="{{ logo.width }}"
           height="{{ logo.height }}"
@@ -325,6 +336,22 @@
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:general.colors.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "scroll_color_scheme",
+      "label": "t:sections.header.settings.scroll_color_scheme",
+      "info": "Choose the color scheme to apply when the header is scrolled/pinned"
+    },
+    {
+      "type": "image_picker",
+      "id": "scroll_logo",
+      "label": "t:sections.header.settings.scroll_logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "scroll_logo_mobile",
+      "label": "t:sections.header.settings.scroll_logo_mobile"
     },
     {
       "type": "link_list",

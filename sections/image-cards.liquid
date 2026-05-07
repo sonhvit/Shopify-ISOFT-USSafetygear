@@ -72,6 +72,7 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
               color_scheme: block.settings.color_scheme,
               color_scheme_mobile: block.settings.color_scheme_mobile,
               link: block.settings.card_link,
+              link_target_blank: block.settings.link_target_blank,
               image: block.settings.image,
               image_ratio: block.settings.image_ratio,
               image_overlay_opacity: block.settings.image_overlay_opacity,
@@ -752,6 +753,12 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
           "type": "url",
           "id": "card_link",
           "label": "t:general.card_link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "link_target_blank",
+          "label": "t:general.card_link_target_blank.label",
+          "default": false
         },
         {
           "type": "inline_richtext",
