@@ -1,7 +1,7 @@
 .sticky-atc-bar {
   position: fixed;
   bottom: 3rem;
-  inset-inline-end: 3rem;
+  inset-inline-start: 3rem;
   width: min(85vw, 41.8rem);
   z-index: 29;
   background: #fff;
@@ -19,6 +19,9 @@
 }
 .sticky-atc-bar__product-image {
   width: 7rem;
+}
+.sticky-atc-bar__product-image img{
+  object-fit: contain !important;
 }
 @media (max-width: 767.98px) {
   .sticky-atc-bar {

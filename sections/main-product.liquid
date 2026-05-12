@@ -86,7 +86,7 @@
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="product flex flex-wrap {{ product_class }}">
     {%- if product.media.size > 0 -%}
-      <div class="product__media-wrapper block w-full relative">
+      <div class="product__media-wrapper page-pdp-section-media block w-full relative">
         <div class="product__media-container{% if enable_sticky_info %} sticky-element{% endif %}">
           {% render 'product-media-gallery',
             media_layout: media_layout,
@@ -123,6 +123,10 @@
     <script src="{{ 'product-model.js' | asset_url }}" defer></script>
   {%- endif -%}
 
+  {%- liquid
+    assign product_variant = product.selected_or_first_available_variant
+    assign product_url = canonical_url | split: '?' | first
+  -%}
   <script type="application/ld+json">
     {{ product | structured_data }}
   </script>

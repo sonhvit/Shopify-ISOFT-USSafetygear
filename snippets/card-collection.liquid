@@ -102,8 +102,8 @@
           }}
         {%- else -%}
           <div class="collection-card__placeholder hover-scale-up">
-            {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
-            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            {% comment %} {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
+            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }} {% endcomment %}
           </div>
         {%- endif -%}
       </motion-element>

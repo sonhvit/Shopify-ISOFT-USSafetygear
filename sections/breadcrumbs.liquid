@@ -40,7 +40,7 @@
       {%- elsif template contains 'collection' and collection.handle -%}
         {%- if collection.handle != 'all' -%}
           <span aria-hidden="true" class="breadcrumbs--sep"></span>
-          <a href="{{ routes.all_products_collection_url }}" class="reversed-link">
+          <a href="{{ routes.collections_url }}" class="reversed-link">
             {{- 'general.breadcrumbs.collections' | t -}}
           </a>
         {% endif %}

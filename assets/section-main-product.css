@@ -80,6 +80,17 @@ product-info.use-color-scheme-in-container > .product {
   opacity: 1;
   border-color: rgb(var(--color-foreground));
 }
+.product__media-gallery-thumbails .swiper-slide img{
+  object-fit: contain;
+}
+.product__media-container .accordion-details__content h3,
+.product__media-container .accordion-details__content h5,
+.product__media-container .accordion-details__content h4{
+  font-family: "Inter", sans-serif;
+}
+.product__media-container .accordion-details__content h5{
+  font-size: 16px;
+}
 @media (max-width: 767.98px) {
   .product__media-container .swiper:not(.swiper-initialized) .swiper-slide:nth-child(n+3) {
     display: none;
@@ -648,6 +659,15 @@ product-info.use-color-scheme-in-container > .product {
 
 .product--media-has-0 .product__media-wrapper {
   display: none;
+}
+
+.product__media-list img{
+  object-fit: contain;
+  max-height: 100%;
+}
+
+.product__media-item-container{
+  --aspect-ratio: 1 !important;
 }
 
 @media (min-width: 768px) {
