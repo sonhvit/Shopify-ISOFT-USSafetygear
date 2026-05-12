@@ -8296,3 +8296,73 @@ body.search-template #MainContent,
     max-width: 4rem;
   }
 }
+.klaviyo-form{
+  padding-inline: 0 !important;
+}
+
+.klaviyo-form *, .klaviyo-form input::placeholder {
+  font-family: 'Inter' !important;
+  letter-spacing: 0 !important;
+}
+
+.klaviyo-form input::placeholder {
+  font-size: 1.5rem !important;
+}
+
+.klaviyo-form input{
+  border-radius: 30px !important;
+  background-color: #ededed !important;
+  border-color: #ededed !important; 
+  border-width: 1px !important;
+  outline: none !important;
+  box-shadow: none !important;
+  font-size: 1.5rem !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease !important;
+}
+
+.klaviyo-form input:hover,
+.klaviyo-form input:focus {
+  background-color: #fff !important;
+  border-color: #000 !important; 
+}
+
+.klaviyo-form h1,
+.klaviyo-form h2,
+.klaviyo-form h3,
+.klaviyo-form h1 strong,
+.klaviyo-form h2 strong,
+.klaviyo-form h3 strong {  
+  font-family: "Oswald", sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+.klaviyo-form .go2765439722{
+  border-radius: 30px !important;
+  background-color: #ededed !important;
+  border-color: #ededed !important;
+  outline: none !important;
+  padding: 0 !important;
+}
+
+.klaviyo-form .go2765439722>button{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+.klaviyo-form .go2168890069,.klaviyo-form .go3859229452{
+  border-radius: 30px !important;
+  position: relative;
+}
+.klaviyo-form .go2168890069>button{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.klaviyo-form .go2696609324{
+  position: absolute;
+  right: 15px;
+  top: 13px;
+}
+.klaviyo-form input[name="phone-number"] {
+  padding-left: 8rem !important;
+}
