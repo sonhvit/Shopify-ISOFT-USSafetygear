@@ -4,11 +4,13 @@
     assign color_inherit = true
   endif
 
-  assign custom_field_blocks = section.blocks | where: 'type', 'custom_field'
   assign sidebar = section.blocks | where: 'type', 'sidebar' | first
+  assign name_block = section.blocks | where: 'type', 'name' | first
+  assign email_block = section.blocks | where: 'type', 'email' | first
 
   assign form_id = 'ContactForm-' | append: section.id
   assign phone_field_index = 1
+  
 -%}
 {{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
 {%- if sidebar -%}
@@ -55,266 +57,276 @@
             </h3>
 
             <ul role="list">
-              <li>
-                <a href="#ContactForm-email" class="reversed-link">
-                  {{ form.errors.translated_fields.email | capitalize }}
-                  {{ form.errors.messages.email }}
-                </a>
-              </li>
+                {%- if name_block and form.errors contains 'name' -%}
+                  <li>
+                    <a href="#ContactForm-name-{{ name_block.id }}" class="reversed-link">
+                      {{ form.errors.translated_fields.name | capitalize }}
+                      {{ form.errors.messages.name }}
+                    </a>
+                  </li>
+                {%- endif -%}
+                {%- if email_block and form.errors contains 'email' -%}
+                  <li>
+                    <a href="#ContactForm-email-{{ email_block.id }}" class="reversed-link">
+                      {{ form.errors.translated_fields.email | capitalize }}
+                      {{ form.errors.messages.email }}
+                    </a>
+                  </li>
+                {%- endif -%}
             </ul>
           </div>
         {%- endif -%}
         <div class="contact__fields f-grid f-grid-1-cols md:f-grid-2-cols">
-          <div class="form-field form-field--name">
-            <label class="form-label" for="ContactForm-name-{{ section.id }}">
-              {{- 'templates.contact.form.name' | t -}}
-            </label>
-            <input
-              class="form-control"
-              autocomplete="name"
-              type="text"
-              id="ContactForm-name-{{ section.id }}"
-              name="contact[{{ 'templates.contact.form.name' | t }}]"
-              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-              placeholder="{{ 'templates.contact.form.name' | t }}"
-            >
-          </div>
-          <div class="form-field form-field--email">
-            <label class="form-label" for="ContactForm-email-{{ section.id }}">
-              {{- 'templates.contact.form.email' | t }}
-              <span aria-hidden="true">*</span>
-            </label>
-            <input
-              autocomplete="email"
-              type="email"
-              id="ContactForm-email-{{ section.id }}"
-              class="form-control"
-              name="contact[email]"
-              spellcheck="false"
-              autocapitalize="off"
-              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-              required
-              {% if form.errors contains 'email' %}
-                aria-invalid="true"
-                aria-describedby="ContactForm-email-error-{{ section.id }}"
-              {% endif %}
-              placeholder="{{ 'templates.contact.form.email' | t }}"
-            >
-            {%- if form.errors contains 'email' -%}
-              <span
-                class="form-message form-message--small form-message--error"
-                id="ContactForm-email-error-{{ section.id }}"
-              >
-                {% render 'icon-error', size: 'small' %}
-                {{- form.errors.translated_fields.email | capitalize }}
-                {{ form.errors.messages.email -}}
-              </span>
-            {%- endif -%}
-          </div>
+            {%- comment -%} Name and Email are now rendered as blocks. Add a `name` or `email` block to show them. {%- endcomment -%}
 
-          {%- for block in custom_field_blocks -%}
-            {%- liquid
-              assign field_name_default = 'Custom field ' | append: forloop.index
-              assign field_name = block.settings.heading | default: field_name_default
-            -%}
-            {%- if block.settings.field_type == 'phone' -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'custom_field' -%}
               {%- liquid
-                assign placeholder = 'templates.contact.form.phone' | t
-                if block.settings.placeholder != blank
-                  assign placeholder = block.settings.placeholder
-                endif
-
-                if phone_field_index > 1
-                  continue
-                endif
+                assign field_name_default = 'Custom field ' | append: forloop.index
+                assign field_name = block.settings.heading | default: field_name_default
               -%}
-              <div
-                class="form-field form-field--{{ block.settings.field_type }}{% if block.settings.full_width %} form-field--full{% endif %}"
-                {{ block.shopify_attributes }}
-              >
-                {%- if block.settings.heading != blank -%}
-                  <label class="form-label" for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}">
-                    {{- block.settings.heading -}}
-                    {% if block.settings.required %}
-                      <span aria-hidden="true">*</span>
-                    {% endif %}
-                  </label>
-                {%- endif -%}
-                <input
-                  type="tel"
-                  id="ContactForm-{{ block.settings.field_type }}-{{ block.id }}"
-                  class="form-control"
-                  autocomplete="tel"
-                  name="contact[{{ 'templates.contact.form.phone' | t }}]"
-                  pattern="[0-9\-]*"
-                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-                  placeholder="{{ placeholder }}"
-                  {% if block.settings.required %}
-                    aria-invalid="true"
-                    required
-                  {% endif %}
+              {%- if block.settings.field_type == 'phone' -%}
+                {%- liquid
+                  assign placeholder = 'templates.contact.form.phone' | t
+                  if block.settings.placeholder != blank
+                    assign placeholder = block.settings.placeholder
+                  endif
+
+                  if phone_field_index > 1
+                    continue
+                  endif
+                -%}
+                <div
+                  class="form-field form-field--{{ block.settings.field_type }}{% if block.settings.full_width %} form-field--full{% endif %}"
+                  {{ block.shopify_attributes }}
                 >
-              </div>
-              {% assign phone_field_index = phone_field_index | plus: 1 %}
-            {%- elsif block.settings.field_type == 'text' -%}
-              <div
-                class="form-field form-field--{{ block.settings.field_type }}{% if block.settings.full_width %} form-field--full{% endif %}"
-                {{ block.shopify_attributes }}
-              >
-                {%- if block.settings.heading != blank -%}
-                  <label class="form-label" for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}">
-                    {{- block.settings.heading -}}
-                    {% if block.settings.required %}
-                      <span aria-hidden="true">*</span>
-                    {% endif %}
-                  </label>
-                {%- endif -%}
-                <input
-                  type="text"
-                  id="ContactForm-{{ block.settings.field_type }}-{{ block.id }}"
-                  class="form-control"
-                  name="contact[{{- field_name -}}]"
-                  value=""
-                  {% if block.settings.placeholder != blank %}
-                    placeholder="{{ block.settings.placeholder }}"
-                  {% endif %}
-                  {% if block.settings.required %}
-                    aria-invalid="true"
-                    required
-                  {% endif %}
-                >
-              </div>
-            {%- elsif block.settings.field_type == 'textarea' -%}
-              <div
-                class="form-field form-field--{{ block.settings.field_type }}{% if block.settings.full_width %} form-field--full{% endif %}"
-                {{ block.shopify_attributes }}
-              >
-                {%- if block.settings.heading != blank -%}
-                  <label class="form-label" for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}">
-                    {{- block.settings.heading -}}
-                    {% if block.settings.required %}
-                      <span aria-hidden="true">*</span>
-                    {% endif %}
-                  </label>
-                {%- endif -%}
-                <textarea
-                  rows="5"
-                  id="ContactForm-{{ block.settings.field_type }}-{{ block.id }}"
-                  class="form-control form-control--textarea"
-                  name="contact[{{- field_name -}}]"
-                  {% if block.settings.placeholder != blank %}
-                    placeholder="{{ block.settings.placeholder }}"
-                  {% endif %}
-                  {% if block.settings.required %}
-                    aria-invalid="true"
-                    required
-                  {% endif %}
-                >
-                    {{- form[field_name] -}}
-                  </textarea>
-              </div>
-            {%- elsif block.settings.field_type == 'select' -%}
-              {% assign options = block.settings.select_options | split: ',' %}
-              <div
-                class="form-field form-field--{{ block.settings.field_type }}{% if block.settings.full_width %} form-field--full{% endif %}"
-                {{ block.shopify_attributes }}
-              >
-                {%- if block.settings.heading != blank -%}
-                  <label class="form-label" for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}">
-                    {{- block.settings.heading -}}
-                    {% if block.settings.required %}
-                      <span aria-hidden="true">*</span>
-                    {% endif %}
-                  </label>
-                {%- endif -%}
-                <div class="select">
-                  <select
-                    id="ContactForm-{{ block.settings.field_type }}-{{ block.id }}"
-                    name="contact[{{- field_name -}}]"
-                    class="form-control form-control--select"
-                    {% if block.settings.required %}
-                      aria-invalid="true"
-                      required
-                    {% endif %}
-                  >
-                    {%- if block.settings.placeholder != blank -%}
-                      <option value="">{{ block.settings.placeholder }}</option>
-                    {%- endif -%}
-                    {%- for option in options -%}
-                      <option value="{{ option }}" label="{{ option }}">{{ option }}</option>
-                    {%- endfor -%}
-                  </select>
-                  {%- render 'icon-caret-down', size: '2xs' -%}
-                </div>
-              </div>
-            {%- elsif block.settings.field_type == 'checkbox' -%}
-              <div
-                class="form-field form-field--{{ block.type }}{% if block.settings.full_width %} form-field--full{% endif %}"
-                {{ block.shopify_attributes }}
-              >
-                <div class="flex items-center gap-x-3">
-                  <input
-                    type="hidden"
-                    name="contact[{{- field_name -}}]"
-                    value="{{ block.settings.checkbox_uncheck_value }}"
-                  >
-                  <input
-                    type="checkbox"
-                    name="contact[{{- field_name -}}]"
-                    id="ContactForm-{{ block.settings.field_type }}-{{ block.id }}"
-                    value="{{ block.settings.checkbox_checked_value }}"
-                    {% if block.settings.required %}
-                      aria-invalid="true"
-                      required
-                    {% endif %}
-                  >
                   {%- if block.settings.heading != blank -%}
-                    <label class="flex-1" for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}">
+                    <label class="form-label" for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}">
                       {{- block.settings.heading -}}
                       {% if block.settings.required %}
                         <span aria-hidden="true">*</span>
                       {% endif %}
                     </label>
                   {%- endif -%}
+                  <input
+                    type="tel"
+                    id="ContactForm-{{ block.settings.field_type }}-{{ block.id }}"
+                    class="form-control"
+                    autocomplete="tel"
+                    name="contact[{{ 'templates.contact.form.phone' | t }}]"
+                    pattern="[0-9\-]*"
+                    value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                    placeholder="{{ placeholder }}"
+                    {% if block.settings.required %}
+                      aria-invalid="true"
+                      required
+                    {% endif %}
+                  >
+                </div>
+                {% assign phone_field_index = phone_field_index | plus: 1 %}
+              {%- elsif block.settings.field_type == 'text' -%}
+                <div
+                  class="form-field form-field--{{ block.settings.field_type }}{% if block.settings.full_width %} form-field--full{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- if block.settings.heading != blank -%}
+                    <label class="form-label" for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}">
+                      {{- block.settings.heading -}}
+                      {% if block.settings.required %}
+                        <span aria-hidden="true">*</span>
+                      {% endif %}
+                    </label>
+                  {%- endif -%}
+                  <input
+                    type="text"
+                    id="ContactForm-{{ block.settings.field_type }}-{{ block.id }}"
+                    class="form-control"
+                    name="contact[{{- field_name -}}]"
+                    value=""
+                    {% if block.settings.placeholder != blank %}
+                      placeholder="{{ block.settings.placeholder }}"
+                    {% endif %}
+                    {% if block.settings.required %}
+                      aria-invalid="true"
+                      required
+                    {% endif %}
+                  >
+                </div>
+              {%- elsif block.settings.field_type == 'textarea' -%}
+                <div
+                  class="form-field form-field--{{ block.settings.field_type }}{% if block.settings.full_width %} form-field--full{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- if block.settings.heading != blank -%}
+                    <label class="form-label" for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}">
+                      {{- block.settings.heading -}}
+                      {% if block.settings.required %}
+                        <span aria-hidden="true">*</span>
+                      {% endif %}
+                    </label>
+                  {%- endif -%}
+                  <textarea
+                    rows="5"
+                    id="ContactForm-{{ block.settings.field_type }}-{{ block.id }}"
+                    class="form-control form-control--textarea"
+                    name="contact[{{- field_name -}}]"
+                    {% if block.settings.placeholder != blank %}
+                      placeholder="{{ block.settings.placeholder }}"
+                    {% endif %}
+                    {% if block.settings.required %}
+                      aria-invalid="true"
+                      required
+                    {% endif %}
+                  >
+                      {{- form[field_name] -}}
+                    </textarea>
+                </div>
+              {%- elsif block.settings.field_type == 'select' -%}
+                {% assign options = block.settings.select_options | split: ',' %}
+                <div
+                  class="form-field form-field--{{ block.settings.field_type }}{% if block.settings.full_width %} form-field--full{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- if block.settings.heading != blank -%}
+                    <label class="form-label" for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}">
+                      {{- block.settings.heading -}}
+                      {% if block.settings.required %}
+                        <span aria-hidden="true">*</span>
+                      {% endif %}
+                    </label>
+                  {%- endif -%}
+                  <div class="select">
+                    <select
+                      id="ContactForm-{{ block.settings.field_type }}-{{ block.id }}"
+                      name="contact[{{- field_name -}}]"
+                      class="form-control form-control--select"
+                      {% if block.settings.required %}
+                        aria-invalid="true"
+                        required
+                      {% endif %}
+                    >
+                      {%- if block.settings.placeholder != blank -%}
+                        <option value="">{{ block.settings.placeholder }}</option>
+                      {%- endif -%}
+                      {%- for option in options -%}
+                        <option value="{{ option }}" label="{{ option }}">{{ option }}</option>
+                      {%- endfor -%}
+                    </select>
+                    {%- render 'icon-caret-down', size: '2xs' -%}
+                  </div>
+                </div>
+              {%- elsif block.settings.field_type == 'checkbox' -%}
+                <div
+                  class="form-field form-field--{{ block.type }}{% if block.settings.full_width %} form-field--full{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  <div class="flex items-center gap-x-3">
+                    <input
+                      type="hidden"
+                      name="contact[{{- field_name -}}]"
+                      value="{{ block.settings.checkbox_uncheck_value }}"
+                    >
+                    <input
+                      type="checkbox"
+                      name="contact[{{- field_name -}}]"
+                      id="ContactForm-{{ block.settings.field_type }}-{{ block.id }}"
+                      value="{{ block.settings.checkbox_checked_value }}"
+                      {% if block.settings.required %}
+                        aria-invalid="true"
+                        required
+                      {% endif %}
+                    >
+                    {%- if block.settings.heading != blank -%}
+                      <label class="flex-1" for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}">
+                        {{- block.settings.heading -}}
+                        {% if block.settings.required %}
+                          <span aria-hidden="true">*</span>
+                        {% endif %}
+                      </label>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- elsif block.type == 'name' -%}
+              <div class="form-field form-field--name" {{ block.shopify_attributes }}>
+                <label class="form-label" for="ContactForm-name-{{ block.id }}">
+                  {{- 'templates.contact.form.name' | t -}}
+                  <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="form-control"
+                  autocomplete="name"
+                  type="text"
+                  id="ContactForm-name-{{ block.id }}"
+                  name="contact[{{ 'templates.contact.form.name' | t }}]"
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                  placeholder="{{ 'templates.contact.form.name' | t }}"
+                  {% if block.settings.required %} required {% endif %}
+                >
+              </div>
+            {%- elsif block.type == 'email' -%}
+              <div class="form-field form-field--email" {{ block.shopify_attributes }}>
+                <label class="form-label" for="ContactForm-email-{{ block.id }}">
+                  {{- 'templates.contact.form.email' | t }}
+                  <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  autocomplete="email"
+                  type="email"
+                  id="ContactForm-email-{{ block.id }}"
+                  class="form-control"
+                  name="contact[email]"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  {% if block.settings.required %} aria-invalid="true" required {% endif %}
+                  {% if form.errors contains 'email' %}
+                    aria-describedby="ContactForm-email-error-{{ block.id }}"
+                  {% endif %}
+                  placeholder="{{ 'templates.contact.form.email' | t }}"
+                >
+                {%- if form.errors contains 'email' -%}
+                  <span
+                    class="form-message form-message--small form-message--error"
+                    id="ContactForm-email-error-{{ block.id }}"
+                  >
+                    {% render 'icon-error', size: 'small' %}
+                    {{- form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email -}}
+                  </span>
+                {%- endif -%}
+              </div>
+            {%- elsif block.type == 'dropdown' -%}
+              {%- liquid
+                assign field_handle = block.settings.title | handleize
+                assign field_options = block.settings.options | newline_to_br | strip_newlines | split: '<br />'
+                assign native_name = 'contact[' | append: field_handle | append: ']'
+                assign selected_value = form[field_handle] | default: field_options.first
+              -%}
+              <div class="form-field form-field--select{% if block.settings.full_width %} form-field--full{% endif %}" {{ block.shopify_attributes }}>
+                <label class="form-label" for="ContactForm-dropdown-{{ block.id }}">{{- block.settings.title -}}</label>
+                <div class="select">
+                  <select class="form-control" name="{{ native_name }}" id="ContactForm-dropdown-{{ block.id }}">
+                    {%- for option in field_options -%}
+                      <option value="{{ option | escape }}"{% if option == selected_value %} selected{% endif %}>{{ option }}</option>
+                    {%- endfor -%}
+                  </select>
+                  {%- render 'icon-caret-down', size: '2xs' -%}
                 </div>
               </div>
-            {%- elsif block.settings.field_type == 'radio' -%}
-              {% assign options = block.settings.radio_options | split: ',' %}
-              <div
-                class="form-field form-field--{{ block.settings.field_type }}{% if block.settings.full_width %} form-field--full{% endif %}"
-                {{ block.shopify_attributes }}
-              >
-                {%- if block.settings.heading != blank -%}
-                  <label class="form-label" for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}">
-                    {{- block.settings.heading -}}
-                    {% if block.settings.required %}
-                      <span aria-hidden="true">*</span>
-                    {% endif %}
-                  </label>
-                {%- endif -%}
-                <ul>
-                  {%- for option in options -%}
-                    <li class="flex items-center gap-x-3">
-                      <input
-                        type="radio"
-                        name="contact[{{- field_name -}}]"
-                        id="ContactForm-{{ block.settings.field_type }}-{{ block.id }}-{{ forloop.index }}"
-                        value="{{ option }}"
-                        {% if block.settings.required %}
-                          aria-invalid="true"
-                          required
-                        {% endif %}
-                      >
-                      <label
-                        class="flex-1"
-                        for="ContactForm-{{ block.settings.field_type }}-{{ block.id }}-{{ forloop.index }}"
-                      >
-                        {{- option -}}
-                      </label>
-                    </li>
-                  {%- endfor -%}
-                </ul>
+            {%- elsif block.type == 'text' -%}
+              <div class="form-field form-field--full form-field--body" {{ block.shopify_attributes }}>
+                <div class="w-full rte">{{ block.settings.text }}</div>
               </div>
+            {%- elsif block.type == 'checkbox' -%}
+              {% if block.settings.title != blank %}
+                {%- assign title_handle = block.settings.title | handle -%}
+                <div class="form-field" {{ block.shopify_attributes }}>
+                  <input type="hidden" name="contact[{{ title_handle }}]" value="{{ block.settings.value_no | escape }}" />
+                  <input type="checkbox" id="contact_{{ title_handle }}" name="contact[{{ title_handle }}]" value="{{ block.settings.value_yes | escape }}" {% if block.settings.required %} required{% endif %} {% if form[title_handle] == block.settings.value_yes %} checked{% endif %} />
+                  <label for="contact_{{ title_handle }}" class="flex-1">{{ block.settings.title | escape }}{% if block.settings.required %} *{% endif %}</label>
+                </div>
+              {% endif %}
             {%- endif -%}
           {%- endfor -%}
           <div class="form-field form-field--full form-field--body">
@@ -383,6 +395,7 @@
       "type": "header",
       "content": "t:general.section_header.content"
     },
+    
     {
       "type": "inline_richtext",
       "id": "heading",
@@ -631,6 +644,117 @@
       ]
     },
     {
+      "type": "name",
+      "name": "Name",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Required",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "email",
+      "name": "Email",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Required",
+          "default": true
+        }
+      ]
+    },
+      {
+        "type": "dropdown",
+        "name": "Dropdown",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Dropdowns require a label, and that label may only be used once in the form."
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label",
+            "default": "Dropdown"
+          },
+          {
+            "type": "textarea",
+            "id": "options",
+            "label": "Options",
+            "info": "One option per line.",
+            "default": "Option 1\nOption 2\nOption 3"
+          },
+          {
+            "type": "checkbox",
+            "id": "full_width",
+            "label": "Full width",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Text content</p>"
+          },
+          {
+            "type": "checkbox",
+            "id": "half_width",
+            "label": "Half width on large screens",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "name": "Checkbox",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Checkboxes require a label, and that label may only be used once in the form."
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label",
+            "default": "Custom checkbox"
+          },
+          {
+            "type": "text",
+            "id": "value_no",
+            "label": "Deselected value",
+            "default": "No"
+          },
+          {
+            "type": "text",
+            "id": "value_yes",
+            "label": "Selected value",
+            "default": "Yes"
+          },
+          {
+            "type": "checkbox",
+            "id": "half_width",
+            "label": "Half width on large screens",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "required",
+            "label": "Required",
+            "default": false
+          }
+        ]
+      },
+      {
       "type": "sidebar",
       "name": "t:general.help_sidebar.name",
       "limit": 1,
@@ -1440,6 +1564,18 @@
     {
       "name": "t:sections.contact-form.name",
       "blocks": [
+        {
+          "type": "name",
+          "settings": {
+            "required": true
+          }
+        },
+        {
+          "type": "email",
+          "settings": {
+            "required": true
+          }
+        },
         {
           "type": "custom_field",
           "settings": {

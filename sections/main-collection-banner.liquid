@@ -128,8 +128,8 @@
               {{ block.shopify_attributes }}
               style="--section-padding-top: {{ block.settings.padding_top }}px; --section-padding-bottom: {{ block.settings.padding_bottom }}px;"
             >
+              <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
               <{{ block.settings.heading_tag }} class="collection-hero__title overflow-hidden {{ block.settings.heading_size }}">
-                <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
                 <motion-element data-motion="fade-up" class="inline-block">
                   {{- collection.title | escape -}}
                 </motion-element>

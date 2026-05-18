@@ -348,7 +348,7 @@
         "email": "Email",
         "phone": "Phone number",
         "comment": "Your message",
-        "send": "Submit now",
+        "send": "Send",
         "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
         "error_heading": "Please adjust the following:"
       }

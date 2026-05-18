@@ -2505,6 +2505,14 @@ shopify-accelerated-checkout {
     outline: solid transparent 1px;
   }
 }
+.form-field .select > .icon{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  inset-inline-end: 1.6rem;
+  pointer-events: none;
+}
+
 .form-field ~ .form-field {
   margin-top: 2rem;
 }
@@ -2540,6 +2548,10 @@ shopify-accelerated-checkout {
 }
 .form-group > * + * {
   margin-inline-start: 2.4rem;
+}
+select.form-control{
+  background-position: center right 1rem;
+  background-repeat: no-repeat;
 }
 .form-control {
   outline: none;
@@ -8336,7 +8348,7 @@ body.search-template #MainContent,
   letter-spacing: 0 !important;
 }
 
-.klaviyo-form .go2765439722{
+.klaviyo-form .go775707071,.klaviyo-form .go2680607639,.klaviyo-form .go3350786538{
   border-radius: 30px !important;
   background-color: #ededed !important;
   border-color: #ededed !important;
@@ -8344,7 +8356,7 @@ body.search-template #MainContent,
   padding: 0 !important;
 }
 
-.klaviyo-form .go2765439722>button{
+.klaviyo-form .go775707071>button, .klaviyo-form .go2680607639>button, .klaviyo-form .go3350786538>button{
   position: absolute;
   right: 15px;
   top: 15px;

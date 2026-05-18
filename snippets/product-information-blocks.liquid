@@ -137,26 +137,30 @@
             {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
               {%- liquid
                 assign inventory_quantity = product.selected_or_first_available_variant.inventory_quantity
+                assign low_stock_threshold = block.settings.inventory_threshold
+
+                if collection != blank and collection.metafields.custom.low_stock_threshold.value != blank
+                  assign low_stock_threshold = collection.metafields.custom.low_stock_threshold.value
+                else
+                  for product_collection in product.collections
+                    if product_collection.metafields.custom.low_stock_threshold.value != blank
+                      assign low_stock_threshold = product_collection.metafields.custom.low_stock_threshold.value
+                      break
+                    endif
+                  endfor
+                endif
 
                 if inventory_quantity > 0
-                  if inventory_quantity <= block.settings.inventory_threshold
+                  if inventory_quantity <= low_stock_threshold
                     assign inventory_status = 'low-stock'
-                    if block.settings.show_inventory_quantity
-                      if inventory_quantity == 1
-                        assign inventory_message = 'products.product.inventory_low_stock_one_item_html' | t: quantity: inventory_quantity
-                      else
-                        assign inventory_message = 'products.product.inventory_low_stock_many_items_html' | t: quantity: inventory_quantity
-                      endif
+                    if inventory_quantity == 1
+                      assign inventory_message = 'products.product.inventory_low_stock_one_item_html' | t: quantity: inventory_quantity
                     else
-                      assign inventory_message = 'products.product.inventory_low_stock' | t
+                      assign inventory_message = 'products.product.inventory_low_stock_many_items_html' | t: quantity: inventory_quantity
                     endif
                   else
                     assign inventory_status = 'in-stock'
-                    if block.settings.show_inventory_quantity
-                      assign inventory_message = 'products.product.inventory_in_stock_show_count_html' | t: quantity: inventory_quantity
-                    else
-                      assign inventory_message = 'products.product.inventory_in_stock' | t
-                    endif
+                    assign inventory_message = 'products.product.inventory_in_stock' | t
                   endif
                 else
                   if product.selected_or_first_available_variant.inventory_policy == 'continue'
@@ -172,11 +176,11 @@
                 <span class="product__inventory-icon"></span>
                 <span class="product__inventory-text">{{- inventory_message -}}</span>
               </p>
-              {%- if inventory_status == 'low-stock' and inventory_quantity < block.settings.inventory_threshold -%}
+              {%- if inventory_status == 'low-stock' and inventory_quantity < low_stock_threshold -%}
                 <progress-bar
                   class="product__inventory-stock-bar progress-bar"
                   data-value="{{ inventory_quantity }}"
-                  data-max="{{ block.settings.inventory_threshold }}"
+                  data-max="{{ low_stock_threshold }}"
                 ></progress-bar>
               {%- endif -%}
             {%- endif -%}
@@ -199,7 +203,7 @@
               {{ block.shopify_attributes }}
               style="--color-link: {{ block.settings.link_color.red }},{{ block.settings.link_color.green }},{{ block.settings.link_color.blue }};"
             >
-              {%- if block.settings.show_vendor -%}
+              {% comment %} {%- if block.settings.show_vendor -%}
                 <p
                   class="product__meta product__vendor"
                   id="Vendor-{{ section.id }}"
@@ -213,7 +217,7 @@
                     {{- product.vendor -}}
                   </a>
                 </p>
-              {%- endif -%}
+              {%- endif -%} {% endcomment %}
               {%- if block.settings.show_product_type and product.type != blank -%}
                 <p
                   class="product__meta product__type"
