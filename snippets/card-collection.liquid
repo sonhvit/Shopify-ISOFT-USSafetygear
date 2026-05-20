@@ -64,6 +64,7 @@
   endif
 
   assign heading_size = heading_size | default: 'text-base'
+  assign heading_tag = heading_tag | default: 'h3'
   if heading_size == 'text-base'
     assign heading_size = heading_size | append: ' font-body'
   endif
@@ -109,12 +110,17 @@
       </motion-element>
     </div>
     <div class="collection-card__inner w-full pointer-events-none{% if card_style == 'card' %} flex items-center gap-x-2{% endif %}">
-      <h3 class="collection-card__title uppercase {{ heading_size }} flex-1 text-limit-{{ card_text_line_limit }}-line">
-        <span>
+      {% if heading_tag == 'h2' %}
+        <h2 class="collection-card__title uppercase {{ heading_size }} flex-1 text-limit-{{ card_text_line_limit }}-line">
           {{- collection_title_default -}}
           {% if card_style == 'standard' %}{% render 'icon-caret-right', classes: 'hidden md:block' %}{% endif %}
-        </span>
-      </h3>
+        </h2>
+      {% else %}
+        <h3 class="collection-card__title uppercase {{ heading_size }} flex-1 text-limit-{{ card_text_line_limit }}-line">
+          {{- collection_title_default -}}
+          {% if card_style == 'standard' %}{% render 'icon-caret-right', classes: 'hidden md:block' %}{% endif %}
+        </h3>
+      {% endif %}
       {% if card_style == 'card' %}
         <button
           class="collection-card__btn btn btn--icon-circle btn--icon focus-none {{ button_icon_classes }}"

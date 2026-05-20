@@ -20,7 +20,7 @@
   }
   @media (max-width: 767px) {
     .section-{{ section.id }} .swiper-slide {
-      --slide-width: 9rem;
+      --slide-width: 12rem;
     }
     .section-{{ section.id }} [data-mobile-layout="horizontal"] .swiper-slide {
       --slide-width: 16rem;
@@ -31,7 +31,7 @@
   }
   @media (min-width: 1280px) {
     .section-{{ section.id }} .swiper-slide {
-      width: var(--slide-width, 13rem);
+      width: var(--slide-width, 16rem);
     } 
   }
 {%- endstyle -%}
@@ -65,32 +65,58 @@
           data-mobile-layout="{{ section.settings.mobile_layout }}"
         >
           <div class="collection-list__items swiper-wrapper swipe-mobile__inner">
-            {%- for block in section.blocks -%}
-              {%- liquid
-                assign collection = collections[block.settings.collection]
-                assign title = block.settings.title
-              -%}
-              <div
-                class="f-column swiper-slide"
-                {{ block.shopify_attributes }}
-                data-index="{{ forloop.index0 }}"
-              >
-                {% render 'card-collection',
-                  collection: collection,
-                  featured_image: block.settings.image,
-                  title: title,
-                  image_ratio: section.settings.card_image_ratio,
-                  has_bg: card_has_bg,
-                  rounded_image: section.settings.rounded_card_image,
-                  card_style: section.settings.card_style,
-                  color_scheme: section.settings.card_color_scheme,
-                  image_width: section.settings.card_image_width,
-                  image_padding: section.settings.card_image_padding,
-                  mobile_layout: section.settings.mobile_layout,
-                  heading_size: section.settings.card_heading_size
-                %}
-              </div>
-            {%- endfor -%}
+            {%- if section.settings.source == 'metafield' -%}
+              {%- assign mf_collections = collection.metafields.custom.sub_collections.value -%}
+              {%- if mf_collections != blank -%}
+                {%- for collection in mf_collections -%}
+                  <div class="f-column swiper-slide" data-index="{{ forloop.index0 }}">
+                    {% render 'card-collection',
+                      collection: collection,
+                      featured_image: collection.image,
+                      title: collection.title,
+                      image_ratio: section.settings.card_image_ratio,
+                      has_bg: card_has_bg,
+                      rounded_image: section.settings.rounded_card_image,
+                      card_style: section.settings.card_style,
+                      color_scheme: section.settings.card_color_scheme,
+                      image_width: section.settings.card_image_width,
+                      image_padding: section.settings.card_image_padding,
+                      mobile_layout: section.settings.mobile_layout,
+                      heading_size: section.settings.card_heading_size,
+                      heading_tag: section.settings.card_heading_tag
+                    %}
+                  </div>
+                {%- endfor -%}
+              {%- endif -%}
+            {%- else -%}
+              {%- for block in section.blocks -%}
+                {%- liquid
+                  assign collection = collections[block.settings.collection]
+                  assign title = block.settings.title
+                -%}
+                <div
+                  class="f-column swiper-slide"
+                  {{ block.shopify_attributes }}
+                  data-index="{{ forloop.index0 }}"
+                >
+                  {% render 'card-collection',
+                    collection: collection,
+                    featured_image: block.settings.image,
+                    title: title,
+                    image_ratio: section.settings.card_image_ratio,
+                    has_bg: card_has_bg,
+                    rounded_image: section.settings.rounded_card_image,
+                    card_style: section.settings.card_style,
+                    color_scheme: section.settings.card_color_scheme,
+                    image_width: section.settings.card_image_width,
+                    image_padding: section.settings.card_image_padding,
+                    mobile_layout: section.settings.mobile_layout,
+                    heading_size: section.settings.card_heading_size,
+                    heading_tag: section.settings.card_heading_tag
+                  %}
+                </div>
+              {%- endfor -%}
+            {%- endif -%}
           </div>
         </collection-list>
         <div class="swiper-controls swiper-controls--nav-floating hidden md:flex color-{{ section.settings.carousel_control_color_scheme }}">
@@ -499,6 +525,38 @@
         {
           "value": "h5",
           "label": "t:general.text_size.options__h5.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "card_heading_tag",
+      "label": "Card heading tag",
+      "default": "h3",
+      "options": [
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Content source",
+      "default": "blocks",
+      "options": [
+        {
+          "value": "blocks",
+          "label": "Manual (use blocks)"
+        },
+        {
+          "value": "metafield",
+          "label": "Metafield (shop.metafields.custom.sub_collections)"
         }
       ]
     },

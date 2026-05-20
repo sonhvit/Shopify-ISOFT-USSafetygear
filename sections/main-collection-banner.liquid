@@ -134,7 +134,7 @@
                   {{- collection.title | escape -}}
                 </motion-element>
               </{{ block.settings.heading_tag }}>
-              {%- if block.settings.show_description and collection.description != blank -%}
+              {% comment %} {%- if block.settings.show_description and collection.description != blank -%}
                 <div class="collection-hero__description rte text-subtext">
                   <motion-element
                     data-motion="fade-up"
@@ -144,7 +144,7 @@
                     {{- collection.description }}
                   </motion-element>
                 </div>
-              {%- endif -%}
+              {%- endif -%} {% endcomment %}
             </div>
         {%- endcase -%}
       {% endfor %}

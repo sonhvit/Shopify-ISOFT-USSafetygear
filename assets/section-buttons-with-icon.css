@@ -73,12 +73,18 @@
 }
 .button-item__text {
   white-space: nowrap;
+  font-size: 14px;
+  font-family: var(--font-body-family);
+  font-weight: 400;
+}
+.button-item__inner:hover .button-item__text{
+  color: rgb(var(--color-button-text));
 }
 .button-item--icon {
   --icon-size: 2rem;
 }
 .button-item--image {
-  --icon-size: 4.8rem;
+  --icon-size: 2.8rem;
 }
 .button-item--image .button-item__inner {
   padding-inline: 0.8rem;
@@ -88,6 +94,6 @@
 }
 @media (max-width: 767.98px) {
   .button-item--image {
-    --icon-size: 3.8rem;
+    --icon-size: 2.8rem;
   }
 }
