@@ -198,16 +198,22 @@ product-info.use-color-scheme-in-container > .product {
 .product__block--pickup_availability + .product__block--collapsible_tab {
   margin-top: -2rem;
 }
-.product__block--complementary-collapsible + .product__block--collapsible_tab, .product__block--collapsible_tab + .product__block--complementary-collapsible, .product__block--collapsible_tab + .product__block--collapsible_tab {
+.product-specifications table h3{
+  margin: 0;
+}
+.product__block--pickup_availability + .product__block--specifications {
+  margin-top: -2rem;
+}
+.product__block--complementary-collapsible + .product__block--collapsible_tab, .product__block--collapsible_tab + .product__block--complementary-collapsible, .product__block--collapsible_tab + .product__block--collapsible_tab, .product__block--specifications + .product__block--collapsible_tab, .product__block--collapsible_tab + .product__block--specifications, .product__block--specifications + .product__block--specifications {
   margin-top: -1.6rem;
 }
 @media (max-width: 767.98px) {
-  .product__block--complementary-collapsible + .product__block--collapsible_tab, .product__block--collapsible_tab + .product__block--complementary-collapsible, .product__block--collapsible_tab + .product__block--collapsible_tab {
+  .product__block--complementary-collapsible + .product__block--collapsible_tab, .product__block--collapsible_tab + .product__block--complementary-collapsible, .product__block--collapsible_tab + .product__block--collapsible_tab, .product__block--specifications + .product__block--collapsible_tab, .product__block--collapsible_tab + .product__block--specifications, .product__block--specifications + .product__block--specifications {
     margin-top: calc(var(--product-blocks-gap) * -1);
   }
 }
 @media (max-width: 767.98px) {
-  .product__block--complementary-collapsible .accordion-details__summary, .product__block--collapsible_tab .accordion-details__summary {
+  .product__block--complementary-collapsible .accordion-details__summary, .product__block--collapsible_tab .accordion-details__summary, .product__block--specifications .accordion-details__summary {
     padding-block: 1.2rem;
     min-height: 5rem;
   }

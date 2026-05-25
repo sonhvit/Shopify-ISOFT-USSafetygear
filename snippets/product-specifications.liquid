@@ -1,0 +1,88 @@
+{%- liquid
+  assign heading_size = block.settings.heading_size | default: 'h4'
+  assign size_value = '—'
+  assign color_value = '—'
+  assign material_value = product.metafields.custom.material.value | default: product.metafields.custom.material
+  assign brand_value = product.vendor | default: '—'
+  assign collection_value = collection.title
+
+  if material_value == blank
+    assign material_value = '—'
+  endif
+
+  if collection_value == blank
+    for product_collection in product.collections limit: 1
+      assign collection_value = product_collection.title
+    endfor
+  endif
+
+  if collection_value == blank
+    assign collection_value = '—'
+  endif
+
+  for option in product.options_with_values
+    assign option_name = option.name | downcase
+    if option_name contains 'size'
+      assign size_value = option.values | join: ', '
+    elsif option_name contains 'color' or option_name contains 'colour'
+      assign color_value = option.values | join: ', '
+    endif
+  endfor
+-%}
+<details
+  id="Details-{{ block.id }}-{{ section_id }}"
+  class="accordion-details"
+  is="accordion-group"
+  {% if block.settings.default_open %}
+    open
+    aria-expanded="true"
+  {% else %}
+    aria-expanded="false"
+  {% endif %}
+>
+  <summary class="accordion-details__summary flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      {% render 'icons', icon: block.settings.icon %}
+      <h2 class="{{ heading_size }} inline-richtext">
+        {{ block.settings.heading | default: 'Specifications' | escape }}
+      </h2>
+    </div>
+    {%- render 'icon-plus-toggle' -%}
+  </summary>
+  <div class="accordion-details__content rte text-subtext product-specifications">
+    <table class="table-striped" role="presentation">
+      <tbody>
+        <tr>
+          <th scope="row">
+            <h3 class="h6">Size</h3>
+          </th>
+          <td>{{ size_value | escape }}</td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h3 class="h6">Color</h3>
+          </th>
+          <td>{{ color_value | escape }}</td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h3 class="h6">Material</h3>
+          </th>
+          <td>{{ material_value | escape }}</td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h3 class="h6">Brand</h3>
+          </th>
+          <td>{{ brand_value | escape }}</td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h3 class="h6">Collection</h3>
+          </th>
+          <td>{{ collection_value | escape }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</details>

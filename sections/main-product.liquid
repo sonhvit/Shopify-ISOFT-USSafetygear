@@ -124,8 +124,6 @@
   {%- endif -%}
 
   {%- liquid
-    assign product_variant = product.selected_or_first_available_variant
-    assign product_url = canonical_url | split: '?' | first
   -%}
   <script type="application/ld+json">
     {{ product | structured_data }}
@@ -631,6 +629,119 @@
           "type": "checkbox",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.default_open.label",
           "id": "default_open",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_below_product_media",
+          "label": "t:sections.main-product.blocks.general.settings.show_below_product_media.label",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "specifications",
+      "name": "Specifications",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Specifications",
+          "label": "t:general.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:general.text_size.heading.label",
+          "default": "h4",
+          "options": [
+            {
+              "value": "h5",
+              "label": "t:general.text_size.options__h5.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:general.text_size.options__h4.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:general.text_size.options__h3.label"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:general.icon.options__1.label"
+            },
+            {
+              "value": "car-simple",
+              "label": "t:general.icon.options__2.label"
+            },
+            {
+              "value": "truck",
+              "label": "t:general.icon.options__3.label"
+            },
+            {
+              "value": "package",
+              "label": "t:general.icon.options__4.label"
+            },
+            {
+              "value": "currency-circle-dollar",
+              "label": "t:general.icon.options__5.label"
+            },
+            {
+              "value": "gift",
+              "label": "t:general.icon.options__6.label"
+            },
+            {
+              "value": "heart",
+              "label": "t:general.icon.options__7.label"
+            },
+            {
+              "value": "globe",
+              "label": "t:general.icon.options__8.label"
+            },
+            {
+              "value": "check",
+              "label": "t:general.icon.options__9.label"
+            },
+            {
+              "value": "arrow-up-left",
+              "label": "t:general.icon.options__10.label"
+            },
+            {
+              "value": "lightning",
+              "label": "t:general.icon.options__11.label"
+            },
+            {
+              "value": "calendar-blank",
+              "label": "t:general.icon.options__12.label"
+            },
+            {
+              "value": "bell-ringing",
+              "label": "t:general.icon.options__13.label"
+            },
+            {
+              "value": "location",
+              "label": "t:general.icon.options__14.label"
+            },
+            {
+              "value": "tag",
+              "label": "t:general.icon.options__15.label"
+            }
+          ],
+          "default": "tag",
+          "label": "t:general.icon.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "default_open",
+          "label": "Default open",
           "default": false
         },
         {

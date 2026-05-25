@@ -1,0 +1,553 @@
+{{ 'section-custom-content.css' | asset_url | stylesheet_tag }}
+{{ 'section-collection-slider-banner.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'collection-slider-banner.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign banner_items = collection.metafields.custom.collection_banner.value
+  assign display_mode = section.settings.display_mode
+  assign columns_mobile = section.settings.columns_mobile | plus: 0
+  assign columns_tablet = section.settings.columns_tablet | plus: 0
+  assign columns_desktop = section.settings.columns_desktop | plus: 0
+-%}
+
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+
+{%- if banner_items != blank -%}
+  <div
+    class="section section-{{ section.id }} section--padding section--custom-content page-width page-width--{{ section.settings.container }} color-{{ section.settings.color_scheme }} {{ section.index }}"
+    style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;--section-columns-mobile: {{ columns_mobile }};--section-columns-tablet: {{ columns_tablet }};--section-columns-desktop: {{ columns_desktop }};"
+    data-id="{{ section.id }}"
+  >
+    {% render 'section-heading', section_settings: section.settings %}
+
+    <div class="section__content{% if display_mode == 'slider' %} collection-banner-slider relative{% endif %}">
+      {%- if display_mode == 'slider' -%}
+        <collection-banner-slider
+          class="block swiper"
+          data-section-id="{{ section.id }}"
+          data-items="{{ columns_desktop }}"
+          data-tablet-items="{{ columns_tablet }}"
+          data-mobile-items="{{ columns_mobile }}"
+        >
+          <div class="collection-banner__items collection-banner__items--slider swiper-wrapper">
+            {%- for item in banner_items -%}
+              {%- liquid
+                assign item_image = item.banner_image.value
+                assign item_title = item.banner_heading.value
+                assign item_link = item.banner_link
+                assign button_label = item.button_label.value | default: 'Shop Now'
+                assign card_image_ratio = section.settings.image_ratio
+
+                if card_image_ratio == 'adapt'
+                  if item_image != blank
+                    assign card_image_ratio = item_image.aspect_ratio
+                  else
+                    assign card_image_ratio = '1'
+                  endif
+                endif
+
+              -%}
+              <div class="swiper-slide" data-index="{{ forloop.index0 }}">
+                <a
+                  class="collection-slider-banner__card card-media card-media--auto-height card-media--content-bottom-left card-media--extra-small relative overflow-hidden hover-wrapper color-scheme-inverse mobile-color-scheme-inverse blocks-radius h-full block focus-inset"
+                  style="--aspect-ratio: {{ card_image_ratio }};"
+                  {% if item_link != blank %}
+                    href="{{ item_link.value.url }}"
+                  {% else %}
+                    role="link" aria-disabled="true"
+                  {% endif %}
+                  aria-label="{{ item_title | default: shop.name | escape }}"
+                >
+                  <div class="card-media__media-wrapper overflow-hidden block w-full h-full">
+                    <div class="card-media__media media-wrapper{% if item_image == blank %} bg-none{% endif %}">
+                      {%- if item_image != blank -%}
+                        {%- liquid
+                          assign image_widths = '320, 480, 640, 960, 1200, 1600, ' | append: item_image.width
+                          assign alt_image = item_image.alt | default: item_title | default: shop.name | escape
+                        -%}
+                        {{
+                          item_image
+                          | image_url: width: item_image.width
+                          | image_tag:
+                            loading: 'lazy',
+                            class: 'motion-reduce hover-scale-up',
+                            widths: image_widths,
+                            sizes: '(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw',
+                            is: 'image-lazy',
+                            alt: alt_image
+                        }}
+                      {%- else -%}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg motion-reduce hover-scale-up' }}
+                      {%- endif -%}
+                    </div>
+                    <div class="bg-overlay absolute inset-0 pointer-events-none"></div>
+
+                    <div class="card-media__content card-media__content--left content-overlay content-overlay--bottom-left">
+                      <div class="card-media__content-wrapper rich-text text-left">
+                        {%- if item_title != blank -%}
+                          <h2 class="block card-media__heading rich-text__heading h2">
+                            {{- item_title | escape -}}
+                          </h2>
+                        {%- endif -%}
+
+                        {%- if item_link != blank -%}
+                          <div class="block card-media__button rich-text__button">
+                            {% render 'button',
+                              button_tag: 'span',
+                              button_style: 'btn--secondary',
+                              button_label: button_label
+                            %}
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+        </collection-banner-slider>
+        <div class="swiper-pagination swiper-pagination--mobile-only md:hidden"></div>
+        <div class="swiper-controls swiper-controls--nav-floating hidden md:block">
+          <button class="swiper-button swiper-button-prev btn swiper-button--drop-shadow" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}">
+            <span class="btn__text">{% render 'icon-caret-left', size: 'small' %}</span>
+          </button>
+          <button class="swiper-button swiper-button-next btn swiper-button--drop-shadow" name="next" aria-label="{{ 'general.slider.next_slide' | t }}">
+            <span class="btn__text">{% render 'icon-caret-right', size: 'small' %}</span>
+          </button>
+        </div>
+      {%- else -%}
+        <div class="collection-banner__items collection-banner__items--grid f-grid f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }}">
+          {%- for item in banner_items -%}
+            {%- liquid
+              assign item_image = item.banner_image.value
+              assign item_title = item.banner_heading.value
+                assign item_link = item.banner_link
+                assign button_label = item.button_label.value | default: 'Shop Now'
+              assign card_image_ratio = section.settings.image_ratio
+
+              if card_image_ratio == 'adapt'
+                if item_image != blank
+                  assign card_image_ratio = item_image.aspect_ratio
+                else
+                  assign card_image_ratio = '1'
+                endif
+              endif
+
+            -%}
+            <a
+              class="collection-slider-banner__card card-media card-media--auto-height card-media--content-bottom-left card-media--extra-small relative overflow-hidden hover-wrapper color-scheme-inverse mobile-color-scheme-inverse blocks-radius block focus-inset"
+              style="--aspect-ratio: {{ card_image_ratio }};"
+              {% if item_link != blank %}
+                href="{{ item_link.value.url }}"
+              {% else %}
+                role="link" aria-disabled="true"
+              {% endif %}
+              aria-label="{{ item_title | default: shop.name | escape }}"
+            >
+              <div class="card-media__media-wrapper overflow-hidden block w-full h-full">
+                <div class="card-media__media media-wrapper{% if item_image == blank %} bg-none{% endif %}">
+                  {%- if item_image != blank -%}
+                    {%- liquid
+                      assign image_widths = '320, 480, 640, 960, 1200, 1600, ' | append: item_image.width
+                      assign alt_image = item_image.alt | default: item_title | default: shop.name | escape
+                    -%}
+                    {{
+                      item_image
+                      | image_url: width: item_image.width
+                      | image_tag:
+                        loading: 'lazy',
+                        class: 'motion-reduce hover-scale-up',
+                        widths: image_widths,
+                        sizes: '(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw',
+                        is: 'image-lazy',
+                        alt: alt_image
+                    }}
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg motion-reduce hover-scale-up' }}
+                  {%- endif -%}
+                </div>
+                <div class="bg-overlay absolute inset-0 pointer-events-none"></div>
+              </div>
+
+              <div class="card-media__content card-media__content--left content-overlay content-overlay--bottom-left">
+                <div class="card-media__content-wrapper rich-text text-left">
+                  {%- if item_title != blank -%}
+                    <h2 class="block card-media__heading rich-text__heading h2">
+                      {{- item_title | escape -}}
+                    </h2>
+                  {%- endif -%}
+
+                  {%- if item_link != blank -%}
+                    <div class="block card-media__button rich-text__button">
+                      {% render 'button',
+                        button_tag: 'span',
+                        button_style: 'btn--secondary',
+                        button_label: button_label
+                      %}
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection slider banner",
+  "tag": "section",
+  "class": "section-collection-slider-banner",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:general.general.name"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "options": [
+        {
+          "value": "full",
+          "label": "t:general.container.options__full.label"
+        },
+        {
+          "value": "fixed",
+          "label": "t:general.container.options__fixed.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:general.container.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:general.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:general.section_header.content"
+    },
+    {
+      "id": "section_header_alignment",
+      "type": "select",
+      "label": "t:general.text_alignment.label",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:general.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:general.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:general.text_alignment.options__3.label"
+        }
+      ]
+    },
+    {
+      "id": "section_header_alignment_mobile",
+      "type": "select",
+      "label": "t:general.text_alignment.mobile.label",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "t:general.text_alignment.options__4.label"
+        },
+        {
+          "value": "left",
+          "label": "t:general.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:general.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:general.text_alignment.options__3.label"
+        }
+      ]
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "t:general.subheading.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Collection banner",
+      "label": "t:general.heading.label",
+      "info": "t:general.heading.info"
+    },
+    {
+      "type": "select",
+      "id": "highlight_style",
+      "label": "t:general.highlight_text.highlight_style.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:general.highlight_text.highlight_style.options.option__1.label"
+        },
+        {
+          "value": "hand_drawn_circle",
+          "label": "t:general.highlight_text.highlight_style.options.option__2.label"
+        },
+        {
+          "value": "thick_underline",
+          "label": "t:general.highlight_text.highlight_style.options.option__3.label"
+        },
+        {
+          "value": "wave_underline",
+          "label": "t:general.highlight_text.highlight_style.options.option__4.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "highlight_font_style",
+      "label": "t:general.highlight_text.highlight_font_style.label",
+      "options": [
+        {
+          "value": "italic",
+          "label": "t:general.highlight_text.highlight_font_style.options.option__1.label"
+        },
+        {
+          "value": "normal",
+          "label": "t:general.highlight_text.highlight_font_style.options.option__2.label"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "highlight_style_color",
+      "label": "t:general.highlight_text.highlight_style_color.label"
+    },
+    {
+      "type": "color",
+      "id": "highlight_text_color",
+      "label": "t:general.highlight_text.highlight_text_color.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:general.text_size.heading.label",
+      "default": "h1",
+      "options": [
+        {
+          "value": "h5",
+          "label": "t:general.text_size.options__h5.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:general.text_size.options__h4.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:general.text_size.options__h3.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:general.text_size.options__h2.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:general.text_size.options__h1.label"
+        },
+        {
+          "value": "hd2",
+          "label": "t:general.text_size.options__hd2.label"
+        },
+        {
+          "value": "hd1",
+          "label": "t:general.text_size.options__hd1.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "display_mode",
+      "label": "Display mode",
+      "default": "grid",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "slider",
+          "label": "Slider"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "default": "adapt",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt"
+        },
+        {
+          "value": "1/1",
+          "label": "1:1"
+        },
+        {
+          "value": "3/2",
+          "label": "3:2"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Desktop columns",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Tablet columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Mobile columns",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "select",
+      "id": "column_gap",
+      "label": "Column gap",
+      "default": "small",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "row_gap",
+      "label": "Row gap",
+      "default": "medium",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:general.divider.section_heading.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "default": false,
+      "label": "t:general.divider.show_divider.label"
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:general.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:general.container.options__full.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:general.divider.width.label"
+    },
+    {
+      "type": "header",
+      "content": "t:general.padding.section_heading.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:general.padding.top.label",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:general.padding.bottom.label",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection slider banner"
+    }
+  ]
+}
+{% endschema %}

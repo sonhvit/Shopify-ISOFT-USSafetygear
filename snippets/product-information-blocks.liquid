@@ -103,7 +103,6 @@
               {%- render 'price',
                 product: product,
                 use_variant: true,
-                show_sale_badge: false,
                 price_class: 'f-price--large'
               -%}
             </div>
@@ -266,6 +265,10 @@
         {%- when 'collapsible_tab' -%}
           <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
             {%- render 'product-collapsible-tab', block: block, section_id: section.id -%}
+          </div>
+        {%- when 'specifications' -%}
+          <div class="{{ block_classes }}" {{ additional_attributes }} {{ block.shopify_attributes }}>
+            {%- render 'product-specifications', block: block, section_id: section.id -%}
           </div>
         {%- when 'popup' -%}
           {%- liquid
