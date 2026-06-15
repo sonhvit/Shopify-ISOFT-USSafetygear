@@ -77,7 +77,11 @@
                   {{ block.shopify_attributes }}
                   data-index="{{ forloop.index0 }}"
                 >
-                  <div class="brand-logos__wrapper brand-logos--padding-{{ section.settings.image_padding }} brand-logos--image-{{ section.settings.image_width }} flex flex-col items-center justify-start h-full{{ classes }}">
+                  <div 
+                    {%  if block.settings.ads_id != blank %}
+                      id="{{ block.settings.ads_id }}"
+                    {%  endif %} 
+                    class="brand-logos__wrapper brand-logos--padding-{{ section.settings.image_padding }} brand-logos--image-{{ section.settings.image_width }} flex flex-col items-center justify-start h-full{{ classes }}">
                     <a
                       {% if block.settings.image_link != blank %}
                         href="{{ block.settings.image_link }}"
@@ -695,7 +699,12 @@
           "type": "url",
           "id": "image_link",
           "label": "t:general.link.label"
-        }
+        },
+        {
+          "type": "text",
+          "id": "ads_id",
+          "label": "Ads ID"
+        },
       ]
     }
   ],

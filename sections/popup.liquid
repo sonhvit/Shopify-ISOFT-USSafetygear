@@ -89,6 +89,7 @@
               {%- if image_block.settings.image_position == 'left' -%}(min-width: 1024px) {{ width | times: 0.47728 | floor }}px,{%- endif -%}(min-width: {{ width | plus: 32 }}px) {{ width }}px, calc(100vw - 3.2rem)
               {%- endcapture -%}
               <div
+                id="spot1"
                 class="subscription-popup__image w-full media-wrapper"
                 style="--aspect-ratio: {{ image_ratio }};{% if image_mobile_ratio != blank %}--aspect-ratio-mobile: {{ image_mobile_ratio }};{% endif %}"
               >

@@ -36,6 +36,7 @@
             {%- for item in banner_items -%}
               {%- liquid
                 assign item_image = item.banner_image.value
+                assign item_alt_image = item.banner_alt_image.value
                 assign item_title = item.banner_heading.value
                 assign item_link = item.banner_link
                 assign button_label = item.button_label.value | default: 'Shop Now'
@@ -50,7 +51,7 @@
                 endif
 
               -%}
-              <div class="swiper-slide" data-index="{{ forloop.index0 }}">
+              <div class="swiper-slide" data-index="{{ forloop.index0 }}" id="spot-34-36-{{ item_title | handleize }}">
                 <a
                   class="collection-slider-banner__card card-media card-media--auto-height card-media--content-bottom-left card-media--extra-small relative overflow-hidden hover-wrapper color-scheme-inverse mobile-color-scheme-inverse blocks-radius h-full block focus-inset"
                   style="--aspect-ratio: {{ card_image_ratio }};"
@@ -66,7 +67,7 @@
                       {%- if item_image != blank -%}
                         {%- liquid
                           assign image_widths = '320, 480, 640, 960, 1200, 1600, ' | append: item_image.width
-                          assign alt_image = item_image.alt | default: item_title | default: shop.name | escape
+                          assign alt_image = item_alt_image | default: item_image.alt | default: item_title | default: shop.name | escape
                         -%}
                         {{
                           item_image
@@ -124,6 +125,7 @@
           {%- for item in banner_items -%}
             {%- liquid
               assign item_image = item.banner_image.value
+              assign item_alt_image = item.banner_alt_image.value
               assign item_title = item.banner_heading.value
                 assign item_link = item.banner_link
                 assign button_label = item.button_label.value | default: 'Shop Now'
@@ -153,7 +155,7 @@
                   {%- if item_image != blank -%}
                     {%- liquid
                       assign image_widths = '320, 480, 640, 960, 1200, 1600, ' | append: item_image.width
-                      assign alt_image = item_image.alt | default: item_title | default: shop.name | escape
+                      assign alt_image = item_alt_image | default: item_image.alt | default: item_title | default: shop.name | escape
                     -%}
                     {{
                       item_image

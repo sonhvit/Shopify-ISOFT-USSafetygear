@@ -88,6 +88,9 @@
     <div class="f-column products-bundle__image{% if image_position == 'left' %} md:order-first{% else %} md:order-last{% endif %}">
       <div
         class="products-bundle__image-wrapper sticky-element{% if section.settings.image_ratio == 'full' %} h-full{% endif %}"
+        {% if section.settings.ads_id != blank %}
+          id="{{ section.settings.ads_id }}"
+        {% endif %}
         style="--aspect-ratio: {{ image_ratio }};--aspect-ratio-mobile: {{ image_ratio_mobile }};"
       >
         <div class="media-wrapper overflow-hidden{% unless container == 'full' %} blocks-radius{% endunless %}">
@@ -261,6 +264,11 @@
     {
       "type": "header",
       "content": "t:general.general.name"
+    },
+    {
+      "type": "text",
+      "id": "ads_id",
+      "label": "Ads ID"
     },
     {
       "type": "select",

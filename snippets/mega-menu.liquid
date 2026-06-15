@@ -184,8 +184,8 @@
                               assign image_ratio = collection_image.aspect_ratio
                             endif
                           -%}
-                          <li class="">
-                            <a href="{{ grandchildlink.url }}" class="grid gap-3 hover-wrapper reversed-link">
+                          <li class="" >
+                            <a id="spot-2-9-megamenu-{{ grandchildlink.title | handle }}" href="{{ grandchildlink.url }}" class="grid gap-3 hover-wrapper reversed-link">
                               {%- if is_collection_link and collection_image != blank -%}
                                 <div class="overflow-hidden blocks-radius-md">
                                   <motion-element data-motion="zoom-out-sm" class="block">
@@ -227,6 +227,7 @@
                 {%- for i in (1..5) -%}
                   {%- liquid
                     assign promo_image = 'promo_image_' | append: i
+                    assign ads_id = 'ads_id_' | append: i
                     assign color_scheme = 'color_scheme_' | append: i
                     assign heading = 'heading_' | append: i
                     assign subheading = 'subheading_' | append: i
@@ -252,6 +253,7 @@
                     assign button_label = block.settings[button_label]
                     assign button_style = block.settings[button_style]
                     assign button_icon = block.settings[button_icon]
+                    assign ads_id = block.settings[ads_id]
                     assign content_position = block.settings[content_position]
                     assign content_gap = block.settings[content_gap]
                     assign content_alignment = block.settings[content_alignment]
@@ -262,7 +264,7 @@
                       continue
                     endif
                   -%}
-                  <div class="promotion-item" style="--index: {{ forloop.index }};">
+                  <div class="promotion-item" style="--index: {{ forloop.index }};" {% if ads_id != blank %} id="{{ ads_id }}" {% endif %}>
                     {% render 'card-image',
                       image: promo_image,
                       image_ratio: 'adapt',
@@ -349,6 +351,7 @@
                     <div class="{% if is_carousel %}swiper-wrapper{% else %}mega-menu__promotions-grid{% endif %}">
                       {%- for product in product_list -%}
                         <div
+                          id="spot-{{ forloop.index0 | plus: 10 }}-megamenu-{{ product.handle }}"
                           class="swiper-slide promotion-item promotion-item--product"
                           style="--index: {{ forloop.index }};"
                         >

@@ -86,7 +86,7 @@
               <div class="block{% if section.settings.swipe_on_mobile %} swipe-mobile swipe-mobile--1-cols{% endif %}">
                 <grid-list class="f-grid{% if products_to_show %} f-masonry{% endif %} f-grid-2-cols f-grid--gap-2xs f-grid--row-gap-inherit{% if section.settings.swipe_on_mobile %} swipe-mobile__inner{% endif %}">
                   {%- for product in block.settings.products -%}
-                    <div class="f-column">
+                    <div class="f-column" id="spot-20-21-{{ product.id }}">
                       {%- liquid
                         assign image_ratio = section.settings.pcard_image_ratio
                         assign product_showcase_image = product.metafields.foxtheme.showcase_image.value

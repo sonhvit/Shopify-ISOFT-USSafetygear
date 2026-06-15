@@ -26,6 +26,9 @@
         <div
           class="f-column grid-banner__item w-full {{ block.settings.block_custom_class }}"
           style="--cell-c-span: {{ block.settings.column_span }};--cell-r-span: {{ block.settings.row_span }};"
+          {%  if block.settings.ads_id != blank %}
+            id="{{ block.settings.ads_id }}"
+          {%  endif %}
         >
           {%- render 'card-image',
             parent_color_scheme: section.settings.color_scheme,
@@ -549,6 +552,11 @@
         {
           "type": "header",
           "content": "t:general.general.name"
+        },
+        {
+          "type": "text",
+          "id": "ads_id",
+          "label": "Ads ID"
         },
         {
           "type": "color_scheme",

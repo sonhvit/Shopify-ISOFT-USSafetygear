@@ -66,7 +66,11 @@
   class="collection-hero{% if show_collection_image %} collection-hero--image-{{ section.settings.image_position }}{% else %} collection-hero--no-image{% endif %} hero hero--{{ section.settings.image_height }} hero--mobile-{{ section.settings.image_height_mobile }}{% if color_inherit %} color-inherit{% endif %} section section--padding page-width page-width--{{ section.settings.container }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
-  <div class="{{ inner_class }}{% unless color_inherit %} blocks-radius{% endunless %}">
+  <div 
+    {%  if section.settings.ads_id != blank %}
+      id="{{ section.settings.ads_id }}"
+    {%  endif %}
+    class="{{ inner_class }}{% unless color_inherit %} blocks-radius{% endunless %}">
     {%- if show_collection_image -%}
       {%- capture sizes -%}(max-width: 767px) calc(100vw - 3rem), {% if image_position == 'left' or image_position == 'right' %}calc(min({{ settings.page_width }}px, 100vw) / 2){% else %}min({{ settings.page_width }}px, 100vw){% endif %}{%- endcapture -%}
       <parallax-element
@@ -163,6 +167,11 @@
     {
       "type": "header",
       "content": "t:general.general.name"
+    },
+    {
+      "type": "text",
+      "id": "ads_id",
+      "label": "Ads ID"
     },
     {
       "type": "select",

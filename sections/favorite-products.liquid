@@ -27,6 +27,9 @@
   data-id="{{ section.id }}"
 >
   <favorite-products
+    {% if section.settings.ads_id != blank %}
+      id="{{ section.settings.ads_id }}"
+    {% endif %}
     class="favorite-products favorite-products--layout-{{ layout }} favorite-products--height-{{ slide_height }} block md:flex flex-nowrap overflow-hidden"
     data-items="{{ section.blocks.size }}"
     data-section-id="{{ section.id }}"
@@ -385,6 +388,11 @@
     {
       "type": "header",
       "content": "t:general.general.name"
+    },
+    {
+      "type": "text",
+      "id": "ads_id",
+      "label": "Ads ID"
     },
     {
       "type": "color_scheme",

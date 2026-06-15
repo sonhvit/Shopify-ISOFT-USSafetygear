@@ -179,7 +179,10 @@
             {%- for product in collection.products -%}
               {%- for block in section.blocks -%}
                 {%- if block.type == 'image_card' and block.settings.image_position == current_position -%}
-                  <div class="f-column image-column">
+                  <div class="f-column image-column" 
+                    {% if block.settings.ads_id != blank %}
+                      id="{{ block.settings.ads_id }}"
+                    {% endif %}>
                     {% render 'card-image',
                       color_scheme: block.settings.color_scheme,
                       link: block.settings.card_link,
@@ -229,7 +232,9 @@
 
               {%- for block in section.blocks -%}
                 {%- if block.type == 'image_card' and block.settings.image_position == current_position -%}
-                  <div class="f-column image-column">
+                  <div class="f-column image-column" {% if block.settings.ads_id != blank %}
+                      id="{{ block.settings.ads_id }}"
+                    {% endif %}>
                     {% render 'card-image',
                       color_scheme: block.settings.color_scheme,
                       link: block.settings.card_link,
@@ -550,6 +555,11 @@
         {
           "type": "header",
           "content": "t:general.image.content"
+        },
+        {
+          "type": "text",
+          "id": "ads_id",
+          "label": "Ads ID"
         },
         {
           "type": "range",

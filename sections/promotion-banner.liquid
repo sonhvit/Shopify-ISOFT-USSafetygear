@@ -45,7 +45,10 @@
   data-section="{{ section.id }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
-  <div class="promotion-banner {% if color_scheme_inherit %}color-scheme-inherit{% else %}color-{{ section.settings.color_scheme }}{% endif %} {% if color_scheme_inherit_mobile %}color-scheme-inherit-mobile{% endif %} blocks-radius relative">
+  <div class="promotion-banner {% if color_scheme_inherit %}color-scheme-inherit{% else %}color-{{ section.settings.color_scheme }}{% endif %} {% if color_scheme_inherit_mobile %}color-scheme-inherit-mobile{% endif %} blocks-radius relative"
+    {% if section.settings.ads_id != blank %}
+      id="{{ section.settings.ads_id }}"
+    {% endif %}>
     {%- if image != blank or image_mobile != blank -%}
       {%- capture sizes -%}{%- if section.settings.container == 'full' -%}100vw{%- else -%}min({{ settings.page_width }}, 100vw){%- endif -%}{%- endcapture -%}
       <motion-element
@@ -260,6 +263,11 @@
     {
       "type": "header",
       "content": "t:general.general.name"
+    },
+    {
+      "type": "text",
+      "id": "ads_id",
+      "label": "Ads ID"
     },
     {
       "type": "select",
