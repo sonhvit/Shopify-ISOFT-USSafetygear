@@ -38,7 +38,8 @@
                 assign item_image = item.banner_image.value
                 assign item_alt_image = item.banner_alt_image.value
                 assign item_title = item.banner_heading.value
-                assign item_link = item.banner_link
+                assign item_filter_value = item_title | url_encode
+                assign item_link = collection.url | append: '?filter.p.product_type=' | append: item_filter_value
                 assign button_label = item.button_label.value | default: 'Shop Now'
                 assign card_image_ratio = section.settings.image_ratio
 
@@ -55,8 +56,8 @@
                 <a
                   class="collection-slider-banner__card card-media card-media--auto-height card-media--content-bottom-left card-media--extra-small relative overflow-hidden hover-wrapper color-scheme-inverse mobile-color-scheme-inverse blocks-radius h-full block focus-inset"
                   style="--aspect-ratio: {{ card_image_ratio }};"
-                  {% if item_link != blank %}
-                    href="{{ item_link.value.url }}"
+                  {% if item_title != blank %}
+                    href="{{ item_link }}"
                   {% else %}
                     role="link" aria-disabled="true"
                   {% endif %}
@@ -94,7 +95,7 @@
                           </h2>
                         {%- endif -%}
 
-                        {%- if item_link != blank -%}
+                        {%- if item_title != blank -%}
                           <div class="block card-media__button rich-text__button">
                             {% render 'button',
                               button_tag: 'span',
@@ -127,8 +128,9 @@
               assign item_image = item.banner_image.value
               assign item_alt_image = item.banner_alt_image.value
               assign item_title = item.banner_heading.value
-                assign item_link = item.banner_link
-                assign button_label = item.button_label.value | default: 'Shop Now'
+              assign item_filter_value = item_title | url_encode
+              assign item_link = collection.url | append: '?filter.p.product_type=' | append: item_filter_value
+              assign button_label = item.button_label.value | default: 'Shop Now'
               assign card_image_ratio = section.settings.image_ratio
 
               if card_image_ratio == 'adapt'
@@ -143,8 +145,8 @@
             <a
               class="collection-slider-banner__card card-media card-media--auto-height card-media--content-bottom-left card-media--extra-small relative overflow-hidden hover-wrapper color-scheme-inverse mobile-color-scheme-inverse blocks-radius block focus-inset"
               style="--aspect-ratio: {{ card_image_ratio }};"
-              {% if item_link != blank %}
-                href="{{ item_link.value.url }}"
+              {% if item_title != blank %}
+                href="{{ item_link }}"
               {% else %}
                 role="link" aria-disabled="true"
               {% endif %}
@@ -183,7 +185,7 @@
                     </h2>
                   {%- endif -%}
 
-                  {%- if item_link != blank -%}
+                  {%- if item_title != blank -%}
                     <div class="block card-media__button rich-text__button">
                       {% render 'button',
                         button_tag: 'span',

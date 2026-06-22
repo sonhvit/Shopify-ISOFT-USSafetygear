@@ -36,8 +36,23 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    {%- liquid
+      assign seo_page_title = page_title
+      assign seo_page_description = page_description
+
+      if template == 'index'
+        if settings.homepage_seo_title != blank
+          assign seo_page_title = settings.homepage_seo_title
+        endif
+
+        if settings.homepage_meta_description != blank
+          assign seo_page_description = settings.homepage_meta_description
+        endif
+      endif
+    -%}
+
     <title>
-      {{- page_title -}}
+      {{- seo_page_title -}}
       {%- if current_tags -%}
         {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
       {%- endif -%}
@@ -45,16 +60,16 @@
       {%- if template == 'password' -%}
         {{- shop.name -}}
       {%- else -%}
-        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+        {%- unless seo_page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
       {%- endif -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {% if seo_page_description %}
+      <meta name="description" content="{{ seo_page_description | escape }}">
     {% endif %}
 
     {%- liquid
-      render 'meta-tags'
+      render 'meta-tags', page_title: seo_page_title, page_description: seo_page_description
       render 'css-variables'
 
       echo 'vendor.css' | asset_url | stylesheet_tag: preload: true

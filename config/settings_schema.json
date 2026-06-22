@@ -36,6 +36,23 @@
     ]
   },
   {
+    "name": "Homepage SEO",
+    "settings": [
+      {
+        "type": "text",
+        "id": "homepage_seo_title",
+        "label": "SEO title",
+        "info": "Used on the home page only. Leave blank to use Online Store preferences."
+      },
+      {
+        "type": "textarea",
+        "id": "homepage_meta_description",
+        "label": "Meta description",
+        "info": "Used on the home page only. Leave blank to use Online Store preferences."
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {

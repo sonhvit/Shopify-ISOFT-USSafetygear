@@ -138,17 +138,17 @@
                   {{- collection.title | escape -}}
                 </motion-element>
               </{{ block.settings.heading_tag }}>
-              {% comment %} {%- if block.settings.show_description and collection.description != blank -%}
+              {%- if collection.metafields.custom.collection_sub_title.value -%}
                 <div class="collection-hero__description rte text-subtext">
                   <motion-element
                     data-motion="fade-up"
                     data-motion-delay="50"
                     class="block"
                   >
-                    {{- collection.description }}
+                    {{- collection.metafields.custom.collection_sub_title.value }}
                   </motion-element>
                 </div>
-              {%- endif -%} {% endcomment %}
+              {%- endif -%}
             </div>
         {%- endcase -%}
       {% endfor %}
