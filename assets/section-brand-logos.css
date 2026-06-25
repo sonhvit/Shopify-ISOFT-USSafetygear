@@ -24,6 +24,9 @@
   border-radius: 0;
   border: 0;
 }
+.brand-logos .media-wrapper>img{
+  object-fit: contain !important;
+}
 .brand-logos .grid-bordered .brand-logos__wrapper:before {
   content: "";
   position: absolute;

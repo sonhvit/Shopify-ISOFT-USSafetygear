@@ -631,6 +631,13 @@ class DetailsMega extends DetailsDropdown {
     }
   }
 
+  // Debugger: hold megamenu when hover
+  // detectHover(event) {
+  //   if (this.trigger === 'hover' && event.type === 'mouseenter') {
+  //     this.open = true;
+  //   }
+  // }
+
   async showWithTransition() {
     // Perform the animation on the first child of the content element
     return FoxTheme.Motion.animate(

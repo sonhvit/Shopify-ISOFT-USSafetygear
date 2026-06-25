@@ -105,7 +105,7 @@
             <div class="mega-menu__list">
               {%- for i in (1..menu_columns) -%}
                 {% assign column_index = forloop.index0 %}
-                <div class="mega-menu__column flex flex-col gap-8">
+                <div class="mega-menu__column flex flex-col{% if menu_columns == 1 %} gap-0{% else %} gap-8{% endif %}">
                   {%- for childlink in link.links -%}
                     {%- liquid
                       assign item_index = forloop.index0
