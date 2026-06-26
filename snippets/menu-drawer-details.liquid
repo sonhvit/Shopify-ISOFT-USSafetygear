@@ -97,19 +97,42 @@
                     {%- for grandchildlink in childlink.links -%}
                       {%- liquid
                         assign is_collection_link = false
+                        assign collection_object = blank
+                        assign collection_image = blank
+                        assign menu_item_label = grandchildlink.title | strip | downcase
+                        assign sidebar_mega_menu_image = blank
+
+                        for sidebar_mega_menu_image_item in shop.metafields.custom.sidebar_mega_menu_images.value
+                          assign sidebar_mega_menu_image_label = sidebar_mega_menu_image_item.menu_target.value | strip | downcase
+                          if sidebar_mega_menu_image_label == menu_item_label and sidebar_mega_menu_image_item.image.value != blank
+                            assign sidebar_mega_menu_image = sidebar_mega_menu_image_item.image.value
+                            break
+                          endif
+                        endfor
+
                         if grandchildlink.type == 'collection_link' and block.settings.show_collection_image
                           assign is_collection_link = true
                           assign collection_object = grandchildlink.object
+                        endif
+
+                        if sidebar_mega_menu_image != blank
+                          assign collection_image = sidebar_mega_menu_image
+                        elsif is_collection_link
                           assign collection_image = collection_object.featured_image
+
+                          if collection_object.metafields.foxtheme.collection_megamenu_image.value
+                            assign collection_image = collection_object.metafields.foxtheme.collection_megamenu_image.value
+                          endif
+
+                          if block.settings.show_image_of_first_product
+                            assign first_product_image = collections[grandchildlink.object.handle].all_products.first.featured_image
+                            if first_product_image != blank
+                              assign collection_image = first_product_image
+                            endif
+                          endif
                         endif
 
-                        if collection_object.metafields.foxtheme.collection_megamenu_image.value
-                          assign collection_image = collection_object.metafields.foxtheme.collection_megamenu_image.value
-                        endif
-
-                        if block.settings.show_image_of_first_product
-                          assign collection_image = collections[grandchildlink.object.handle].all_products.first.featured_image
-                        endif
+                        assign collection_image_width = collection_image.width | default: collection_image.featured_image.width | default: 1000
 
                         assign image_ratio = block.settings.image_ratio
                         if image_ratio == 'adapt'
@@ -119,13 +142,13 @@
 
                       <li>
                         <a href="{{ grandchildlink.url }}" class="grid gap-3 hover-wrapper reversed-link">
-                          {%- if is_collection_link -%}
+                          {%- if is_collection_link and collection_image != blank -%}
                             <div class="overflow-hidden blocks-radius-md">
                               <motion-element data-motion="zoom-out-sm" class="block">
                                 <div class="media-wrapper" style="--aspect-ratio: {{ image_ratio }};">
                                   {{
                                     collection_image
-                                    | image_url: width: collection_image.featured_image.width
+                                    | image_url: width: collection_image_width
                                     | image_tag:
                                       loading: 'lazy',
                                       class: 'motion-reduce hover-scale-up',
