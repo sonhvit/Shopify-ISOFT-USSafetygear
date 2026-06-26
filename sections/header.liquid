@@ -2977,6 +2977,118 @@
       ]
     },
     {
+      "type": "product_tab",
+      "name": "Product tab (mega menu)",
+      "settings": [
+        {
+          "type": "text",
+          "label": "t:sections.header.blocks.all.menu_title.label",
+          "id": "menu_title"
+        },
+        {
+          "type": "range",
+          "id": "menu_columns",
+          "label": "t:sections.header.blocks.all.menu_columns.label",
+          "min": 1,
+          "max": 6,
+          "default": 3,
+          "step": 1
+        },
+        {
+          "type": "checkbox",
+          "id": "show_menu_column_divider",
+          "label": "t:sections.header.blocks.product_list.settings.show_menu_column_divider.label",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "t:sections.header.blocks.all.hightlight_link.header.content"
+        },
+        {
+          "type": "checkbox",
+          "label": "t:sections.header.blocks.all.hightlight_link.enable.label",
+          "id": "enable_hl_link",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "hl_link_style",
+          "label": "t:sections.header.blocks.all.hightlight_link.style.label",
+          "options": [
+            {
+              "value": "text_color",
+              "label": "t:sections.header.blocks.all.hightlight_link.style.options__1.label"
+            },
+            {
+              "value": "star_twinkle",
+              "label": "t:sections.header.blocks.all.hightlight_link.style.options__2.label"
+            },
+            {
+              "value": "button",
+              "label": "t:sections.header.blocks.all.hightlight_link.style.options__3.label"
+            },
+            {
+              "value": "wave_underline",
+              "label": "t:sections.header.blocks.all.hightlight_link.style.options__4.label"
+            }
+          ],
+          "default": "text_color",
+          "visible_if": "{{ block.settings.enable_hl_link == true }}"
+        },
+        {
+          "type": "color",
+          "id": "hl_link_color",
+          "label": "t:sections.header.blocks.all.hightlight_link.color.label",
+          "info": "t:sections.header.blocks.all.hightlight_link.color.info",
+          "visible_if": "{{ block.settings.enable_hl_link == true and block.settings.hl_link_style != 'button' }}"
+        },
+        {
+          "type": "header",
+          "content": "Products"
+        },
+        {
+          "type": "range",
+          "label": "t:sections.header.blocks.all.promotions_width.label",
+          "id": "promotions_width",
+          "min": 20,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 38
+        },
+        {
+          "type": "range",
+          "id": "number_of_columns",
+          "label": "t:sections.header.blocks.all.promotion_columns.label",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "range",
+          "id": "product_limit",
+          "label": "Product limit",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "default": 6
+        },
+        {
+          "type": "checkbox",
+          "id": "show_product_vendor",
+          "label": "t:general.product.show_vendor.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_product_type",
+          "label": "t:general.product.show_type.label",
+          "default": false
+        }
+      ]
+    },
+    {
       "type": "sidebar",
       "name": "t:sections.header.blocks.sidebar.name",
       "settings": [

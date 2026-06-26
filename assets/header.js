@@ -855,6 +855,49 @@ class MenuProductList extends HTMLElement {
 }
 customElements.define('menu-product-list', MenuProductList);
 
+class MenuProductTabs extends HTMLElement {
+  constructor() {
+    super();
+    this.handleTabChange = this.handleTabChange.bind(this);
+  }
+
+  connectedCallback() {
+    this.triggers = this.querySelectorAll('[data-product-tab-trigger]');
+    this.panels = this.querySelectorAll('[data-product-tab-panel]');
+
+    this.triggers.forEach((trigger) => {
+      trigger.addEventListener('mouseenter', this.handleTabChange);
+      trigger.addEventListener('focusin', this.handleTabChange);
+    });
+  }
+
+  disconnectedCallback() {
+    this.triggers?.forEach((trigger) => {
+      trigger.removeEventListener('mouseenter', this.handleTabChange);
+      trigger.removeEventListener('focusin', this.handleTabChange);
+    });
+  }
+
+  handleTabChange(event) {
+    const tabKey = event.currentTarget.dataset.productTabTrigger;
+
+    this.triggers.forEach((trigger) => {
+      trigger.classList.toggle('is-active', trigger.dataset.productTabTrigger === tabKey);
+    });
+
+    this.panels.forEach((panel) => {
+      const isActive = panel.dataset.productTabPanel === tabKey;
+      panel.classList.toggle('is-active', isActive);
+      panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+
+      if (isActive) {
+        panel.querySelector('menu-product-list')?.calcNavButtonsPosition();
+      }
+    });
+  }
+}
+customElements.define('menu-product-tabs', MenuProductTabs);
+
 class MenuSidebar extends HTMLElement {
   constructor() {
     super();

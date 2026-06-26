@@ -1,0 +1,66 @@
+{%- liquid
+  assign product_count = products.size | at_most: product_limit
+  assign is_carousel = false
+  if product_count > number_of_columns
+    assign is_carousel = true
+  endif
+-%}
+
+<menu-product-list
+  class="block w-full"
+  data-columns="{{ number_of_columns }}"
+  data-calc-button-position="true"
+>
+  {%- if heading != blank -%}
+    <div
+      class="mega-menu__product-list--header flex items-center justify-between promotion-item--product"
+      style="--index: 1;"
+    >
+      <h2 class="h6 promotion-item">{{ heading | escape }}</h2>
+    </div>
+  {%- endif -%}
+  <div class="relative swiper-show-nav-on-hover">
+    {%- if is_carousel -%}
+      <div class="swiper swiper-equal-height">
+    {%- endif -%}
+    <div class="{% if is_carousel %}swiper-wrapper{% else %}mega-menu__promotions-grid{% endif %}">
+      {%- for product in products limit: product_limit -%}
+        <div
+          id="spot-{{ forloop.index0 | plus: 10 }}-megamenu-{{ panel_key }}-{{ product.handle }}"
+          class="swiper-slide promotion-item promotion-item--product"
+          style="--index: {{ forloop.index }};"
+        >
+          {%- render 'card-product',
+            product: product,
+            parent_color_scheme: settings.overlay_color_scheme,
+            use_short_text_for_atc_button: true,
+            show_vendor: block.settings.show_product_vendor,
+            show_type: block.settings.show_product_type,
+            enable_quick_view: false,
+            enable_quick_add: false,
+            quick_view_suffix: 'megamenu-desktop'
+          -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    {%- if is_carousel -%}
+      </div>
+      <div class="swiper-controls swiper-controls--nav-floating">
+        <button
+          class="btn swiper-button-prev swiper-button swiper-button--drop-shadow"
+          name="previous"
+          aria-label="{{ 'general.slider.previous_slide' | t }}"
+        >
+          <span class="btn__text">{%- render 'icon-slider-prev', size: 'small' -%}</span>
+        </button>
+        <button
+          class="btn swiper-button-next swiper-button swiper-button--drop-shadow"
+          name="next"
+          aria-label="{{ 'general.slider.next_slide' | t }}"
+        >
+          <span class="btn__text">{%- render 'icon-slider-next', size: 'small' -%}</span>
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+</menu-product-list>

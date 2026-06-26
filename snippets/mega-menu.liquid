@@ -25,6 +25,18 @@
       assign heading = block.settings.heading
       assign number_of_columns = block.settings.number_of_columns
       assign promotion_columns = number_of_columns
+    when 'product_tab'
+      assign show_menu_column_divider = block.settings.show_menu_column_divider
+      assign number_of_columns = block.settings.number_of_columns
+      assign product_limit = block.settings.product_limit
+      assign promotion_columns = number_of_columns
+
+      for childlink in link.links
+        if childlink.type == 'collection_link' and childlink.object.products != blank
+          assign first_product_tab = childlink.object.handle
+          break
+        endif
+      endfor
   endcase
 -%}
 
@@ -42,6 +54,24 @@
     #Mega-menu-item-{{ block.id }}.no-links {
       --promotions-width: {{ promotions_width }}%;
     }
+  }
+
+  #Mega-menu-item-{{ block.id }} .mega-menu__product-tab-panels {
+    position: relative;
+  }
+
+  #Mega-menu-item-{{ block.id }} .mega-menu__product-tab-panel:not(.is-active) {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #Mega-menu-item-{{ block.id }} .mega-menu__product-tab-panel.is-active {
+    position: relative;
+    visibility: visible;
+    opacity: 1;
   }
 {% endstyle %}
 <details
@@ -99,10 +129,19 @@
   </summary>
   <div class="mega-menu v-scrollable">
     <div class="mega-menu__container color-{{ settings.overlay_color_scheme }}">
-      <div class="page-width mega-menu__wrapper{{ mega_menu_wrapper_class }}">
+      {%- if block.type == 'product_tab' -%}
+        <menu-product-tabs class="page-width mega-menu__wrapper{{ mega_menu_wrapper_class }}">
+      {%- else -%}
+        <div class="page-width mega-menu__wrapper{{ mega_menu_wrapper_class }}">
+      {%- endif -%}
         {%- if link.links != blank -%}
           {%- if block.type != 'sidebar' -%}
-            <div class="mega-menu__list">
+            <div
+              class="mega-menu__list"
+              {% if block.type == 'product_tab' %}
+                style="grid-template-columns: repeat({{ menu_columns }}, minmax(0, 1fr));"
+              {% endif %}
+            >
               {%- for i in (1..menu_columns) -%}
                 {% assign column_index = forloop.index0 %}
                 <div class="mega-menu__column flex flex-col{% if menu_columns == 1 %} gap-0{% else %} gap-8{% endif %}">
@@ -116,7 +155,14 @@
                         {%- if show_menu_column_divider -%}
                           <div class="mega-menu__item-wrapper">
                         {%- endif -%}
-                        <a href="{{ childlink.url }}" class="h6 mega-menu__link mega-menu__link--top font-heading">
+                        <a
+                          href="{{ childlink.url }}"
+                          class="h6 mega-menu__link mega-menu__link--top font-heading{% if block.type == 'product_tab' and childlink.type == 'collection_link' and childlink.object.handle == first_product_tab %} is-active{% endif %}"
+                          {% if block.type == 'product_tab' and childlink.type == 'collection_link' and childlink.object.products != blank %}
+                            data-product-tab-trigger="{{ childlink.object.handle }}"
+                            aria-controls="Mega-menu-product-tab-{{ block.id }}-{{ childlink.object.handle }}"
+                          {% endif %}
+                        >
                           {{- childlink.title | escape -}}
                         </a>
                         {%- if childlink.links != blank -%}
@@ -393,8 +439,36 @@
                 </menu-product-list>
               </div>
             {%- endif -%}
+          {%- when 'product_tab' -%}
+            {%- if first_product_tab != blank -%}
+              <div class="mega-menu__promotions mega-menu__column mega-menu__product-tab-panels">
+                {%- for childlink in link.links -%}
+                  {%- if childlink.type == 'collection_link' and childlink.object.products != blank -%}
+                    <div
+                      id="Mega-menu-product-tab-{{ block.id }}-{{ childlink.object.handle }}"
+                      class="mega-menu__product-tab-panel{% if childlink.object.handle == first_product_tab %} is-active{% endif %}"
+                      data-product-tab-panel="{{ childlink.object.handle }}"
+                      aria-hidden="{% if childlink.object.handle == first_product_tab %}false{% else %}true{% endif %}"
+                    >
+                      {%- render 'mega-menu-product-panel',
+                        products: childlink.object.products,
+                        heading: childlink.title,
+                        panel_key: childlink.object.handle,
+                        product_limit: product_limit,
+                        number_of_columns: number_of_columns,
+                        block: block
+                      -%}
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
         {%- endcase -%}
-      </div>
+      {%- if block.type == 'product_tab' -%}
+        </menu-product-tabs>
+      {%- else -%}
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </details>
