@@ -83,6 +83,12 @@
                 {%- assign motion_delay = motion_delay | plus: 50 -%}
               {% endif %}
               {%- if section.settings.button_label != blank -%}
+                {%- liquid
+                  assign button_additional_attributes = ''
+                  if section.settings.button_open_new_tab
+                    assign button_additional_attributes = 'target="_blank" rel="noopener noreferrer"'
+                  endif
+                -%}
                 <motion-element
                   class="block"
                   data-motion-delay="{{ motion_delay }}"
@@ -92,7 +98,8 @@
                     button_style: section.settings.button_style,
                     button_link: section.settings.button_link,
                     button_label: section.settings.button_label,
-                    button_icon: section.settings.button_icon
+                    button_icon: section.settings.button_icon,
+                    additional_attributes: button_additional_attributes
                   %}
                 </motion-element>
                 {%- assign motion_delay = motion_delay | plus: 50 -%}
@@ -408,6 +415,12 @@
       "type": "url",
       "id": "button_link",
       "label": "t:general.button.button_link.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_open_new_tab",
+      "label": "Open link in new tab",
+      "default": false
     },
     {
       "type": "select",

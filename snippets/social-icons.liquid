@@ -74,6 +74,17 @@
       </a>
     </li>
   {%- endif -%}
+  {%- if settings.social_linkedin_link != blank -%}
+    <li class="social__item inline-flex">
+      <a
+        href="{{ settings.social_linkedin_link }}"
+        class="social__link inline-flex{% if item_class %} {{ item_class }}{% endif %}"
+      >
+        {%- render 'icon-linkedin', size: size -%}
+        <span class="visually-hidden">{{ 'general.social.links.linkedin' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
   {%- if settings.social_tiktok_link != blank and show_tiktok -%}
     <li class="social__item inline-flex">
       <a

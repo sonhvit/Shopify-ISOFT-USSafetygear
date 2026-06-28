@@ -24,9 +24,9 @@
             {% when 'text' %}
               <div class="topbar__text rte" style="--highlight-text-color: {{ block.settings.highlight_text_color }}; --highlight-text-background-color: {{ block.settings.highlight_text_background_color }};">
                 {% if block.settings.highlight_text != blank %}
-                  <p class="highlight-text highlight-text--{{ block.settings.highlight_text_style }}">
+                  <div class="highlight-text highlight-text--{{ block.settings.highlight_text_style }}">
                     {{- block.settings.highlight_text -}}
-                  </p>
+                  </div>
                 {% endif %}
                 <p>{{- block.settings.text -}}</p>
               </div>
@@ -176,10 +176,10 @@
       "name": "t:general.text.name",
       "settings": [
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "text",
           "label": "t:general.text.label",
-          "default": "Welcome to our store"
+          "default": "<p>Welcome to our store</p>"
         },
         {
           "type": "select",

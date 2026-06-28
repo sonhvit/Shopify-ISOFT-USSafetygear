@@ -2175,6 +2175,10 @@
           "label": "Instagram",
           "info": "http://instagram.com/shopify"
         },
+        "social_linkedin_link": {
+          "label": "Linkedin",
+          "info": "http://linkedin.com/shopify"
+        },
         "social_tiktok_link": {
           "label": "TikTok",
           "info": "https://tiktok.com/@shopify"
