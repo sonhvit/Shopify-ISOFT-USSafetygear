@@ -7692,6 +7692,19 @@ body:not(.header-pinned) .header-scrolled .header {
 .footer .list-social {
   justify-content: flex-end;
 }
+.footer .social__item .social__link{
+  color: #A82E48;
+  border-color: #A82E48;
+}
+.footer .social__item .social__link::before{
+  background-color: #A82E48;
+}
+.footer .social__item .social__link:hover{
+  background-color: #A82E48;
+}
+.footer .social__item .social__link:hover svg{
+  color: #fff;
+}
 .footer__copyright-content {
   margin: 0;
 }
