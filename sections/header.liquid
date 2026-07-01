@@ -120,11 +120,7 @@
       </div>
     {%- endif -%}
 
-    {%- if request.page_type == 'index' -%}
-      <h1 class="header__logo flex justify-center items-center z-1">
-    {%- else -%}
-      <div class="header__logo flex justify-center items-center z-1">
-    {%- endif -%}
+    <div class="header__logo flex justify-center items-center z-1">
     {%- if section.settings.header_layout == 'logo-left' or section.settings.header_layout == 'logo-left-search-center' and section.settings.enable_collapse_on_scroll -%}
       <button
         class="menu-drawer-button toggle-navigation-button btn btn--inherit flex-col items-center justify-center hidden lg:flex shrink-0"
@@ -185,11 +181,7 @@
         {{ shop.name }}
       {%- endif -%}
     </a>
-    {%- if request.page_type == 'index' -%}
-      </h1>
-    {%- else -%}
-      </div>
-    {%- endif -%}
+    </div>
 
     <div class="header__search flex items-center z-2">
       {%- if section.settings.header_layout == 'logo-center' and section.settings.enable_collapse_on_scroll -%}

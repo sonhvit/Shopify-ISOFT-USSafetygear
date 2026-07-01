@@ -631,12 +631,12 @@ class DetailsMega extends DetailsDropdown {
     }
   }
 
-  // Hold mega menu open on hover so CSS can control the visible state.
-  // detectHover(event) {
-  //   if (this.trigger === 'hover' && event.type === 'mouseenter') {
-  //     this.open = true;
-  //   }
-  // }
+  // Debugger Hold mega menu open on hover so CSS can control the visible state.
+  detectHover(event) {
+    if (this.trigger === 'hover' && event.type === 'mouseenter') {
+      this.open = true;
+    }
+  }
 
   async showWithTransition() {
     // Perform the animation on the first child of the content element

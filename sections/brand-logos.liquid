@@ -98,7 +98,7 @@
                         {%- if block.settings.image != blank -%}
                           {%- liquid
                             assign image_widths = '60, 70, 80, 120, 140, 160, 240, 320, 450, 535, 710, 800, 900,' | append: section.settings.image.width
-                            assign alt_image = block.settings.image.alt | default: shop.name | escape
+                            assign alt_image = block.settings.image.alt | default: block.settings.title | escape
                           -%}
                           {{
                             block.settings.image
@@ -108,13 +108,14 @@
                               class: 'motion-reduce hover-scale-up',
                               widths: image_widths,
                               is: 'image-lazy',
-                              alt: alt_image
+                              alt: block.settings.title
                           }}
                         {%- else -%}
                           {{ 'image' | placeholder_svg_tag: 'placeholder-svg brand-logos__placeholder hover-scale-up' }}
                         {%- endif -%}
                       </motion-element>
                     </a>
+                    <h3 class="hidden">{{ block.settings.title }}</h3>
                   </div>
                 </div>
               {%- endfor -%}
@@ -699,6 +700,11 @@
           "type": "url",
           "id": "image_link",
           "label": "t:general.link.label"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title for SEO"
         },
         {
           "type": "text",

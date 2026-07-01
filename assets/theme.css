@@ -2253,7 +2253,7 @@ button svg,
 .btn--icon::before,
 .btn--outline::before,
 .btn--white::before {
-  background-color: rgb(var(--color-button));
+  background-color: rgb(var(--color-button-before, var(--color-button-text)));
 }
 .btn--secondary.btn--active,
 .btn--icon.btn--active,
@@ -3205,7 +3205,7 @@ input:is([type=radio])::after {
   width: 0;
   bottom: -0.1rem;
   left: -0.1rem;
-  background-color: rgb(var(--color-foreground));
+  background-color: rgb(var(--color-button-before, var(--color-button-text)));
   transition: width var(--animation-button);
   z-index: 0;
   border-radius: inherit;

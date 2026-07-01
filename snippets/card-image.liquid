@@ -90,6 +90,11 @@
     assign loading = 'eager'
     assign fetchpriority = 'high'
   endif
+
+  assign heading_tag = 'motion-element'
+  if title_use_h1
+    assign heading_tag = 'h1'
+  endif
 -%}
 {%- if show_badge != false -%}
   {% capture badge_html %}
@@ -178,7 +183,7 @@
           {%- assign motion_delay = motion_delay | plus: 50 -%}
         {%- endif -%}
         {%- if heading != blank -%}
-          <motion-element
+          <{{ heading_tag }}
             class="block card-media__heading rich-text__heading {{ heading_size }}"
             data-motion="fade-up"
             data-motion-delay="{{ motion_delay }}"
@@ -193,7 +198,7 @@
               hl_style_color: highlight_style_color,
               hl_text_color: highlight_text_color
             %}
-          </motion-element>
+          </{{ heading_tag }}>
           {%- assign motion_delay = motion_delay | plus: 50 -%}
         {%- endif -%}
         {%- if description != blank -%}

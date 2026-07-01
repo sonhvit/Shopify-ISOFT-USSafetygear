@@ -44,6 +44,7 @@
             highlight_style_color: block.settings.highlight_style_color,
             highlight_text_color: block.settings.highlight_text_color,
             heading_size: block.settings.heading_size,
+            title_use_h1: block.settings.title_use_h1,
             subheading: block.settings.subheading,
             subheading_style: block.settings.subheading_style,
             description: block.settings.text,
@@ -819,6 +820,12 @@
           "default": "Image card",
           "label": "t:general.heading.label",
           "info": "t:general.heading.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "title_use_h1",
+          "label": "Title use h1",
+          "default": false
         },
         {
           "type": "select",
