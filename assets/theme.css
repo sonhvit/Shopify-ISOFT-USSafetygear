@@ -7255,8 +7255,15 @@ body:not(.header-pinned) .header-scrolled .header {
   padding-bottom: 0;
 }
 .mega-menu__link--top {
-  display: block;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0;
+}
+.mega-menu__list .mega-menu__link--top.menu-sidebar__toggle {
+  width: 100%;
+}
+.mega-menu__list .mega-menu__link--top.menu-sidebar__toggle:hover,
+.mega-menu__list .mega-menu__link--top.menu-sidebar__toggle.is-visible,
+.mega-menu__list .mega-menu__link--top.menu-sidebar__toggle.is-active {
+  background-color: rgb(var(--color-secondary-background));
 }
 .mega-menu__promotions {
   --swiper-navigation-size: 3.8rem;

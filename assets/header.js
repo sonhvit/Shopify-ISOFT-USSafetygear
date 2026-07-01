@@ -632,11 +632,11 @@ class DetailsMega extends DetailsDropdown {
   }
 
   // Debugger Hold mega menu open on hover so CSS can control the visible state.
-  detectHover(event) {
-    if (this.trigger === 'hover' && event.type === 'mouseenter') {
-      this.open = true;
-    }
-  }
+  // detectHover(event) {
+  //   if (this.trigger === 'hover' && event.type === 'mouseenter') {
+  //     this.open = true;
+  //   }
+  // }
 
   async showWithTransition() {
     // Perform the animation on the first child of the content element
@@ -882,7 +882,9 @@ class MenuProductTabs extends HTMLElement {
     const tabKey = event.currentTarget.dataset.productTabTrigger;
 
     this.triggers.forEach((trigger) => {
-      trigger.classList.toggle('is-active', trigger.dataset.productTabTrigger === tabKey);
+      const isActive = trigger.dataset.productTabTrigger === tabKey;
+      trigger.classList.toggle('is-active', isActive);
+      trigger.classList.toggle('is-visible', isActive);
     });
 
     this.panels.forEach((panel) => {

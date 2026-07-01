@@ -157,13 +157,16 @@
                         {%- endif -%}
                         <a
                           href="{{ childlink.url }}"
-                          class="h6 mega-menu__link mega-menu__link--top font-heading{% if block.type == 'product_tab' and childlink.type == 'collection_link' and childlink.object.handle == first_product_tab %} is-active{% endif %}"
+                          class="h6 menu-sidebar__toggle blocks-radius-sm flex items-center justify-between mega-menu__link mega-menu__link--top font-heading{% if block.type == 'product_tab' and childlink.type == 'collection_link' and childlink.object.handle == first_product_tab %} is-active is-visible{% endif %}"
                           {% if block.type == 'product_tab' and childlink.type == 'collection_link' and childlink.object.products != blank %}
                             data-product-tab-trigger="{{ childlink.object.handle }}"
                             aria-controls="Mega-menu-product-tab-{{ block.id }}-{{ childlink.object.handle }}"
                           {% endif %}
                         >
-                          {{- childlink.title | escape -}}
+                          <span>{{- childlink.title | escape -}}</span>
+                          {%- if block.type == 'product_tab' and childlink.type == 'collection_link' and childlink.object.products != blank -%}
+                            {%- render 'icon-caret-right', size: 'small' -%}
+                          {%- endif -%}
                         </a>
                         {%- if childlink.links != blank -%}
                           <ul class="mega-menu__item-child text-subtext">
