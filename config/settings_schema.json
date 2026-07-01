@@ -168,6 +168,16 @@
             "default": "#FFFFFF"
           },
           {
+            "type": "color",
+            "id": "button_hover",
+            "label": "Button hover background"
+          },
+          {
+            "type": "color",
+            "id": "button_hover_label",
+            "label": "Button hover text"
+          },
+          {
             "type": "header",
             "content": "t:settings_schema.colors.settings.header__button_2.content"
           },

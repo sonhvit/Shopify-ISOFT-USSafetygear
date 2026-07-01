@@ -185,6 +185,8 @@
     assign color_text_lighten_60 = scheme.settings.background | color_mix: scheme.settings.text, 40
     assign color_text_lighten_40 = scheme.settings.background | color_mix: scheme.settings.text, 60
     assign color_text_lighten_19 = scheme.settings.background | color_mix: scheme.settings.text, 81
+    assign button_hover_color = scheme.settings.button_hover | default: scheme.settings.button_label
+    assign button_hover_text_color = scheme.settings.button_hover_label | default: scheme.settings.button
 
     assign form_field_color = scheme.settings.form_field | downcase
     assign background_color = scheme.settings.background | downcase
@@ -201,10 +203,11 @@
       --color-border-alpha: {{ scheme.settings.border.alpha }};
       --color-button: {{ scheme.settings.button.red }},{{ scheme.settings.button.green }},{{ scheme.settings.button.blue }};
       --color-button-text: {{ scheme.settings.button_label.red }},{{ scheme.settings.button_label.green }},{{ scheme.settings.button_label.blue }};
+      --color-button-before: {{ button_hover_color.red }},{{ button_hover_color.green }},{{ button_hover_color.blue }};
+      --color-button-hover-text: {{ button_hover_text_color.red }},{{ button_hover_text_color.green }},{{ button_hover_text_color.blue }};
       --color-secondary-button: {{ scheme.settings.secondary_button.red }},{{ scheme.settings.secondary_button.green }},{{ scheme.settings.secondary_button.blue }};
       --color-secondary-button-border: {{ scheme.settings.secondary_button_border.red }},{{ scheme.settings.secondary_button_border.green }},{{ scheme.settings.secondary_button_border.blue }};
       --color-secondary-button-text: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
-      --color-button-before: {{ scheme.settings.button_hover | color_lighten: 20 }};
       --color-field: {{ scheme.settings.form_field.red }},{{ scheme.settings.form_field.green }},{{ scheme.settings.form_field.blue }};
       --color-field-alpha: {{ scheme.settings.form_field.alpha }};
       --color-field-text: {{ scheme.settings.form_field_label.red }},{{ scheme.settings.form_field_label.green }},{{ scheme.settings.form_field_label.blue }};

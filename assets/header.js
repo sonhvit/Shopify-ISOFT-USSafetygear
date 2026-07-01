@@ -631,7 +631,7 @@ class DetailsMega extends DetailsDropdown {
     }
   }
 
-  // Debugger: hold megamenu when hover
+  // Hold mega menu open on hover so CSS can control the visible state.
   // detectHover(event) {
   //   if (this.trigger === 'hover' && event.type === 'mouseenter') {
   //     this.open = true;

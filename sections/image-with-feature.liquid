@@ -139,6 +139,23 @@
           </div>
         {%- endfor -%}
       </div>
+      {%- if section.settings.button_label != blank -%}
+        {%- liquid
+          assign button_additional_attributes = ''
+          if section.settings.button_open_new_tab
+            assign button_additional_attributes = 'target="_blank" rel="noopener noreferrer"'
+          endif
+        -%}
+        <div class="rich-text__button" style="margin-top: 30px;">
+          {% render 'button',
+            button_style: section.settings.button_style,
+            button_link: section.settings.button_link,
+            button_label: section.settings.button_label,
+            button_icon: section.settings.button_icon,
+            additional_attributes: button_additional_attributes
+          %}
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </div>
@@ -392,6 +409,74 @@
           "label": "t:general.text_size.options__inherit.label"
         }
       ]
+    },
+    {
+      "type": "header",
+      "content": "t:general.button.button_label.label"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:general.button.button_label.label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:general.button.button_link.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_open_new_tab",
+      "label": "Open link in new tab",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:general.button.button_style.label",
+      "options": [
+        {
+          "value": "btn--primary",
+          "label": "t:general.button.button_style.options__1.label"
+        },
+        {
+          "value": "btn--secondary",
+          "label": "t:general.button.button_style.options__2.label"
+        },
+        {
+          "value": "btn--underline",
+          "label": "t:general.button.button_style.options__4.label"
+        },
+        {
+          "value": "btn--plain",
+          "label": "t:general.button.button_style.options__7.label"
+        }
+      ],
+      "default": "btn--primary"
+    },
+    {
+      "type": "select",
+      "id": "button_icon",
+      "label": "t:general.button.button_icon.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:general.button.button_icon.options__1.label"
+        },
+        {
+          "value": "caret-right",
+          "label": "t:general.button.button_icon.options__2.label"
+        },
+        {
+          "value": "arrow-right",
+          "label": "t:general.button.button_icon.options__3.label"
+        },
+        {
+          "value": "download",
+          "label": "t:general.button.button_icon.options__14.label"
+        }
+      ],
+      "default": "none"
     },
     {
       "type": "header",

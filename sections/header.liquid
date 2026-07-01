@@ -51,6 +51,47 @@
       --section-padding-bottom: 1.6rem;
     }
   }
+  {%- if section.settings.header_background_image != blank -%}
+    .shopify-section-group-header-group:has(header)::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: url({{ section.settings.header_background_image | image_url: width: 2400 }});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      top: -65px;
+    }
+    @media(min-width: 768px){
+      .shopify-section-group-header-group.header-scrolled:has(header)::before{
+        bottom: 45px;
+      }
+      .shopify-section-group-header-group.header-scrolled:has(.header__bottom.is-show)::before{
+        bottom: 0px;
+      }
+      .mega-menu{
+        top: auto !important;
+      }
+      .mega-menu__container{
+        padding-top: 0 !important;
+      }
+    }
+    .shopify-section-group-header-group > .shopify-section {
+      background: transparent;
+    }
+    .shopify-section-group-header-group .topbar,
+    #shopify-section-{{ section.id }} .header,
+    #shopify-section-{{ section.id }} .header__top,
+    #shopify-section-{{ section.id }} .header__bottom {
+      background: transparent;
+      background-color: transparent;
+    }
+    #shopify-section-{{ section.id }} .header__bottom::after {
+      background-color: transparent;
+    }
+  {%- endif -%}
 {% endstyle %}
 
 <header
@@ -336,6 +377,11 @@
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:general.colors.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "header_background_image",
+      "label": "Header background image"
     },
     {
       "type": "color_scheme",
