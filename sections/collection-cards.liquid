@@ -162,6 +162,7 @@
                   current: current,
                   color_scheme: section.settings.card_color_scheme,
                   collection: block.settings.collection,
+                  product_list: block.settings.product_list,
                   featured_image: block.settings.image,
                   title: block.settings.title,
                   image_ratio: section.settings.image_ratio,
@@ -600,6 +601,12 @@
           "type": "collection",
           "id": "collection",
           "label": "t:general.collection.label"
+        },
+        {
+          "type": "product_list",
+          "id": "product_list",
+          "label": "Custom products",
+          "limit": 3
         },
         {
           "type": "image_picker",

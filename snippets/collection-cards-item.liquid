@@ -2,6 +2,11 @@
   assign collection_title = title | default: collection.title
   assign default_label = 'onboarding.collection_title' | t
   assign collection_title_default = collection_title | default: default_label
+  assign placeholder_index = current | default: 1
+  assign has_custom_products = false
+  if product_list != blank
+    assign has_custom_products = true
+  endif
 
   unless featured_image
     if collection.image
@@ -68,7 +73,7 @@
               </a>
             {%- else -%}
               <div class="collection-item__placeholder hover-scale-up">
-                {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                {{ 'collection-' | append: placeholder_index | placeholder_svg_tag: 'placeholder-svg' }}
               </div>
             {%- endif -%}
           </motion-element>
@@ -77,38 +82,70 @@
       <div class="collection-item--thumb grid gap-1">
         {%- assign metafield_images = collection.metafields.foxtheme['collection-thumbnails'].value -%}
         {%- assign thumb_count = 0 -%}
-        {%- assign image_widths = '60, 70, 80, 120, 140,' | append: featured_image.width -%}
+        {%- assign thumb_width = featured_image.width | default: 450 -%}
+        {%- assign image_widths = '60, 70, 80, 120, 140,' | append: thumb_width -%}
+        {%- liquid
+          assign show_product_placeholders = false
+          if has_custom_products == false
+            if collection == blank or collection.all_products_count == 0
+              assign show_product_placeholders = true
+            endif
+          endif
+        -%}
 
-        {%- if collection == blank or collection.all_products_count == 0 -%}
+        {%- if show_product_placeholders -%}
           {%- for i in (1..3) -%}
             <div class="flex-1 overflow-hidden relative blocks-radius hover-wrapper">
               <div class="collection-item__placeholder hover-scale-up">
-                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                {{ 'product-' | append: placeholder_index | placeholder_svg_tag: 'placeholder-svg' }}
               </div>
             </div>
           {%- endfor -%}
         {%- else -%}
-          {%- for image in metafield_images limit: 3 -%}
-            <div class="flex-1 overflow-hidden relative blocks-radius hover-wrapper">
-              {{
-                image
-                | image_url: width: featured_image.width
-                | image_tag:
-                  loading: 'lazy',
-                  class: 'motion-reduce hover-scale-up',
-                  widths: image_widths,
-                  sizes: image_sizes,
-                  is: 'image-lazy',
-                  alt: collection_title_default
-              }}
-            </div>
-            {%- assign thumb_count = thumb_count | plus: 1 -%}
-          {%- endfor -%}
+          {%- unless has_custom_products -%}
+            {%- for image in metafield_images limit: 3 -%}
+              <div class="flex-1 overflow-hidden relative blocks-radius hover-wrapper">
+                {{
+                  image
+                  | image_url: width: thumb_width
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'motion-reduce hover-scale-up',
+                    widths: image_widths,
+                    sizes: image_sizes,
+                    is: 'image-lazy',
+                    alt: collection_title_default
+                }}
+              </div>
+              {%- assign thumb_count = thumb_count | plus: 1 -%}
+            {%- endfor -%}
+          {%- endunless -%}
 
           {%- if thumb_count < 3 -%}
             {%- assign remaining_thumbs = 3 | minus: thumb_count -%}
-            {%- for product in collection.products limit: remaining_thumbs -%}
-              {%- unless metafield_images[forloop.index0] -%}
+            {%- liquid
+              assign products = collection.products
+              if has_custom_products
+                assign products = product_list
+              endif
+            -%}
+            {%- for product in products limit: remaining_thumbs -%}
+              {%- liquid
+                assign should_render_product = has_custom_products
+                if has_custom_products == false and metafield_images[forloop.index0] == blank
+                  assign should_render_product = true
+                endif
+              -%}
+              {%- if should_render_product -%}
+                {%- liquid
+                  assign product_thumbnail = product.featured_media.preview_image
+                  if product_thumbnail == blank
+                    assign product_thumbnail = collection.image
+                  endif
+                  if product_thumbnail == blank
+                    assign product_thumbnail = featured_image
+                  endif
+                -%}
                 <a
                   href="{{ product.url }}"
                   role="link"
@@ -116,20 +153,26 @@
                   aria-label="{{ product.title }}"
                   class="flex-1 overflow-hidden relative blocks-radius hover-wrapper"
                 >
-                  {{
-                    product.featured_media.preview_image
-                    | image_url: width: featured_image.width
-                    | image_tag:
-                      loading: 'lazy',
-                      class: 'motion-reduce hover-scale-up',
-                      widths: image_widths,
-                      sizes: image_sizes,
-                      is: 'image-lazy',
-                      alt: product.title
-                  }}
+                  {%- if product_thumbnail != blank -%}
+                    {{
+                      product_thumbnail
+                      | image_url: width: thumb_width
+                      | image_tag:
+                        loading: 'lazy',
+                        class: 'motion-reduce hover-scale-up',
+                        widths: image_widths,
+                        sizes: image_sizes,
+                        is: 'image-lazy',
+                        alt: product.title
+                    }}
+                  {%- else -%}
+                    <div class="collection-item__placeholder hover-scale-up">
+                      {{ 'product-' | append: placeholder_index | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                  {%- endif -%}
                 </a>
                 {%- assign thumb_count = thumb_count | plus: 1 -%}
-              {%- endunless -%}
+              {%- endif -%}
             {%- endfor -%}
           {%- endif -%}
         {%- endif -%}
