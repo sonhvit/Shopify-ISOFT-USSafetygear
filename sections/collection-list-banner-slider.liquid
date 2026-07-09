@@ -107,21 +107,21 @@
 
                 assign corner_radius = 'blocks-radius'
               -%}
-              <div class="f-column swiper-slide" data-index="{{ forloop.index0 }}">
-                <div class="collection-card collection-card--style-{{ section.settings.card_style }} collection-card--mobile-layout-{{ section.settings.mobile_layout }} collection-card--image-{{ image_width }} collection-card--image-padding-{{ section.settings.card_image_padding }}{% if card_has_bg %} collection-card--has-bg{% endif %}{% if card_boxed %} {{ corner_radius }}{% endif %} color-{{ section.settings.card_color_scheme }} h-full">
-                  <a
-                    class="collection-card__wrapper relative flex flex-col items-center justify-start{% if section.settings.card_style == 'standard' %} text-center{% endif %} btn-hover-wrapper"
-                    role="link"
-                    aria-disabled="true"
-                    {% if item_title != blank %}
-                      href="{{ item_link }}"
-                    {% else %}
-                      role="link" aria-disabled="true"
-                    {% endif %}
-                  >
-                    <div class="collection-card__image media-wrapper{% if image_width == 'full' and section.settings.card_style == 'card' %} hover-wrapper{% endif %}{% if section.settings.rounded_card_image %} rounded{% endif %}{% if image_radius %} {{ corner_radius }}{% endif %}">
-                      <motion-element data-motion="zoom-out-sm" class="block" style="--aspect-ratio: {{ image_ratio }};">
-                        {%- if item_image != blank -%}
+              {%- if item_image != blank -%}
+                <div class="f-column swiper-slide" data-index="{{ forloop.index0 }}">
+                  <div class="collection-card collection-card--style-{{ section.settings.card_style }} collection-card--mobile-layout-{{ section.settings.mobile_layout }} collection-card--image-{{ image_width }} collection-card--image-padding-{{ section.settings.card_image_padding }}{% if card_has_bg %} collection-card--has-bg{% endif %}{% if card_boxed %} {{ corner_radius }}{% endif %} color-{{ section.settings.card_color_scheme }} h-full">
+                    <a
+                      class="collection-card__wrapper relative flex flex-col items-center justify-start{% if section.settings.card_style == 'standard' %} text-center{% endif %} btn-hover-wrapper"
+                      role="link"
+                      aria-disabled="true"
+                      {% if item_title != blank %}
+                        href="{{ item_link }}"
+                      {% else %}
+                        role="link" aria-disabled="true"
+                      {% endif %}
+                    >
+                      <div class="collection-card__image media-wrapper{% if image_width == 'full' and section.settings.card_style == 'card' %} hover-wrapper{% endif %}{% if section.settings.rounded_card_image %} rounded{% endif %}{% if image_radius %} {{ corner_radius }}{% endif %}">
+                        <motion-element data-motion="zoom-out-sm" class="block" style="--aspect-ratio: {{ image_ratio }};">
                           {%- liquid
                             assign image_widths = '60, 70, 80, 100, 120, 140, 160, 240, 320, 450, 535, 710, 800, 900,' | append: item_image.width
                             assign alt_image = item_alt_image | default: item_image.alt | default: collection_title_default | escape
@@ -137,25 +137,23 @@
                               is: 'image-lazy',
                               alt: alt_image
                           }}
-                        {%- else -%}
-                          <div class="collection-card__placeholder hover-scale-up"></div>
-                        {%- endif -%}
-                      </motion-element>
-                    </div>
-                    <div class="collection-card__inner w-full pointer-events-none{% if section.settings.card_style == 'card' %} flex items-center gap-x-2{% endif %}">
-                      {% if section.settings.card_heading_tag == 'h2' %}
-                        <h2 class="collection-card__title uppercase {{ heading_size }} flex-1">
-                          {{- collection_title_default -}}
-                        </h2>
-                      {% else %}
-                        <h3 class="collection-card__title uppercase {{ heading_size }} flex-1">
-                          {{- collection_title_default -}}
-                        </h3>
-                      {% endif %}
-                    </div>
-                  </a>
+                        </motion-element>
+                      </div>
+                      <div class="collection-card__inner w-full pointer-events-none{% if section.settings.card_style == 'card' %} flex items-center gap-x-2{% endif %}">
+                        {% if section.settings.card_heading_tag == 'h2' %}
+                          <h2 class="collection-card__title uppercase {{ heading_size }} flex-1">
+                            {{- collection_title_default -}}
+                          </h2>
+                        {% else %}
+                          <h3 class="collection-card__title uppercase {{ heading_size }} flex-1">
+                            {{- collection_title_default -}}
+                          </h3>
+                        {% endif %}
+                      </div>
+                    </a>
+                  </div>
                 </div>
-              </div>
+              {%- endif -%}
             {%- endfor -%}
           </div>
         </collection-list>

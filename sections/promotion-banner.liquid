@@ -13,6 +13,8 @@
     endif
   endif
   assign motion_delay = 0
+  assign input_block = section.blocks | where: 'type', 'input' | first
+  assign timer_block = section.blocks | where: 'type', 'timer' | first
 
   assign flex_direction = 'flex-col lg:flex-row'
   assign alignment_classes = ''
@@ -174,7 +176,29 @@
               {%- assign motion_delay = motion_delay | plus: 50 -%}
             {%- endif -%}
           {%- when 'timer' -%}
-            {%- if block.settings.type == 'evergreen' or block.settings.time != blank -%}
+            {%- if input_block != blank -%}
+              {%- liquid
+                assign klaviyo_form_id = input_block.settings.klaviyo_form_id | strip | remove: 'klaviyo-form-'
+              -%}
+              <motion-element
+                class="block promotion-banner__input"
+                data-motion-delay="{{ motion_delay }}"
+                data-motion="fade-up"
+                {{ input_block.shopify_attributes }}
+              >
+                {%- if klaviyo_form_id != blank -%}
+                  <div class="klaviyo-form-{{ klaviyo_form_id | escape }}"></div>
+                {%- else -%}
+                  {% render 'newsletter-form',
+                    custom_id: input_block.id,
+                    button_label: input_block.settings.button_label,
+                    button_style: input_block.settings.button_style,
+                    button_icon: input_block.settings.button_icon
+                  %}
+                {%- endif -%}
+              </motion-element>
+              {%- assign motion_delay = motion_delay | plus: 50 -%}
+            {%- elsif block.settings.type == 'evergreen' or block.settings.time != blank -%}
               <motion-element
                 class="block promotion-banner__timer"
                 data-motion-delay="{{ motion_delay }}"
@@ -190,6 +214,30 @@
                   motion_delay: motion_delay,
                   custom_class: 'block'
                 %}
+              </motion-element>
+              {%- assign motion_delay = motion_delay | plus: 50 -%}
+            {%- endif -%}
+          {%- when 'input' -%}
+            {%- if timer_block == blank -%}
+              {%- liquid
+                assign klaviyo_form_id = block.settings.klaviyo_form_id | strip | remove: 'klaviyo-form-'
+              -%}
+              <motion-element
+                class="block promotion-banner__input"
+                data-motion-delay="{{ motion_delay }}"
+                data-motion="fade-up"
+                {{ block.shopify_attributes }}
+              >
+                {%- if klaviyo_form_id != blank -%}
+                  <div class="klaviyo-form-{{ klaviyo_form_id | escape }}"></div>
+                {%- else -%}
+                  {% render 'newsletter-form',
+                    custom_id: block.id,
+                    button_label: block.settings.button_label,
+                    button_style: block.settings.button_style,
+                    button_icon: block.settings.button_icon
+                  %}
+                {%- endif -%}
               </motion-element>
               {%- assign motion_delay = motion_delay | plus: 50 -%}
             {%- endif -%}
@@ -1056,6 +1104,73 @@
         {
           "type": "paragraph",
           "content": "t:general.timer.time.paragraph"
+        }
+      ]
+    },
+    {
+      "type": "input",
+      "name": "Input",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "klaviyo_form_id",
+          "label": "Klaviyo form ID",
+          "info": "If filled, this renders the Klaviyo embed instead of the Shopify email form. Enter the ID only, or the full klaviyo-form-ID class."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:general.button.button_label.label",
+          "default": "Subscribe"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:general.button.button_style.label",
+          "default": "btn--primary",
+          "options": [
+            {
+              "value": "btn--primary",
+              "label": "t:general.button.button_style.options__1.label"
+            },
+            {
+              "value": "btn--secondary",
+              "label": "t:general.button.button_style.options__2.label"
+            },
+            {
+              "value": "btn--underline",
+              "label": "t:general.button.button_style.options__4.label"
+            },
+            {
+              "value": "btn--plain",
+              "label": "t:general.button.button_style.options__7.label"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "button_icon",
+          "label": "t:general.button.button_icon.label",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:general.button.button_icon.options__1.label"
+            },
+            {
+              "value": "caret-right",
+              "label": "t:general.button.button_icon.options__2.label"
+            },
+            {
+              "value": "arrow-right",
+              "label": "t:general.button.button_icon.options__3.label"
+            },
+            {
+              "value": "paperplane",
+              "label": "t:general.icon.options__22.label"
+            }
+          ],
+          "default": "none"
         }
       ]
     },

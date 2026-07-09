@@ -58,6 +58,10 @@
   flex-shrink: 0;
   white-space: nowrap;
 }
+.promotion-banner__input {
+  flex-shrink: 0;
+  width: min(100%, 42rem);
+}
 .promotion-banner__group-heading {
   border: 0 solid var(--border-color, rgb(var(--color-foreground)));
   padding-inline: 2rem;
