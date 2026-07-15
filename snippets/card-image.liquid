@@ -66,6 +66,10 @@
   assign card_classes = 'card-media card-media--auto-height card-media--content-' | append: content_position | append: ' card-media--' | append: content_spacing
   assign card_classes = card_classes | append: ' relative overflow-hidden hover-wrapper color-' | append: color_scheme
 
+  if natural_image_height
+    assign card_classes = card_classes | replace: 'card-media--auto-height', 'card-media--natural-image-height'
+  endif
+
   if show_text_below
     assign card_classes = card_classes | append: ' card-media--mobile-content-below'
 
@@ -124,16 +128,20 @@
   >
 {%- endif -%}
 <div class="{{ card_classes }}{% if rounded %} blocks-radius{% endif %}">
-  <div class="card-media__media-wrapper relative overflow-hidden block w-full h-full{% if content_position == 'below' and card_color_inherit %} blocks-radius{% endif %}">
-    <motion-element class="block h-full" data-motion="zoom-out-sm">
+  <div class="card-media__media-wrapper relative overflow-hidden block w-full{% unless natural_image_height %} h-full{% endunless %}{% if content_position == 'below' and card_color_inherit %} blocks-radius{% endif %}">
+    <motion-element class="block{% unless natural_image_height %} h-full{% endunless %}" data-motion="zoom-out-sm">
       <picture
-        class="card-media__media media-wrapper h-full{% if image == blank %} bg-none{% endif %}"
-        style="--aspect-ratio: {{ image_ratio }};{% if image_mobile_ratio %}--aspect-ratio-mobile: {{ image_mobile_ratio }};{% endif %}"
+        class="card-media__media media-wrapper{% if natural_image_height %} card-media__media--natural-height{% else %} h-full{% endif %}{% if image == blank %} bg-none{% endif %}"
+        {% unless natural_image_height %}style="--aspect-ratio: {{ image_ratio }};{% if image_mobile_ratio %}--aspect-ratio-mobile: {{ image_mobile_ratio }};{% endif %}"{% endunless %}
       >
         {%- if image != blank -%}
           {%- liquid
             assign image_sizes = image_sizes | default: ''
             assign image_widths = '165, 360, 535, 750, 940, 1100, 1300, 1500, 1780, 2000, 2200, 2400, 2600, 2800, 3000, ' | append: image.width
+            assign image_class = 'motion-reduce absolute inset-0 w-full h-full hover-scale-up'
+            if natural_image_height
+              assign image_class = 'motion-reduce w-full h-auto hover-scale-up'
+            endif
           -%}
           {%- if image_mobile -%}
             <source
@@ -149,7 +157,7 @@
             | image_tag:
               loading: loading,
               fetchpriority: fetchpriority,
-              class: 'motion-reduce absolute inset-0 w-full h-full hover-scale-up',
+              class: image_class,
               widths: image_widths,
               sizes: image_sizes,
               is: 'image-lazy',

@@ -20,12 +20,39 @@
   assign enable_sorting = section.settings.enable_sorting
   assign enable_filtering = section.settings.enable_filtering
   assign filter_type = section.settings.filter_type
+  assign collection_banner_type = collection.metafields.custom.collection_banner_type.value | default: collection.metafields.custom.collection_banner_type
+  assign collection_banner_type = collection_banner_type | strip | handleize | replace: '-', '_'
+  if collection_banner_type == blank
+    assign first_char = collection.handle | slice: 0
+    assign alphabet = 'a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9' | split: ','
+    assign char_index = 0
+    for char in alphabet
+      if char == first_char
+        assign char_index = forloop.index
+        break
+      endif
+    endfor
+    assign remainder = char_index | modulo: 2
+    if remainder == 0
+      assign collection_banner_type = 'shoemobile'
+    else
+      assign collection_banner_type = 'custom_shop'
+    endif
+  endif
   assign show_toolbar = false
   if enable_filtering or enable_sorting or enable_layout_switching
     assign show_toolbar = true
   endif
 
-  assign block_size = section.blocks.size
+  assign block_size = 0
+  for block in section.blocks
+    assign block_card_type = block.settings.card_type | default: 'all'
+    if block.type == 'image_card'
+      if block_card_type == 'all' or block_card_type == collection_banner_type
+        assign block_size = block_size | plus: 1
+      endif
+    endif
+  endfor
   assign products_to_display = section.settings.products_per_page | minus: block_size
 -%}
 {%- capture image_sizes -%}
@@ -178,7 +205,16 @@
             -%}
             {%- for product in collection.products -%}
               {%- for block in section.blocks -%}
-                {%- if block.type == 'image_card' and block.settings.image_position == current_position -%}
+                {%- liquid
+                  assign block_card_type = block.settings.card_type | default: 'all'
+                  assign should_render_image_card = false
+                  if block.type == 'image_card' and block.settings.image_position == current_position
+                    if block_card_type == 'all' or block_card_type == collection_banner_type
+                      assign should_render_image_card = true
+                    endif
+                  endif
+                -%}
+                {%- if should_render_image_card -%}
                   <div class="f-column image-column" 
                     {% if block.settings.ads_id != blank %}
                       id="{{ block.settings.ads_id }}"
@@ -188,6 +224,8 @@
                       link: block.settings.card_link,
                       image: block.settings.image,
                       image_mobile: block.settings.image_mobile,
+                      image_ratio: block.settings.image_ratio,
+                      natural_image_height: block.settings.natural_image_height,
                       image_overlay_opacity: block.settings.image_overlay_opacity,
                       heading: block.settings.heading,
                       highlight_style: block.settings.highlight_style,
@@ -231,7 +269,16 @@
               </div>
 
               {%- for block in section.blocks -%}
-                {%- if block.type == 'image_card' and block.settings.image_position == current_position -%}
+                {%- liquid
+                  assign block_card_type = block.settings.card_type | default: 'all'
+                  assign should_render_image_card = false
+                  if block.type == 'image_card' and block.settings.image_position == current_position
+                    if block_card_type == 'all' or block_card_type == collection_banner_type
+                      assign should_render_image_card = true
+                    endif
+                  endif
+                -%}
+                {%- if should_render_image_card -%}
                   <div class="f-column image-column" {% if block.settings.ads_id != blank %}
                       id="{{ block.settings.ads_id }}"
                     {% endif %}>
@@ -239,6 +286,9 @@
                       color_scheme: block.settings.color_scheme,
                       link: block.settings.card_link,
                       image: block.settings.image,
+                      image_mobile: block.settings.image_mobile,
+                      image_ratio: block.settings.image_ratio,
+                      natural_image_height: block.settings.natural_image_height,
                       image_overlay_opacity: block.settings.image_overlay_opacity,
                       heading: block.settings.heading,
                       highlight_style: block.settings.highlight_style,
@@ -259,7 +309,9 @@
                       rich_text_size: block.settings.content_gap,
                       section_index: section.index,
                       forloop_index: current_position,
-                      enable_preload_image: block.settings.enable_preload_image
+                      enable_preload_image: block.settings.enable_preload_image,
+                      heading_size_custom: block.settings.heading_size_custom,
+                      heading_size_mobile: block.settings.heading_size_mobile
                     %}
                   </div>
                   {% assign current_position = current_position | plus: 1 %}
@@ -572,6 +624,27 @@
           "info": "t:sections.main-collection-product-grid.blocks.image_card.settings.image_position.info"
         },
         {
+          "type": "select",
+          "id": "card_type",
+          "label": "Card type",
+          "info": "Shown when the collection metafield custom.collection_banner_type matches this value. Use All collections to show on every collection.",
+          "default": "all",
+          "options": [
+            {
+              "value": "all",
+              "label": "All collections"
+            },
+            {
+              "value": "shoemobile",
+              "label": "Shoemobile"
+            },
+            {
+              "value": "custom_shop",
+              "label": "Custom Shop"
+            }
+          ]
+        },
+        {
           "type": "image_picker",
           "id": "image",
           "label": "t:general.image.label"
@@ -599,6 +672,13 @@
               "label": "t:general.image_ratio.options__4.label"
             }
           ]
+        },
+        {
+          "type": "checkbox",
+          "id": "natural_image_height",
+          "label": "Use natural image height",
+          "info": "Displays the full image at its natural aspect ratio without cropping. This overrides Image ratio.",
+          "default": false
         },
         {
           "type": "range",

@@ -1,3 +1,9 @@
+.products-list .card-media__content{
+  aspect-ratio: 386/505;
+}
+.products-list .card-media__media-wrapper{
+  border-radius: var(--pcard-radius);
+}
 .collection__content {
   --facet-width: clamp(220px, calc(20% + 0.6rem), 330px);
 }
