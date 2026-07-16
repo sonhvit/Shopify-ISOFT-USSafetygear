@@ -5,6 +5,9 @@
 .collection-hero .empty-space {
   min-height: var(--spacing-height-mobile);
 }
+.collection-hero .collection-hero__description{
+  color: #fff;
+}
 @media (min-width: 768px) {
   .collection-hero .empty-space {
     min-height: var(--spacing-height);

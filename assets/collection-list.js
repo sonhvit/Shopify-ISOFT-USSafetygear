@@ -23,6 +23,7 @@ if (!customElements.get('collection-list')) {
       this.cardStyle = this.dataset.cardStyle;
       this.itemSize = this.dataset.itemSize;
       this.columnsDesktop = this.dataset.columnsDesktop;
+      this.centerInsufficientSlides = this.dataset.centerInsufficientSlides === 'true';
 
       this.sliderInstance = false;
 
@@ -50,6 +51,7 @@ if (!customElements.get('collection-list')) {
         },
         pagination: false,
         loop: false,
+        centerInsufficientSlides: this.centerInsufficientSlides,
         threshold: 2,
         mousewheel: {
           enabled: true,

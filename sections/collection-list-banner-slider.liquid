@@ -16,6 +16,9 @@
     width: var(--slide-width, 12rem);
   }
   @media (max-width: 767px) {
+    .section-{{ section.id }} .swipe-mobile__inner {
+      justify-content: center;
+    }
     .section-{{ section.id }} .swiper-slide {
       --slide-width: 12rem;
     }
@@ -56,6 +59,7 @@
           data-item-size="{{ section.settings.carousel_item_size }}"
           data-columns-desktop="{{ section.settings.columns_desktop }}"
           data-mobile-layout="{{ section.settings.mobile_layout }}"
+          data-center-insufficient-slides="true"
         >
           <div class="collection-list__items swiper-wrapper swipe-mobile__inner">
             {%- for item in banner_items -%}
