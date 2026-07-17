@@ -190,7 +190,7 @@
           </motion-element>
           {%- assign motion_delay = motion_delay | plus: 50 -%}
         {%- endif -%}
-        {%- if heading != blank -%}
+        {%- if heading != blank and hide_heading != true -%}
           <{{ heading_tag }}
             class="block card-media__heading rich-text__heading {{ heading_size }}"
             data-motion="fade-up"

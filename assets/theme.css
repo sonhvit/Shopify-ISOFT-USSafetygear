@@ -7282,6 +7282,22 @@ body:not(.header-pinned) .header-scrolled .header {
   display: grid;
   grid-template-columns: repeat(var(--promotion-columns), 1fr);
 }
+.mega-menu__promotion-heading-below {
+  margin-top: 1.2rem;
+  font-size: var(--font-body-size);
+  font-weight: 400;
+  text-align: left;
+}
+.mega-menu__promotion-heading-below * {
+  font-weight: 400;
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .promotion-item:hover .mega-menu__promotion-heading-below .reversed-link__text {
+    background-position-x: var(--transform-origin-start);
+    background-size: 100% var(--reversed-link-gap);
+    background-position-y: bottom;
+  }
+}
 @media (min-width: 1024px) {
   .mega-menu__promotions-grid {
     gap: 3rem;

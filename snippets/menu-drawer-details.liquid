@@ -245,6 +245,7 @@
                     natural_image_height: block.settings.natural_image_height,
                     color_scheme: color_scheme,
                     heading: heading,
+                    hide_heading: block.settings.show_heading_below_image,
                     heading_size: heading_size,
                     description: description,
                     button_label: button_label,
@@ -258,6 +259,17 @@
                     subheading: subheading,
                     subheading_style: subheading_style
                   %}
+                  {%- if block.settings.show_heading_below_image and heading != blank -%}
+                    {%- if promotion_link != blank -%}
+                      <a href="{{ promotion_link }}" class="mega-menu__promotion-heading-below inline-block reversed-link">
+                        <span class="inline-block reversed-link__text">{{ heading }}</span>
+                      </a>
+                    {%- else -%}
+                      <span class="mega-menu__promotion-heading-below inline-block reversed-link">
+                        <span class="inline-block reversed-link__text">{{ heading }}</span>
+                      </span>
+                    {%- endif -%}
+                  {%- endif -%}
                 </div>
               {%- endfor -%}
             </div>
