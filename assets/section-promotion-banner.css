@@ -62,6 +62,9 @@
   flex-shrink: 0;
   width: min(100%, 42rem);
 }
+.promotion-banner__input.w-full {
+  width: 100%;
+}
 .promotion-banner__group-heading {
   border: 0 solid var(--border-color, rgb(var(--color-foreground)));
   padding-inline: 2rem;
@@ -96,5 +99,14 @@
 @media (max-width: 1023.98px) {
   .promotion-banner__badge {
     --badge-margin-top: 0.8rem;
+  }
+}
+@media(max-width: 767.98px) {
+  .promotion-banner__input form>.needsclick,
+  .promotion-banner__input form>.needsclick>div{
+    flex-direction: column !important;
+  }
+  .promotion-banner__input form>.needsclick>div div[data-testid="form-component"]{
+    padding-inline: 0 !important;
   }
 }

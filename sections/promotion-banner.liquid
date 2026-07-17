@@ -181,13 +181,13 @@
                 assign klaviyo_form_id = input_block.settings.klaviyo_form_id | strip | remove: 'klaviyo-form-'
               -%}
               <motion-element
-                class="block promotion-banner__input"
+                class="block promotion-banner__input{% if klaviyo_form_id != blank %} w-full{% endif %}"
                 data-motion-delay="{{ motion_delay }}"
                 data-motion="fade-up"
                 {{ input_block.shopify_attributes }}
               >
                 {%- if klaviyo_form_id != blank -%}
-                  <div class="klaviyo-form-{{ klaviyo_form_id | escape }}"></div>
+                  <div class="klaviyo-form-{{ klaviyo_form_id | escape }}" data-klaviyo-heading-level="h3"></div>
                 {%- else -%}
                   {% render 'newsletter-form',
                     custom_id: input_block.id,
@@ -223,13 +223,13 @@
                 assign klaviyo_form_id = block.settings.klaviyo_form_id | strip | remove: 'klaviyo-form-'
               -%}
               <motion-element
-                class="block promotion-banner__input"
+                class="block promotion-banner__input{% if klaviyo_form_id != blank %} w-full{% endif %}"
                 data-motion-delay="{{ motion_delay }}"
                 data-motion="fade-up"
                 {{ block.shopify_attributes }}
               >
                 {%- if klaviyo_form_id != blank -%}
-                  <div class="klaviyo-form-{{ klaviyo_form_id | escape }}"></div>
+                  <div class="klaviyo-form-{{ klaviyo_form_id | escape }}" data-klaviyo-heading-level="h3"></div>
                 {%- else -%}
                   {% render 'newsletter-form',
                     custom_id: block.id,
@@ -301,6 +301,44 @@
     </div>
   </div>
 </div>
+{%- liquid
+  assign section_klaviyo_form_id = input_block.settings.klaviyo_form_id | strip | remove: 'klaviyo-form-'
+-%}
+{%- if section_klaviyo_form_id != blank -%}
+  <script>
+    (() => {
+      const sectionId = {{ section.id | json }};
+      const sectionElement = document.querySelector(`[data-section="${CSS.escape(sectionId)}"]`);
+      const klaviyoForm = sectionElement?.querySelector('[data-klaviyo-heading-level="h3"]');
+
+      if (!klaviyoForm || klaviyoForm.dataset.headingObserverInitialized === 'true') return;
+      klaviyoForm.dataset.headingObserverInitialized = 'true';
+
+      const replaceHeading = (heading) => {
+        const replacement = document.createElement('h3');
+        Array.from(heading.attributes).forEach((attribute) => {
+          replacement.setAttribute(attribute.name, attribute.value);
+        });
+        while (heading.firstChild) replacement.appendChild(heading.firstChild);
+        heading.replaceWith(replacement);
+      };
+
+      const replaceHeadings = (root) => {
+        if (!(root instanceof Element)) return;
+        if (root.matches('h1')) replaceHeading(root);
+        root.querySelectorAll('h1').forEach(replaceHeading);
+      };
+
+      replaceHeadings(klaviyoForm);
+
+      new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach(replaceHeadings);
+        });
+      }).observe(klaviyoForm, { childList: true, subtree: true });
+    })();
+  </script>
+{%- endif -%}
 {% schema %}
 {
   "name": "t:sections.promotion-banner.name",
