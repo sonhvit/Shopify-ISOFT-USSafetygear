@@ -5,6 +5,8 @@
   if menu_mobile == blank
     assign menu_mobile = menu
   endif
+
+  assign new_tab_menu_titles = section.settings.new_tab_menu_titles | split: ','
 -%}
 <menu-drawer id="MenuDrawer" class="menu-drawer drawer drawer--left z-1" hidden>
   <div class="fixed-overlay" aria-controls="MenuDrawer"></div>
@@ -19,6 +21,15 @@
                   assign enable_mega_menu = false
                   assign link_title_handle = link.title | handle
                   assign is_hl_item = false
+                  assign open_in_new_tab = false
+                  assign normalized_link_title = link.title | strip | downcase
+                  for new_tab_menu_title in new_tab_menu_titles
+                    assign normalized_new_tab_menu_title = new_tab_menu_title | strip | downcase
+                    if normalized_new_tab_menu_title != blank and normalized_new_tab_menu_title == normalized_link_title
+                      assign open_in_new_tab = true
+                      break
+                    endif
+                  endfor
                   for block in blocks
                     assign menu_title_handle = block.settings.menu_title | handle
                     if menu_title_handle == link_title_handle
@@ -52,6 +63,9 @@
                 {%- else -%}
                   <a
                     href="{{ link.url }}"
+                    {% if open_in_new_tab %}
+                      target="_blank" rel="noopener"
+                    {% endif %}
                     {% if is_hl_item and hl_link_color != blank and hl_link_color != 'rgba(0,0,0,0)' %}
                       style="--hl-link-color: {{ hl_link_color }};"
                     {% endif %}

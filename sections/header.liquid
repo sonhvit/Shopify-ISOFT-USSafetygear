@@ -288,7 +288,11 @@
   {%- if section.settings.menu != blank -%}
     <div class="header__bottom color-{{ section.settings.navigation_color_scheme }} relative page-width page-width--{{ section.settings.container }}">
       <div class="header__navigation section--padding hidden lg:flex justify-{{ section.settings.navigation_content_alignment }}">
-        {% render 'desktop-menu', menu: section.settings.menu, blocks: section.blocks %}
+        {% render 'desktop-menu',
+          menu: section.settings.menu,
+          blocks: section.blocks,
+          new_tab_menu_titles: section.settings.new_tab_menu_titles
+        %}
       </div>
     </div>
   {%- endif -%}
@@ -402,6 +406,12 @@
       "id": "menu_mobile",
       "label": "t:general.menu.mobile.label",
       "default": "main-menu"
+    },
+    {
+      "type": "textarea",
+      "id": "new_tab_menu_titles",
+      "label": "Level 1 menu links opening in a new tab",
+      "info": "Enter level 1 menu names separated by commas. Example: Brand, shoemobile, custom shop"
     },
     {
       "type": "select",

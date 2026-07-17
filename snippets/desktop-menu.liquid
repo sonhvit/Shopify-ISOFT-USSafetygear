@@ -1,10 +1,20 @@
+{%- assign new_tab_menu_titles = new_tab_menu_titles | split: ',' -%}
 <nav class="header__menu flex" role="navigation" aria-label="Primary">
   <ul class="flex flex-wrap">
     {%- for link in menu.links -%}
       {%- liquid
         assign enable_mega_menu = false
         assign is_hl_item = false
+        assign open_in_new_tab = false
         assign link_title_handle = link.title | handle
+        assign normalized_link_title = link.title | strip | downcase
+        for new_tab_menu_title in new_tab_menu_titles
+          assign normalized_new_tab_menu_title = new_tab_menu_title | strip | downcase
+          if normalized_new_tab_menu_title != blank and normalized_new_tab_menu_title == normalized_link_title
+            assign open_in_new_tab = true
+            break
+          endif
+        endfor
         for block in blocks
           assign menu_title_handle = block.settings.menu_title | handle
           if menu_title_handle == link_title_handle
@@ -159,6 +169,9 @@
           {%- else -%}
             <a
               href="{{ link.url }}"
+              {% if open_in_new_tab %}
+                target="_blank" rel="noopener"
+              {% endif %}
               class="menu__item flex relative z-2 font-navigation{% if is_hl_item %} hightlight-link hightlight-link--{{ hl_link_style }}{% endif %}"
             >
               {%- liquid
