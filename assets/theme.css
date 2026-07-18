@@ -8348,6 +8348,9 @@ body.search-template #MainContent,
     max-width: 4rem;
   }
 }
+#beacon-container{
+  display: none !important;
+}
 .klaviyo-form{
   padding-inline: 0 !important;
 }

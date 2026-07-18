@@ -38,8 +38,14 @@
                 assign item_image = item.banner_image.value
                 assign item_alt_image = item.banner_alt_image.value
                 assign item_title = item.banner_heading.value
-                assign item_filter_value = item_title | url_encode
-                assign item_link = collection.url | append: '?filter.p.product_type=' | append: item_filter_value
+                assign item_link = item.banner_link.value.url
+                if item_link == 'https://ussafetygear.com/collections/all'
+                  assign item_link = blank
+                endif
+                if item_link == blank and item_title != blank
+                  assign item_filter_value = item_title | url_encode
+                  assign item_link = collection.url | append: '?filter.p.product_type=' | append: item_filter_value
+                endif
                 assign button_label = item.button_label.value | default: 'Shop Now'
                 assign card_image_ratio = section.settings.image_ratio
 
@@ -56,7 +62,7 @@
                 <a
                   class="collection-slider-banner__card card-media card-media--auto-height card-media--content-bottom-left card-media--extra-small relative overflow-hidden hover-wrapper color-scheme-inverse mobile-color-scheme-inverse blocks-radius h-full block focus-inset"
                   style="--aspect-ratio: {{ card_image_ratio }};"
-                  {% if item_title != blank %}
+                  {% if item_link != blank %}
                     href="{{ item_link }}"
                   {% else %}
                     role="link" aria-disabled="true"
@@ -128,8 +134,14 @@
               assign item_image = item.banner_image.value
               assign item_alt_image = item.banner_alt_image.value
               assign item_title = item.banner_heading.value
-              assign item_filter_value = item_title | url_encode
-              assign item_link = collection.url | append: '?filter.p.product_type=' | append: item_filter_value
+              assign item_link = item.banner_link.value.url
+              if item_link == 'https://ussafetygear.com/collections/all'
+                assign item_link = blank
+              endif
+              if item_link == blank and item_title != blank
+                assign item_filter_value = item_title | url_encode
+                assign item_link = collection.url | append: '?filter.p.product_type=' | append: item_filter_value
+              endif
               assign button_label = item.button_label.value | default: 'Shop Now'
               assign card_image_ratio = section.settings.image_ratio
 
@@ -145,7 +157,7 @@
             <a
               class="collection-slider-banner__card card-media card-media--auto-height card-media--content-bottom-left card-media--extra-small relative overflow-hidden hover-wrapper color-scheme-inverse mobile-color-scheme-inverse blocks-radius block focus-inset"
               style="--aspect-ratio: {{ card_image_ratio }};"
-              {% if item_title != blank %}
+              {% if item_link != blank %}
                 href="{{ item_link }}"
               {% else %}
                 role="link" aria-disabled="true"

@@ -20,7 +20,7 @@
         -%}
         <motion-element class="block" data-motion="zoom-out-sm" data-motion-delay="{{ motion_delay }}">
           <picture
-            class="media-wrapper blocks-radius overflow-hidden"
+            class="media-wrapper overflow-hidden"
             style="--aspect-ratio: {{ image_ratio }};{% if image_mobile_ratio %}--aspect-ratio-mobile: {{ image_mobile_ratio }};{% endif %}"
           >
             {%- if block_image_mobile -%}
