@@ -1,11 +1,14 @@
 {%- liquid
   case block.type
     when 'promotion_banner'
-      assign promo_images = block.settings.promo_image_1 | append: ',' | append: block.settings.promo_image_2 | append: ',' | append: block.settings.promo_image_3 | append: ',' | append: block.settings.promo_image_4 | append: ',' | append: block.settings.promo_image_5
       assign has_promo = false
-      unless promo_images == ',,,,'
-        assign has_promo = true
-      endunless
+      for i in (1..10)
+        assign promo_image_key = 'promo_image_' | append: i
+        if block.settings[promo_image_key] != blank
+          assign has_promo = true
+          break
+        endif
+      endfor
     when 'custom_card'
       assign promo_images = block.settings.promo_image_1 | append: ',' | append: block.settings.promo_image_2 | append: ',' | append: block.settings.promo_image_3 | append: ',' | append: block.settings.promo_image_4 | append: ',' | append: block.settings.promo_image_5
       assign has_promo = false
@@ -197,7 +200,7 @@
         {%- when 'promotion_banner' -%}
           {%- if has_promo and enable_mega_menu -%}
             <div class="menu-drawer__promotions mega-menu__promotions-grid gap-4">
-              {%- for i in (1..5) -%}
+              {%- for i in (1..10) -%}
                 {%- liquid
                   assign promo_image = 'promo_image_' | append: i
                   assign promo_mobile_image = 'promo_mobile_image_' | append: i

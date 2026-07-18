@@ -4,11 +4,14 @@
   assign promotion_columns = block.settings.promotion_columns
   case block.type
     when 'promotion_banner'
-      assign promo_images = block.settings.promo_image_1 | append: ',' | append: block.settings.promo_image_2 | append: ',' | append: block.settings.promo_image_3 | append: ',' | append: block.settings.promo_image_4 | append: ',' | append: block.settings.promo_image_5
       assign has_promo = false
-      unless promo_images == ',,,,'
-        assign has_promo = true
-      endunless
+      for i in (1..10)
+        assign promo_image_key = 'promo_image_' | append: i
+        if block.settings[promo_image_key] != blank
+          assign has_promo = true
+          break
+        endif
+      endfor
       if block.settings.promotion_position == 'left'
         assign mega_menu_wrapper_class = ' mega-menu--reverse-column flex-row-reverse'
       endif
@@ -296,7 +299,7 @@
           {%- when 'promotion_banner' -%}
             {%- if has_promo -%}
               <div class="mega-menu__promotions mega-menu__promotions-grid mega-menu__column{% if link.links == blank %} no-links{% endif %}">
-                {%- for i in (1..5) -%}
+                {%- for i in (1..10) -%}
                   {%- liquid
                     assign promo_image = 'promo_image_' | append: i
                     assign ads_id = 'ads_id_' | append: i
