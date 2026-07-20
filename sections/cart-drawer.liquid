@@ -846,11 +846,11 @@
                 <div class="tax-note text-sm-extra">
                   {%- liquid
                     if cart.taxes_included and shop.shipping_policy.body != blank
-                      echo 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url
+                      echo 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: "/pages/shipping-returns"
                     elsif cart.taxes_included
                       echo 'sections.cart.taxes_included_but_shipping_at_checkout' | t
                     elsif shop.shipping_policy.body != blank
-                      echo 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url
+                      echo 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: "/pages/shipping-returns"
                     else
                       echo 'sections.cart.taxes_and_shipping_at_checkout' | t
                     endif

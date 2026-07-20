@@ -8421,3 +8421,10 @@ body.search-template #MainContent,
 .klaviyo-form input[name="phone-number"] {
   padding-left: 8rem !important;
 }
+.klaviyo-form-WK9Dbm button{
+  background-color: #1d3160 !important;
+  color: #fff !important;
+}
+.klaviyo-form-WK9Dbm button:hover{
+  background-color: #C79B36 !important;
+}
