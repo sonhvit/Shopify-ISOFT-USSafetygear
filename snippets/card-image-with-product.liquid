@@ -29,6 +29,7 @@
   assign alt = image.alt | default: shop.name | escape
 
   assign featured_media = product.featured_media
+  assign product_title = product_title | default: product.title
 
   assign motion_delay = 50
 
@@ -45,7 +46,7 @@
   <a
     href="{{ product.url }}"
     class="card-media--link focus-inset"
-    aria-label="{{ product.title | escape }}"
+    aria-label="{{ product_title | escape }}"
   >
 {%- endif -%}
 <div class="pr-img-card btn-hover-wrapper">
@@ -118,7 +119,7 @@
         <div class="pr-img-card__product product-card product-card--list flex items-center gap-3">
           <div
             class="product-card__image blocks-radius-md shrink-0"
-            aria-label="{{ product.title | escape }}"
+            aria-label="{{ product_title | escape }}"
             tabindex="-1"
           >
             <div
@@ -147,7 +148,7 @@
           </div>
           <div class="product-card__info flex-1">
             <p class="product-card__title text-pcard-title text-limit-1-line m-0">
-              {{- product.title -}}
+              {{- product_title -}}
             </p>
             {% render 'price', product: product %}
           </div>

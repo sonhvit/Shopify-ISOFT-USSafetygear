@@ -48,7 +48,12 @@
             style="color: {{ block.settings.text_color }};--color-foreground:{{ rgb }};--color-link:{{ rgb }};--color-button-text:{{ rgb }}"
           >
             {%- if block.settings.heading != blank or block.settings.description != blank -%}
-              <product-promotion-alert class="product__promotion-alert relative flex items-center gap-3 blocks-radius">
+              <product-promotion-alert
+                class="product__promotion-alert relative flex items-center gap-3 blocks-radius"
+                {% if block.settings.background_color != blank %}
+                  style="background-color: {{ block.settings.background_color }};"
+                {% endif %}
+              >
                 {%- if block.settings.icon != 'none' -%}
                   <div class="product__promotion-alert-icon flex shrink-0">
                     {%- render 'icons', icon: block.settings.icon, size: 'extra-large' -%}
@@ -116,7 +121,7 @@
                 {{ 'products.product.include_taxes' | t }}
               {%- endif -%}
               {%- if shop.shipping_policy.body != blank -%}
-                {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                {{ 'products.product.shipping_policy_html' | t: link: "/pages/shipping-returns"}}
               {%- endif -%}
             </div>
             {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}

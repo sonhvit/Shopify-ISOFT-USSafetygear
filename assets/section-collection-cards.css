@@ -11,7 +11,7 @@
   transition: all var(--animation-default);
 }
 .collection-item:hover {
-  border-color: rgb(var(--color-foreground));
+  border-color: #A82E48;
 }
 .collection-item__wrapper {
   padding: 1.2rem;

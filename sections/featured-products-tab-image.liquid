@@ -102,6 +102,7 @@
                       -%}
                       {%- render 'card-image-with-product',
                         product: product,
+                        product_title: block.settings.product_1_title,
                         image: product_showcase_image,
                         image_ratio: image_ratio,
                         heading: product_showcase_title,
@@ -147,6 +148,7 @@
                       -%}
                       {%- render 'card-image-with-product',
                         product: product,
+                        product_title: block.settings.product_2_title,
                         image: product_showcase_image,
                         image_ratio: image_ratio,
                         heading: product_showcase_title,
@@ -584,6 +586,12 @@
           "label": "Product"
         },
         {
+          "type": "text",
+          "id": "product_1_title",
+          "label": "Title override",
+          "info": "Leave blank to use the product title."
+        },
+        {
           "type": "image_picker",
           "id": "product_1_image",
           "label": "Image override"
@@ -601,6 +609,12 @@
           "type": "product",
           "id": "product_2",
           "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "product_2_title",
+          "label": "Title override",
+          "info": "Leave blank to use the product title."
         },
         {
           "type": "image_picker",
