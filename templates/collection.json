@@ -18,6 +18,77 @@
         "padding_bottom": 20
       }
     },
+    "rich_text_gAWHLJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_RKN8Fw": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ collection.title }}",
+            "heading_tag": "h1",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2"
+          }
+        },
+        "text_hxDHNY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ collection.metafields.custom.collection_sub_title | metafield_tag }}</p>",
+            "text_size": "text-base",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_RKN8Fw",
+        "text_hxDHNY"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
+        "content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 36,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "collection_slider_banner_hxEmNp": {
+      "type": "collection-slider-banner",
+      "name": "Collection slider banner",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "display_mode": "slider",
+        "image_ratio": "3/2",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": "1",
+        "column_gap": "small",
+        "row_gap": "medium",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 50
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "blocks": {
@@ -35,13 +106,15 @@
       "block_order": [
         "collection_info_zUNyKV"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
+        "ads_id": "",
         "container": "fixed",
         "color_scheme": "scheme-13",
         "text_alignment": "left",
         "show_collection_image": true,
-        "image_overlay_opacity": 0,
+        "image_overlay_opacity": 20,
         "image_position": "right",
         "image_height": "extra-small",
         "enable_parallax": false,
@@ -57,78 +130,91 @@
         "featured_collection_L9N3Tg": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_gxdACj": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_jQXtir": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_4H9LzM": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_jMA9xm": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_J6hxH9": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_HwzPfD": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_GW3kAL": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_J6V8fx": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_ngQwMi": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_rectC8": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_fdY4zQ": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         },
         "featured_collection_c7kFW3": {
           "type": "featured_collection",
           "settings": {
+            "collection": "",
             "title": ""
           }
         }
@@ -148,6 +234,7 @@
         "featured_collection_fdY4zQ",
         "featured_collection_c7kFW3"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "container": "fixed",
@@ -167,7 +254,19 @@
         "button_link": "",
         "button_style": "btn--underline",
         "button_icon": "none",
+        "card_color_scheme": "",
+        "card_style": "standard",
+        "card_heading_size": "text-base",
+        "card_heading_tag": "h3",
+        "source": "blocks",
+        "card_image_ratio": "1/1",
+        "card_image_width": "medium",
+        "card_image_padding": "none",
         "rounded_card_image": true,
+        "mobile_layout": "vertical",
+        "carousel_item_size": "auto",
+        "columns_desktop": 6,
+        "carousel_control_color_scheme": "",
         "padding_top": 20,
         "padding_bottom": 20,
         "show_section_divider": false,
@@ -181,16 +280,21 @@
           "type": "image_card",
           "settings": {
             "color_scheme": "scheme-inverse",
+            "ads_id": "spot33",
             "image_position": 1,
+            "card_type": "shoemobile",
+            "image": "shopify://shop_images/USSG-Collection-DefaultAd-Shoemobile-488x638.jpg",
             "image_ratio": "adapt",
-            "image_overlay_opacity": 20,
+            "natural_image_height": true,
+            "image_overlay_opacity": 0,
             "content_position": "split-top-subheading",
             "content_alignment": "center",
             "content_spacing": "extra-small",
             "content_gap": "tight",
-            "subheading": "Puffers",
+            "card_link": "shopify://pages/shoemobile",
+            "subheading": "Shoemobile",
             "subheading_style": "thick-border",
-            "heading": "Saving $30 for Pre-Order",
+            "heading": "The Boot Store That Comes To You",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
@@ -200,7 +304,41 @@
             "heading_size_custom": 18,
             "description": "",
             "text_size": "text-base",
-            "button_label": "Shop Now",
+            "button_label": "Request a  Shoemobile Visit",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_E6TejU": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "ads_id": "",
+            "image_position": 1,
+            "card_type": "custom_shop",
+            "image": "shopify://shop_images/USSG-Collection-DefaultAd-CustomShop-488x638.jpg",
+            "image_ratio": "adapt",
+            "natural_image_height": true,
+            "image_overlay_opacity": 0,
+            "content_position": "bottom-center",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "https://ussgcustomshop.com/ussg_custom_shop/shop/home",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Great Crews Deserve Great Gear",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Explore Our Custom Shop Now",
             "button_style": "btn--primary",
             "button_icon": "none",
             "enable_preload_image": false
@@ -208,7 +346,8 @@
         }
       },
       "block_order": [
-        "image_card_mwkyJy"
+        "image_card_mwkyJy",
+        "image_card_E6TejU"
       ],
       "custom_css": [],
       "settings": {
@@ -221,7 +360,7 @@
         "pagination": "number",
         "enable_filtering": true,
         "enable_color_swatch": true,
-        "filter_type": "vertical",
+        "filter_type": "drawer",
         "expand_filter_groups": "Color,Size,Brand,Price,Availability,Product type",
         "enable_sorting": true,
         "enable_layout_switching": true,
@@ -238,7 +377,8 @@
         "heading_fxD83T": {
           "type": "heading",
           "settings": {
-            "heading": "About Mason",
+            "heading": "{{ collection.metafields.custom.collection_description_title.value }}",
+            "heading_tag": "h2",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
@@ -249,7 +389,7 @@
         "text_pHWpEP": {
           "type": "text",
           "settings": {
-            "text": "<p>From classic cotton and wool to advanced performance fabrics like spandex blends and moisture-wicking synthetics, each material brings its own advantages—softness, durability, breathability, or stretch. These choices shape not just how clothing feels, but how it functions in daily life.<br/></p><p>Selecting apparel goes beyond chasing trends; it’s about curating a wardrobe that reflects your personality while balancing comfort, practicality, and style. Minimalist pieces offer clean elegance, while retro prints, bold patterns, or textured knits speak to a more expressive taste. Whether you’re drawn to timeless staples or eye-catching statements, understanding fabric and form helps you choose clothing, hats, and socks that match your lifestyle and individuality.</p>",
+            "text": "{{ collection.description }}",
             "text_size": "text-base",
             "text_line_limit": "5-lines",
             "button_style": "btn--underline",
@@ -268,9 +408,35 @@
         "content_spacing": "standard",
         "content_alignment": "left",
         "padding_top": 60,
-        "padding_bottom": 0,
+        "padding_bottom": 50,
         "show_section_divider": false,
         "divider_width": "fixed"
+      }
+    },
+    "collection_buttons_with_icon_pVWWf9": {
+      "type": "collection-buttons-with-icon",
+      "name": "Collection List Buttons",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Explore Popular Search",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "item_alignment": "left",
+        "item_button_style": "btn--icon",
+        "item_button_font": "button",
+        "enable_slider": true,
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 50
       }
     },
     "buttons_with_icon_CrE8jr": {
@@ -279,69 +445,87 @@
         "button_item_rrmm4C": {
           "type": "button_item",
           "settings": {
-            "button_label": "Eco knit Cardigan",
-            "icon": "none"
+            "button_label": "AED'S",
+            "button_link": "shopify://collections/aeds",
+            "icon": "check"
+          }
+        },
+        "button_item_EktpM7": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "3M",
+            "button_link": "shopify://collections/3m",
+            "icon": "check"
           }
         },
         "button_item_kwhYtB": {
           "type": "button_item",
           "settings": {
-            "button_label": "Cashmere Sweater",
+            "button_label": "Lighting",
+            "button_link": "shopify://collections/lighting",
             "icon": "check"
           }
         },
         "button_item_4rpdDi": {
           "type": "button_item",
           "settings": {
-            "button_label": "Dresses & Skirts",
+            "button_label": "Adapters",
+            "button_link": "shopify://collections/adapters",
             "icon": "check"
           }
         },
         "button_item_dczPRz": {
           "type": "button_item",
           "settings": {
-            "button_label": "Cold Weather",
+            "button_label": "6'' Work Boots",
+            "button_link": "shopify://collections/6-boots",
             "icon": "check"
           }
         },
         "button_item_ENTfdn": {
           "type": "button_item",
           "settings": {
-            "button_label": "Cold Weather",
+            "button_label": "Ariat",
+            "button_link": "shopify://collections/ariat-international",
             "icon": "check"
           }
         },
         "button_item_e3EM6n": {
           "type": "button_item",
           "settings": {
-            "button_label": "Accessories",
+            "button_label": "Cooling",
+            "button_link": "shopify://collections/cooling",
             "icon": "check"
           }
         },
         "button_item_m9cPY4": {
           "type": "button_item",
           "settings": {
-            "button_label": "Fleece Jackets",
+            "button_label": "Bandages",
+            "button_link": "shopify://collections/bandages",
             "icon": "check"
           }
         },
         "button_item_XAqxNN": {
           "type": "button_item",
           "settings": {
-            "button_label": "Shorts",
+            "button_label": "Barricade Tape",
+            "button_link": "shopify://collections/barricade-tape-flags",
             "icon": "check"
           }
         },
         "button_item_Cmxy7E": {
           "type": "button_item",
           "settings": {
-            "button_label": "Graphic Tees",
+            "button_label": "Business Casual",
+            "button_link": "shopify://collections/business-casual",
             "icon": "check"
           }
         }
       },
       "block_order": [
         "button_item_rrmm4C",
+        "button_item_EktpM7",
         "button_item_kwhYtB",
         "button_item_4rpdDi",
         "button_item_dczPRz",
@@ -351,6 +535,7 @@
         "button_item_XAqxNN",
         "button_item_Cmxy7E"
       ],
+      "disabled": true,
       "settings": {
         "container": "fixed",
         "color_scheme": "scheme-12",
@@ -452,6 +637,7 @@
         "text_iHjctx",
         "text_VVGaDE"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-3",
         "direction": "left",
@@ -466,10 +652,13 @@
   },
   "order": [
     "breadcrumbs_Gxg9wp",
+    "rich_text_gAWHLJ",
+    "collection_slider_banner_hxEmNp",
     "banner",
     "collection_list_slider_6qbNfj",
     "product-grid",
     "rich_text_LBBELW",
+    "collection_buttons_with_icon_pVWWf9",
     "buttons_with_icon_CrE8jr",
     "scrolling_promotion_qyMknd"
   ]

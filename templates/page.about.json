@@ -28,6 +28,25 @@
         "padding_bottom": 28
       }
     },
+    "video_pfzcF9": {
+      "type": "video",
+      "name": "t:sections.video.name",
+      "settings": {
+        "container": "fixed",
+        "video": "shopify://files/videos/USSG-v2-15-presentation.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_ratio": "adapt",
+        "description": "",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
     "rich_text_kyFd96": {
       "type": "rich-text",
       "blocks": {
@@ -40,7 +59,8 @@
         "heading_Y9MMVQ": {
           "type": "heading",
           "settings": {
-            "heading": "California's original <em>lifestyle brand</em> dedicated to <em>quality, durability</em> and <em>good looks.</em>",
+            "heading": "Built to Protect the People Who Build America",
+            "heading_tag": "h1",
             "highlight_style": "thick_underline",
             "highlight_font_style": "normal",
             "highlight_style_color": "#ffe093",
@@ -51,7 +71,7 @@
         "text_7h6LaE": {
           "type": "text",
           "settings": {
-            "text": "<p>Explore a gathering of curated, inspired content from a community of ocean lovers, adventurers & activists. For many, design is about organizing our surroundings with beauty. A little broader, it is also about the idea of the good life – that the home is both functional, but also gives peace to recharge. </p>",
+            "text": "<p>For more than 35 years, US Safety Gear has helped businesses create safer workplaces with trusted safety equipment, PPE, and workplace solutions. Since 1989, we've grown into a trusted partner for companies across the country, backed by industry-leading brands, experts, and a commitment to exceptional service. From small businesses to large organizations, including serving as the preferred provider of Game Day Apparel for the Cleveland Guardians, we help customers find the right solutions to keep their teams protected, productive, and ready for the job.</p>",
             "text_size": "text-base",
             "text_line_limit": "none",
             "button_style": "btn--underline",
@@ -84,6 +104,7 @@
       "blocks": {
         "badge_AdmYNg": {
           "type": "badge",
+          "disabled": true,
           "settings": {
             "color_scheme": "scheme-3",
             "text": "Out clothing is designed for adventure -",
@@ -93,13 +114,13 @@
         "subheading_t37PND": {
           "type": "subheading",
           "settings": {
-            "subheading": "In the winter of 1954"
+            "subheading": "STOP IN. GEAR UP."
           }
         },
         "heading_yrtiRH": {
           "type": "heading",
           "settings": {
-            "heading": "Make truly exceptional products",
+            "heading": "Find a US Safety Gear Location",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
@@ -110,14 +131,15 @@
         "text_DycqGr": {
           "type": "text",
           "settings": {
-            "text": "<p>From rugged coastlines to open roads and hidden trails, our clothing is built to move with you—wherever life takes you. We combine timeless style with durable comfort, creating pieces that don’t just look good, but keep up with your every step. Whether you’re chasing waves, climbing peaks, or just enjoying the everyday</p>",
+            "text": "<p>Whether you prefer to shop in person, get expert product recommendations, or speak with a knowledgeable member of our team, we're here to help. With multiple retail locations across Ohio, US Safety Gear provides convenient access to the safety products, workwear, and PPE your team needs. Find the location nearest you and experience the personalized service that's made us a trusted safety partner for more than 35 years.</p>",
             "subtext_color": true
           }
         },
         "button_A8M4Bm": {
           "type": "button",
           "settings": {
-            "button_label": "Shop Now",
+            "button_label": "Find a Location",
+            "button_link": "shopify://pages/store-locator",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -138,6 +160,7 @@
       "settings": {
         "container": "fixed",
         "color_scheme": "",
+        "image": "shopify://shop_images/USSG-AboutUs-StopInGearUp.jpg",
         "image_position": "left",
         "image_width": 50,
         "desktop_content_position": "center",
@@ -155,13 +178,13 @@
         "subheading_GPjXQt": {
           "type": "subheading",
           "settings": {
-            "subheading": "Quality, Durability & Good Looks"
+            "subheading": "SHOEMOBILE SERVICE"
           }
         },
         "heading_dVxMFf": {
           "type": "heading",
           "settings": {
-            "heading": "Our clothing is designed for adventure",
+            "heading": "We’ll Bring the Boot Store to You",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
@@ -172,14 +195,15 @@
         "text_7geiy3": {
           "type": "text",
           "settings": {
-            "text": "<p>From winding coastal roads to quiet forest trails, our clothing is made for the journey. Built with quality fabrics and thoughtful design, each piece combines everyday comfort with outdoor durability. Whether you’re chasing waves, exploring new towns, or unwinding by the fire</p>",
+            "text": "<p>Whether you're outfitting a small crew or an entire workforce, our Shoemobile makes it easy to provide employees with properly fitted work boots, all without leaving the jobsite. We bring a wide selection of trusted footwear brands directly to your location, helping workers find the right fit while minimizing downtime. It's a convenient, efficient solution that keeps your team comfortable, protected, and ready to work.</p>",
             "subtext_color": true
           }
         },
         "button_gUa4Ae": {
           "type": "button",
           "settings": {
-            "button_label": "Shop Now",
+            "button_label": "Book The Shoemobile Today",
+            "button_link": "shopify://pages/shoemobile",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -197,6 +221,7 @@
       "settings": {
         "container": "fixed",
         "color_scheme": "",
+        "image": "shopify://shop_images/USSG-AboutUs-ShoemobileService.jpg",
         "image_position": "right",
         "image_width": 50,
         "desktop_content_position": "center",
@@ -208,74 +233,177 @@
         "padding_bottom": 60
       }
     },
-    "brand_logos_WeyqiQ": {
-      "type": "brand-logos",
+    "image_with_text_pTwe34": {
+      "type": "image-with-text",
       "blocks": {
-        "logo_ne4zeV": {
-          "type": "logo",
-          "settings": {}
+        "badge_VCibe6": {
+          "type": "badge",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-3",
+            "text": "Out clothing is designed for adventure -",
+            "position_mobile": "right"
+          }
         },
-        "logo_h4bDin": {
-          "type": "logo",
-          "settings": {}
+        "subheading_KYmhgX": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "CUSTOM BRANDING"
+          }
         },
-        "logo_WUqQx4": {
-          "type": "logo",
-          "settings": {}
+        "heading_6crbBc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Make Your Brand Part of the Uniform",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
+          }
         },
-        "logo_cp6Etj": {
-          "type": "logo",
-          "settings": {}
+        "text_3ktAE4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Turn everyday workwear and safety gear into a professional representation of your business with the US Safety Gear Custom Shop. From embroidered apparel and screen-printed uniforms to branded PPE and promotional products, we help companies create a consistent, professional look that reinforces their brand on every jobsite. Whether you're outfitting a small team or managing a company-wide program, our experts make it easy to customize the products your workforce already relies on.</p>",
+            "subtext_color": true
+          }
         },
-        "logo_6CkDEc": {
-          "type": "logo",
-          "settings": {}
-        },
-        "logo_YTUgaE": {
-          "type": "logo",
-          "settings": {}
+        "button_AwTD4j": {
+          "type": "button",
+          "settings": {
+            "button_label": "Customize Your Gear",
+            "button_link": "https://ussgcustomshop.com/ussg_custom_shop/shop/home",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
         }
       },
       "block_order": [
-        "logo_ne4zeV",
-        "logo_h4bDin",
-        "logo_WUqQx4",
-        "logo_cp6Etj",
-        "logo_6CkDEc",
-        "logo_YTUgaE"
+        "badge_VCibe6",
+        "subheading_KYmhgX",
+        "heading_6crbBc",
+        "text_3ktAE4",
+        "button_AwTD4j"
+      ],
+      "custom_css": [
+        ".image-with-text__content {max-width: 52rem;}",
+        ".image-with-text__badge .badge__icon {max-width: 8.8rem;}",
+        "@media (max-width: 767.98px) {.image-with-text__badge .badge__icon {max-width: 4.5rem; }}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "image": "shopify://shop_images/USSG-AboutUs-CustomBranding.jpg",
+        "image_position": "left",
+        "image_width": 50,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "inherit",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "brand_logos_WeyqiQ": {
+      "type": "brand-logos",
+      "blocks": {
+        "logo_4pF8if": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/USSG-VendorPaidAds-Spot_16.jpg",
+            "image_link": "https://ussafetygear.com/collections/gateway-safety",
+            "title": "Gateway Safety",
+            "ads_id": "Spot16-brand"
+          }
+        },
+        "logo_gEARHe": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/USSG-VendorPaidAds-Spot_17.jpg",
+            "image_link": "https://ussafetygear.com/collections/ariat-international",
+            "title": "Ariat",
+            "ads_id": "Spot17-brand"
+          }
+        },
+        "logo_8bxahE": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/USSG-VendorPaidAds-Spot_18.jpg",
+            "image_link": "https://ussafetygear.com/collections/studson",
+            "title": "Studson",
+            "ads_id": "Spot18-brand"
+          }
+        },
+        "logo_dbqq7n": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/USSG-VendorPaidAds-Spot_19.jpg",
+            "image_link": "https://ussafetygear.com/collections/honeywell",
+            "title": "Honeywell",
+            "ads_id": "Spot19-brand"
+          }
+        },
+        "logo_hpkmgr": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/USSG-VendorPaidAds-Spot_20.jpg",
+            "image_link": "https://ussafetygear.com/collections/3m-safety-products",
+            "title": "3M",
+            "ads_id": "Spot20-brand"
+          }
+        },
+        "logo_8EjdFm": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/USSG-VendorPaidAds-Spot_21.jpg",
+            "image_link": "https://ussafetygear.com/collections/french-creek",
+            "title": "French Creek",
+            "ads_id": "Spot21-brand"
+          }
+        }
+      },
+      "block_order": [
+        "logo_4pF8if",
+        "logo_gEARHe",
+        "logo_8bxahE",
+        "logo_dbqq7n",
+        "logo_hpkmgr",
+        "logo_8EjdFm"
       ],
       "custom_css": [
         ".section__wrapper {max-width: 1140px; margin: 0 auto;}"
       ],
       "settings": {
-        "container": "fixed",
+        "container": "full",
         "color_scheme": "",
         "section_header_alignment": "center",
         "section_header_alignment_mobile": "inherit",
-        "subheading": "Featured Brands",
-        "heading": "",
+        "subheading": "",
+        "heading": "FEATURED BRANDS",
         "highlight_style": "none",
         "highlight_font_style": "italic",
         "highlight_style_color": "",
         "highlight_text_color": "",
-        "heading_size": "h5",
+        "heading_size": "h1",
         "description": "",
         "text_size": "text-sm",
         "button_label": "",
         "button_link": "",
         "button_style": "btn--underline",
         "button_icon": "none",
-        "image_padding": "none",
-        "image_width": "large",
+        "image_padding": "small",
+        "image_width": "full",
         "columns_desktop": 6,
-        "column_gap": "large",
+        "column_gap": "medium",
         "row_gap": "inherit",
-        "grid_bordered": false,
+        "grid_bordered": true,
         "columns_mobile": "3",
         "swipe_on_mobile": true,
         "padding_top": 60,
         "padding_bottom": 60,
-        "show_section_divider": true,
+        "show_section_divider": false,
         "divider_width": "fixed"
       }
     },
@@ -288,14 +416,15 @@
             "icon": "chat",
             "max_width": 40,
             "max_width_mb": 40,
-            "title": "Organic Cotton",
+            "title": "Built on Experience",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "h4",
+            "heading_tag": "h3",
             "heading_font": "heading",
-            "text": "<p>Currently, 82% feature organic or recycled materials</p>",
+            "text": "<p>35+ years helping businesses create safer workplaces.</p>",
             "text_size": "text-base",
             "button_label": "",
             "button_link": "",
@@ -309,14 +438,15 @@
             "icon": "phone",
             "max_width": 40,
             "max_width_mb": 40,
-            "title": "Life Cycle",
+            "title": "Committed to Service",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "h4",
+            "heading_tag": "h3",
             "heading_font": "heading",
-            "text": "<p>Our Repairs Program revives beloved products, keeping them in action.</p>",
+            "text": "<p>Expert guidance and dependable support for every order.</p>",
             "text_size": "text-base",
             "button_label": "",
             "button_link": "",
@@ -330,14 +460,15 @@
             "icon": "paperplane",
             "max_width": 40,
             "max_width_mb": 40,
-            "title": "Recycle Bags",
+            "title": "Ready for Any Job",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "h4",
+            "heading_tag": "h3",
             "heading_font": "heading",
-            "text": "<p>Orders ship in compostable poly mailers and recycled corrugate</p>",
+            "text": "<p>Trusted products and workplace solutions for teams of every size.</p>",
             "text_size": "text-base",
             "button_label": "",
             "button_link": "",
@@ -358,7 +489,7 @@
         "section_header_alignment": "left",
         "section_header_alignment_mobile": "center",
         "subheading": "",
-        "heading": "Today Quality, Durability & Good Looks",
+        "heading": "Why US Safety Gear?",
         "highlight_style": "none",
         "highlight_font_style": "italic",
         "highlight_style_color": "",
@@ -393,7 +524,7 @@
         "button_item_Yx9Wey": {
           "type": "button_item",
           "settings": {
-            "button_label": "Moisture wicking",
+            "button_label": "Construction",
             "button_link": "",
             "icon": "check"
           }
@@ -401,7 +532,7 @@
         "button_item_QbPF98": {
           "type": "button_item",
           "settings": {
-            "button_label": "Quick dry",
+            "button_label": "Industrial",
             "button_link": "",
             "icon": "check"
           }
@@ -409,7 +540,7 @@
         "button_item_MywPDC": {
           "type": "button_item",
           "settings": {
-            "button_label": "Safe for ocean",
+            "button_label": "Manufacturing",
             "button_link": "",
             "icon": "check"
           }
@@ -417,7 +548,31 @@
         "button_item_WnHYGy": {
           "type": "button_item",
           "settings": {
-            "button_label": "Matte finish fabric",
+            "button_label": "Electrical",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_VPgPyf": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Welding",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_YJzFAc": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Warehouse",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_KMExMW": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Roofing",
             "button_link": "",
             "icon": "check"
           }
@@ -427,7 +582,10 @@
         "button_item_Yx9Wey",
         "button_item_QbPF98",
         "button_item_MywPDC",
-        "button_item_WnHYGy"
+        "button_item_WnHYGy",
+        "button_item_VPgPyf",
+        "button_item_YJzFAc",
+        "button_item_KMExMW"
       ],
       "custom_css": [
         ".rich-text__heading {max-width: 88rem;}",
@@ -439,7 +597,7 @@
         "section_header_alignment": "center",
         "section_header_alignment_mobile": "inherit",
         "subheading": "",
-        "heading": "Making the world a more colourful place with our everyday essentials.",
+        "heading": "Built for the People Who Get the Job Done",
         "highlight_style": "none",
         "highlight_font_style": "italic",
         "highlight_style_color": "",
@@ -447,6 +605,7 @@
         "heading_size": "h1",
         "item_alignment": "center",
         "item_button_style": "btn--icon",
+        "item_button_font": "button",
         "enable_slider": true,
         "swipe_on_mobile": true,
         "show_section_divider": false,
@@ -461,15 +620,17 @@
         "column_dVBPfL": {
           "type": "column",
           "settings": {
-            "title": "Considered design",
+            "image": "shopify://shop_images/USSG-AboutUs-35YearsofExperience.jpg",
+            "title": "35+ Years of Experience",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "h4",
-            "text": "<p>Crafted with care and intention, this piece blends modern aesthetics with timeless comfort—perfect for any season.</p>",
+            "text": "<p>Since 1989, we've helped businesses create safer workplaces with trusted products, knowledgeable service, and solutions that stand the test of time.</p>",
             "text_size": "text-base",
-            "button_label": "Explore Now",
+            "button_label": "Shop Safety Gear",
+            "button_link": "",
             "button_style": "btn--plain",
             "button_icon": "caret-right"
           }
@@ -477,15 +638,17 @@
         "column_YcY7Q9": {
           "type": "column",
           "settings": {
-            "title": "100% Cotton",
+            "image": "shopify://shop_images/USSG-AboutUs-MoreThanPPE.jpg",
+            "title": "More Than PPE",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "h4",
-            "text": "<p>Made from soft, breathable 100% cotton, this garment delivers all-day comfort and a natural feel against the skin.</p>",
+            "text": "<p>From custom branding and on-site work boot fittings to gas detector service and safety vending programs, we deliver solutions that go beyond the products you buy.</p>",
             "text_size": "text-base",
-            "button_label": "Explore Now",
+            "button_label": "Explore Our Products",
+            "button_link": "",
             "button_style": "btn--plain",
             "button_icon": "caret-right"
           }
@@ -493,15 +656,17 @@
         "column_b87h4P": {
           "type": "column",
           "settings": {
-            "title": "Tailored Protection",
+            "image": "shopify://shop_images/USSG-AboutUs-BuiltAroundYourBusiness.jpg",
+            "title": "Built Around Your Business",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "h4",
-            "text": "<p>Designed for outdoor adventures, this hoodie offers lightweight coverage and flexibility, keeping you protected in style.</p>",
+            "text": "<p>Whether you're outfitting a single crew or managing safety across multiple locations, our team is committed to making workplace safety simpler, more efficient, and more dependable.</p>",
             "text_size": "text-base",
-            "button_label": "Explore Now",
+            "button_label": "Shop Now",
+            "button_link": "",
             "button_style": "btn--plain",
             "button_icon": "caret-right"
           }
@@ -550,6 +715,7 @@
         "image_JcCxx8": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/USSG-AboutUs-Scroller-Workwear.jpg",
             "image_height": 80,
             "image_rounded": false,
             "image_link": "",
@@ -560,7 +726,7 @@
           "type": "text",
           "settings": {
             "text_link": "",
-            "text": "New Season Essential",
+            "text": "Workwear",
             "text_size": "h3",
             "text_opacity": 100,
             "use_custom_color": false,
@@ -570,6 +736,7 @@
         "image_9wrjFV": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/USSG-AboutUs-Scroller-Footwear.jpg",
             "image_height": 80,
             "image_rounded": false,
             "image_link": "",
@@ -580,7 +747,7 @@
           "type": "text",
           "settings": {
             "text_link": "",
-            "text": "Designed for adventure",
+            "text": "Footwear",
             "text_size": "h3",
             "text_opacity": 100,
             "use_custom_color": false,
@@ -590,6 +757,7 @@
         "image_pm96Nw": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/USSG-AboutUs-Scroller-FallProtection.jpg",
             "image_height": 80,
             "image_rounded": false,
             "image_link": "",
@@ -600,7 +768,7 @@
           "type": "text",
           "settings": {
             "text_link": "",
-            "text": "Make it yours",
+            "text": "Fall Protection",
             "text_size": "h3",
             "text_opacity": 100,
             "use_custom_color": false,
@@ -610,6 +778,7 @@
         "image_rALqXH": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/USSG-AboutUs-Scroller-FirstAid.jpg",
             "image_height": 80,
             "image_rounded": false,
             "image_link": "",
@@ -620,7 +789,7 @@
           "type": "text",
           "settings": {
             "text_link": "",
-            "text": "Winter must-haves",
+            "text": "First Aid",
             "text_size": "h3",
             "text_opacity": 100,
             "use_custom_color": false,
@@ -630,6 +799,7 @@
         "image_fgHVpz": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/USSG-AboutUs-Scroller-Gloves.jpg",
             "image_height": 80,
             "image_rounded": false,
             "image_link": "",
@@ -640,7 +810,133 @@
           "type": "text",
           "settings": {
             "text_link": "",
-            "text": "Summer must-haves",
+            "text": "Gloves",
+            "text_size": "h3",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "image_AEMDBn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/USSG-AboutUs-Scroller-Hi-Vis.jpg",
+            "image_height": 80,
+            "image_rounded": false,
+            "image_link": "",
+            "image_height_mobile": 60
+          }
+        },
+        "text_4NHUBx": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "Hi-Vis",
+            "text_size": "h3",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "image_kaxpUi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/USSG-AboutUs-Scroller-EyeProtection.jpg",
+            "image_height": 80,
+            "image_rounded": false,
+            "image_link": "",
+            "image_height_mobile": 60
+          }
+        },
+        "text_TabYxL": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "Eye Protection",
+            "text_size": "h3",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "image_WWBcU9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/USSG-AboutUs-Scroller-SafetyVests.jpg",
+            "image_height": 80,
+            "image_rounded": false,
+            "image_link": "",
+            "image_height_mobile": 60
+          }
+        },
+        "text_Rb9eLJ": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "Safety Vests",
+            "text_size": "h3",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "image_VNMFRg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/USSG-AboutUs-Scroller-HardHats.jpg",
+            "image_height": 80,
+            "image_rounded": false,
+            "image_link": "",
+            "image_height_mobile": 60
+          }
+        },
+        "text_PKibDd": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "Hard Hats",
+            "text_size": "h3",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "image_AaeBNX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/USSG-AboutUs-Scroller-HearingProtection.jpg",
+            "image_height": 80,
+            "image_rounded": false,
+            "image_link": "",
+            "image_height_mobile": 60
+          }
+        },
+        "text_Mdgp7c": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "Hearing Protection",
+            "text_size": "h3",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "image_4XMewB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/USSG-AboutUs-Scroller-RespiratoryProtection.jpg",
+            "image_height": 80,
+            "image_rounded": false,
+            "image_link": "",
+            "image_height_mobile": 60
+          }
+        },
+        "text_nDCNVE": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "Respiratory Protection",
             "text_size": "h3",
             "text_opacity": 100,
             "use_custom_color": false,
@@ -658,10 +954,22 @@
         "image_rALqXH",
         "text_trh7iG",
         "image_fgHVpz",
-        "text_HP7nFQ"
+        "text_HP7nFQ",
+        "image_AEMDBn",
+        "text_4NHUBx",
+        "image_kaxpUi",
+        "text_TabYxL",
+        "image_WWBcU9",
+        "text_Rb9eLJ",
+        "image_VNMFRg",
+        "text_PKibDd",
+        "image_AaeBNX",
+        "text_Mdgp7c",
+        "image_4XMewB",
+        "text_nDCNVE"
       ],
       "settings": {
-        "color_scheme": "scheme-9",
+        "color_scheme": "scheme-3",
         "direction": "left",
         "pause_on_hover": true,
         "speed": 0.2,
@@ -687,6 +995,7 @@
             "content_alignment": "center",
             "content_spacing": "medium",
             "content_gap": "fitted",
+            "card_link": "",
             "subheading": "",
             "subheading_style": "",
             "heading": "Still need help?",
@@ -773,6 +1082,7 @@
         "collapsible_item_T7zEhg",
         "collapsible_item_jjNpea"
       ],
+      "disabled": true,
       "custom_css": [
         ".section--collapsible-tabs {border-top: 1px solid #c4c0b3;}"
       ],
@@ -812,9 +1122,11 @@
   "order": [
     "breadcrumbs_DgnWDV",
     "main",
+    "video_pfzcF9",
     "rich_text_kyFd96",
     "image_with_text_eUKGwj",
     "image_with_text_XwHBqT",
+    "image_with_text_pTwe34",
     "brand_logos_WeyqiQ",
     "multicolumn_icon_LfJGpX",
     "buttons_with_icon_njkqzq",
