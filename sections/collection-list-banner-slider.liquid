@@ -69,8 +69,14 @@
                 assign item_alt_image = item.banner_alt_image.value
                 assign collection_title_default = item_title | default: shop.name
                 assign image_ratio = section.settings.card_image_ratio
-                assign item_filter_value = item_title | url_encode
-                assign item_link = collection.url | append: '?filter.p.product_type=' | append: item_filter_value
+                assign item_link = item.banner_link.value.url
+                if item_link == 'https://ussafetygear.com/collections/all'
+                  assign item_link = blank
+                endif
+                if item_link == blank and item_title != blank
+                  assign item_filter_value = item_title | url_encode
+                  assign item_link = collection.url | append: '?filter.p.product_type=' | append: item_filter_value
+                endif
 
                 if image_ratio == 'adapt'
                   if item_image != blank
@@ -116,9 +122,7 @@
                   <div class="collection-card collection-card--style-{{ section.settings.card_style }} collection-card--mobile-layout-{{ section.settings.mobile_layout }} collection-card--image-{{ image_width }} collection-card--image-padding-{{ section.settings.card_image_padding }}{% if card_has_bg %} collection-card--has-bg{% endif %}{% if card_boxed %} {{ corner_radius }}{% endif %} color-{{ section.settings.card_color_scheme }} h-full">
                     <a
                       class="collection-card__wrapper relative flex flex-col items-center justify-start{% if section.settings.card_style == 'standard' %} text-center{% endif %} btn-hover-wrapper"
-                      role="link"
-                      aria-disabled="true"
-                      {% if item_title != blank %}
+                      {% if item_link != blank %}
                         href="{{ item_link }}"
                       {% else %}
                         role="link" aria-disabled="true"
