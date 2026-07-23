@@ -64,6 +64,9 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
         {%- for block in section.blocks -%}
           <div
             class="f-column swiper-slide"
+            {% if block.settings.section_id != blank %}
+              id="{{ block.settings.section_id | strip | escape }}"
+            {% endif %}
             {{ block.shopify_attributes }}
             data-index="{{ forloop.index0 }}"
           >
@@ -559,6 +562,12 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
       "name": "t:sections.custom-content.blocks.image_card.name",
       "limit": 12,
       "settings": [
+        {
+          "type": "text",
+          "id": "section_id",
+          "label": "ID Section",
+          "info": "Use a unique ID without spaces, for example: store-locator"
+        },
         {
           "type": "color_scheme",
           "id": "color_scheme",

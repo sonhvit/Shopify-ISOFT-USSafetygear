@@ -18,6 +18,14 @@
   #shopify-section-{{ section.id }} .page-width--full {
     --page-padding: 0;
   }
+  {%- if section.settings.container == 'custom' %}
+    @media (min-width: 1024px) {
+      #shopify-section-{{ section.id }} .section-video__container {
+        width: {{ section.settings.custom_width_desktop }}%;
+        max-width: none;
+      }
+    }
+  {%- endif %}
 {% endstyle %}
 
 {% render 'divider',
@@ -35,7 +43,16 @@
         {% endif %}
       >
         <motion-element data-motion="zoom-out" class="relative block media media--adapt">
-          {%- capture sizes -%}{% if section.settings.container == 'full' %}100vw{% else %}min({{ settings.page_width }}px, 100vw){% endif %}{%- endcapture -%}
+          {%- capture sizes -%}
+            {%- case section.settings.container -%}
+              {%- when 'full' -%}
+                100vw
+              {%- when 'custom' -%}
+                (min-width: 1024px) {{ section.settings.custom_width_desktop }}vw, 100vw
+              {%- else -%}
+                min({{ settings.page_width }}px, 100vw)
+            {%- endcase -%}
+          {%- endcapture -%}
           {%- render 'video',
             sizes: sizes,
             video: section.settings.video,
@@ -73,10 +90,25 @@
         {
           "value": "fixed",
           "label": "t:general.container.options__fixed.label"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
         }
       ],
       "default": "fixed",
       "label": "t:general.container.label"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_desktop",
+      "label": "Custom width desktop",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 80,
+      "visible_if": "{{ section.settings.container == 'custom' }}"
     },
     {
       "type": "header",

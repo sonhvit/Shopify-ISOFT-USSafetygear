@@ -152,10 +152,16 @@
     stroke-dashoffset: 0;
   }
 }
+html{
+  scroll-behavior: smooth;
+}
 .site-wrapper {
   overflow: clip;
 }
-
+.page-template .shopify-section,
+.page-template .f-column.swiper-slide{
+  scroll-margin-top: 120px;
+}
 .page-width {
   margin: 0 auto;
   padding-inline: var(--page-padding);
