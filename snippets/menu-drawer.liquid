@@ -21,15 +21,6 @@
                   assign enable_mega_menu = false
                   assign link_title_handle = link.title | handle
                   assign is_hl_item = false
-                  assign open_in_new_tab = false
-                  assign normalized_link_title = link.title | strip | downcase
-                  for new_tab_menu_title in new_tab_menu_titles
-                    assign normalized_new_tab_menu_title = new_tab_menu_title | strip | downcase
-                    if normalized_new_tab_menu_title != blank and normalized_new_tab_menu_title == normalized_link_title
-                      assign open_in_new_tab = true
-                      break
-                    endif
-                  endfor
                   for block in blocks
                     assign menu_title_handle = block.settings.menu_title | handle
                     if menu_title_handle == link_title_handle
@@ -58,14 +49,13 @@
                     block: mega_menu_block,
                     is_hl_item: is_hl_item,
                     hl_link_color: hl_link_color,
-                    hl_link_style: hl_link_style
+                    hl_link_style: hl_link_style,
+                    new_tab_menu_titles: new_tab_menu_titles
                   -%}
                 {%- else -%}
                   <a
                     href="{{ link.url }}"
-                    {% if open_in_new_tab %}
-                      target="_blank" rel="noopener"
-                    {% endif %}
+                    {% render 'menu-link-new-tab-attributes', title: link.title, new_tab_menu_titles: new_tab_menu_titles %}
                     {% if is_hl_item and hl_link_color != blank and hl_link_color != 'rgba(0,0,0,0)' %}
                       style="--hl-link-color: {{ hl_link_color }};"
                     {% endif %}

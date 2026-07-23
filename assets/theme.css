@@ -7260,6 +7260,9 @@ body:not(.header-pinned) .header-scrolled .header {
 .mega-menu__list .mega-menu__link--top.menu-sidebar__toggle {
   width: 100%;
 }
+.mega-menu__list ul.mega-menu__item-child.text-subtext{
+  padding-inline: 12px;
+}
 .mega-menu__list .mega-menu__link--top.menu-sidebar__toggle:hover,
 .mega-menu__list .mega-menu__link--top.menu-sidebar__toggle.is-visible,
 .mega-menu__list .mega-menu__link--top.menu-sidebar__toggle.is-active {

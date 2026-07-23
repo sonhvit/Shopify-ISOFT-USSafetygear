@@ -160,6 +160,7 @@
                         {%- endif -%}
                         <a
                           href="{{ childlink.url }}"
+                          {% render 'menu-link-new-tab-attributes', title: childlink.title, new_tab_menu_titles: new_tab_menu_titles %}
                           class="h6 menu-sidebar__toggle blocks-radius-sm flex items-center justify-between mega-menu__link mega-menu__link--top font-heading{% if block.type == 'product_tab' and childlink.type == 'collection_link' and childlink.object.handle == first_product_tab %} is-active is-visible{% endif %}"
                           {% if block.type == 'product_tab' and childlink.type == 'collection_link' and childlink.object.products != blank %}
                             data-product-tab-trigger="{{ childlink.object.handle }}"
@@ -175,7 +176,7 @@
                           <ul class="mega-menu__item-child text-subtext">
                             {%- for grandchildlink in childlink.links -%}
                               <li class="reversed-link">
-                                <a href="{{ grandchildlink.url }}" class="block mega-menu__link">
+                                <a href="{{ grandchildlink.url }}"{% render 'menu-link-new-tab-attributes', title: grandchildlink.title, new_tab_menu_titles: new_tab_menu_titles %} class="block mega-menu__link">
                                   <span class="reversed-link__text">{{- grandchildlink.title | escape -}}</span>
                                 </a>
                               </li>
@@ -260,7 +261,7 @@
                             endif
                           -%}
                           <li class="" >
-                            <a id="spot-2-9-megamenu-{{ grandchildlink.title | handle }}" href="{{ grandchildlink.url }}" class="grid gap-3 hover-wrapper reversed-link">
+                            <a id="spot-2-9-megamenu-{{ grandchildlink.title | handle }}" href="{{ grandchildlink.url }}"{% render 'menu-link-new-tab-attributes', title: grandchildlink.title, new_tab_menu_titles: new_tab_menu_titles %} class="grid gap-3 hover-wrapper reversed-link">
                               {%- if collection_image != blank -%}
                                 <div class="overflow-hidden blocks-radius-md">
                                   <motion-element data-motion="zoom-out-sm" class="block">

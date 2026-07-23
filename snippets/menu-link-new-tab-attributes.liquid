@@ -1,0 +1,13 @@
+{%- liquid
+  assign normalized_link_title = title | strip | downcase
+  assign open_in_new_tab = false
+
+  for new_tab_menu_title in new_tab_menu_titles
+    assign normalized_new_tab_menu_title = new_tab_menu_title | strip | downcase
+    if normalized_new_tab_menu_title != blank and normalized_new_tab_menu_title == normalized_link_title
+      assign open_in_new_tab = true
+      break
+    endif
+  endfor
+-%}
+{%- if open_in_new_tab %} target="_blank" rel="noopener"{% endif -%}

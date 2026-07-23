@@ -5,16 +5,7 @@
       {%- liquid
         assign enable_mega_menu = false
         assign is_hl_item = false
-        assign open_in_new_tab = false
         assign link_title_handle = link.title | handle
-        assign normalized_link_title = link.title | strip | downcase
-        for new_tab_menu_title in new_tab_menu_titles
-          assign normalized_new_tab_menu_title = new_tab_menu_title | strip | downcase
-          if normalized_new_tab_menu_title != blank and normalized_new_tab_menu_title == normalized_link_title
-            assign open_in_new_tab = true
-            break
-          endif
-        endfor
         for block in blocks
           assign menu_title_handle = block.settings.menu_title | handle
           if menu_title_handle == link_title_handle
@@ -49,7 +40,8 @@
               block: mega_menu_block,
               is_hl_item: is_hl_item,
               hl_menu_block: hl_menu_block,
-              hl_link_style: hl_link_style
+              hl_link_style: hl_link_style,
+              new_tab_menu_titles: new_tab_menu_titles
             %}
           {%- else -%}
             <details
@@ -113,6 +105,7 @@
                             <summary data-link="{{ childlink.url }}" class="">
                               <a
                                 href="{{ childlink.url }}"
+                                {% render 'menu-link-new-tab-attributes', title: childlink.title, new_tab_menu_titles: new_tab_menu_titles %}
                                 class="reversed-link flex items-center justify-between gap-x-1 no-js-hidden"
                                 tabindex="-1"
                               >
@@ -134,7 +127,7 @@
                                 <ul class="dropdown__nav" role="list">
                                   {%- for grandchildlink in childlink.links -%}
                                     <li class="reversed-link text-subtext">
-                                      <a class="block" href="{{ grandchildlink.url }}">
+                                      <a class="block" href="{{ grandchildlink.url }}"{% render 'menu-link-new-tab-attributes', title: grandchildlink.title, new_tab_menu_titles: new_tab_menu_titles %}>
                                         <span class="reversed-link__text">{{- grandchildlink.title | escape -}}</span>
                                       </a>
                                     </li>
@@ -146,7 +139,7 @@
                         </li>
                       {%- else -%}
                         <li class="reversed-link text-subtext">
-                          <a href="{{ childlink.url }}" class="block">
+                          <a href="{{ childlink.url }}"{% render 'menu-link-new-tab-attributes', title: childlink.title, new_tab_menu_titles: new_tab_menu_titles %} class="block">
                             <span class="reversed-link__text">{{ childlink.title | escape }}</span>
                           </a>
                         </li>
@@ -164,14 +157,13 @@
               block: mega_menu_block,
               is_hl_item: is_hl_item,
               hl_menu_block: hl_menu_block,
-              hl_link_style: hl_link_style
+              hl_link_style: hl_link_style,
+              new_tab_menu_titles: new_tab_menu_titles
             %}
           {%- else -%}
             <a
               href="{{ link.url }}"
-              {% if open_in_new_tab %}
-                target="_blank" rel="noopener"
-              {% endif %}
+              {% render 'menu-link-new-tab-attributes', title: link.title, new_tab_menu_titles: new_tab_menu_titles %}
               class="menu__item flex relative z-2 font-navigation{% if is_hl_item %} hightlight-link hightlight-link--{{ hl_link_style }}{% endif %}"
             >
               {%- liquid

@@ -144,7 +144,7 @@
                       -%}
 
                       <li>
-                        <a href="{{ grandchildlink.url }}" class="grid gap-3 hover-wrapper reversed-link">
+                        <a href="{{ grandchildlink.url }}"{% render 'menu-link-new-tab-attributes', title: grandchildlink.title, new_tab_menu_titles: new_tab_menu_titles %} class="grid gap-3 hover-wrapper reversed-link">
                           {%- if collection_image != blank -%}
                             <div class="overflow-hidden blocks-radius-md">
                               <motion-element data-motion="zoom-out-sm" class="block">
@@ -176,6 +176,7 @@
                       <li class="menu-drawer__item">
                         <a
                           href="{{ grandchildlink.url }}"
+                          {% render 'menu-link-new-tab-attributes', title: grandchildlink.title, new_tab_menu_titles: new_tab_menu_titles %}
                           class="menu-drawer__item-link flex items-center justify-between text-subtext"
                         >
                           {{- grandchildlink.title | escape -}}
@@ -189,6 +190,7 @@
           {%- else -%}
             <a
               href="{{ childlink.url }}"
+              {% render 'menu-link-new-tab-attributes', title: childlink.title, new_tab_menu_titles: new_tab_menu_titles %}
               class="menu-drawer__item-link flex items-center justify-between"
             >
               {{- childlink.title -}}
