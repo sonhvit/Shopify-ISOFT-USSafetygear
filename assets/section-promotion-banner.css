@@ -102,10 +102,6 @@
   }
 }
 @media(max-width: 767.98px) {
-  .promotion-banner__input form>.needsclick,
-  .promotion-banner__input form>.needsclick>div{
-    flex-direction: column !important;
-  }
   .promotion-banner__input form>.needsclick>div div[data-testid="form-component"]{
     padding-inline: 0 !important;
   }

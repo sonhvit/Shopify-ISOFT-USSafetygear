@@ -8,7 +8,7 @@ body.sticky-atc-bar-enabled {
   left: 0;
   width: 100%;
   z-index: 29;
-  background: #fff;
+  background: #e8e8e8;
   box-shadow: 0 -6px 10px 0 rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(var(--color-border), var(--color-border-alpha, 1));
   transition: cubic-bezier(0.4, 0, 0.2, 1) 0.3s all;
   transform: translate3d(0, 100%, 0);

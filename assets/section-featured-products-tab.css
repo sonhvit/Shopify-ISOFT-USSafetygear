@@ -2,7 +2,10 @@
   color: rgba(var(--color-foreground), 0.7);
 }
 .featured-products-tab .tabs__tab:hover, .featured-products-tab .tabs__tab[aria-selected=true] {
-  color: rgb(var(--color-foreground));
+  color: #a82e48;
+}
+.featured-products-tab .tabs__tab:hover, .featured-products-tab .tabs__tab[aria-selected=true] span{
+  color: #a82e48;
 }
 .featured-products-tab .tabs__tab[aria-selected=true]:before {
   opacity: 1;
@@ -50,7 +53,7 @@
     inset-inline-start: 0;
     width: 0.2rem;
     height: 100%;
-    background: rgb(var(--color-foreground));
+    background: #a82e48;
     opacity: 0;
     transition: all 0.3s;
   }

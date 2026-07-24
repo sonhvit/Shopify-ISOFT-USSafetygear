@@ -17,7 +17,7 @@
 {%- endstyle -%}
 
 <div
-  class="section section-{{ section.id }} section--padding button-list color-{{ section.settings.color_scheme }}"
+  class="section section-{{ section.id }} section--padding button-list color-{{ section.settings.color_scheme }}{% if section.settings.use_color_scheme_button_colors %} button-list--use-color-scheme{% endif %}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="section__container page-width page-width--{{ section.settings.container }}">
@@ -332,6 +332,12 @@
         }
       ],
       "default": "btn--icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_color_scheme_button_colors",
+      "label": "Use color scheme button colors",
+      "default": false
     },
     {
       "type": "select",

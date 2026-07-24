@@ -80,6 +80,23 @@
 .button-item__inner:hover .button-item__text{
   color: rgb(var(--color-button-text));
 }
+.button-list--use-color-scheme .button-item__inner {
+  --color-border: var(--color-button);
+  background-color: rgb(var(--color-button)) !important;
+  color: rgb(var(--color-button-text)) !important;
+  border: 0 !important;
+}
+.button-list--use-color-scheme .button-item__inner .button-item__text {
+  color: inherit !important;
+}
+@media (hover: hover) and (pointer: fine) {
+  .button-list--use-color-scheme .button-item__inner:hover {
+    color: rgb(var(--color-button-hover-text, var(--color-button))) !important;
+  }
+  .button-list--use-color-scheme .button-item__inner:hover::before {
+    background-color: rgb(var(--color-button-before, var(--color-button-text))) !important;
+  }
+}
 .button-item--icon {
   --icon-size: 2rem;
 }
