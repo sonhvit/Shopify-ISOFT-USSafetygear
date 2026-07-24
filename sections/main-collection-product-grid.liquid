@@ -20,8 +20,13 @@
   assign enable_sorting = section.settings.enable_sorting
   assign enable_filtering = section.settings.enable_filtering
   assign filter_type = section.settings.filter_type
+  # The collection metafield is a single-line text or select field with one of:
+  # Footwear, Head Protection, or Eye Protection.
   assign collection_banner_type = collection.metafields.custom.collection_banner_type.value | default: collection.metafields.custom.collection_banner_type
   assign collection_banner_type = collection_banner_type | strip | handleize | replace: '-', '_'
+
+  # Keep the existing Shoemobile/Custom Shop selection as the fallback when the
+  # collection has no preferred ad type.
   if collection_banner_type == blank
     assign first_char = collection.handle | slice: 0
     assign alphabet = 'a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9' | split: ','
@@ -596,7 +601,7 @@
     {
       "type": "image_card",
       "name": "t:general.image_card.label",
-      "limit": 3,
+      "limit": 5,
       "settings": [
         {
           "type": "color_scheme",
@@ -627,7 +632,7 @@
           "type": "select",
           "id": "card_type",
           "label": "Card type",
-          "info": "Shown when the collection metafield custom.collection_banner_type matches this value. Use All collections to show on every collection.",
+          "info": "Shown when custom.collection_banner_type on the collection matches this value. Collections without a value keep the existing Shoemobile/Custom Shop default.",
           "default": "all",
           "options": [
             {
@@ -641,6 +646,18 @@
             {
               "value": "custom_shop",
               "label": "Custom Shop"
+            },
+            {
+              "value": "footwear",
+              "label": "Footwear"
+            },
+            {
+              "value": "head_protection",
+              "label": "Head Protection"
+            },
+            {
+              "value": "eye_protection",
+              "label": "Eye Protection"
             }
           ]
         },
