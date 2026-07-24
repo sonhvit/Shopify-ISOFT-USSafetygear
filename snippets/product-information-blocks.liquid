@@ -180,7 +180,10 @@
                 <span class="product__inventory-icon"></span>
                 <span class="product__inventory-text">{{- inventory_message -}}</span>
               </p>
-              {%- if inventory_status == 'low-stock' and inventory_quantity < low_stock_threshold -%}
+              {%- if block.settings.show_inventory_progress_bar
+                and inventory_status == 'low-stock'
+                and inventory_quantity < low_stock_threshold
+              -%}
                 <progress-bar
                   class="product__inventory-stock-bar progress-bar"
                   data-value="{{ inventory_quantity }}"
@@ -207,13 +210,13 @@
               {{ block.shopify_attributes }}
               style="--color-link: {{ block.settings.link_color.red }},{{ block.settings.link_color.green }},{{ block.settings.link_color.blue }};"
             >
-              {% comment %} {%- if block.settings.show_vendor -%}
+              {%- if block.settings.show_vendor -%}
                 <p
                   class="product__meta product__vendor"
                   id="Vendor-{{ section.id }}"
                   role="status"
                 >
-                  <span>{{ 'products.product.vendor' | t }}:</span>
+                  <span>Brand:</span>
                   <a
                     href="{{ product.vendor | url_for_vendor }}"
                     class="btn--link font-body-bolder text-body"
@@ -221,7 +224,7 @@
                     {{- product.vendor -}}
                   </a>
                 </p>
-              {%- endif -%} {% endcomment %}
+              {%- endif -%}
               {%- if block.settings.show_product_type and product.type != blank -%}
                 <p
                   class="product__meta product__type"

@@ -155,6 +155,10 @@
 html{
   scroll-behavior: smooth;
 }
+.mega-menu .reversed-link__text{
+  font-weight: 700;
+  color: rgb(29, 49, 96);
+}
 .site-wrapper {
   overflow: clip;
 }
