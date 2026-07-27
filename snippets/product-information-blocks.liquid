@@ -211,6 +211,19 @@
               style="--color-link: {{ block.settings.link_color.red }},{{ block.settings.link_color.green }},{{ block.settings.link_color.blue }};"
             >
               {%- if block.settings.show_vendor -%}
+                {%- liquid
+                  assign vendor_url = product.vendor | url_for_vendor
+                  assign vendor_name = product.vendor | strip | downcase
+
+                  for brand_target in shop.metafields.custom.brand_target_link.value
+                    assign brand_target_name = brand_target.brand.value | strip | downcase
+                    assign brand_target_url = brand_target.link.value.url
+                    if brand_target_name == vendor_name and brand_target_url != blank
+                      assign vendor_url = brand_target_url
+                      break
+                    endif
+                  endfor
+                -%}
                 <p
                   class="product__meta product__vendor"
                   id="Vendor-{{ section.id }}"
@@ -218,7 +231,7 @@
                 >
                   <span>Brand:</span>
                   <a
-                    href="{{ product.vendor | url_for_vendor }}"
+                    href="{{ vendor_url }}"
                     class="btn--link font-body-bolder text-body"
                   >
                     {{- product.vendor -}}
