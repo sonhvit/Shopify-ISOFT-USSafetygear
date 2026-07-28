@@ -38,6 +38,12 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
   --f-columns-md: {{ columns_tablet }};
   --f-columns-xl: {{ columns_desktop }};
   }
+
+  .section-{{ section.id }} .swiper-controls .swiper-button {
+    background-color: #b8b8b8;
+    color: #fff;
+    border: none;
+  }
 {% endstyle %}
 
 {% render 'divider',

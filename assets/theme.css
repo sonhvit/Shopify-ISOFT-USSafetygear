@@ -7106,6 +7106,11 @@ show-more .read-more__content {
   margin-inline-end: 0.6rem;
 }
 
+.cart-has-items .cart-icon:hover{
+  background: #c79b36;
+  color: #fff;
+}
+
 .header-section .fixed-overlay {
   top: 0;
   height: 100%;
