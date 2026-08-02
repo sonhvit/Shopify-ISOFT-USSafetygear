@@ -200,7 +200,10 @@
                 --f-row-gap-lg: 3rem;
               }
             </style>
-            <menu-sidebar class="block menu-sidebar relative w-full mega-menu__item">
+            <menu-sidebar
+              class="block menu-sidebar relative w-full mega-menu__item"
+              data-trigger="{{ block.settings.sidebar_trigger | default: 'click' }}"
+            >
               {%- for childlink in link.links -%}
                 <details
                   class="menu-sidebar__item"

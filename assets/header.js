@@ -904,6 +904,7 @@ class MenuSidebar extends HTMLElement {
   constructor() {
     super();
     this.handleSidenavMenuToggle = this.handleSidenavMenuToggle.bind(this);
+    this.handleSummaryClick = this.handleSummaryClick.bind(this);
     this.updateHeight = this.updateHeight.bind(this);
   }
 
@@ -913,6 +914,7 @@ class MenuSidebar extends HTMLElement {
 
   connectedCallback() {
     this.setInitialMinHeight();
+    this.trigger = this.dataset.trigger === 'click' ? 'click' : 'hover';
 
     const firstSummary = this.summarys[0];
     if (firstSummary) {
@@ -920,8 +922,10 @@ class MenuSidebar extends HTMLElement {
     }
 
     this.summarys.forEach((summary) => {
-      summary.addEventListener('mouseenter', this.handleSidenavMenuToggle);
-      summary.addEventListener('click', (e) => e.preventDefault());
+      if (this.trigger === 'hover') {
+        summary.addEventListener('mouseenter', this.handleSidenavMenuToggle);
+      }
+      summary.addEventListener('click', this.handleSummaryClick);
     });
 
     this.setupIntersectionObserver();
@@ -972,14 +976,20 @@ class MenuSidebar extends HTMLElement {
   }
 
   handleSidenavMenuToggle(evt) {
-    const summaryElem = evt.target;
-    this.setActiveItem(summaryElem);
+    this.setActiveItem(evt.currentTarget);
+  }
+
+  handleSummaryClick(event) {
+    event.preventDefault();
+    if (this.trigger === 'click') {
+      this.setActiveItem(event.currentTarget);
+    }
   }
 
   disconnectedCallback() {
     this.summarys.forEach((summary) => {
       summary.removeEventListener('mouseenter', this.handleSidenavMenuToggle);
-      summary.removeEventListener('click', this.handleClick);
+      summary.removeEventListener('click', this.handleSummaryClick);
     });
   }
 }

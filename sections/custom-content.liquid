@@ -19,6 +19,13 @@
   show_divider: section.settings.show_section_divider,
   divider_width: section.settings.divider_width
 %}
+{% style %}
+  .section-{{ section.id }} .swiper-controls .swiper-button {
+    background-color: #b8b8b8;
+    color: #fff;
+    border: none;
+  }
+{% endstyle %}
 <div
   class="section section-{{ section.id }} section--padding section--custom-content page-width page-width--{{ section.settings.container }} color-{{ section.settings.color_scheme }} {{ section.index }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"

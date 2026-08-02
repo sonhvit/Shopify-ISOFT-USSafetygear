@@ -83,7 +83,7 @@
         "menu": "main-menu",
         "menu_mobile": "",
         "header_layout": "logo-left",
-        "menu_trigger": "hover",
+        "menu_trigger": "click",
         "sticky_header": "always",
         "enable_collapse_on_scroll": true,
         "show_sperator_line": false,
