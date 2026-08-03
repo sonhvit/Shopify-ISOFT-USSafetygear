@@ -37,6 +37,9 @@
     --py: 4rem;
     --px: 1.5rem;
   }
+  .favorite-products__testimonials > motion-element:has(.swiper-controls) {
+    order: -1;
+  }
 }
 .favorite-products .testimonial__author {
   margin-top: 4rem;

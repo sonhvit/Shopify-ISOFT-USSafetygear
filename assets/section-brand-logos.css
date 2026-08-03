@@ -70,6 +70,19 @@
 .brand-logos__wrapper {
   padding: var(--pd-y, 0rem) var(--pd-x, 0rem);
 }
+.brand-logos__swipe-guide {
+  display: none;
+}
+@media (max-width: 767.98px) {
+  .brand-logos__swipe-guide {
+    display: block;
+    margin-block-start: 1.2rem;
+    color: rgb(var(--color-foreground));
+    font-size: 1.4rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+}
 .brand-logos--image-full .brand-logos__image {
   width: 100%;
 }

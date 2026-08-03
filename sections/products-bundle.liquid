@@ -218,6 +218,9 @@
               {% endfor %}
             </div>
           </products-bundle-slider>
+          {%- if section.settings.enable_mobile_swipe_guide -%}
+            <p class="products-bundle__swipe-guide">Swipe to see more</p>
+          {%- endif -%}
           <div class="swiper-controls swiper-controls--nav-floating">
             <button
               class="swiper-button swiper-button--drop-shadow swiper-button-prev btn"
@@ -550,6 +553,12 @@
       ],
       "default": "1",
       "label": "t:general.mobile.columns_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_mobile_swipe_guide",
+      "default": false,
+      "label": "Show swipe guide on mobile"
     },
     {
       "type": "header",

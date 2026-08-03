@@ -291,6 +291,9 @@
           <p class="footer__copyright-content">
             &copy; {{ 'now' | date: '%Y' }}
             <a class="link-underline" href="{{ routes.root_url }}">{{ shop.name | replace:   ', Inc', ''}}</a>
+            <a class="link-underline" href="https://isynergy.io/" target="_blank" rel="noopener noreferrer">
+            iSynergy Marketing
+            </a>
           </p>
 
           {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}

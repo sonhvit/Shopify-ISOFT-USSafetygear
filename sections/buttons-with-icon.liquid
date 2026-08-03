@@ -111,6 +111,11 @@
         </div>
       {%- endif -%}
     </div>
+    {%- if section.settings.enable_mobile_swipe_guide -%}
+      <div class="button-list__swipe-guide" aria-hidden="true">
+        <span>Swipe to see more</span>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -382,6 +387,12 @@
       "id": "swipe_on_mobile",
       "default": true,
       "label": "t:general.mobile.swipe_on_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_mobile_swipe_guide",
+      "default": false,
+      "label": "Show swipe guide on mobile"
     },
     {
       "type": "header",

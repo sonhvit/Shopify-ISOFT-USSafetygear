@@ -122,6 +122,9 @@
             </div>
           </div>
         </div>
+        {%- if section.settings.enable_mobile_swipe_guide -%}
+          <p class="brand-logos__swipe-guide">Swipe to see more</p>
+        {%- endif -%}
       </div>
     </div>
   </div>
@@ -634,6 +637,12 @@
       "id": "swipe_on_mobile",
       "label": "t:general.mobile.swipe_on_mobile.label",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_mobile_swipe_guide",
+      "label": "Show swipe guide on mobile",
+      "default": false
     },
     {
       "type": "header",

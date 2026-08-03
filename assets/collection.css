@@ -44,6 +44,23 @@
 .collection .card-media__media {
   height: 100%;
 }
+@media (max-width: 767.98px) {
+  .collection #ProductsList .image-column .card-media__button .btn__text {
+    font-size: 1.1rem;
+  }
+  .collection #ProductsList .image-column .card-media__heading{
+    font-size: 1.6rem;
+  }
+  .collection #ProductsList .image-column .text-subheading{
+    font-size: 1.1rem;
+  }
+  .collection #ProductsList .image-column .card-media__button .btn{
+    height: 3.6rem;
+    padding-inline: 15px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+}
 
 .facet-accordion-details {
   border-bottom: 0.1rem solid rgba(var(--color-border), var(--color-border-alpha, 1));
