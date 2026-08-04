@@ -176,10 +176,12 @@
                   endif
                 endif
               %}
-              <p class="product__inventory product__inventory--{{ inventory_status }} font-body-bolder">
-                <span class="product__inventory-icon"></span>
-                <span class="product__inventory-text">{{- inventory_message -}}</span>
-              </p>
+              {%- unless block.settings.hide_in_stock_status and inventory_status == 'in-stock' -%}
+                <p class="product__inventory product__inventory--{{ inventory_status }} font-body-bolder">
+                  <span class="product__inventory-icon"></span>
+                  <span class="product__inventory-text">{{- inventory_message -}}</span>
+                </p>
+              {%- endunless -%}
               {%- if block.settings.show_inventory_progress_bar
                 and inventory_status == 'low-stock'
                 and inventory_quantity < low_stock_threshold
