@@ -79,7 +79,7 @@
             "heading_size_custom": 18,
             "text": "",
             "text_size": "text-base",
-            "button_label": "Shop Collection",
+            "button_label": "Shop Now",
             "button_style": "btn--primary",
             "button_icon": "none",
             "button_size": "btn--small",
@@ -92,7 +92,7 @@
           "settings": {
             "ads_id": "spot8",
             "color_scheme": "scheme-inverse",
-            "image": "shopify://shop_images/USSG-VendorPaidAds-Spot_8.jpg",
+            "image": "shopify://shop_images/USSG-VendorPaidAds-Spot8-LibertySafety-V2_1.jpg",
             "image_overlay_opacity": 0,
             "column_span": 1,
             "row_span": 1,
@@ -102,7 +102,7 @@
             "content_alignment": "left",
             "content_position_mobile": "middle-center",
             "content_alignment_mobile": "left",
-            "card_link": "https://ussafetygear.com/collections/liberty-safety",
+            "card_link": "https://ussafetygear.com/collections/liberty-safety?filter.p.tag=Hand+%26+Arm+Protection",
             "subheading": "",
             "subheading_style": "thick-border",
             "heading": "",
@@ -129,7 +129,7 @@
           "settings": {
             "ads_id": "spot9",
             "color_scheme": "scheme-inverse",
-            "image": "shopify://shop_images/USSG-VendorPaidAds-Spot_9.jpg",
+            "image": "shopify://shop_images/USSG-VendorPaidAds-Spot9-LibertySafety.jpg",
             "image_overlay_opacity": 0,
             "column_span": 1,
             "row_span": 1,
@@ -139,7 +139,7 @@
             "content_alignment": "left",
             "content_position_mobile": "middle-center",
             "content_alignment_mobile": "left",
-            "card_link": "https://ussafetygear.com/collections/liberty-safety",
+            "card_link": "https://ussafetygear.com/collections/liberty-safety?filter.p.tag=Eyewear",
             "subheading": "",
             "subheading_style": "",
             "heading": "",
@@ -206,6 +206,7 @@
         "image_card_n9QTeP": {
           "type": "image_card",
           "settings": {
+            "section_id": "",
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/USSG-Home-ImageCard-Workwear.jpg",
             "image_ratio": "adapt",
@@ -245,6 +246,7 @@
         "image_card_GFtnTi": {
           "type": "image_card",
           "settings": {
+            "section_id": "",
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/USSG-Home-ImageCard-Footwear.jpg",
             "image_ratio": "adapt",
@@ -284,6 +286,7 @@
         "image_card_RKCLi4": {
           "type": "image_card",
           "settings": {
+            "section_id": "",
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/USSG-Home-ImageCard-FallProtection.jpg",
             "image_ratio": "adapt",
@@ -323,6 +326,7 @@
         "image_card_UtXmHp": {
           "type": "image_card",
           "settings": {
+            "section_id": "",
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/USSG-Home-ImageCard-FirstAid.jpg",
             "image_ratio": "adapt",
@@ -362,6 +366,7 @@
         "image_card_icptmh": {
           "type": "image_card",
           "settings": {
+            "section_id": "",
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/USSG-Home-ImageCard-Gloves.jpg",
             "image_ratio": "adapt",
@@ -398,9 +403,50 @@
             "enable_preload_image": false
           }
         },
+        "image_card_UFGBDa": {
+          "type": "image_card",
+          "settings": {
+            "section_id": "",
+            "color_scheme": "scheme-inverse",
+            "image": "shopify://shop_images/USSG-Home-ImageCard-WorksiteSafety.jpg",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 30,
+            "content_position": "bottom-left",
+            "content_alignment": "left",
+            "content_spacing": "extra-small",
+            "content_gap": "fitted",
+            "card_link": "shopify://collections/worksite-safety-equipment-supplies",
+            "link_target_blank": false,
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Worksite Safety",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "Shop Now",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "scheme-inverse",
+            "show_text_below": false,
+            "content_alignment_mobile": "left",
+            "enable_preload_image": false
+          }
+        },
         "image_card_HLDfRB": {
           "type": "image_card",
           "settings": {
+            "section_id": "",
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/USSG-Home-ImageCard-Hi-Vis.jpg",
             "image_ratio": "adapt",
@@ -440,6 +486,7 @@
         "image_card_TAJRmw": {
           "type": "image_card",
           "settings": {
+            "section_id": "",
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/USSG-Home-ImageCard-EyeProtection.jpg",
             "image_ratio": "adapt",
@@ -479,6 +526,7 @@
         "image_card_HAXEaE": {
           "type": "image_card",
           "settings": {
+            "section_id": "",
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/USSG-Home-ImageCard-SafetyVest.jpg",
             "image_ratio": "adapt",
@@ -518,6 +566,7 @@
         "image_card_dmL4yK": {
           "type": "image_card",
           "settings": {
+            "section_id": "",
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/USSG-Home-ImageCard-HardHat.jpg",
             "image_ratio": "adapt",
@@ -557,6 +606,7 @@
         "image_card_GeLQkb": {
           "type": "image_card",
           "settings": {
+            "section_id": "",
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/USSG-Home-ImageCard-HearingProtection.jpg",
             "image_ratio": "adapt",
@@ -596,6 +646,7 @@
         "image_card_znK6AA": {
           "type": "image_card",
           "settings": {
+            "section_id": "",
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/USSG-Home-ImageCard-RespiratoryProtection.jpg",
             "image_ratio": "adapt",
@@ -639,6 +690,7 @@
         "image_card_RKCLi4",
         "image_card_UtXmHp",
         "image_card_icptmh",
+        "image_card_UFGBDa",
         "image_card_HLDfRB",
         "image_card_TAJRmw",
         "image_card_HAXEaE",
@@ -675,7 +727,7 @@
         "show_progress_bar": false,
         "padding_top": 60,
         "padding_bottom": 20,
-        "show_section_divider": true,
+        "show_section_divider": false,
         "divider_width": "full"
       }
     },
@@ -783,7 +835,7 @@
         "row_gap": "inherit",
         "show_divider_col": false,
         "columns_mobile": "1",
-        "swipe_on_mobile": true,
+        "swipe_on_mobile": false,
         "show_section_divider": false,
         "divider_width": "fixed",
         "padding_top": 50,
@@ -979,7 +1031,7 @@
       "settings": {
         "ads_id": "",
         "container": "fixed",
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-1",
         "layout": "horizontal",
         "content_alignment": "center",
         "content_alignment_mobile": "center",
@@ -1067,7 +1119,7 @@
         "collection_bYRL6P": {
           "type": "collection",
           "settings": {
-            "collection": "construction-safety-products",
+            "collection": "construction-safety-products-new",
             "product_list": [
               "hivizgard-class-3-windbreaker-c16720g",
               "hivizgard-class-2-two-tone-mesh-safety-vest-c16013g",
@@ -1076,22 +1128,10 @@
             "title": "Construction"
           }
         },
-        "collection_78nYBw": {
-          "type": "collection",
-          "settings": {
-            "collection": "industrial-safety-supplies",
-            "product_list": [
-              "30oz-green-hot-mill-gloves",
-              "premium-breathable-pants-lux-tenr",
-              "insulated-bib-overalls-245"
-            ],
-            "title": "Industrial"
-          }
-        },
         "collection_MVg8t9": {
           "type": "collection",
           "settings": {
-            "collection": "safety-supplies-for-manufacturing",
+            "collection": "safety-supplies-for-manufacturing-new",
             "product_list": [
               "starlite-mag-safety-glasses-46m",
               "powertrain-ev-comp-safety-toe-tb0a5z2b",
@@ -1100,23 +1140,22 @@
             "title": "Manufacturing"
           }
         },
-        "collection_FXKwQG": {
+        "collection_78nYBw": {
           "type": "collection",
           "settings": {
-            "collection": "electrical-safety-gear-supplies",
+            "collection": "industrial-safety-supplies-new",
             "product_list": [
-              "8-usa-steel-toe-external-met-guard-boots-c505",
-              "8-i-beam-comp-toe-mt2548",
-              "venom-combo-pak"
+              "30oz-green-hot-mill-gloves",
+              "premium-breathable-pants-lux-tenr",
+              "insulated-bib-overalls-245"
             ],
-            "image": "shopify://shop_images/USSG-Home-ShopByCampaign-Electrical.jpg",
-            "title": "Electrical"
+            "title": "Industrial"
           }
         },
         "collection_3CydGb": {
           "type": "collection",
           "settings": {
-            "collection": "welding-safety-supplies-ppe",
+            "collection": "welding-safety-supplies-ppe-new",
             "product_list": [
               "leather-welder-gloves-pr",
               "premium-leather-welder-gloves-7114",
@@ -1126,10 +1165,30 @@
             "title": "Welding"
           }
         },
+        "collection_LkKgLw": {
+          "type": "collection",
+          "settings": {
+            "collection": "utility-workers-safety-products-new",
+            "product_list": [
+              "basetek-polyurethane-coated-gloves-pr",
+              "durashell-cap-style-hard-hat-1404r",
+              "conqueror-mag-safety-glasses"
+            ],
+            "title": "Utility Safety"
+          }
+        },
+        "collection_tgYUhE": {
+          "type": "collection",
+          "settings": {
+            "collection": "oil-gas-safety-gear-new",
+            "product_list": [],
+            "title": "Oil & Gas"
+          }
+        },
         "collection_JBgF88": {
           "type": "collection",
           "settings": {
-            "collection": "warehouse-safety-equipment-supplies",
+            "collection": "warehouse-safety-equipment-supplies-new",
             "product_list": [
               "polar-king-premium-insulated-fleece-lined-jacket-376",
               "duraskin-blue-nitrile-disposable-gloves-t2010w",
@@ -1139,10 +1198,39 @@
             "title": "Warehouse"
           }
         },
+        "collection_FXKwQG": {
+          "type": "collection",
+          "settings": {
+            "collection": "electrical-safety-gear-supplies-new",
+            "product_list": [
+              "8-usa-steel-toe-external-met-guard-boots-c505",
+              "8-i-beam-comp-toe-mt2548",
+              "venom-combo-pak"
+            ],
+            "image": "shopify://shop_images/USSG-Home-ShopByCampaign-Electrical.jpg",
+            "title": "Electrical"
+          }
+        },
+        "collection_VchB3Q": {
+          "type": "collection",
+          "settings": {
+            "collection": "road-construction-safety-equipment-new",
+            "product_list": [],
+            "title": "Road Construction"
+          }
+        },
+        "collection_pG6Wi8": {
+          "type": "collection",
+          "settings": {
+            "collection": "mechanic-safety-equipment-supplies-new",
+            "product_list": [],
+            "title": "Mechanic"
+          }
+        },
         "collection_Khm44d": {
           "type": "collection",
           "settings": {
-            "collection": "roofing-safety-equipment-supplies",
+            "collection": "roofing-safety-equipment-supplies-new",
             "product_list": [
               "3m-protecta-vest-style-harness",
               "6-tempe-alloy-toe-tb0a67g3ejo",
@@ -1151,16 +1239,34 @@
             "image": "shopify://shop_images/USSG-Home-ShopByCampaign-Roofing.jpg",
             "title": "Roofing"
           }
+        },
+        "collection_jHpGjd": {
+          "type": "collection",
+          "settings": {
+            "collection": "emergency-response",
+            "product_list": [
+              "tribiotic-triple-antibiotic-cream",
+              "bulk-first-aid-kit-hh-0734",
+              "eye-clean-irrigation"
+            ],
+            "image": "shopify://shop_images/USSG-Nav-WorkplaceSafety-FirstAid_Emergency-Vertical.jpg",
+            "title": "Emergency Response"
+          }
         }
       },
       "block_order": [
         "collection_bYRL6P",
-        "collection_78nYBw",
         "collection_MVg8t9",
-        "collection_FXKwQG",
+        "collection_78nYBw",
         "collection_3CydGb",
+        "collection_LkKgLw",
+        "collection_tgYUhE",
         "collection_JBgF88",
-        "collection_Khm44d"
+        "collection_FXKwQG",
+        "collection_VchB3Q",
+        "collection_pG6Wi8",
+        "collection_Khm44d",
+        "collection_jHpGjd"
       ],
       "settings": {
         "container": "fixed",
@@ -1306,11 +1412,11 @@
             "title": "Hi-Vis Apparel",
             "product_1": "class-2-sustainable-classic-mesh-safety-vest-eco-ryimz",
             "product_1_title": "",
-            "product_1_image": "shopify://shop_images/USSG-Vendor_Paid_Ads-Spot_12-Occunomix-V2.jpg",
+            "product_1_image": "shopify://shop_images/USSG-VendorPaidAds-Spot12-Occunomix.jpg",
             "product_1_ads_id": "spot12-occunomix",
             "product_2": "9-oz-x-back-black-bottom-crew-sweatshirt-lux-cswtbx",
             "product_2_title": "",
-            "product_2_image": "shopify://shop_images/USSG-Vendor_Paid_Ads-Spot_13-Occunomix.jpg",
+            "product_2_image": "shopify://shop_images/USSG-VendorPaidAds-Spot13-Occunomix_Placeholder.jpg",
             "product_2_ads_id": "spot13-graphic"
           }
         },
@@ -1586,7 +1692,7 @@
       ],
       "settings": {
         "container": "fixed",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-6",
         "section_header_alignment": "center",
         "section_header_alignment_mobile": "inherit",
         "subheading": "",
@@ -1598,12 +1704,14 @@
         "heading_size": "h1",
         "item_alignment": "left",
         "item_button_style": "btn--icon",
+        "use_color_scheme_button_colors": true,
         "item_button_font": "button",
         "enable_slider": true,
         "swipe_on_mobile": true,
+        "enable_mobile_swipe_guide": true,
         "show_section_divider": false,
         "divider_width": "fixed",
-        "padding_top": 20,
+        "padding_top": 40,
         "padding_bottom": 60
       }
     },
@@ -1868,6 +1976,9 @@
         "column_tfe8FF",
         "column_wFdBbn"
       ],
+      "custom_css": [
+        "@media (max-width: 767px) {.image-with-feature__wrapper .rich-text__button {text-align: center; }}"
+      ],
       "name": "t:sections.image-with-feature.presets",
       "settings": {
         "container": "fixed",
@@ -1920,8 +2031,8 @@
             "color_scheme": "",
             "horizontal_position": 40,
             "vertical_position": 94,
-            "horizontal_position_mobile": 59,
-            "vertical_position_mobile": 65
+            "horizontal_position_mobile": 40,
+            "vertical_position_mobile": 99
           }
         },
         "product_j7Ba6Y": {
@@ -1931,8 +2042,8 @@
             "color_scheme": "scheme-1",
             "horizontal_position": 45,
             "vertical_position": 3,
-            "horizontal_position_mobile": 44,
-            "vertical_position_mobile": 45
+            "horizontal_position_mobile": 45,
+            "vertical_position_mobile": 0
           }
         },
         "product_HNKpi8": {
@@ -1942,8 +2053,8 @@
             "color_scheme": "scheme-1",
             "horizontal_position": 54,
             "vertical_position": 10,
-            "horizontal_position_mobile": 38,
-            "vertical_position_mobile": 96
+            "horizontal_position_mobile": 56,
+            "vertical_position_mobile": 5
           }
         }
       },
@@ -1973,6 +2084,7 @@
         "column_gap": "2xs",
         "pcard_image_ratio": "",
         "columns_mobile": "2",
+        "enable_mobile_swipe_guide": true,
         "padding_top": 60,
         "padding_bottom": 60,
         "show_section_divider": false,
@@ -2012,9 +2124,9 @@
         "logo_dbqq7n": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/USSG-VendorPaidAds-Spot_19.jpg",
-            "image_link": "https://ussafetygear.com/collections/honeywell",
-            "title": "Honeywell",
+            "image": "shopify://shop_images/USSG-Vendor_Paid_Ads-Carolina_1.jpg",
+            "image_link": "https://ussafetygear.com/collections/vendors?q=Carolina%20Shoe",
+            "title": "Carolina",
             "ads_id": "Spot19-brand"
           }
         },
@@ -2074,8 +2186,9 @@
         "grid_bordered": true,
         "columns_mobile": "3",
         "swipe_on_mobile": true,
+        "enable_mobile_swipe_guide": true,
         "padding_top": 60,
-        "padding_bottom": 60,
+        "padding_bottom": 40,
         "show_section_divider": false,
         "divider_width": "fixed"
       }

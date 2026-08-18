@@ -14,6 +14,7 @@
   - button_link: {String} Link of button to show (optional)
   - button_style: {String} Style of button to show (optional)
   - custom_css_class: {String} Adds a custom css class to the wrap element (optional)
+  - disable_text_effect: {Boolean} Disables reveal effects for heading text content (optional)
 
   Usage:
   {% render 'section-heading', section_settings: section.settings %}
@@ -63,18 +64,30 @@
   <div class="section__header s__header {{ header_class }} spacing--{{ spacing | default: 'normal' }} rich-text rich-text--tight md:text-{{ header_alignment }} text-{{ header_alignment_mobile }}{% if side_button %} flex{% else %} block{% endif %} flex-col items-{{ header_alignment_mobile | replace: 'left', 'start' | replace: 'right', 'end' }} md:items-center{% unless header_alignment == 'center' %} md:flex-row{{ header_alignment | replace: 'left','' | replace: 'right','-reverse' }} gap-x-4{% endunless %}{{ custom_css_class }}">
     <div class="section__header--text s__header--text rich-text rich-text--tight flex-1">
       {%- if section_settings.subheading != blank -%}
+        {%- unless disable_text_effect -%}
         <motion-element
           class="section__subheading text-subheading rich-text__subheading block{% if section_settings.subheading_size %} {{ section_settings.subheading_size }}{% endif %}"
           data-motion="fade-up"
           data-motion-delay="{{ motion_delay }}"
         >
+        {%- else -%}
+        <div class="section__subheading text-subheading rich-text__subheading block{% if section_settings.subheading_size %} {{ section_settings.subheading_size }}{% endif %}">
+        {%- endunless -%}
           {{- section_settings.subheading -}}
+        {%- unless disable_text_effect -%}
         </motion-element>
+        {%- else -%}
+        </div>
+        {%- endunless -%}
         {%- assign motion_delay = motion_delay | plus: 50 -%}
       {%- endif -%}
       {%- if section_settings.heading != blank -%}
         <h2 class="section__heading rich-text__heading{% if section_settings.heading_size %} {{ section_settings.heading_size }}{% endif %}">
+          {%- unless disable_text_effect -%}
           <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+          {%- else -%}
+          <span class="block">
+          {%- endunless -%}
             {% render 'highlight-text',
               hl_text: section_settings.heading,
               hl_style: section_settings.highlight_style,
@@ -82,18 +95,30 @@
               hl_style_color: section_settings.highlight_style_color,
               hl_text_color: section_settings.highlight_text_color
             %}
+          {%- unless disable_text_effect -%}
           </motion-element>
+          {%- else -%}
+          </span>
+          {%- endunless -%}
         </h2>
         {%- assign motion_delay = motion_delay | plus: 50 -%}
       {%- endif -%}
       {%- if description != blank -%}
+        {%- unless disable_text_effect -%}
         <motion-element
           class="section__description rich-text__text block rte {{ description_size }} {{ description_color }}"
           data-motion="fade-up"
           data-motion-delay="{{ motion_delay }}"
         >
+        {%- else -%}
+        <div class="section__description rich-text__text block rte {{ description_size }} {{ description_color }}">
+        {%- endunless -%}
           {{- description -}}
+        {%- unless disable_text_effect -%}
         </motion-element>
+        {%- else -%}
+        </div>
+        {%- endunless -%}
         {%- assign motion_delay = motion_delay | plus: 50 -%}
       {%- endif -%}
     </div>

@@ -8,22 +8,22 @@
  * ------------------------------------------------------------
  */
 {
+  "parent": "product.json",
   "context": {
     "market": "all-b2b"
   },
-  "parent": "header-group.json",
   "sections": {
-    "topbar_3YD96h": {
-      "disabled": true,
+    "main": {
       "settings": {},
-      "blocks": {}
-    },
-    "header": {
-      "settings": {
-        "menu": "main-menu-quick-links-b2b",
-        "menu_mobile": "main-menu-quick-links-b2b",
-        "enable_language_selector": false,
-        "enable_country_selector": false
+      "blocks": {
+        "inventory": {
+          "disabled": true,
+          "settings": {}
+        },
+        "pickup_availability": {
+          "disabled": true,
+          "settings": {}
+        }
       }
     }
   }

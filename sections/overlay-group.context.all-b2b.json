@@ -8,23 +8,27 @@
  * ------------------------------------------------------------
  */
 {
+  "parent": "overlay-group.json",
   "context": {
     "market": "all-b2b"
   },
-  "parent": "header-group.json",
   "sections": {
-    "topbar_3YD96h": {
+    "cart-drawer": {
+      "settings": {
+        "show_shipping_rates_calculator": false,
+        "enable_cart_recommendations": false,
+        "show_free_shipping_goal": false
+      }
+    },
+    "popup": {
       "disabled": true,
       "settings": {},
       "blocks": {}
     },
-    "header": {
-      "settings": {
-        "menu": "main-menu-quick-links-b2b",
-        "menu_mobile": "main-menu-quick-links-b2b",
-        "enable_language_selector": false,
-        "enable_country_selector": false
-      }
+    "spotlight-picks": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
     }
   }
 }

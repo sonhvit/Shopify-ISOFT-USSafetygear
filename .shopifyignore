@@ -1,0 +1,25 @@
+# For more about ignoring files while using Shopify CLI.
+
+## See https://shopify.dev/themes/tools/cli#excluding-files-from-shopify-cli
+
+## Project files
+
+.env*
+config/settings_data.json
+config/markets.json
+sections/**.json
+templates/**.json
+templates/**/*.json
+locales/*.json
+/locales\/(?!.*\.schema\.json$).*\.json/
+
+.shopify/*
+
+## Misc
+.gitkeep
+
+## Dependencies
+node_modules
+package.json
+package-lock.jsone
+    

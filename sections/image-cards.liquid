@@ -52,7 +52,11 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
 %}
 
 <div class="section section-{{ section.id }} section--padding image-cards page-width page-width--{{ section.settings.container }} color-{{ section.settings.color_scheme }}">
-  {%- render 'section-heading', section_settings: section.settings, description_size: section.settings.description_size -%}
+  {%- render 'section-heading',
+    section_settings: section.settings,
+    description_size: section.settings.description_size,
+    disable_text_effect: section.settings.disable_text_effect
+  -%}
   <div class="section__content relative{% if navigation_position == 'middle' %} swiper-show-nav-on-hover{% endif %}">
     <image-cards
       class="block relative{% if enable_slider %} swiper swiper-equal-height{% if section.settings.content_overflow %} overflow-visible{% endif %}{% endif %}{% if enable_swipe_mobile %} swipe-mobile swipe-mobile--{{ section.settings.columns_mobile }}-cols{% endif %}"
@@ -246,6 +250,12 @@ calc( min(100vw, {{ settings.page_width }}px) / {{ columns_desktop }})
       "label": "t:general.heading.label",
       "default": "Image cards",
       "info": "t:general.heading.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_text_effect",
+      "label": "Không sử dụng hiệu ứng cho nội dung chữ",
+      "default": false
     },
     {
       "type": "select",

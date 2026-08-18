@@ -1,0 +1,52 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "footer-group.json",
+  "context": {
+    "market": "all-b2b"
+  },
+  "sections": {
+    "multicolumn_icon_rTKNUF": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "footer": {
+      "settings": {
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": false,
+        "footer_bottom_menu": "",
+        "padding_top": 24,
+        "padding_bottom": 24
+      },
+      "blocks": {
+        "image_text_dE6TcX": {
+          "disabled": true,
+          "settings": {}
+        },
+        "menu_DEKGYP": {
+          "disabled": true,
+          "settings": {}
+        },
+        "menu_4eCrBB": {
+          "disabled": true,
+          "settings": {}
+        },
+        "menu_6cjHfA": {
+          "disabled": true,
+          "settings": {}
+        }
+      }
+    }
+  }
+}
