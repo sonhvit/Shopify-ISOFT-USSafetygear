@@ -12,11 +12,11 @@
     "collection_list_NzWJzU": {
       "type": "collection-list",
       "blocks": {
-        "featured_collection_bceBA4": {
+        "featured_collection_hm4LQF": {
           "type": "featured_collection",
           "settings": {
             "collection": "workwear-apparel",
-            "image": "shopify://shop_images/USSG-Collections-Category-Workwear.jpg",
+            "image": "shopify://shop_images/USSG-Home-CollectionList-Workwear_Apparel.jpg",
             "title": "Workwear"
           }
         },
@@ -28,7 +28,7 @@
             "title": "Footwear"
           }
         },
-        "featured_collection_XdeCie": {
+        "featured_collection_qdWEyx": {
           "type": "featured_collection",
           "settings": {
             "collection": "fall-protection-equipment",
@@ -36,19 +36,19 @@
             "title": "Fall Protection"
           }
         },
-        "featured_collection_hm4LQF": {
+        "featured_collection_XdeCie": {
           "type": "featured_collection",
           "settings": {
             "collection": "first-aid-kits",
-            "image": "shopify://shop_images/USSG-Collections-Category-FirstAid_Emergency.jpg",
-            "title": "First Aid & Emergency"
+            "image": "shopify://shop_images/USSG-Home-CollectionList-FirstAid.jpg",
+            "title": "First Aid &Emergency"
           }
         },
         "featured_collection_KFx4XD": {
           "type": "featured_collection",
           "settings": {
             "collection": "work-gloves",
-            "image": "shopify://shop_images/USSG-Collections-Category-HandProtection.jpg",
+            "image": "shopify://shop_images/USSG-Home-CollectionList-WorkGloves.jpg",
             "title": "Hand Protection"
           }
         },
@@ -56,19 +56,19 @@
           "type": "featured_collection",
           "settings": {
             "collection": "hi-vis-clothing-workwear",
-            "image": "shopify://shop_images/USSG-Collections-Category-Hi-VisClothing.jpg",
-            "title": "High Visibility Clothing"
+            "image": "shopify://shop_images/USSG-Home-CollectionList-Hi-VisClothing.jpg",
+            "title": "Hi-Vis Clothing"
           }
         },
         "featured_collection_3RJbGN": {
           "type": "featured_collection",
           "settings": {
-            "collection": "eyewear",
-            "image": "shopify://shop_images/USSG-Collections-Category-EyeProtection.jpg",
-            "title": "Eye Protection"
+            "collection": "eye-face-protection",
+            "image": "shopify://shop_images/USSG-Home-CollectionList-Eye_FaceProtection.jpg",
+            "title": "Eye protection"
           }
         },
-        "featured_collection_kHp7cb": {
+        "featured_collection_T4XLD8": {
           "type": "featured_collection",
           "settings": {
             "collection": "safety-vests",
@@ -76,16 +76,7 @@
             "title": "Safety Vests"
           }
         },
-        "featured_collection_GUC7ng": {
-          "type": "featured_collection",
-          "disabled": true,
-          "settings": {
-            "collection": "fr-safety-vests",
-            "image": "shopify://shop_images/USSG-Collections-Category-FRClothing.jpg",
-            "title": "FR Clothing"
-          }
-        },
-        "featured_collection_6Krw34": {
+        "featured_collection_bceBA4": {
           "type": "featured_collection",
           "settings": {
             "collection": "hard-hats",
@@ -93,15 +84,15 @@
             "title": "Hard Hats"
           }
         },
-        "featured_collection_qdWEyx": {
+        "featured_collection_GUC7ng": {
           "type": "featured_collection",
           "settings": {
             "collection": "hearing-protection",
-            "image": "shopify://shop_images/USSG-Collections-Category-HearingProtection.jpg",
+            "image": "shopify://shop_images/USSG-Home-CollectionList-HearingProtection.jpg",
             "title": "Hearing Protection"
           }
         },
-        "featured_collection_Xawxpq": {
+        "featured_collection_6Krw34": {
           "type": "featured_collection",
           "settings": {
             "collection": "respiratory-protection",
@@ -109,29 +100,38 @@
             "title": "Respiratory Protection"
           }
         },
-        "featured_collection_T4XLD8": {
+        "featured_collection_Xawxpq": {
           "type": "featured_collection",
           "settings": {
             "collection": "worksite-safety-equipment-supplies",
             "image": "shopify://shop_images/USSG-Home-CollectionList-WorksiteSafety.jpg",
             "title": "Worksite Safety"
           }
+        },
+        "featured_collection_idQmiz": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "janitorial-cleaning-supplies",
+            "image": "shopify://shop_images/USSG-Home-CollectionList-Cleaning_JanitorialSupplies.jpg",
+            "title": "Cleaning & Janitorial Supplies"
+          }
         }
       },
       "block_order": [
-        "featured_collection_bceBA4",
-        "featured_collection_KX8rJd",
-        "featured_collection_XdeCie",
         "featured_collection_hm4LQF",
+        "featured_collection_KX8rJd",
+        "featured_collection_qdWEyx",
+        "featured_collection_XdeCie",
         "featured_collection_KFx4XD",
         "featured_collection_DNGih9",
         "featured_collection_3RJbGN",
-        "featured_collection_kHp7cb",
+        "featured_collection_T4XLD8",
+        "featured_collection_bceBA4",
         "featured_collection_GUC7ng",
         "featured_collection_6Krw34",
-        "featured_collection_qdWEyx",
         "featured_collection_Xawxpq",
-        "featured_collection_T4XLD8"
+        "featured_collection_idQmiz"
       ],
       "custom_css": [
         ".collection-card__title {font-size: 15px;}"
@@ -142,7 +142,7 @@
         "section_header_alignment": "left",
         "section_header_alignment_mobile": "inherit",
         "subheading": "",
-        "heading": "SHOP BY CATEGORY",
+        "heading": "",
         "highlight_style": "none",
         "highlight_font_style": "italic",
         "highlight_style_color": "",
@@ -169,9 +169,9 @@
         "row_gap": "inherit",
         "grid_bordered": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36,
+        "swipe_on_mobile": false,
+        "padding_top": 46,
+        "padding_bottom": 46,
         "show_section_divider": false,
         "divider_width": "fixed"
       }
