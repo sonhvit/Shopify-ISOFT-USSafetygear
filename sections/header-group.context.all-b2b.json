@@ -13,11 +13,6 @@
   },
   "parent": "header-group.json",
   "sections": {
-    "topbar_3YD96h": {
-      "disabled": true,
-      "settings": {},
-      "blocks": {}
-    },
     "header": {
       "settings": {
         "menu": "main-menu-quick-links-b2b",

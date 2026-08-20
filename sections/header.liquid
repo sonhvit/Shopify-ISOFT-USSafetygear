@@ -121,66 +121,71 @@
     {%- endif -%}
 
     <div class="header__logo flex justify-center items-center z-1">
-    {%- if section.settings.header_layout == 'logo-left' or section.settings.header_layout == 'logo-left-search-center' and section.settings.enable_collapse_on_scroll -%}
-      <button
-        class="menu-drawer-button toggle-navigation-button btn btn--inherit flex-col items-center justify-center hidden lg:flex shrink-0"
-        aria-label="{{ 'accessibility.menu_drawer' | t }}"
+      {%- if section.settings.header_layout == 'logo-left'
+        or section.settings.header_layout == 'logo-left-search-center'
+        and section.settings.enable_collapse_on_scroll
+      -%}
+        <button
+          class="menu-drawer-button toggle-navigation-button btn btn--inherit flex-col items-center justify-center hidden lg:flex shrink-0"
+          aria-label="{{ 'accessibility.menu_drawer' | t }}"
+        >
+          <span class="hamburger-line"></span>
+        </button>
+      {%- endif -%}
+      <a
+        href="{{ routes.root_url }}"
+        class="h3 relative flex{% unless settings.logo %} header__logo--text{% else %} header__logo--image{% endunless %}"
       >
-        <span class="hamburger-line"></span>
-      </button>
-    {%- endif -%}
-    <a
-      href="{{ routes.root_url }}"
-      class="h3 relative flex{% unless settings.logo %} header__logo--text{% else %} header__logo--image{% endunless %}"
-    >
-      {%- if settings.logo != blank -%}
-        {%- liquid
-          assign logo = settings.logo
-          assign logo_width = settings.logo_width
-          assign logo_width_2x = settings.logo_width | times: 2
+        {%- if settings.logo != blank -%}
+          {%- liquid
+            assign logo = settings.logo
+            assign logo_width = settings.logo_width
+            assign logo_width_2x = settings.logo_width | times: 2
 
-          assign logo_mobile = settings.logo_mobile
-          assign logo_width_mobile = settings.logo_width_mobile
-          assign logo_width_mobile_2x = settings.logo_width_mobile | times: 2
+            assign logo_mobile = settings.logo_mobile
+            assign logo_width_mobile = settings.logo_width_mobile
+            assign logo_width_mobile_2x = settings.logo_width_mobile | times: 2
 
-          if logo_mobile == blank
-            assign logo_mobile = logo
-          endif
-        -%}
-        {%- assign scroll_logo_desktop = section.settings.scroll_logo -%}
-        {%- assign scroll_logo_mobile_selected = section.settings.scroll_logo_mobile | default: section.settings.scroll_logo -%}
-        {%- if logo_mobile -%}
+            if logo_mobile == blank
+              assign logo_mobile = logo
+            endif
+          -%}
+          {%- assign scroll_logo_desktop = section.settings.scroll_logo -%}
+          {%- assign scroll_logo_mobile_selected = section.settings.scroll_logo_mobile
+            | default: section.settings.scroll_logo
+          -%}
+          {%- if logo_mobile -%}
+            <img
+              srcset="{{ logo_mobile | image_url: width: logo_width_mobile }} 1x, {{ logo_mobile | image_url: width: logo_width_mobile_2x }} 2x"
+              src="{{ logo_mobile | image_url: width: logo_width_mobile }}"
+              {% if scroll_logo_mobile_selected %}
+                data-scroll-srcset="{{ scroll_logo_mobile_selected | image_url: width: logo_width_mobile }} 1x, {{ scroll_logo_mobile_selected | image_url: width: logo_width_mobile_2x }} 2x"
+                data-scroll-src="{{ scroll_logo_mobile_selected | image_url: width: logo_width_mobile }}"
+              {% endif %}
+              loading="eager"
+              width="{{ logo_mobile.width }}"
+              height="{{ logo_mobile.height }}"
+              alt="{{ logo_mobile.alt | default: shop.name | escape }}"
+              class="logo header__logo--mobile md:hidden"
+            >
+          {%- endif -%}
           <img
-            srcset="{{ logo_mobile | image_url: width: logo_width_mobile }} 1x, {{ logo_mobile | image_url: width: logo_width_mobile_2x }} 2x"
-            src="{{ logo_mobile | image_url: width: logo_width_mobile }}"
-            {% if scroll_logo_mobile_selected %}
-              data-scroll-srcset="{{ scroll_logo_mobile_selected | image_url: width: logo_width_mobile }} 1x, {{ scroll_logo_mobile_selected | image_url: width: logo_width_mobile_2x }} 2x"
-              data-scroll-src="{{ scroll_logo_mobile_selected | image_url: width: logo_width_mobile }}"
+            srcset="{{ logo | image_url: width: logo_width }} 1x, {{ logo | image_url: width: logo_width_2x }} 2x"
+            src="{{ logo | image_url: width: logo_width }}"
+            {% if scroll_logo_desktop %}
+              data-scroll-srcset="{{ scroll_logo_desktop | image_url: width: logo_width }} 1x, {{ scroll_logo_desktop | image_url: width: logo_width_2x }} 2x"
+              data-scroll-src="{{ scroll_logo_desktop | image_url: width: logo_width }}"
             {% endif %}
             loading="eager"
-            width="{{ logo_mobile.width }}"
-            height="{{ logo_mobile.height }}"
-            alt="{{ logo_mobile.alt | default: shop.name | escape }}"
-            class="logo header__logo--mobile md:hidden"
+            width="{{ logo.width }}"
+            height="{{ logo.height }}"
+            alt="{{ logo.alt | default: shop.name | escape }}"
+            class="logo header__logo--desktop md:block hidden"
           >
+        {%- else -%}
+          {{ shop.name }}
         {%- endif -%}
-        <img
-          srcset="{{ logo | image_url: width: logo_width }} 1x, {{ logo | image_url: width: logo_width_2x }} 2x"
-          src="{{ logo | image_url: width: logo_width }}"
-          {% if scroll_logo_desktop %}
-            data-scroll-srcset="{{ scroll_logo_desktop | image_url: width: logo_width }} 1x, {{ scroll_logo_desktop | image_url: width: logo_width_2x }} 2x"
-            data-scroll-src="{{ scroll_logo_desktop | image_url: width: logo_width }}"
-          {% endif %}
-          loading="eager"
-          width="{{ logo.width }}"
-          height="{{ logo.height }}"
-          alt="{{ logo.alt | default: shop.name | escape }}"
-          class="logo header__logo--desktop md:block hidden"
-        >
-      {%- else -%}
-        {{ shop.name }}
-      {%- endif -%}
-    </a>
+      </a>
     </div>
 
     <div class="header__search flex items-center z-2">
@@ -203,7 +208,12 @@
 
     <div class="header__icons header__icons--right flex justify-end z-1">
       <div class="header__buttons flex items-center justify-center">
-        {%- if custom_link and custom_link.settings.link != blank or custom_link.settings.label != blank or custom_link.settings.custom_icon != blank or custom_link.settings.icon != 'none' -%}
+        {%- if custom_link
+          and custom_link.settings.link != blank
+          or custom_link.settings.label != blank
+          or custom_link.settings.custom_icon != blank
+          or custom_link.settings.icon != 'none'
+        -%}
           <a
             href="{{ custom_link.settings.link | default: "#" }}"
             class="cusstom-button flex items-center justify-center gap-2 reversed-link{% if custom_link.settings.label == blank %} reversed-link--icon-only{% endif %}"
@@ -266,7 +276,7 @@
             style="{{ cart_icon_inline_css }}"
           {% endif %}
         >
-          {%- render 'icon-cart', size: 'large', name: settings.cart_icon -%}
+          {%- render 'icon-cart-new', size: 'large', name: settings.cart_icon -%}
           <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
           <cart-count
             class="cart-count cart-count--absolute{% if cart.item_count > 99 %} cart-count--small-medium{% endif %}"

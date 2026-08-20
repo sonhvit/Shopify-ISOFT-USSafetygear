@@ -257,7 +257,7 @@
         "note": "The fields marked * are required.",
         "success_message": "Thanks for contacting us. We'll get back to you as soon as possible."
       },
-      "sold_out": "Sold out",
+      "sold_out": "Temporarily Unavailable — Please Visit the Store to Request",
       "unavailable": "Unavailable",
       "sku": "SKU",
       "barcode": "Barcode",

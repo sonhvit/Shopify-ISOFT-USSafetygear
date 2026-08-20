@@ -18,77 +18,6 @@
         "padding_bottom": 20
       }
     },
-    "rich_text_gAWHLJ": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_RKN8Fw": {
-          "type": "heading",
-          "settings": {
-            "heading": "{{ collection.title }}",
-            "heading_tag": "h1",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd2"
-          }
-        },
-        "text_hxDHNY": {
-          "type": "text",
-          "settings": {
-            "text": "<p>{{ collection.metafields.custom.collection_sub_title | metafield_tag }}</p>",
-            "text_size": "text-base",
-            "text_line_limit": "none",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "heading_RKN8Fw",
-        "text_hxDHNY"
-      ],
-      "name": "t:sections.rich-text.name",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "use_color_scheme_in_container": false,
-        "content_spacing": "standard",
-        "content_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 36,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
-    "collection_slider_banner_hxEmNp": {
-      "type": "collection-slider-banner",
-      "name": "Collection slider banner",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "section_header_alignment": "left",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h1",
-        "display_mode": "slider",
-        "image_ratio": "3/2",
-        "columns_desktop": 3,
-        "columns_tablet": 2,
-        "columns_mobile": "1",
-        "column_gap": "small",
-        "row_gap": "medium",
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 0,
-        "padding_bottom": 50
-      }
-    },
     "banner": {
       "type": "main-collection-banner",
       "blocks": {
@@ -106,12 +35,11 @@
       "block_order": [
         "collection_info_zUNyKV"
       ],
-      "disabled": true,
       "custom_css": [],
       "settings": {
-        "ads_id": "",
+        "ads_id": "spot32",
         "container": "fixed",
-        "color_scheme": "scheme-13",
+        "color_scheme": "scheme-info",
         "text_alignment": "left",
         "show_collection_image": true,
         "image_overlay_opacity": 20,
@@ -124,13 +52,48 @@
         "padding_bottom": 0
       }
     },
+    "collection_list_banner_slider_GDybdH": {
+      "type": "collection-list-banner-slider",
+      "name": "Banner list slider",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "card_color_scheme": "",
+        "card_style": "standard",
+        "card_heading_size": "text-base",
+        "card_heading_tag": "h2",
+        "card_image_ratio": "1/1",
+        "card_image_width": "medium",
+        "card_image_padding": "none",
+        "rounded_card_image": true,
+        "mobile_layout": "vertical",
+        "carousel_item_size": "auto",
+        "columns_desktop": 6,
+        "carousel_control_color_scheme": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
     "collection_list_slider_6qbNfj": {
       "type": "collection-list-slider",
       "blocks": {
         "featured_collection_L9N3Tg": {
           "type": "featured_collection",
           "settings": {
-            "collection": "",
+            "collection": "3m-harnesses",
             "title": ""
           }
         },
@@ -235,7 +198,6 @@
         "featured_collection_c7kFW3"
       ],
       "disabled": true,
-      "custom_css": [],
       "settings": {
         "container": "fixed",
         "color_scheme": "",
@@ -257,8 +219,8 @@
         "card_color_scheme": "",
         "card_style": "standard",
         "card_heading_size": "text-base",
-        "card_heading_tag": "h3",
-        "source": "blocks",
+        "card_heading_tag": "h2",
+        "source": "metafield",
         "card_image_ratio": "1/1",
         "card_image_width": "medium",
         "card_image_padding": "none",
@@ -458,7 +420,7 @@
       "settings": {
         "container": "fixed",
         "color_scheme": "scheme-1",
-        "products_per_page": 32,
+        "products_per_page": 16,
         "columns_desktop": 4,
         "column_gap": "medium",
         "row_gap": "inherit",
@@ -471,7 +433,7 @@
         "enable_layout_switching": true,
         "columns_mobile": "2",
         "padding_top": 28,
-        "padding_bottom": 0,
+        "padding_bottom": 38,
         "show_section_divider": true,
         "divider_width": "fixed"
       }
@@ -512,36 +474,10 @@
         "use_color_scheme_in_container": true,
         "content_spacing": "standard",
         "content_alignment": "left",
-        "padding_top": 60,
+        "padding_top": 0,
         "padding_bottom": 50,
         "show_section_divider": false,
         "divider_width": "fixed"
-      }
-    },
-    "collection_buttons_with_icon_pVWWf9": {
-      "type": "collection-buttons-with-icon",
-      "name": "Collection List Buttons",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "section_header_alignment": "left",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "Explore Popular Search",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h1",
-        "item_alignment": "left",
-        "item_button_style": "btn--icon",
-        "item_button_font": "button",
-        "enable_slider": true,
-        "swipe_on_mobile": true,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 0,
-        "padding_bottom": 50
       }
     },
     "buttons_with_icon_CrE8jr": {
@@ -755,18 +691,43 @@
         "padding_top": 16,
         "padding_bottom": 16
       }
+    },
+    "collection_buttons_with_icon_6dTkhT": {
+      "type": "collection-buttons-with-icon",
+      "name": "Collection List Buttons",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Explore Popular Search",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "item_alignment": "left",
+        "item_button_style": "btn--icon",
+        "item_button_font": "button",
+        "enable_slider": true,
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
     }
   },
   "order": [
     "breadcrumbs_Gxg9wp",
-    "rich_text_gAWHLJ",
-    "collection_slider_banner_hxEmNp",
     "banner",
+    "collection_list_banner_slider_GDybdH",
     "collection_list_slider_6qbNfj",
     "product-grid",
     "rich_text_LBBELW",
-    "collection_buttons_with_icon_pVWWf9",
     "buttons_with_icon_CrE8jr",
-    "scrolling_promotion_qyMknd"
+    "scrolling_promotion_qyMknd",
+    "collection_buttons_with_icon_6dTkhT"
   ]
 }

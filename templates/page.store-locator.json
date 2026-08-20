@@ -1,0 +1,694 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_dfynGA": {
+      "type": "breadcrumbs",
+      "name": "t:sections.breadcrumbs.name",
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_cards_HVgeAw": {
+      "type": "image-cards",
+      "blocks": {
+        "image_card_CQMBFE": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-10",
+            "image": "shopify://shop_images/apple_creek.jpg",
+            "image_ratio": "4/3",
+            "image_overlay_opacity": 0,
+            "content_position": "below",
+            "content_alignment": "left",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "",
+            "link_target_blank": false,
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Apple Creek",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<p>7847 East Lincoln Way</p><p>Apple Creek, OH 44606</p><p><a href=\"https://www.google.com/maps/dir/40.8997524,-81.5991983/40.7964896,-81.8328868/@40.7963897,-81.9030389,12z\" target=\"_blank\" title=\"Directions to Apple Creek store\">GET DIRECTIONS</a></p><p><strong>Phone:</strong> 330-262-7120</p><p><strong>Store Hours:</strong></p><p><strong>Mon - Fri:</strong> 8 a.m. - 5 p.m.</p><p><strong>Sat: </strong>9 a.m. - 12 p.m.</p><p><strong>Sun:</strong> Closed</p>",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_aJycTG": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-10",
+            "image": "shopify://shop_images/canton.jpg",
+            "image_ratio": "4/3",
+            "image_overlay_opacity": 0,
+            "content_position": "below",
+            "content_alignment": "left",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "",
+            "link_target_blank": false,
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Canton",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<p>2813 Cleveland Ave S.W.</p><p>Canton, OH 44707</p><p><a href=\"https://www.google.com/maps/dir//2813+Cleveland+Ave+SW,+Canton,+OH+44707/@40.7663689,-81.4528988,12z%20sr\" target=\"_blank\" title=\"Directions to Canton store\">GET DIRECTIONS</a></p><p><strong>Phone:</strong> 234-214-8808</p><p><strong>Store Hours:</strong></p><p><strong>Mon - Fri: </strong>8 a.m. - 5 p.m.</p><p><strong>Sat:</strong> 9 a.m. - 12 p.m.</p><p><strong>Sun: </strong>Closed</p>",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_3hPBkU": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-10",
+            "image": "shopify://shop_images/leavittsburg.jpg",
+            "image_ratio": "4/3",
+            "image_overlay_opacity": 0,
+            "content_position": "below",
+            "content_alignment": "left",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "",
+            "link_target_blank": false,
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Leavittsburg",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<p>4196 W. Market St.</p><p>Leavittsburg, OH 44430</p><p><a href=\"https://www.google.com/maps/dir//4196+W+Market+St,+Leavittsburg,+OH+44430/@41.2400353,-80.9080378,13z\" target=\"_blank\" title=\"Directions to Leavittsburg store\">GET DIRECTIONS</a></p><p><strong>Phone:</strong> 330-898-8205</p><p><strong>Store Hours:</strong></p><p><strong>Mon - Fri:</strong> 8 a.m. - 5 p.m.</p><p><strong>Sat: </strong>9 a.m. - 12 p.m.</p><p><strong>Sun: </strong>Closed</p>",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_6c4km8": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-10",
+            "image": "shopify://shop_images/Mentor_Store_Front.png",
+            "image_ratio": "4/3",
+            "image_overlay_opacity": 0,
+            "content_position": "below",
+            "content_alignment": "left",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "",
+            "link_target_blank": false,
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Mentor",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<p>7516 Tyler Blvd.</p><p>Mentor, OH 44060</p><p><a href=\"https://www.google.com/maps/dir//7516+Tyler+Blvd,+Mentor,+OH+44060/@41.6610297,-81.3735377,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x8831a8c4943af167:0xc0eb1a38bf8452c5!2m2!1d-81.3713437!2d41.6610257!3e0\" target=\"_blank\" title=\"Directions to Mentor store\">GET DIRECTIONS</a></p><p><strong>Phone:</strong> 440-585-9999</p><p><strong>Store Hours:</strong></p><p><strong>Mon - Fri:</strong> 8 a.m. - 5 p.m.</p><p><strong>Sat: </strong>9 a.m. - 12 p.m.</p><p><strong>Sun:</strong> Closed</p>",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        },
+        "image_card_34Te3r": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-10",
+            "image": "shopify://shop_images/steubenville.jpg",
+            "image_ratio": "4/3",
+            "image_overlay_opacity": 0,
+            "content_position": "below",
+            "content_alignment": "left",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "",
+            "link_target_blank": false,
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Steubenville",
+            "highlight_style": "hand_drawn_circle",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<p>4238 Sunset Blvd. Suite B</p><p>Steubenville, OH 43952</p><p><a href=\"https://www.google.com/maps/dir//4238+Sunset+Blvd,+Steubenville,+OH+43952/@40.3743647,-80.7131024,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x88342ef8ba4bc315:0x52f3ce2d0404d578!2m2!1d-80.6779971!2d40.3743046\" target=\"_blank\" title=\"Directions to Steubenville store\">GET DIRECTIONS</a></p><p><strong>Phone:</strong> 740-314-5110</p><p><strong>Store Hours:</strong></p><p><strong>Mon - Fri:</strong> 8 a.m. - 5 p.m.</p><p><strong>Sat:</strong> 9 a.m. - 12 p.m.</p><p><strong>Sun: </strong>Closed</p>",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "image_card_CQMBFE",
+        "image_card_aJycTG",
+        "image_card_3hPBkU",
+        "image_card_6c4km8",
+        "image_card_34Te3r"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-cards.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Visit One of Our Store Locations:",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "description_size": "text-sm",
+        "columns_desktop": 3,
+        "column_gap": "small",
+        "row_gap": "inherit",
+        "enable_slider": false,
+        "content_overflow": true,
+        "navigation_position": "bottom",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_HyVdFB": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_dfVT6f": {
+          "type": "heading",
+          "settings": {
+            "heading": "Apple Creek",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3"
+          }
+        },
+        "icon_with_text_zrqnWA": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "map-pin",
+            "icon_width": 32,
+            "color": "#000000",
+            "heading": "Address",
+            "heading_size": "h5",
+            "text": "<p>7847 East Lincoln Way</p><p>Apple Creek, OH 44606</p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "icon_with_text_bkLifn": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "phone",
+            "icon_width": 28,
+            "color": "#000000",
+            "heading": "Phone",
+            "heading_size": "h5",
+            "text": "<p><a href=\"tel:330-262-7120\" title=\"tel:330-262-7120\">330-262-7120</a></p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "icon_with_text_mWGXjN": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "clock",
+            "icon_width": 28,
+            "color": "#000000",
+            "heading": "Store Hours",
+            "heading_size": "h5",
+            "text": "<p><strong>Mon - Fri:</strong> 8 a.m. - 5 p.m.</p><p><strong>Sat: </strong>9 a.m. - 12 p.m.</p><p><strong>Sun:</strong> Closed</p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "button_3zjipx": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Get Direction",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_dfVT6f",
+        "icon_with_text_zrqnWA",
+        "icon_with_text_bkLifn",
+        "icon_with_text_mWGXjN",
+        "button_3zjipx"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "image": "shopify://shop_images/apple_creek.jpg",
+        "image_position": "left",
+        "image_width": 55,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "inherit",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "image_with_text_Ae4hxH": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_yGfieY": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Canton</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3"
+          }
+        },
+        "icon_with_text_EkAq6T": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "map-pin",
+            "icon_width": 32,
+            "color": "#000000",
+            "heading": "Address",
+            "heading_size": "h5",
+            "text": "<p>2813 Cleveland Ave S.W.</p><p>Canton, OH 44707</p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "icon_with_text_RHPfkg": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "phone",
+            "icon_width": 28,
+            "color": "#000000",
+            "heading": "Phone",
+            "heading_size": "h5",
+            "text": "<p><a href=\"tel:234-214-8808\" title=\"tel:234-214-8808\">234-214-8808</a></p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "icon_with_text_VjTzX4": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "clock",
+            "icon_width": 28,
+            "color": "#000000",
+            "heading": "Store Hours",
+            "heading_size": "h5",
+            "text": "<p><strong>Mon - Fri:</strong> 8 a.m. - 5 p.m.</p><p><strong>Sat: </strong>9 a.m. - 12 p.m.</p><p><strong>Sun:</strong> Closed</p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "button_HqK4Dr": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Get Direction",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_yGfieY",
+        "icon_with_text_EkAq6T",
+        "icon_with_text_RHPfkg",
+        "icon_with_text_VjTzX4",
+        "button_HqK4Dr"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "image": "shopify://shop_images/canton.jpg",
+        "image_position": "left",
+        "image_width": 55,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "inherit",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "image_with_text_bxeDck": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_X3dEEk": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Leavittsburg</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3"
+          }
+        },
+        "icon_with_text_JXKmgY": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "map-pin",
+            "icon_width": 32,
+            "color": "#000000",
+            "heading": "Address",
+            "heading_size": "h5",
+            "text": "<p>4196 W. Market St.</p><p>Leavittsburg, OH 44430</p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "icon_with_text_7JjGJc": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "phone",
+            "icon_width": 28,
+            "color": "#000000",
+            "heading": "Phone",
+            "heading_size": "h5",
+            "text": "<p><a href=\"tel:330-898-8205\" title=\"tel:330-898-8205\">330-898-8205</a></p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "icon_with_text_wExQpq": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "clock",
+            "icon_width": 28,
+            "color": "#000000",
+            "heading": "Store Hours",
+            "heading_size": "h5",
+            "text": "<p><strong>Mon - Fri:</strong> 8 a.m. - 5 p.m.</p><p><strong>Sat: </strong>9 a.m. - 12 p.m.</p><p><strong>Sun:</strong> Closed</p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "button_7ed44V": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Get Direction",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_X3dEEk",
+        "icon_with_text_JXKmgY",
+        "icon_with_text_7JjGJc",
+        "icon_with_text_wExQpq",
+        "button_7ed44V"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "image": "shopify://shop_images/leavittsburg.jpg",
+        "image_position": "left",
+        "image_width": 55,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "inherit",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "image_with_text_k7ThBU": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_UqeWi9": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Mentor</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3"
+          }
+        },
+        "icon_with_text_XgQifd": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "map-pin",
+            "icon_width": 32,
+            "color": "#000000",
+            "heading": "Address",
+            "heading_size": "h5",
+            "text": "<p>7516 Tyler Blvd.</p><p>Mentor, OH 44060</p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "icon_with_text_YgpEwH": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "phone",
+            "icon_width": 28,
+            "color": "#000000",
+            "heading": "Phone",
+            "heading_size": "h5",
+            "text": "<p><a href=\"tel:440-585-9999\" title=\"tel:440-585-9999\">440-585-9999</a></p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "icon_with_text_p6A9fH": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "clock",
+            "icon_width": 28,
+            "color": "#000000",
+            "heading": "Store Hours",
+            "heading_size": "h5",
+            "text": "<p><strong>Mon - Fri:</strong> 8 a.m. - 5 p.m.</p><p><strong>Sat: </strong>9 a.m. - 12 p.m.</p><p><strong>Sun:</strong> Closed</p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "button_rp4QBi": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Get Direction",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UqeWi9",
+        "icon_with_text_XgQifd",
+        "icon_with_text_YgpEwH",
+        "icon_with_text_p6A9fH",
+        "button_rp4QBi"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "image": "shopify://shop_images/Mentor_Store_Front.png",
+        "image_position": "left",
+        "image_width": 55,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "inherit",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "image_with_text_q4C9TT": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_EgzdmY": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Steubenville</strong>",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3"
+          }
+        },
+        "icon_with_text_QrFVFf": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "map-pin",
+            "icon_width": 32,
+            "color": "#000000",
+            "heading": "Address",
+            "heading_size": "h5",
+            "text": "<p>4238 Sunset Blvd. Suite B</p><p>Steubenville, OH 43952</p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "icon_with_text_FFHAxX": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "phone",
+            "icon_width": 28,
+            "color": "#000000",
+            "heading": "Phone",
+            "heading_size": "h5",
+            "text": "<p><a href=\"tel:740-314-5110\" title=\"tel:740-314-5110\">740-314-5110</a></p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "icon_with_text_T9qBNG": {
+          "type": "icon_with_text",
+          "settings": {
+            "icon": "clock",
+            "icon_width": 28,
+            "color": "#000000",
+            "heading": "Store Hours",
+            "heading_size": "h5",
+            "text": "<p><strong>Mon - Fri:</strong> 8 a.m. - 5 p.m.</p><p><strong>Sat: </strong>9 a.m. - 12 p.m.</p><p><strong>Sun:</strong> Closed</p>",
+            "vertical_alignment": "start"
+          }
+        },
+        "button_AiExUt": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Get Direction",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_EgzdmY",
+        "icon_with_text_QrFVFf",
+        "icon_with_text_FFHAxX",
+        "icon_with_text_T9qBNG",
+        "button_AiExUt"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "image": "shopify://shop_images/steubenville.jpg",
+        "image_position": "left",
+        "image_width": 55,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "inherit",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_dfynGA",
+    "main",
+    "image_cards_HVgeAw",
+    "image_with_text_HyVdFB",
+    "image_with_text_Ae4hxH",
+    "image_with_text_bxeDck",
+    "image_with_text_k7ThBU",
+    "image_with_text_q4C9TT"
+  ]
+}

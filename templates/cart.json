@@ -12,7 +12,10 @@
     "breadcrumbs_96z8tE": {
       "type": "breadcrumbs",
       "settings": {
-        "text_alignment": "start"
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
       }
     },
     "main-cart": {
@@ -20,10 +23,12 @@
       "blocks": {
         "free_shipping_goal_W8bXKE": {
           "type": "free_shipping_goal",
+          "disabled": true,
           "settings": {}
         },
         "cart_note_qpALBg": {
           "type": "cart_note",
+          "disabled": true,
           "settings": {}
         },
         "cart_shipping_rate_bnhQBk": {
@@ -47,6 +52,7 @@
         "buttons_drwbch"
       ],
       "settings": {
+        "container": "fixed",
         "padding_top": 16,
         "padding_bottom": 80
       }
@@ -54,18 +60,24 @@
     "recently_viewed_products_w4PGc3": {
       "type": "recently-viewed-products",
       "settings": {
+        "container": "fixed",
         "color_scheme": "",
-        "heading": "Recently viewed products",
-        "heading_size": "h2",
-        "subheading": "",
-        "description": "",
         "section_header_alignment": "left",
         "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Recently viewed products",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
         "limit": 8,
         "columns": 4,
         "column_gap": "medium",
         "row_gap": "inherit",
         "enable_slider": true,
+        "navigation_position": "bottom",
         "pcard_image_ratio": "",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
@@ -117,6 +129,7 @@
         "text_xxFXUW",
         "text_7JdzKQ"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-3",
         "direction": "left",

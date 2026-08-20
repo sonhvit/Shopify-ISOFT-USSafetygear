@@ -14,10 +14,10 @@
     "cart-drawer": {
       "type": "cart-drawer",
       "settings": {
-        "show_cart_note": true,
+        "show_cart_note": false,
         "show_shipping_rates_calculator": true,
         "show_cart_coupon": true,
-        "show_free_shipping_goal": true,
+        "show_free_shipping_goal": false,
         "enable_cart_recommendations": true,
         "cart_recommendations_color_scheme": "scheme-1",
         "cart_recommendations_heading": "Pair Well With",
@@ -25,7 +25,7 @@
         "cart_recommendations_products": [],
         "cart_recommendations_layout": "grid",
         "cart_mess_color_scheme": "scheme-2",
-        "cart_message": "✌🏼 Free Express Shipping on orders $120!",
+        "cart_message": "",
         "cart_message_alignment": "center"
       }
     },
@@ -122,7 +122,8 @@
           "settings": {
             "text_style": "body",
             "inventory_threshold": 20,
-            "show_inventory_quantity": true
+            "show_inventory_quantity": true,
+            "show_inventory_progress_bar": false
           }
         },
         "description": {
@@ -173,6 +174,7 @@
         "image": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/C59A1563.2_3c97a5ca-92b8-4ff3-bc47-d01486a629ba.jpg",
             "image_position": "left"
           }
         },
@@ -209,6 +211,7 @@
         "form",
         "socials"
       ],
+      "disabled": true,
       "settings": {
         "enable": true,
         "show_for_homepage_only": true,
@@ -259,6 +262,7 @@
             "heading_size": "h5",
             "description": "<p>Valid for filter </p>",
             "button_label": "Shop",
+            "button_link": "",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -277,6 +281,7 @@
             "heading_size": "h5",
             "description": "<p>Online exclusive</p>",
             "button_label": "Shop",
+            "button_link": "",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -295,6 +300,7 @@
             "heading_size": "h5",
             "description": "<p>on all major items $120+</p>",
             "button_label": "Shop",
+            "button_link": "",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -306,6 +312,7 @@
         "item_dQn9tr",
         "item_xfLhK8"
       ],
+      "disabled": true,
       "custom_css": [
         ".spotlight__item-content {max-width: 22rem;}"
       ],

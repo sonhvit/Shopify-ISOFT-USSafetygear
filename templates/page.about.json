@@ -32,7 +32,8 @@
       "type": "video",
       "name": "t:sections.video.name",
       "settings": {
-        "container": "fixed",
+        "container": "custom",
+        "custom_width_desktop": 70,
         "video": "shopify://files/videos/USSG-v2-15-presentation.mp4",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_ratio": "adapt",
@@ -71,7 +72,7 @@
         "text_7h6LaE": {
           "type": "text",
           "settings": {
-            "text": "<p>For more than 35 years, US Safety Gear has helped businesses create safer workplaces with trusted safety equipment, PPE, and workplace solutions. Since 1989, we've grown into a trusted partner for companies across the country, backed by industry-leading brands, experts, and a commitment to exceptional service. From small businesses to large organizations, including serving as the preferred provider of Game Day Apparel for the Cleveland Guardians, we help customers find the right solutions to keep their teams protected, productive, and ready for the job.</p>",
+            "text": "<p>For more than 35 years, US Safety Gear has helped businesses create safer workplaces with trusted safety equipment, PPE, and workplace solutions. Since 1989, we've grown into a trusted partner for companies across the country, backed by industry-leading brands, experts, and a commitment to exceptional service. From small businesses to large organizations, we help customers find the right solutions to keep their teams protected, productive, and ready for the job.</p>",
             "text_size": "text-base",
             "text_line_limit": "none",
             "button_style": "btn--underline",
@@ -525,7 +526,7 @@
           "type": "button_item",
           "settings": {
             "button_label": "Construction",
-            "button_link": "",
+            "button_link": "https://ussafetygear.com/collections/construction-safety-products",
             "icon": "check"
           }
         },
@@ -533,7 +534,7 @@
           "type": "button_item",
           "settings": {
             "button_label": "Industrial",
-            "button_link": "",
+            "button_link": "shopify://collections/industrial-safety-supplies",
             "icon": "check"
           }
         },
@@ -541,7 +542,7 @@
           "type": "button_item",
           "settings": {
             "button_label": "Manufacturing",
-            "button_link": "",
+            "button_link": "shopify://collections/safety-supplies-for-manufacturing",
             "icon": "check"
           }
         },
@@ -549,7 +550,7 @@
           "type": "button_item",
           "settings": {
             "button_label": "Electrical",
-            "button_link": "",
+            "button_link": "https://ussafetygear.com/collections/electrical-safety-gear-supplies",
             "icon": "check"
           }
         },
@@ -557,7 +558,7 @@
           "type": "button_item",
           "settings": {
             "button_label": "Welding",
-            "button_link": "",
+            "button_link": "https://ussafetygear.com/collections/welding-safety-supplies-ppe",
             "icon": "check"
           }
         },
@@ -565,7 +566,7 @@
           "type": "button_item",
           "settings": {
             "button_label": "Warehouse",
-            "button_link": "",
+            "button_link": "https://ussafetygear.com/collections/warehouse-safety-equipment-supplies",
             "icon": "check"
           }
         },
@@ -573,7 +574,7 @@
           "type": "button_item",
           "settings": {
             "button_label": "Roofing",
-            "button_link": "",
+            "button_link": "https://ussafetygear.com/collections/roofing-safety-equipment-supplies",
             "icon": "check"
           }
         }
@@ -597,7 +598,7 @@
         "section_header_alignment": "center",
         "section_header_alignment_mobile": "inherit",
         "subheading": "",
-        "heading": "Built for the People Who Get the Job Done",
+        "heading": "Protecting America’s Workforce Since 1989",
         "highlight_style": "none",
         "highlight_font_style": "italic",
         "highlight_style_color": "",
@@ -630,7 +631,7 @@
             "text": "<p>Since 1989, we've helped businesses create safer workplaces with trusted products, knowledgeable service, and solutions that stand the test of time.</p>",
             "text_size": "text-base",
             "button_label": "Shop Safety Gear",
-            "button_link": "",
+            "button_link": "https://ussafetygear.com/collections",
             "button_style": "btn--plain",
             "button_icon": "caret-right"
           }
@@ -648,7 +649,7 @@
             "text": "<p>From custom branding and on-site work boot fittings to gas detector service and safety vending programs, we deliver solutions that go beyond the products you buy.</p>",
             "text_size": "text-base",
             "button_label": "Explore Our Products",
-            "button_link": "",
+            "button_link": "https://ussafetygear.com/collections",
             "button_style": "btn--plain",
             "button_icon": "caret-right"
           }
@@ -666,7 +667,7 @@
             "text": "<p>Whether you're outfitting a single crew or managing safety across multiple locations, our team is committed to making workplace safety simpler, more efficient, and more dependable.</p>",
             "text_size": "text-base",
             "button_label": "Shop Now",
-            "button_link": "",
+            "button_link": "https://ussafetygear.com/collections",
             "button_style": "btn--plain",
             "button_icon": "caret-right"
           }
@@ -718,14 +719,14 @@
             "image": "shopify://shop_images/USSG-AboutUs-Scroller-Workwear.jpg",
             "image_height": 80,
             "image_rounded": false,
-            "image_link": "",
+            "image_link": "https://ussafetygear.com/collections/workwear-apparel",
             "image_height_mobile": 60
           }
         },
         "text_WB9ijH": {
           "type": "text",
           "settings": {
-            "text_link": "",
+            "text_link": "https://ussafetygear.com/collections/workwear-apparel",
             "text": "Workwear",
             "text_size": "h3",
             "text_opacity": 100,
@@ -739,14 +740,14 @@
             "image": "shopify://shop_images/USSG-AboutUs-Scroller-Footwear.jpg",
             "image_height": 80,
             "image_rounded": false,
-            "image_link": "",
+            "image_link": "https://ussafetygear.com/collections/protective-footwear",
             "image_height_mobile": 60
           }
         },
         "text_m87WdC": {
           "type": "text",
           "settings": {
-            "text_link": "",
+            "text_link": "https://ussafetygear.com/collections/protective-footwear",
             "text": "Footwear",
             "text_size": "h3",
             "text_opacity": 100,
@@ -760,14 +761,14 @@
             "image": "shopify://shop_images/USSG-AboutUs-Scroller-FallProtection.jpg",
             "image_height": 80,
             "image_rounded": false,
-            "image_link": "",
+            "image_link": "https://ussafetygear.com/collections/fall-protection-equipment",
             "image_height_mobile": 60
           }
         },
         "text_LAPJ9t": {
           "type": "text",
           "settings": {
-            "text_link": "",
+            "text_link": "https://ussafetygear.com/collections/fall-protection-equipment",
             "text": "Fall Protection",
             "text_size": "h3",
             "text_opacity": 100,
@@ -781,14 +782,14 @@
             "image": "shopify://shop_images/USSG-AboutUs-Scroller-FirstAid.jpg",
             "image_height": 80,
             "image_rounded": false,
-            "image_link": "",
+            "image_link": "https://ussafetygear.com/collections/first-aid-kits",
             "image_height_mobile": 60
           }
         },
         "text_trh7iG": {
           "type": "text",
           "settings": {
-            "text_link": "",
+            "text_link": "https://ussafetygear.com/collections/first-aid-kits",
             "text": "First Aid",
             "text_size": "h3",
             "text_opacity": 100,
@@ -802,14 +803,14 @@
             "image": "shopify://shop_images/USSG-AboutUs-Scroller-Gloves.jpg",
             "image_height": 80,
             "image_rounded": false,
-            "image_link": "",
+            "image_link": "https://ussafetygear.com/collections/work-gloves",
             "image_height_mobile": 60
           }
         },
         "text_HP7nFQ": {
           "type": "text",
           "settings": {
-            "text_link": "",
+            "text_link": "https://ussafetygear.com/collections/work-gloves",
             "text": "Gloves",
             "text_size": "h3",
             "text_opacity": 100,
@@ -823,14 +824,14 @@
             "image": "shopify://shop_images/USSG-AboutUs-Scroller-Hi-Vis.jpg",
             "image_height": 80,
             "image_rounded": false,
-            "image_link": "",
+            "image_link": "https://ussafetygear.com/collections/hi-vis-clothing-workwear",
             "image_height_mobile": 60
           }
         },
         "text_4NHUBx": {
           "type": "text",
           "settings": {
-            "text_link": "",
+            "text_link": "https://ussafetygear.com/collections/hi-vis-clothing-workwear",
             "text": "Hi-Vis",
             "text_size": "h3",
             "text_opacity": 100,
@@ -844,14 +845,14 @@
             "image": "shopify://shop_images/USSG-AboutUs-Scroller-EyeProtection.jpg",
             "image_height": 80,
             "image_rounded": false,
-            "image_link": "",
+            "image_link": "https://ussafetygear.com/collections/eyewear",
             "image_height_mobile": 60
           }
         },
         "text_TabYxL": {
           "type": "text",
           "settings": {
-            "text_link": "",
+            "text_link": "https://ussafetygear.com/collections/eyewear",
             "text": "Eye Protection",
             "text_size": "h3",
             "text_opacity": 100,
@@ -865,14 +866,14 @@
             "image": "shopify://shop_images/USSG-AboutUs-Scroller-SafetyVests.jpg",
             "image_height": 80,
             "image_rounded": false,
-            "image_link": "",
+            "image_link": "https://ussafetygear.com/collections/safety-vests",
             "image_height_mobile": 60
           }
         },
         "text_Rb9eLJ": {
           "type": "text",
           "settings": {
-            "text_link": "",
+            "text_link": "https://ussafetygear.com/collections/safety-vests",
             "text": "Safety Vests",
             "text_size": "h3",
             "text_opacity": 100,
@@ -886,14 +887,14 @@
             "image": "shopify://shop_images/USSG-AboutUs-Scroller-HardHats.jpg",
             "image_height": 80,
             "image_rounded": false,
-            "image_link": "",
+            "image_link": "https://ussafetygear.com/collections/hard-hats",
             "image_height_mobile": 60
           }
         },
         "text_PKibDd": {
           "type": "text",
           "settings": {
-            "text_link": "",
+            "text_link": "https://ussafetygear.com/collections/hard-hats",
             "text": "Hard Hats",
             "text_size": "h3",
             "text_opacity": 100,
@@ -907,14 +908,14 @@
             "image": "shopify://shop_images/USSG-AboutUs-Scroller-HearingProtection.jpg",
             "image_height": 80,
             "image_rounded": false,
-            "image_link": "",
+            "image_link": "https://ussafetygear.com/collections/hearing-protection",
             "image_height_mobile": 60
           }
         },
         "text_Mdgp7c": {
           "type": "text",
           "settings": {
-            "text_link": "",
+            "text_link": "https://ussafetygear.com/collections/hearing-protection",
             "text": "Hearing Protection",
             "text_size": "h3",
             "text_opacity": 100,
@@ -928,14 +929,14 @@
             "image": "shopify://shop_images/USSG-AboutUs-Scroller-RespiratoryProtection.jpg",
             "image_height": 80,
             "image_rounded": false,
-            "image_link": "",
+            "image_link": "https://ussafetygear.com/collections/respiratory-protection",
             "image_height_mobile": 60
           }
         },
         "text_nDCNVE": {
           "type": "text",
           "settings": {
-            "text_link": "",
+            "text_link": "https://ussafetygear.com/collections/respiratory-protection",
             "text": "Respiratory Protection",
             "text_size": "h3",
             "text_opacity": 100,

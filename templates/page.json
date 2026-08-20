@@ -9,15 +9,29 @@
  */
 {
   "sections": {
+    "breadcrumbs_DxrgdQ": {
+      "type": "breadcrumbs",
+      "name": "t:sections.breadcrumbs.name",
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
     "main": {
       "type": "main-page",
+      "custom_css": [],
       "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
         "padding_top": 28,
         "padding_bottom": 28
       }
     }
   },
   "order": [
+    "breadcrumbs_DxrgdQ",
     "main"
   ]
 }

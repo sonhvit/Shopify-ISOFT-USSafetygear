@@ -386,6 +386,7 @@
         },
         "featured_collection_GUC7ng": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "fr-safety-vests",
             "image": "shopify://shop_images/USSG-Collections-Category-FRClothing.jpg",
@@ -471,7 +472,7 @@
         "rounded_card_image": false,
         "card_show_border": true,
         "mobile_layout": "vertical",
-        "columns_desktop": 7,
+        "columns_desktop": 6,
         "column_gap": "2xs",
         "row_gap": "inherit",
         "grid_bordered": false,
@@ -489,7 +490,7 @@
         "featured_collection_QypxUr": {
           "type": "featured_collection",
           "settings": {
-            "collection": "construction-safety-products",
+            "collection": "construction-safety-products-new",
             "image": "shopify://shop_images/USSG-Nav-Industries-Construction.jpg",
             "title": "Construction"
           }
@@ -497,7 +498,7 @@
         "featured_collection_pJnffP": {
           "type": "featured_collection",
           "settings": {
-            "collection": "safety-supplies-for-manufacturing",
+            "collection": "safety-supplies-for-manufacturing-new",
             "image": "shopify://shop_images/USSG-Nav-Industries-Manufacturing.jpg",
             "title": "Manufacturing"
           }
@@ -505,7 +506,7 @@
         "featured_collection_G3itJw": {
           "type": "featured_collection",
           "settings": {
-            "collection": "industrial-safety-supplies",
+            "collection": "industrial-safety-supplies-new",
             "image": "shopify://shop_images/USSG-Nav-Industries-Industrial.jpg",
             "title": "Industrial"
           }
@@ -513,7 +514,7 @@
         "featured_collection_BpRxyU": {
           "type": "featured_collection",
           "settings": {
-            "collection": "welding-safety-supplies-ppe",
+            "collection": "welding-safety-supplies-ppe-new",
             "image": "shopify://shop_images/USSG-Nav-Industries-Welding.jpg",
             "title": "Welding"
           }
@@ -521,7 +522,7 @@
         "featured_collection_VCBnG6": {
           "type": "featured_collection",
           "settings": {
-            "collection": "utility-workers-safety-products",
+            "collection": "utility-workers-safety-products-new",
             "image": "shopify://shop_images/USSG-Nav-Industries-UtilitySafety.jpg",
             "title": "Utility Safety"
           }
@@ -529,7 +530,7 @@
         "featured_collection_Dh8eJw": {
           "type": "featured_collection",
           "settings": {
-            "collection": "oil-gas-safety-gear",
+            "collection": "oil-gas-safety-gear-new",
             "image": "shopify://shop_images/USSG-Nav-Industries-Oil_Gas.jpg",
             "title": "Oil Gas"
           }
@@ -537,23 +538,15 @@
         "featured_collection_pJet7X": {
           "type": "featured_collection",
           "settings": {
-            "collection": "warehouse-safety-equipment-supplies",
+            "collection": "warehouse-safety-equipment-supplies-new",
             "image": "shopify://shop_images/USSG-Nav-Industries-Warehouse.jpg",
-            "title": "Utility Safety"
-          }
-        },
-        "featured_collection_MkFULM": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "roofing-safety-equipment-supplies",
-            "image": "shopify://shop_images/USSG-Nav-Industries-Roofing.jpg",
-            "title": "Roofing"
+            "title": "Warehouse"
           }
         },
         "featured_collection_YAprkJ": {
           "type": "featured_collection",
           "settings": {
-            "collection": "electrical-safety-gear-supplies",
+            "collection": "electrical-safety-gear-supplies-new",
             "image": "shopify://shop_images/USSG-Nav-Industries-Electrical.jpg",
             "title": "Electrical"
           }
@@ -561,25 +554,33 @@
         "featured_collection_YzVTit": {
           "type": "featured_collection",
           "settings": {
-            "collection": "road-construction-safety-equipment",
+            "collection": "road-construction-safety-equipment-new",
             "image": "shopify://shop_images/USSG-Nav-Industries-Road_Construction.jpg",
             "title": "Road Construction"
-          }
-        },
-        "featured_collection_XjKATE": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "first-responder-ppe-safety-gear",
-            "image": "shopify://shop_images/USSG-Nav-Industries-EmergencyResponse.jpg",
-            "title": "First Responders"
           }
         },
         "featured_collection_iziPr7": {
           "type": "featured_collection",
           "settings": {
-            "collection": "mechanic-safety-equipment-supplies",
+            "collection": "mechanic-safety-equipment-supplies-new",
             "image": "shopify://shop_images/USSG-Nav-Industries-Mechanic.jpg",
             "title": "Mechanic"
+          }
+        },
+        "featured_collection_MkFULM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "roofing-safety-equipment-supplies-new",
+            "image": "shopify://shop_images/USSG-Nav-Industries-Roofing.jpg",
+            "title": "Roofing"
+          }
+        },
+        "featured_collection_XjKATE": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "emergency-response",
+            "image": "shopify://shop_images/USSG-Nav-Industries-EmergencyResponse.jpg",
+            "title": "Emergency Response"
           }
         }
       },
@@ -591,11 +592,11 @@
         "featured_collection_VCBnG6",
         "featured_collection_Dh8eJw",
         "featured_collection_pJet7X",
-        "featured_collection_MkFULM",
         "featured_collection_YAprkJ",
         "featured_collection_YzVTit",
-        "featured_collection_XjKATE",
-        "featured_collection_iziPr7"
+        "featured_collection_iziPr7",
+        "featured_collection_MkFULM",
+        "featured_collection_XjKATE"
       ],
       "custom_css": [
         ".collection-card__title {font-size: 15px;}"

@@ -18,8 +18,165 @@
         "padding_bottom": 20
       }
     },
+    "rich_text_YQtgBy": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_T7dgLQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "CONTACT US",
+            "heading_tag": "h1",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2"
+          }
+        },
+        "text_RmMq36": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our expert Customer Service team is ready to help!</p>",
+            "text_size": "text-base",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_T7dgLQ",
+        "text_RmMq36"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "multicolumn_icon_hPe7Tj": {
+      "type": "multicolumn-icon",
+      "blocks": {
+        "column_TtFWfX": {
+          "type": "column",
+          "settings": {
+            "icon": "phone",
+            "max_width": 50,
+            "max_width_mb": 30,
+            "title": "Call Us:",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "heading_tag": "h3",
+            "heading_font": "heading",
+            "text": "<p><a href=\"tel:(800) 686-1459\" title=\"tel:(800) 686-1459\">(800) 686-1459</a></p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_mPKHkL": {
+          "type": "column",
+          "settings": {
+            "icon": "email",
+            "max_width": 50,
+            "max_width_mb": 30,
+            "title": "Email Us:",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "heading_tag": "h3",
+            "heading_font": "heading",
+            "text": "<p><a href=\"mailto:info@ussafetygear.com\" title=\"mailto:info@ussafetygear.com\">info@ussafetygear.com</a></p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_wFyTEL": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "icon": "chat",
+            "max_width": 50,
+            "max_width_mb": 30,
+            "title": "Live Chat with Us:",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "heading_tag": "h3",
+            "heading_font": "heading",
+            "text": "<p><a href=\"https://hostedusa1.whoson.com/newchat/chat.aspx?domain=www.ussafetygear.com&timestamp=1670603073910&session=634-1665670379534\" target=\"_blank\" title=\"https://hostedusa1.whoson.com/newchat/chat.aspx?domain=www.ussafetygear.com&timestamp=1670603073910&session=634-1665670379534\">Click Here for Live Chat!</a></p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_TtFWfX",
+        "column_mPKHkL",
+        "column_wFyTEL"
+      ],
+      "name": "t:sections.multicolumn-with-icon.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-1",
+        "header_layout": "vertical",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "enable_sticky": false,
+        "card_color_scheme": "scheme-10",
+        "content_alignment": "center",
+        "image_position": "top",
+        "icon_color": "#000000",
+        "columns_desktop": 2,
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "show_divider_col": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "custom_css": [
         ".rich-text {max-width: 70rem;}"
       ],
@@ -33,8 +190,49 @@
     "form": {
       "type": "contact-form",
       "blocks": {
+        "name_JnJULL": {
+          "type": "name",
+          "settings": {
+            "required": true
+          }
+        },
+        "custom_field_pzQyzp": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Company",
+            "placeholder": "Company",
+            "required": false,
+            "full_width": false,
+            "select_options": "",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": ""
+          }
+        },
+        "email_DjQgGP": {
+          "type": "email",
+          "settings": {
+            "required": true
+          }
+        },
+        "custom_field_8AQYaC": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "phone",
+            "heading": "Phone Number",
+            "placeholder": "Phone Number",
+            "required": false,
+            "full_width": false,
+            "select_options": "",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": ""
+          }
+        },
         "sidebar_6PaerX": {
           "type": "sidebar",
+          "disabled": true,
           "settings": {
             "position": "right",
             "heading": "Need Help?",
@@ -63,26 +261,14 @@
             "icon_text_3": "<p>Mon – Fri, 7:30 AM – 4:00 PM PT<br/>Sat, 8:00 AM – 1:00 PM PT<br/>Sun, Closed</p>",
             "icon_vertical_alignment_3": "start",
             "button_label": "Find a Store",
+            "button_link": "",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
         },
-        "custom_field_8AQYaC": {
-          "type": "custom_field",
-          "settings": {
-            "field_type": "phone",
-            "heading": "Phone Number",
-            "placeholder": "Phone Number",
-            "required": true,
-            "full_width": false,
-            "select_options": "",
-            "checkbox_checked_value": "Yes",
-            "checkbox_uncheck_value": "No",
-            "radio_options": ""
-          }
-        },
         "custom_field_8mNKKQ": {
           "type": "custom_field",
+          "disabled": true,
           "settings": {
             "field_type": "text",
             "heading": "Order Number",
@@ -97,6 +283,7 @@
         },
         "custom_field_d63Kne": {
           "type": "custom_field",
+          "disabled": true,
           "settings": {
             "field_type": "select",
             "heading": "Country",
@@ -111,8 +298,11 @@
         }
       },
       "block_order": [
-        "sidebar_6PaerX",
+        "name_JnJULL",
+        "custom_field_pzQyzp",
+        "email_DjQgGP",
         "custom_field_8AQYaC",
+        "sidebar_6PaerX",
         "custom_field_8mNKKQ",
         "custom_field_d63Kne"
       ],
@@ -126,7 +316,7 @@
         "highlight_style_color": "",
         "highlight_text_color": "",
         "heading_size": "hd2",
-        "padding_top": 0,
+        "padding_top": 50,
         "padding_bottom": 60,
         "show_section_divider": false,
         "divider_width": "fixed"
@@ -210,6 +400,7 @@
         "text_dGmg9m",
         "text_3nRwMg"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-3",
         "direction": "left",
@@ -224,6 +415,8 @@
   },
   "order": [
     "breadcrumbs_xYaBHj",
+    "rich_text_YQtgBy",
+    "multicolumn_icon_hPe7Tj",
     "main",
     "form",
     "scrolling_promotion_Fy9Yhn"

@@ -54,6 +54,7 @@
         },
         "icon_with_text": {
           "type": "icon-with-text",
+          "disabled": true,
           "settings": {
             "layout": "horizontal",
             "title_font": "body-bolder",
@@ -70,8 +71,10 @@
           "type": "inventory",
           "settings": {
             "text_style": "body",
-            "inventory_threshold": 10,
-            "show_inventory_quantity": true
+            "inventory_threshold": 18,
+            "show_inventory_quantity": true,
+            "hide_in_stock_status": true,
+            "show_inventory_progress_bar": true
           }
         },
         "description": {
@@ -81,7 +84,10 @@
         },
         "rich_text_M7dqyh": {
           "type": "rich-text",
-          "settings": {}
+          "disabled": true,
+          "settings": {
+            "text": "<p>Use this text to share information about a product, highlight its features, or provide useful details to help customers make informed decisions..</p>"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -110,9 +116,9 @@
             "title_font": "body",
             "title_size": "text-base",
             "icon_1": "car-simple",
-            "heading_1": "Free International Shipping over $120",
+            "heading_1": "<a href=\"https://ussafetygear.com/pages/shipping-returns \" title=\"https://ussafetygear.com/pages/shipping-returns \">Free Shipping On Orders Over $150*</a>",
             "icon_2": "arrow-up-left",
-            "heading_2": "Free Returns Within 30 days",
+            "heading_2": "<a href=\"https://ussafetygear.com/pages/shipping-returns \" title=\"https://ussafetygear.com/pages/shipping-returns \">Returns Accepted Within 30 Days</a>",
             "icon_3": "star-four",
             "heading_3": ""
           }
@@ -123,8 +129,10 @@
         },
         "promotion_alert_L7ipQp": {
           "type": "promotion_alert",
+          "disabled": true,
           "settings": {
-            "text_color": "#049b6e",
+            "text_color": "#ffffff",
+            "background_color": "#a82e48",
             "icon": "lightning",
             "heading": "Limited time offer",
             "description": "<p>Get $20 off when you spend $1,000 or more! <a href=\"/collections/all\" title=\"All products\">Learn more</a></p>"
@@ -145,14 +153,12 @@
             "enable_quick_add": true
           }
         },
-        "collapsible-row-1": {
-          "type": "collapsible_tab",
+        "specifications_jY6Nqj": {
+          "type": "specifications",
           "settings": {
             "heading": "Specifications",
             "heading_size": "h4",
-            "icon": "none",
-            "content": "",
-            "page": "product-content",
+            "icon": "tag",
             "default_open": false,
             "show_below_product_media": true
           }
@@ -160,17 +166,18 @@
         "collapsible-row-2": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Product Details",
-            "heading_size": "h4",
-            "icon": "none",
-            "content": "<p>Thoughtfully designed and made with premium fabrics, our clothing offers a perfect blend of comfort, durability, and effortless style. Each item is created to move with you—ideal for daily wear, travel, and life on the go. From breathable tees to cozy socks and versatile caps, every detail is crafted to elevate your everyday look.</p>",
+            "heading": "DESCRIPTION",
+            "heading_size": "h5",
+            "icon": "package",
+            "content": "{{ product.description }}",
             "page": "",
-            "default_open": false,
+            "default_open": true,
             "show_below_product_media": true
           }
         },
         "collapsible-row-3": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Materials & Care",
             "heading_size": "h4",
@@ -234,7 +241,7 @@
         "pickup_availability",
         "promotion_alert_L7ipQp",
         "complementary",
-        "collapsible-row-1",
+        "specifications_jY6Nqj",
         "collapsible-row-2",
         "collapsible-row-3",
         "payment_info",
@@ -259,109 +266,6 @@
         "padding_bottom": 60
       }
     },
-    "testimonials_GNMTmX": {
-      "type": "testimonials",
-      "blocks": {
-        "testimonial_kgtzPC": {
-          "type": "testimonial",
-          "settings": {
-            "heading": "Testimonials",
-            "text": "<p>“Hands down one of the best shirts I’ve ever owned.  Fits great, feels amazing, seems to stay cool.”</p>",
-            "author": "Melissa H.",
-            "bio": "Verified Buyer"
-          }
-        },
-        "testimonial_qPD98B": {
-          "type": "testimonial",
-          "settings": {
-            "heading": "Testimonials",
-            "text": "<p>“The denim is strong and of high quality, with just a bit of stretch.”</p>",
-            "author": "Cindy L.",
-            "bio": "Verified Buyer"
-          }
-        },
-        "testimonial_G6Dna6": {
-          "type": "testimonial",
-          "settings": {
-            "heading": "Testimonials",
-            "text": "<p>“Hands down one of the best shirts I’ve ever owned.  Fits great, feels amazing, seems to stay cool.”</p>",
-            "author": "Wilson J.",
-            "bio": "Verified Buyer"
-          }
-        },
-        "testimonial_F4QQBM": {
-          "type": "testimonial",
-          "settings": {
-            "heading": "Testimonials",
-            "text": "<p>\"This shirt is among the top in my collection. It fits excellently.\"</p>",
-            "author": "Samantha T.",
-            "bio": "Verified Buyer"
-          }
-        },
-        "testimonial_RQdyEt": {
-          "type": "testimonial",
-          "settings": {
-            "heading": "Testimonials",
-            "text": "<p>“The denim is strong and of high quality, with just a bit of stretch.”</p>",
-            "author": "Martinez D.",
-            "bio": "Verified Buyer"
-          }
-        },
-        "testimonial_crN6Uz": {
-          "type": "testimonial",
-          "settings": {
-            "heading": "Testimonials",
-            "text": "<p>Discover the Ultimate Organization Solution for Your Home with Boardman Trunks.</p>",
-            "author": "Lora C.",
-            "bio": "Verified Buyer"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_kgtzPC",
-        "testimonial_qPD98B",
-        "testimonial_G6Dna6",
-        "testimonial_F4QQBM",
-        "testimonial_RQdyEt",
-        "testimonial_crN6Uz"
-      ],
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "scheme-4",
-        "section_header_alignment": "left",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "Clients Love Us",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h2",
-        "description": "",
-        "text_size": "text-base",
-        "layout": "standard",
-        "card_color_scheme": "",
-        "card_content_color_scheme": "",
-        "card_image_ratio": "adapt",
-        "card_heading_size": "h4",
-        "card_text_size": "text-inherit",
-        "author_info_layout": "horizontal",
-        "card_trigger_behavior": "click",
-        "show_image": true,
-        "show_author_image": false,
-        "columns_desktop": 3,
-        "column_gap": "2xs",
-        "row_gap": "inherit",
-        "enable_slider": true,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "show_progress_bar": false,
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
     "multicolumn_8xazDd": {
       "type": "multicolumn",
       "blocks": {
@@ -377,6 +281,7 @@
             "text": "<p>Crafted with care and intention, this piece blends modern aesthetics with timeless comfort—perfect for any season.</p>",
             "text_size": "text-base",
             "button_label": "Explore Now",
+            "button_link": "",
             "button_style": "btn--plain",
             "button_icon": "caret-right"
           }
@@ -393,6 +298,7 @@
             "text": "<p>Made from soft, breathable 100% cotton, this garment delivers all-day comfort and a natural feel against the skin.</p>",
             "text_size": "text-base",
             "button_label": "Explore Now",
+            "button_link": "",
             "button_style": "btn--plain",
             "button_icon": "caret-right"
           }
@@ -409,6 +315,7 @@
             "text": "<p>Designed for outdoor adventures, this hoodie offers lightweight coverage and flexibility, keeping you protected in style.</p>",
             "text_size": "text-base",
             "button_label": "Explore Now",
+            "button_link": "",
             "button_style": "btn--plain",
             "button_icon": "caret-right"
           }
@@ -419,6 +326,7 @@
         "column_YiGip3",
         "column_PCXrxX"
       ],
+      "disabled": true,
       "settings": {
         "container": "fixed",
         "color_scheme": "",
@@ -482,6 +390,7 @@
           "type": "button",
           "settings": {
             "button_label": "Learn More",
+            "button_link": "",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -493,6 +402,7 @@
         "text_pmGMYB",
         "button_rVX6B8"
       ],
+      "disabled": true,
       "custom_css": [
         ".image-with-text__content {max-width: 52rem;}"
       ],
@@ -510,168 +420,16 @@
         "padding_bottom": 60
       }
     },
-    "multicolumn_icon_AKrBBD": {
-      "type": "multicolumn-icon",
-      "blocks": {
-        "column_mxpK3g": {
-          "type": "column",
-          "settings": {
-            "icon": "chat",
-            "max_width": 40,
-            "max_width_mb": 40,
-            "title": "Organic Cotton",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "heading_font": "heading",
-            "text": "<p>Currently, 82% feature organic or recycled materials</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "column_CrL7dQ": {
-          "type": "column",
-          "settings": {
-            "icon": "phone",
-            "max_width": 40,
-            "max_width_mb": 40,
-            "title": "Life Cycle",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "heading_font": "heading",
-            "text": "<p>Our Repairs Program revives beloved products, keeping them in action.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "column_XByX9T": {
-          "type": "column",
-          "settings": {
-            "icon": "paperplane",
-            "max_width": 40,
-            "max_width_mb": 40,
-            "title": "Recycle Bags",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "heading_font": "heading",
-            "text": "<p>Orders ship in compostable poly mailers and recycled corrugate</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "column_mxpK3g",
-        "column_CrL7dQ",
-        "column_XByX9T"
-      ],
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "scheme-info",
-        "header_layout": "standing-column",
-        "section_header_alignment": "left",
-        "section_header_alignment_mobile": "center",
-        "subheading": "",
-        "heading": "Today Quality, Durability & Good Looks",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h2",
-        "description": "",
-        "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--underline",
-        "button_icon": "none",
-        "enable_sticky": false,
-        "card_color_scheme": "scheme-info",
-        "content_alignment": "center",
-        "image_position": "top",
-        "icon_color": "#ffffff",
-        "columns_desktop": 3,
-        "column_gap": "medium",
-        "row_gap": "inherit",
-        "show_divider_col": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 50,
-        "padding_bottom": 50
-      }
-    },
-    "image_with_text_overlay_eAtGpW": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "heading_p8Gi98": {
-          "type": "heading",
-          "settings": {
-            "heading": "Crafted from natural comfort",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd2"
-          }
-        },
-        "text_CMMRWU": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Our apparel is made with breathable, sustainable fabrics—perfect for everyday wear.</p>",
-            "text_size": "text-base"
-          }
-        }
-      },
-      "block_order": [
-        "heading_p8Gi98",
-        "text_CMMRWU"
-      ],
-      "custom_css": [
-        ".rich-text {max-width: 42rem;}",
-        "@media (max-width: 1023.98px) {.rich-text {max-width: 35rem; }}"
-      ],
-      "settings": {
-        "container": "full",
-        "desktop_height": "adapt",
-        "overlay_opacity": 30,
-        "enable_parallax": false,
-        "parallax_direction": "vertical",
-        "color_scheme": "",
-        "content_position": "middle-center",
-        "content_alignment": "center",
-        "mobile_height": "adapt",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "enable_preload_image": false
-      }
-    },
     "featured_collection_VGkzx6": {
       "type": "featured-collection",
       "blocks": {
-        "collection_LPcwL9": {
+        "collection_UKJRER": {
           "type": "collection",
           "settings": {
+            "collection": "",
             "title": "",
             "show_banner": false,
-            "color_scheme": "",
+            "color_scheme": "scheme-1",
             "card_link": "",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
@@ -695,15 +453,16 @@
         }
       },
       "block_order": [
-        "collection_LPcwL9"
+        "collection_UKJRER"
       ],
+      "disabled": true,
       "settings": {
         "container": "fixed",
         "color_scheme": "",
         "section_header_alignment": "left",
         "section_header_alignment_mobile": "inherit",
         "subheading": "",
-        "heading": "In The Same Style",
+        "heading": "YOU MAY ALSO LIKE",
         "highlight_style": "none",
         "highlight_font_style": "italic",
         "highlight_style_color": "",
@@ -727,7 +486,7 @@
         "swipe_on_mobile": true,
         "show_progress_bar": false,
         "padding_top": 60,
-        "padding_bottom": 0,
+        "padding_bottom": 60,
         "show_section_divider": false,
         "divider_width": "fixed"
       }
@@ -835,6 +594,7 @@
         "collapsible_item_KpRKGQ",
         "collapsible_item_RnEFiC"
       ],
+      "disabled": true,
       "settings": {
         "container": "fixed",
         "color_scheme": "",
@@ -863,149 +623,6 @@
         "item_icon_size": "extra-large",
         "padding_top": 60,
         "padding_bottom": 0,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
-    "multicolumn_icon_RKVjMU": {
-      "type": "multicolumn-icon",
-      "blocks": {
-        "column_GxRF7G": {
-          "type": "column",
-          "settings": {
-            "icon": "phone",
-            "max_width": 60,
-            "max_width_mb": 60,
-            "title": "Free Shipping",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "heading_font": "heading",
-            "text": "<p>All orders over $120 are delivered to your doorstep at no extra charge.</p>",
-            "text_size": "text-base",
-            "button_label": "Explore Now",
-            "button_style": "btn--plain",
-            "button_icon": "caret-right"
-          }
-        },
-        "column_kKQRPR": {
-          "type": "column",
-          "settings": {
-            "icon": "phone",
-            "max_width": 60,
-            "max_width_mb": 60,
-            "title": "30-Days Free Returns",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "heading_font": "heading",
-            "text": "<p>Enjoy the freedom of stress-free shopping with our hassle-free and return policy.</p>",
-            "text_size": "text-base",
-            "button_label": "Return Policy",
-            "button_style": "btn--plain",
-            "button_icon": "caret-right"
-          }
-        },
-        "column_RbjyxN": {
-          "type": "column",
-          "settings": {
-            "icon": "paperplane",
-            "max_width": 60,
-            "max_width_mb": 60,
-            "title": "Secure Payment",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "heading_font": "heading",
-            "text": "<p>Shop with confidence knowing your payments are secure and your information</p>",
-            "text_size": "text-base",
-            "button_label": "More About Payment",
-            "button_style": "btn--plain",
-            "button_icon": "caret-right"
-          }
-        }
-      },
-      "block_order": [
-        "column_GxRF7G",
-        "column_kKQRPR",
-        "column_RbjyxN"
-      ],
-      "custom_css": [
-        ".multicolumn-card__text {max-width: 32rem;}"
-      ],
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "header_layout": "vertical",
-        "section_header_alignment": "left",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h1",
-        "description": "",
-        "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--underline",
-        "button_icon": "none",
-        "enable_sticky": false,
-        "card_color_scheme": "",
-        "content_alignment": "center",
-        "image_position": "top",
-        "icon_color": "#000000",
-        "columns_desktop": 3,
-        "column_gap": "medium",
-        "row_gap": "inherit",
-        "show_divider_col": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "show_section_divider": false,
-        "divider_width": "full",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "newsletter_jWVYMb": {
-      "type": "newsletter",
-      "custom_css": [
-        ".newsletter__form-wrapper {max-width: 1140px; margin: 0 auto;}",
-        ".rich-text__heading {max-width: 50rem;}",
-        "@media (max-width: 1023.98px) {.rich-text__heading {max-width: 40rem; }}",
-        "@media (max-width: 767.98px) {.rich-text__heading {max-width: 32rem; }}"
-      ],
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "scheme-2",
-        "layout": "horizontal",
-        "subheading": "",
-        "heading": "Sign up for promotion, offers & <em>save 15%</em>",
-        "highlight_style": "hand_drawn_circle",
-        "highlight_font_style": "normal",
-        "highlight_style_color": "#ffe093",
-        "highlight_text_color": "#ffe093",
-        "heading_size": "h1",
-        "description": "",
-        "text_size": "text-base",
-        "alignment": "left",
-        "alignment_mobile": "center",
-        "width_settings": "custom",
-        "form_width": 565,
-        "newsletter_term": "<p>By subscribing you agree to the <a href=\"/policies/terms-of-service\" title=\"Terms of Service\">Terms of Use</a> & <a href=\"/policies/privacy-policy\" title=\"Privacy Policy\">Privacy Policy.</a></p>",
-        "newsletter_term_size": "text-base",
-        "button_style": "btn--primary",
-        "button_icon": "none",
-        "padding_top": 60,
-        "padding_bottom": 60,
         "show_section_divider": false,
         "divider_width": "fixed"
       }
@@ -1086,6 +703,7 @@
         "gallery_KizFR8",
         "gallery_tLMUbx"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-9",
         "section_header_alignment": "left",
@@ -1101,6 +719,7 @@
         "text_size": "text-base",
         "show_button_on_top": true,
         "button_label": "@mason.studio",
+        "button_link": "",
         "button_style": "btn--underline",
         "button_icon": "none",
         "direction": "left",
@@ -1112,20 +731,196 @@
         "padding_top": 60,
         "padding_bottom": 80
       }
+    },
+    "related_products_JQYUnp": {
+      "type": "related-products",
+      "name": "t:sections.related-products.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "YOU MAY ALSO LIKE",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "limit": 8,
+        "columns": 4,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "navigation_position": "bottom",
+        "pcard_image_ratio": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "recently_viewed_products_YqzHAF": {
+      "type": "recently-viewed-products",
+      "name": "t:sections.recently-viewed-products.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "<strong>RECENTLY VIEWED PRODUCTS</strong>",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "limit": 8,
+        "columns": 4,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "navigation_position": "bottom",
+        "pcard_image_ratio": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "multicolumn_icon_RKVjMU": {
+      "type": "multicolumn-icon",
+      "blocks": {
+        "column_GxRF7G": {
+          "type": "column",
+          "settings": {
+            "icon": "location",
+            "max_width": 60,
+            "max_width_mb": 60,
+            "title": "Free Shipping",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_tag": "h2",
+            "heading_font": "heading",
+            "text": "<p>All orders over $120 are delivered to your doorstep at no extra charge.</p>",
+            "text_size": "text-base",
+            "button_label": "Explore Now",
+            "button_link": "",
+            "button_style": "btn--plain",
+            "button_icon": "caret-right"
+          }
+        },
+        "column_kKQRPR": {
+          "type": "column",
+          "settings": {
+            "icon": "phone",
+            "max_width": 60,
+            "max_width_mb": 60,
+            "title": "30-Days Free Returns",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_tag": "h2",
+            "heading_font": "heading",
+            "text": "<p>Enjoy the freedom of stress-free shopping with our hassle-free and return policy.</p>",
+            "text_size": "text-base",
+            "button_label": "Return Policy",
+            "button_link": "",
+            "button_style": "btn--plain",
+            "button_icon": "caret-right"
+          }
+        },
+        "column_RbjyxN": {
+          "type": "column",
+          "settings": {
+            "icon": "paperplane",
+            "max_width": 60,
+            "max_width_mb": 60,
+            "title": "Secure Payment",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_tag": "h2",
+            "heading_font": "heading",
+            "text": "<p>Shop with confidence knowing your payments are secure and your information</p>",
+            "text_size": "text-base",
+            "button_label": "More About Payment",
+            "button_link": "",
+            "button_style": "btn--plain",
+            "button_icon": "caret-right"
+          }
+        }
+      },
+      "block_order": [
+        "column_GxRF7G",
+        "column_kKQRPR",
+        "column_RbjyxN"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn-card__text {max-width: 32rem;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "header_layout": "vertical",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "enable_sticky": false,
+        "card_color_scheme": "",
+        "content_alignment": "center",
+        "image_position": "top",
+        "icon_color": "#000000",
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "show_divider_col": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "full",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
     "breadcrumbs",
     "main",
-    "testimonials_GNMTmX",
     "multicolumn_8xazDd",
     "image_with_text_rmtHkJ",
-    "multicolumn_icon_AKrBBD",
-    "image_with_text_overlay_eAtGpW",
     "featured_collection_VGkzx6",
     "collapsible_tabs_zgFYFm",
-    "multicolumn_icon_RKVjMU",
-    "newsletter_jWVYMb",
-    "scrolling_gallery_image_UmHTwf"
+    "scrolling_gallery_image_UmHTwf",
+    "related_products_JQYUnp",
+    "recently_viewed_products_YqzHAF",
+    "multicolumn_icon_RKVjMU"
   ]
 }

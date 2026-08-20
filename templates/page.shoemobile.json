@@ -1,0 +1,290 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_DxrgdQ": {
+      "type": "breadcrumbs",
+      "name": "t:sections.breadcrumbs.name",
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "slideshow_Vj9DQd": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_3R7JL4": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/USSG-Shoemobile-Hero_1.jpg",
+            "image_overlay_opacity": 0,
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "subheading": "",
+            "title": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd1",
+            "description": "",
+            "description_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "slide_3R7JL4"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "slideshow-component {max-width: 760px; margin: auto;}"
+      ],
+      "name": "t:sections.slideshow.name",
+      "settings": {
+        "container": "fixed",
+        "slide_height": "adapt",
+        "show_controls": false,
+        "autoplay": false,
+        "autoplay_delay": 3,
+        "show_text_below": false,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "image_with_text_LpzjCG": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_fEFgwr": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Book Our Shoemobile"
+          }
+        },
+        "heading_bRYyqt": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bring the Boot Store to Your Jobsite",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_EpR39n": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Outfitting your team with the right safety footwear has never been easier. The US Safety Gear Shoemobile brings a fully stocked mobile work boot store directly to your workplace, helping employees find the right fit without leaving the jobsite.</p><p>Every Shoemobile visit is tailored to your company's specific safety footwear requirements. Before we arrive, we stock the vehicle with the brands, styles, and safety toe options your team needs.</p>",
+            "subtext_color": true
+          }
+        }
+      },
+      "block_order": [
+        "subheading_fEFgwr",
+        "heading_bRYyqt",
+        "text_EpR39n"
+      ],
+      "name": "t:sections.image-with-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "image": "shopify://shop_images/USSG-Shoemobile-Hero_1.jpg",
+        "image_position": "left",
+        "image_width": 50,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "inherit",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 30
+      }
+    },
+    "rich_text_CFkAiB": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_JUacNL": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Book Our Shoemobile"
+          }
+        },
+        "heading_6KEqkx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bring the Boot Store to Your Jobsite",
+            "heading_tag": "h1",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_6AHyMf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Outfitting your team with the right safety footwear has never been easier. The US Safety Gear Shoemobile brings a fully stocked mobile work boot store directly to your workplace, helping employees find the right fit without leaving the jobsite.</p><p>Every Shoemobile visit is tailored to your company's specific safety footwear requirements. Before we arrive, we stock the vehicle with the brands, styles, and safety toe options your team needs.</p>",
+            "text_size": "text-base",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_JUacNL",
+        "heading_6KEqkx",
+        "text_6AHyMf"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
+        "content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_Vw9WhK": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Mr4myy": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why Choose the Shoemobile?",
+            "heading_tag": "h2",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2"
+          }
+        },
+        "text_Bte8d8": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li><strong>Convenient On-Site Service</strong>: We come directly to your facility, minimizing employee downtime.</li><li><strong>Customized Selection</strong>: Every visit is stocked specifically for your workforce and safety requirements.</li><li><strong>Top Footwear Brands</strong>: Shop trusted names like Carolina, Timberland PRO, LaCrosse, Reebok Work, Thorogood, and more.</li><li><strong>Footwear for Every Job</strong>: Choose from steel toe, composite toe, metatarsal, pull-on, hikers, athletic styles, and more for both men and women.</li><li><strong>Expert Boot Fittings</strong>: Our knowledgeable team helps employees find the right fit, comfort, and protection before they buy.</li><li><strong>Flexible Payment Options</strong>: We accept corporate invoicing, vouchers, cash, credit cards, or a combination of payment methods.</li></ul>",
+            "text_size": "text-base",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Mr4myy",
+        "text_Bte8d8"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
+        "content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_jPWXyc": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_WMF4yb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Scheduling Information",
+            "heading_tag": "h2",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2"
+          }
+        },
+        "text_8gqADP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Shoemobile appointments are available Monday through Friday, 8:00 AM–5:00 PM, with earlier appointments available upon request.</p><p>For the best experience, the Shoemobile can accommodate up to six employees at a time. If your team is larger, we recommend scheduling employees in shifts to keep the fitting process moving efficiently.</p><p>Ready to bring the Shoemobile to your workplace? Complete the form below to request an appointment, and our team will be in touch to coordinate your visit.</p>",
+            "text_size": "text-base",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_WMF4yb",
+        "text_8gqADP"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
+        "content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "custom_liquid_qRPwq3": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".klaviyo-form-richtext h1 strong {color: #1d3160;}"
+      ],
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "custom_liquid": "<center class=\"page-width page-width--fixed section--padding\"><div class=\"klaviyo-form-WK9Dbm\"></div></center>",
+        "color_scheme": "",
+        "padding_top": 30,
+        "padding_bottom": 50
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_DxrgdQ",
+    "main",
+    "slideshow_Vj9DQd",
+    "image_with_text_LpzjCG",
+    "rich_text_CFkAiB",
+    "rich_text_Vw9WhK",
+    "rich_text_jPWXyc",
+    "custom_liquid_qRPwq3"
+  ]
+}

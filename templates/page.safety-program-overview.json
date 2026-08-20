@@ -1,0 +1,236 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_QAtYLe": {
+      "type": "breadcrumbs",
+      "name": "t:sections.breadcrumbs.name",
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_qBH3RN": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_86CGC4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Safety Services",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_y4XaKD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Protect your team with the necessary safety equipment they need. Contact our expert customer service team or a sales rep to get started today!</p><p><strong>Call Us:</strong> (800) 686-1459</p>",
+            "subtext_color": true
+          }
+        },
+        "button_kRcX3Q": {
+          "type": "button",
+          "settings": {
+            "button_label": "Request Form",
+            "button_link": "https://ussafetygear.myshopify.com/pages/safety-programs-request",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_86CGC4",
+        "text_y4XaKD",
+        "button_kRcX3Q"
+      ],
+      "name": "t:sections.image-with-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "image_position": "right",
+        "image_width": 50,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "inherit",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "multicolumn_PGwKMG": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_EdUwph": {
+          "type": "column",
+          "settings": {
+            "title": "Shoemobile | Boot Trailer",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p><strong>We come to you with our state-of-the-art Shoemobile.</strong>  </p><p>Not every company is the same, so we stock for every appointment specifically to meet your safety boot and shoe requirements.</p>",
+            "text_size": "text-base",
+            "button_label": "Shoemobile",
+            "button_link": "https://ussafetygear.com/pages/shoemobile",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_TpM4JW": {
+          "type": "column",
+          "settings": {
+            "title": "Gas Monitors",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p><strong>Buy & Repair Gas Monitors at USSG</strong></p><p>Protect your team's respiratory safety and lives with Gas Detection Monitors, sold and repaired at <strong>US Safety Gear</strong>!</p>",
+            "text_size": "text-base",
+            "button_label": "Repair Form",
+            "button_link": "https://4296033.fs1.hubspotusercontent-na1.net/hubfs/4296033/Flyers/Gas_Service_Request_Form.pdf",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_ARjRkM": {
+          "type": "column",
+          "settings": {
+            "title": "Boot Program",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p><strong>Shoemobile / Payroll Deduct / Self-Serve Kiosks</strong></p><p>We make it easy for you to setup a boot buying program with us. Need payroll deduct Invoices or want a more hands-off buying approach with Kiosks? <strong>We make it work for you!</strong></p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_HyiKCb": {
+          "type": "column",
+          "settings": {
+            "title": "Custom Shop",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p><strong>Customize your team's clothing with names, logos, etc.</strong></p><p>With our new customization website you can easily add your logo or names to various clothing options. <strong>Customize today!</strong></p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_87m4zN": {
+          "type": "column",
+          "settings": {
+            "title": "Vending Machines",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p><strong>On Site Safety Gear Vending Machines</strong></p><p>Get your safety equipment when you need it without leaving the worksite with our self-service vending machines. <strong>Restocking available!</strong></p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_KcMxYp": {
+          "type": "column",
+          "settings": {
+            "title": "Replenishment",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "text": "<p><strong>Restock orders, shipped to you!</strong></p><p>Need regular deliveries of your safety gear? We can help! Contact Us and see if you are within our routes for regular deliveries!</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_EdUwph",
+        "column_TpM4JW",
+        "column_ARjRkM",
+        "column_HyiKCb",
+        "column_87m4zN",
+        "column_KcMxYp"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "View our Safety Services:",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "content_alignment": "left",
+        "show_col_count": false,
+        "show_image": true,
+        "columns_desktop": 2,
+        "column_gap": "medium",
+        "row_gap": "large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_QAtYLe",
+    "main",
+    "image_with_text_qBH3RN",
+    "multicolumn_PGwKMG"
+  ]
+}
