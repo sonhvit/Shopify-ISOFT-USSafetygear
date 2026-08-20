@@ -106,18 +106,18 @@
                               <a
                                 href="{{ childlink.url }}"
                                 {% render 'menu-link-new-tab-attributes', title: childlink.title, new_tab_menu_titles: new_tab_menu_titles %}
-                                class="reversed-link flex items-center justify-between gap-x-1 no-js-hidden"
+                                class="menu-dropdown__item blocks-radius-sm flex items-center justify-between gap-x-1 no-js-hidden"
                                 tabindex="-1"
                               >
-                                <span class="reversed-link__text">{{- childlink.title | escape -}}</span>
+                                <h6>{{- childlink.title | escape -}}</h6>
                                 {%- render 'icon-caret-right', size: '2xs' -%}
                               </a>
                               <noscript>
                                 <span
-                                  class="link-no-script reversed-link flex items-center justify-between gap-x-1"
+                                  class="link-no-script menu-dropdown__item blocks-radius-sm flex items-center justify-between gap-x-1"
                                   tabindex="-1"
                                 >
-                                  <span class="reversed-link__text">{{- childlink.title | escape -}}</span>
+                                  <h6>{{- childlink.title | escape -}}</h6>
                                   {%- render 'icon-caret-right', size: '2xs' -%}
                                 </span>
                               </noscript>
@@ -138,9 +138,10 @@
                           </details>
                         </li>
                       {%- else -%}
-                        <li class="reversed-link text-subtext">
-                          <a href="{{ childlink.url }}"{% render 'menu-link-new-tab-attributes', title: childlink.title, new_tab_menu_titles: new_tab_menu_titles %} class="block">
-                            <span class="reversed-link__text">{{ childlink.title | escape }}</span>
+                        <li class="relative">
+                          <a href="{{ childlink.url }}"{% render 'menu-link-new-tab-attributes', title: childlink.title, new_tab_menu_titles: new_tab_menu_titles %} class="menu-dropdown__item blocks-radius-sm flex items-center justify-between gap-x-1">
+                            <h6>{{ childlink.title | escape }}</h6>
+                            {%- render 'icon-caret-right', size: '2xs' -%}
                           </a>
                         </li>
                       {%- endif -%}

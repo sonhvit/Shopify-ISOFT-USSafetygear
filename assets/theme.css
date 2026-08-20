@@ -7202,7 +7202,7 @@ body:not(.header-pinned) .header-scrolled .header {
 .dropdown__container {
   background-color: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
-  padding-block: 2.4rem;
+  padding: 10px;
   border: 1px solid rgba(var(--color-border), var(--color-border-alpha, 1));
 }
 .dropdown .dropdown {
@@ -8456,4 +8456,20 @@ body.search-template #MainContent,
 }
 .klaviyo-form-WK9Dbm button.go4033861592:hover{
   background-color: #C79B36 !important;
+}/* Custom dropdown menu level 2 styling */
+.dropdown__nav .menu-dropdown__item {
+  padding: 1.2rem;
+  border-radius: var(--border-radius-sm, 0.4rem);
+  transition: background-color var(--animation-fast);
+  margin: 0;
+  width: 100%;
+}
+.dropdown__nav .menu-dropdown__item:hover,
+.dropdown__nav details[open] > summary > .menu-dropdown__item {
+  background-color: rgb(var(--color-secondary-background));
+}
+.dropdown__nav h6 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.6rem;
 }
