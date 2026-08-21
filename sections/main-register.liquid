@@ -122,7 +122,7 @@
       <button class="btn btn--primary w-full">
         <span class="btn__text">{{ 'customer.register.submit' | t }}</span>
       </button>
-      <a href="{{ routes.account_login_url }}" class="btn btn--underline self-center">
+      <a href="{{ routes.storefront_login_url }}?return_to=/" class="btn btn--underline self-center">
         {{ 'customer.login_page.sign_in' | t }}
       </a>
     {%- endform -%}
