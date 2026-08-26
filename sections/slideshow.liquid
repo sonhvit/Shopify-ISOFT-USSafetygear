@@ -1,5 +1,6 @@
 {%- liquid
   assign slide_height = section.settings.slide_height
+  assign slide_height_mobile = section.settings.slide_height_mobile
   assign text_alignment_mobile = section.settings.text_alignment_mobile
   assign show_text_below = section.settings.show_text_below
 
@@ -49,7 +50,7 @@
   aria-label="{{ section.settings.accessibility_info | escape }}"
 >
   <slideshow-component
-    class="swiper slideshow-wrapper slideshow-height--{{ slide_height }}{% if show_text_below %} slideshow-content-mobile--below{% endif %}"
+    class="swiper slideshow-wrapper slideshow-height--{{ slide_height }} slideshow-height-mobile--{{ slide_height_mobile }}{% if show_text_below %} slideshow-content-mobile--below{% endif %}"
     aria-live="polite"
     aria-atomic="true"
     {% if autoplay > 0 %}
@@ -89,7 +90,7 @@
         >
           <div
             class="slideshow__item-wrap"
-            {% if slide_height == 'adapt' %}
+            {% if slide_height == 'adapt' or slide_height_mobile == 'adapt' %}
               style="--aspect-ratio: {{ aspect_ratio }};--aspect-ratio-mobile: {{ aspect_ratio_mobile }};"
             {% endif %}
             data-content-position="{{ block.settings.content_position }}"
@@ -100,8 +101,8 @@
                   <motion-element
                     hold
                     data-motion="zoom-out"
-                    class="block media {% if slide_height == 'adapt' %} absolute inset-full{% else %} w-full h-full{% endif %}"
-                    {% if slide_height == 'adapt' %}
+                    class="block media {% if slide_height == 'adapt' or slide_height_mobile == 'adapt' %} absolute inset-full{% else %} w-full h-full{% endif %}"
+                    {% if slide_height == 'adapt' or slide_height_mobile == 'adapt' %}
                       style="--media-ratio: {{ aspect_ratio }}; --media-ratio-mobile: {{ aspect_ratio_mobile }};"
                     {% endif %}
                   >
@@ -367,6 +368,30 @@
     {
       "type": "header",
       "content": "t:general.mobile.name"
+    },
+    {
+      "type": "select",
+      "id": "slide_height_mobile",
+      "label": "t:general.slide_height.label",
+      "options": [
+        {
+          "label": "t:general.slide_height.options__adapt.label",
+          "value": "adapt"
+        },
+        {
+          "label": "t:general.slide_height.options__sm.label",
+          "value": "small"
+        },
+        {
+          "label": "t:general.slide_height.options__md.label",
+          "value": "medium"
+        },
+        {
+          "label": "t:general.slide_height.options__lg.label",
+          "value": "large"
+        }
+      ],
+      "default": "medium"
     },
     {
       "type": "checkbox",
