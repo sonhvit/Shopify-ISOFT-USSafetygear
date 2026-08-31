@@ -28,6 +28,9 @@
 .slideshow-wrapper:not(.slideshow-height--adapt) .slideshow__item-wrap {
   height: var(--slide-height, 0);
 }
+.slideshow-height--xsmall {
+  --slide-height: 22rem;
+}
 .slideshow-height--small {
   --slide-height: 28rem;
 }
@@ -46,6 +49,9 @@
   bottom: 0;
 }
 @media (min-width: 768px) {
+  .slideshow-height--xsmall {
+    --slide-height: 34rem;
+  }
   .slideshow-height--small {
     --slide-height: 54rem;
   }
