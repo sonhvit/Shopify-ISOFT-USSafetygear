@@ -70,6 +70,7 @@
         </p>
       {%- endif -%}
       {%- form 'customer_login', class: 'flex flex-col' -%}
+        <input type="hidden" name="return_to" value="/">
         {%- if form.errors -%}
           <div class="form-error alert alert--error blocks-radius">
             <h2 class="form-message form-message--error h6 m-0" tabindex="-1" autofocus>
