@@ -340,7 +340,7 @@
           id="ProductSubmitButton-{{ section_id }}"
           type="submit"
           name="add"
-          class="product-form__submit btn{% if show_dynamic_checkout %} btn--secondary{% else %} btn--primary{% endif %}"
+          class="product-form__submit btn{% if show_dynamic_checkout %} btn--secondary{% else %} btn--primary{% endif %}{% if product.selected_or_first_available_variant.available == false and settings.klaviyo_back_in_stock_form_id != blank %} hidden{% endif %}"
           {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout or product.selected_or_first_available_variant == nil %}
             disabled
           {% endif %}
@@ -359,8 +359,15 @@
           {%- render 'loading-spinner' -%}
         </button>
         {%- if show_dynamic_checkout -%}
-          {{ form | payment_button }}
+          <div class="product-form__dynamic-checkout-buttons{% if product.selected_or_first_available_variant.available == false %} hidden{% endif %}">
+            {{ form | payment_button }}
+          </div>
         {%- endif -%}
+        {%- render 'klaviyo-back-in-stock',
+          product: product,
+          current_variant: product.selected_or_first_available_variant,
+          section_id: section_id
+        -%}
       </div>
       <div class="product-form__error-message blocks-radius-md alert alert--error" role="alert" hidden></div>
     {%- endform -%}

@@ -258,6 +258,8 @@
         "success_message": "Thanks for contacting us. We'll get back to you as soon as possible."
       },
       "sold_out": "Sold out",
+      "notify_when_available": "Notify Me When Available",
+      "notify_modal_title": "Notify Me When In Stock",
       "unavailable": "Unavailable",
       "sku": "SKU",
       "barcode": "Barcode",

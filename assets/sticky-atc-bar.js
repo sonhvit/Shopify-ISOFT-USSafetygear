@@ -113,11 +113,30 @@ if (!customElements.get('sticky-atc-bar')) {
 
         const addButtonText = addButton.querySelector('span');
         if (disable) {
-          addButton.setAttribute('disabled', 'disabled');
-          if (text) addButtonText.textContent = text;
+          if (text === FoxTheme.variantStrings.soldOut && FoxTheme.variantStrings.notifyWhenAvailable) {
+            addButton.removeAttribute('disabled');
+            addButtonText.textContent = FoxTheme.variantStrings.notifyWhenAvailable;
+            addButton.onclick = (e) => {
+              e.preventDefault();
+              const mainBis = document.querySelector('klaviyo-back-in-stock:not(.hidden)');
+              if (mainBis) {
+                if (typeof mainBis.openModal === 'function') {
+                  mainBis.openModal();
+                } else {
+                  const trigger = mainBis.querySelector('.klaviyo-bis-trigger');
+                  if (trigger) trigger.click();
+                }
+              }
+            };
+          } else {
+            addButton.setAttribute('disabled', 'disabled');
+            if (text) addButtonText.textContent = text;
+            addButton.onclick = null;
+          }
         } else {
           addButton.removeAttribute('disabled');
           addButtonText.textContent = FoxTheme.variantStrings.addToCart;
+          addButton.onclick = null;
         }
       }
 

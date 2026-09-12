@@ -189,6 +189,7 @@ if (!customElements.get('product-info')) {
           updateSourceFromDestination('Badges', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('PricePerItem', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('Volume');
+          updateSourceFromDestination('KlaviyoBackInStock');
 
           this.updateQuantityRules(this.sectionId, this.productId, html);
           this.querySelector(`#QuantityRules-${this.dataset.section}`)?.classList.remove('hidden');
@@ -324,12 +325,29 @@ if (!customElements.get('product-info')) {
         const addButtonText = productForm.querySelector('[name="add"] > span');
         if (!addButton) return;
 
+        const klaviyoBis = document.getElementById(`KlaviyoBackInStock-${this.dataset.section}`);
+        const dynamicCheckout = productForm.querySelector('.product-form__dynamic-checkout-buttons');
+
         if (disable) {
           addButton.setAttribute('disabled', 'disabled');
           if (text) addButtonText.textContent = text;
+          if (klaviyoBis) {
+            addButton.classList.add('hidden');
+            klaviyoBis.classList.remove('hidden');
+          }
+          if (dynamicCheckout) dynamicCheckout.classList.add('hidden');
         } else {
           addButton.removeAttribute('disabled');
           addButtonText.innerHTML = FoxTheme.variantStrings.addToCart;
+          if (klaviyoBis) {
+            addButton.classList.remove('hidden');
+            klaviyoBis.classList.add('hidden');
+            const bisContent = klaviyoBis.querySelector('.klaviyo-bis-content');
+            if (bisContent) bisContent.style.display = 'none';
+            const bisTrigger = klaviyoBis.querySelector('.klaviyo-bis-trigger');
+            if (bisTrigger) bisTrigger.classList.remove('hidden');
+          }
+          if (dynamicCheckout) dynamicCheckout.classList.remove('hidden');
         }
 
         if (!modifyClass) return;

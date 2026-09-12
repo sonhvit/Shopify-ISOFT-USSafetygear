@@ -1,0 +1,61 @@
+{% comment %}
+  Renders Klaviyo Back in Stock button and modal.
+  Accepts:
+  - product: {Object} product object.
+  - current_variant: {Object} variant object.
+  - section_id: {String} section id.
+  - custom_class: {String} additional classes.
+{% endcomment %}
+{%- liquid
+  assign form_id = settings.klaviyo_back_in_stock_form_id | default: 'WP48BX' | strip | remove: 'klaviyo-form-'
+  assign is_available = current_variant.available
+  if current_variant == nil
+    assign is_available = false
+  endif
+  assign modal_id = 'PopupModal-KlaviyoBis-' | append: section_id
+-%}
+{%- if form_id != blank -%}
+  <klaviyo-back-in-stock
+    id="KlaviyoBackInStock-{{ section_id }}"
+    class="klaviyo-back-in-stock block w-full{% if is_available %} hidden{% endif %}{% if custom_class %} {{ custom_class }}{% endif %}"
+    data-section-id="{{ section_id }}"
+    data-product-id="{{ product.id }}"
+    data-variant-id="{{ current_variant.id }}"
+    data-form-id="{{ form_id }}"
+  >
+    <button
+      type="button"
+      class="klaviyo-bis-trigger btn btn--secondary w-full flex items-center justify-center gap-2"
+      aria-controls="{{ modal_id }}"
+      aria-haspopup="dialog"
+    >
+      {% render 'icon-envelope-simple', size: 'small' %}
+      <span class="btn__text">{{ 'products.product.notify_when_available' | t | default: 'Notify Me When Available' }}</span>
+    </button>
+
+    <basic-modal id="{{ modal_id }}" class="drawer modal" style="--modal-width: 52rem;">
+      <div class="fixed-overlay" aria-controls="{{ modal_id }}"></div>
+      <div class="drawer__inner color-{{ settings.overlay_color_scheme }} blocks-radius-lg p-6 md:p-8">
+        <button
+          class="drawer__close-btn"
+          aria-controls="{{ modal_id }}"
+          aria-label="{{ 'accessibility.close' | t | default: 'Close' }}"
+        >
+          {% render 'icon-close' %}
+        </button>
+        <div class="drawer__body v-scrollable h-full">
+          <div class="klaviyo-bis-modal__header text-center mb-6">
+            <h3 class="text-xl md:text-2xl font-heading mb-2">
+              {{ 'products.product.notify_modal_title' | t | default: 'Notify Me When In Stock' }}
+            </h3>
+            <p class="text-subtext text-sm m-0">
+              {{ product.title }}
+            </p>
+          </div>
+          <div class="klaviyo-form-{{ form_id }}" data-klaviyo-heading-level="h4"></div>
+        </div>
+      </div>
+    </basic-modal>
+  </klaviyo-back-in-stock>
+  <script src="{{ 'klaviyo-back-in-stock.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}

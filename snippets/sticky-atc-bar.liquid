@@ -207,6 +207,8 @@
                 <span class="btn__text">
                   {%- if product.selected_or_first_available_variant.available -%}
                     {{ 'products.product.add_to_cart' | t }}
+                  {%- elsif settings.klaviyo_back_in_stock_form_id != blank -%}
+                    {{ 'products.product.notify_when_available' | t | default: 'Notify Me When Available' }}
                   {%- else -%}
                     {{ 'products.product.sold_out' | t }}
                   {%- endif -%}

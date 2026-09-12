@@ -240,17 +240,24 @@
             >
             <button
               id="{{ product_form_id }}-submit"
-              type="submit"
+              type="{% if variant.available == false and settings.klaviyo_back_in_stock_form_id != blank %}button{% else %}submit{% endif %}"
               name="add"
-              {% if variant.available == false %}
+              {% if variant.available == false and settings.klaviyo_back_in_stock_form_id == blank %}
                 disabled
               {% endif %}
-              aria-label="{{ 'products.product.add_to_cart' | t }}"
+              aria-label="{% if variant.available %}{{ 'products.product.add_to_cart' | t }}{% else %}{{ 'products.product.notify_when_available' | t | default: 'Notify Me When Available' }}{% endif %}"
               class="product-card__atc product-card__action-button btn {{ settings.pcard_button_style }}"
+              {% if variant.available == false and settings.klaviyo_back_in_stock_form_id != blank %}
+                onclick="window.location.href='{{ product.url }}';"
+              {% endif %}
             >
               <div class="btn__text flex gap-1 items-center">
                 <span class="product-card__atc-icon product-card__action-icon inline-flex md:hidden">
-                  {%- render 'icon-cart', name: settings.cart_icon -%}
+                  {%- if variant.available -%}
+                    {%- render 'icon-cart', name: settings.cart_icon -%}
+                  {%- else -%}
+                    {%- render 'icon-envelope-simple', size: 'small' -%}
+                  {%- endif -%}
                 </span>
                 <span class="product-card__atc-text product-card__action-text">
                   {%- if variant.available -%}
@@ -259,6 +266,8 @@
                     {%- else -%}
                       {{- 'products.product.add_to_cart' | t -}}
                     {%- endif -%}
+                  {%- elsif settings.klaviyo_back_in_stock_form_id != blank -%}
+                    {{- 'products.product.notify_when_available' | t | default: 'Notify Me' -}}
                   {%- else -%}
                     {{- 'products.product.sold_out' | t -}}
                   {%- endif -%}

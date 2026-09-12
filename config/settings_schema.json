@@ -1562,6 +1562,18 @@
     ]
   },
   {
+    "name": "Klaviyo Back In Stock",
+    "settings": [
+      {
+        "type": "text",
+        "id": "klaviyo_back_in_stock_form_id",
+        "label": "Klaviyo Back in Stock Form ID",
+        "default": "WP48BX",
+        "info": "Enter your Klaviyo Form ID (e.g. WP48BX). The notification form will appear when an item or variant is sold out."
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.cart.name",
     "settings": [
       {
