@@ -8,10 +8,54 @@
   if shop_types.first == blank
     assign shop_types = shop_types | slice: 1, shop_types.size
   endif
+
+  assign current_search_type = ''
+  assign raw_search_terms = search.terms | replace: '&quot;', '"' | replace: '&amp;', '&'
+  assign clean_search_terms = raw_search_terms
+
+  if raw_search_terms contains 'product_type:'
+    for type_item in shop_types
+      assign check_quoted = 'product_type:"' | append: type_item | append: '"'
+      assign check_unquoted = 'product_type:' | append: type_item
+      if raw_search_terms contains check_quoted
+        assign current_search_type = type_item
+        assign clean_search_terms = clean_search_terms | replace_first: check_quoted, ''
+        break
+      elsif raw_search_terms contains check_unquoted
+        assign current_search_type = type_item
+        assign clean_search_terms = clean_search_terms | replace_first: check_unquoted, ''
+        break
+      endif
+    endfor
+
+    if current_search_type == blank
+      assign parts = raw_search_terms | split: 'product_type:'
+      assign after_type = parts[1]
+      if after_type contains '"'
+        assign type_parts = after_type | split: '"'
+        assign current_search_type = type_parts[1]
+        assign clean_search_terms = after_type | remove_first: '"' | remove_first: current_search_type | remove_first: '"'
+      else
+        assign type_parts = after_type | split: ' '
+        assign current_search_type = type_parts[0]
+        assign clean_search_terms = after_type | remove_first: current_search_type
+      endif
+    endif
+
+    assign clean_search_terms = clean_search_terms | remove_first: ' AND ' | remove_first: 'AND ' | strip
+  endif
+
+  if clean_search_terms == '*'
+    assign clean_search_terms = ''
+  endif
 -%}
 {{ settings.form_field }}
 {{ settings.background }}
-<predictive-search class="block w-full search__form" data-search-recommendation-empty="{{ search_recommendation_empty }}" data-results-limit="{{ settings.number_results_to_show }}">
+<predictive-search
+  class="block w-full search__form"
+  data-search-recommendation-empty="{{ search_recommendation_empty }}"
+  data-results-limit="{{ settings.number_results_to_show }}"
+>
   <div class="flex flex-col w-full h-full">
     <form
       action="{{ routes.search_url }}"
@@ -33,7 +77,14 @@
             >
               <option value="">{{ 'general.search.all_products' | t }}</option>
               {% for option in shop_types %}
-                <option value="{{ shop_types[forloop.index0] }}">{{ shop_types[forloop.index0] }}</option>
+                <option
+                  value="{{ option | escape }}"
+                  {% if option == current_search_type %}
+                    selected
+                  {% endif %}
+                >
+                  {{ option }}
+                </option>
               {% endfor %}
             </select>
             {%- render 'icon-caret-down', size: '2xs' -%}
@@ -45,7 +96,7 @@
           type="search"
           name="q"
           {% if context == 'page' %}
-            value="{{ search.terms | escape }}"
+            value="{{ clean_search_terms | escape }}"
           {% endif %}
           placeholder="{{ 'general.search.placeholder' | t }}"
           {% if settings.predictive_search_enabled %}

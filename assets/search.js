@@ -14,6 +14,7 @@ class PredictiveSearch extends HTMLElement {
     this.boundHandleClickOutside = this.handleClickOutside.bind(this);
     document.addEventListener('click', this.boundHandleClickOutside);
     this.searchProductTypes?.addEventListener('change', this.handleProductTypeChange.bind(this));
+    this.form?.addEventListener('submit', this.onFormSubmit.bind(this));
 
     this.isHeaderSearch = this.closest('header') !== null;
 
@@ -27,6 +28,10 @@ class PredictiveSearch extends HTMLElement {
       LOADING: 'btn--loading',
       SEARCH_OPEN: 'search-open',
     };
+  }
+
+  get form() {
+    return this.querySelector('form');
   }
 
   get input() {
@@ -77,6 +82,34 @@ class PredictiveSearch extends HTMLElement {
     this.toggleSearchState(false);
   }
 
+  onFormSubmit(event) {
+    const productType = this.searchProductTypes?.value?.trim();
+    const query = this.getQuery();
+
+    if (productType) {
+      event.preventDefault();
+      const formattedType = `product_type:"${productType}"`;
+      const finalQuery = query ? `${formattedType} AND ${query}` : formattedType;
+
+      const actionUrl = this.form?.action || `${window.shopUrl || ''}/search`;
+      const searchUrl = new URL(actionUrl, window.location.origin);
+      searchUrl.searchParams.set('options[prefix]', 'last');
+      searchUrl.searchParams.set('q', finalQuery);
+      window.location.href = searchUrl.toString();
+    } else if (this.searchProductTypes) {
+      event.preventDefault();
+      const actionUrl = this.form?.action || `${window.shopUrl || ''}/search`;
+      const searchUrl = new URL(actionUrl, window.location.origin);
+      searchUrl.searchParams.set('options[prefix]', 'last');
+      if (query) {
+        searchUrl.searchParams.set('q', query);
+      } else {
+        searchUrl.searchParams.set('q', '');
+      }
+      window.location.href = searchUrl.toString();
+    }
+  }
+
   handleProductTypeChange(evt) {
     const query = this.getQuery();
     if (query.length > 0) {
@@ -89,7 +122,12 @@ class PredictiveSearch extends HTMLElement {
     const url = new URL(`${window.shopUrl}${FoxTheme.routes.predictive_search_url}`);
     let search_term = this.getQuery();
     if (this.searchProductTypes && this.searchProductTypes.value != '') {
-      search_term = `product_type:${this.searchProductTypes.value} AND ${encodeURIComponent(search_term)}`;
+      const typeVal = this.searchProductTypes.value.trim();
+      if (search_term) {
+        search_term = `product_type:"${typeVal}" AND ${search_term}`;
+      } else {
+        search_term = `product_type:"${typeVal}"`;
+      }
     }
     return (
       url.searchParams.set('q', search_term),
