@@ -1,0 +1,180 @@
+{% comment %}
+  Renders Coming Soon / Notify block on PDP when product or variant is out of stock.
+  Accepts:
+  - product: {Object} product object
+  - block: {Object} block settings
+  - section_id: {String} section id
+{% endcomment %}
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign is_sold_out = false
+  if current_variant == nil or current_variant.available == false
+    assign is_sold_out = true
+  endif
+
+  assign hide_buy_buttons = block.settings.hide_buy_buttons
+  if hide_buy_buttons == nil
+    assign hide_buy_buttons = true
+  endif
+
+  assign show_alert = block.settings.show_alert
+  if block == nil or show_alert == nil
+    assign show_alert = true
+  endif
+
+  assign alert_heading = block.settings.alert_heading | default: 'Coming Soon!'
+  assign alert_description = block.settings.alert_description | default: "<p>Drop your email below, and we'll let you know when they're live!</p>"
+  assign alert_icon = block.settings.alert_icon | default: 'calendar-blank'
+  assign alert_color = block.settings.alert_color | default: '#7a34d6'
+  assign alert_background_color = block.settings.alert_background_color
+  assign form_type = block.settings.form_type | default: 'default'
+  assign klaviyo_form_id = block.settings.klaviyo_form_id
+  assign heading = block.settings.heading | default: 'Be the first to know!'
+  assign heading_size = block.settings.heading_size | default: 'h4'
+  assign notify_button_text = block.settings.notify_button_text | default: 'Notify me when available'
+  assign button_style = block.settings.button_style | default: 'btn--primary'
+  assign newsletter_term = block.settings.newsletter_term
+-%}
+
+<div
+  id="ComingSoon-{{ section_id }}"
+  class="product__coming-soon-wrapper w-full{% unless is_sold_out %} hidden{% endunless %}"
+  data-is-soldout="{{ is_sold_out }}"
+  data-hide-buy-buttons="{{ hide_buy_buttons }}"
+  {% if block %}{{ block.shopify_attributes }}{% endif %}
+>
+  <div class="product__coming-soon-container flex flex-col gap-4">
+    {%- if show_alert -%}
+      {%- capture rgb -%}
+        {%- if block.settings.alert_color -%}
+          {{ block.settings.alert_color.red }},{{ block.settings.alert_color.green }},{{ block.settings.alert_color.blue }}
+        {%- else -%}
+          122,52,214
+        {%- endif -%}
+      {%- endcapture -%}
+      <div
+        class="product__coming-soon-alert"
+        style="color: {{ alert_color }};--color-foreground:{{ rgb }};--color-link:{{ rgb }};--color-button-text:{{ rgb }}"
+      >
+        {%- if alert_heading != blank or alert_description != blank -%}
+          <product-promotion-alert
+            class="product__promotion-alert relative flex items-center gap-3 blocks-radius"
+            style="{% if alert_background_color != blank and alert_background_color != 'rgba(0,0,0,0)' %}background-color: {{ alert_background_color }};{% else %}background-color: rgba({{ rgb }}, 0.08);{% endif %}"
+          >
+            {%- if alert_icon != 'none' -%}
+              <div class="product__promotion-alert-icon flex shrink-0">
+                {%- render 'icons', icon: alert_icon, size: 'extra-large' -%}
+              </div>
+            {%- endif -%}
+            <div class="product__promotion-alert-info flex flex-grow flex-col gap-1">
+              {%- if alert_heading != blank -%}
+                <div class="product__promotion-alert-heading font-body-bolder">
+                  {{ alert_heading }}
+                </div>
+              {%- endif -%}
+              {%- if alert_description != blank -%}
+                <div class="product__promotion-alert-description rte text-sm-extra">
+                  {{ alert_description }}
+                </div>
+              {%- endif -%}
+            </div>
+          </product-promotion-alert>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if form_type == 'klaviyo' and klaviyo_form_id != blank -%}
+      <div class="product__coming-soon-klaviyo grid gap-3">
+        {%- if heading != blank -%}
+          <h2 class="{{ heading_size }} m-0">{{ heading }}</h2>
+        {%- endif -%}
+        <button
+          type="button"
+          class="btn {{ button_style }} w-full klaviyo-notify-trigger"
+          data-klaviyo-form-id="{{ klaviyo_form_id | strip }}"
+          onclick="if(window._klOnsite){window._klOnsite.push(['openForm', '{{ klaviyo_form_id | strip }}']);}const kf=this.nextElementSibling;if(kf){kf.classList.remove('hidden');kf.scrollIntoView({behavior:'smooth',block:'nearest'});}"
+        >
+          <span class="btn__text flex items-center justify-center gap-2">
+            {%- render 'icons', icon: 'bell-ringing', size: 'medium' -%}
+            <span>{{ notify_button_text }}</span>
+          </span>
+        </button>
+        <div class="klaviyo-form-container mt-2">
+          <div class="klaviyo-form-{{ klaviyo_form_id | strip }}"></div>
+        </div>
+        {%- if newsletter_term != blank -%}
+          <div class="rich-text__text rte text-sm text-subtext">
+            {{ newsletter_term }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <div class="product__coming-soon-default flex flex-col gap-4">
+        {%- if heading != blank -%}
+          <h2 class="{{ heading_size }} m-0">{{ heading }}</h2>
+        {%- endif -%}
+        <div class="grid gap-4">
+          {%- assign notify_form_id = 'ProductNotify-' | append: section_id -%}
+          <div class="newsletter-form">
+            {%- form 'customer', id: notify_form_id, is: 'newsletter-form' -%}
+              <input type="hidden" name="contact[tags]" value="newsletter, notify-me, {{ product.handle }}">
+              <input
+                type="hidden"
+                name="contact[note]"
+                value="Notify for product: {{ product.title | escape }}{% if current_variant %} - Variant: {{ current_variant.title | escape }}{% endif %}"
+              >
+              <div class="newsletter-form__field-wrapper">
+                <div class="form-field relative">
+                  <label class="form-label visually-hidden" for="NotifyForm-{{ section_id }}">
+                    {{ 'newsletter.label' | t }}
+                  </label>
+                  <input
+                    id="NotifyForm-{{ section_id }}"
+                    type="email"
+                    name="contact[email]"
+                    class="form-control flex-1"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    placeholder="{{ 'newsletter.placeholder' | t }}"
+                    required
+                  >
+                  {% capture button_attributes %}
+                    type="submit"
+                    name="commit"
+                    id="Notify-submit--{{ section_id }}"
+                  {% endcapture %}
+                  {% render 'button',
+                    button_style: button_style,
+                    button_tag: 'button',
+                    button_label: notify_button_text,
+                    button_icon: 'none',
+                    additional_attributes: button_attributes
+                  %}
+                </div>
+              </div>
+              {%- if form.posted_successfully? -%}
+                <p class="form-message alert alert--success blocks-radius h6 w-full mt-2" tabindex="-1" autofocus>
+                  {% render 'icon-success', size: 'small' %}
+                  {{- 'newsletter.success' | t -}}
+                </p>
+              {%- elsif form.errors -%}
+                <p class="form-message alert alert--error blocks-radius w-full mt-2">
+                  {% render 'icon-error' %}
+                  {{- form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email -}}
+                </p>
+              {%- endif -%}
+            {%- endform -%}
+          </div>
+          {%- if newsletter_term != blank -%}
+            <div class="rich-text__text rte text-sm text-subtext">
+              {{ newsletter_term }}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

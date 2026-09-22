@@ -189,6 +189,19 @@ if (!customElements.get('product-info')) {
           updateSourceFromDestination('Badges', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('PricePerItem', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('Volume');
+          updateSourceFromDestination('ComingSoon', ({ classList }) => classList.contains('hidden'));
+          updateSourceFromDestination('ProductFormButtons', ({ classList }) => classList.contains('hidden'));
+          updateSourceFromDestination('QuantityForm', ({ classList }) => classList.contains('hidden'));
+
+          const comingSoon = this.querySelector(`#ComingSoon-${this.dataset.section}`);
+          const formButtons = this.querySelector(`#ProductFormButtons-${this.dataset.section}`);
+          const qtyForm = this.querySelector(`#QuantityForm-${this.dataset.section}`);
+          if (comingSoon && comingSoon.dataset.hideBuyButtons === 'true') {
+            const isSoldOut = !variant || !variant.available;
+            comingSoon.classList.toggle('hidden', !isSoldOut);
+            if (formButtons) formButtons.classList.toggle('hidden', isSoldOut);
+            if (qtyForm) qtyForm.classList.toggle('hidden', isSoldOut);
+          }
 
           this.updateQuantityRules(this.sectionId, this.productId, html);
           this.querySelector(`#QuantityRules-${this.dataset.section}`)?.classList.remove('hidden');
@@ -340,10 +353,18 @@ if (!customElements.get('product-info')) {
         const price = document.getElementById(`price-${this.dataset.section}`);
         const inventory = document.getElementById(`Inventory-${this.dataset.section}`);
         const sku = document.getElementById(`Sku-${this.dataset.section}`);
+        const comingSoon = document.getElementById(`ComingSoon-${this.dataset.section}`);
+        const formButtons = document.getElementById(`ProductFormButtons-${this.dataset.section}`);
+        const qtyForm = document.getElementById(`QuantityForm-${this.dataset.section}`);
 
         if (price) price.classList.add('hidden');
         if (inventory) inventory.classList.add('hidden');
         if (sku) sku.classList.add('hidden');
+        if (comingSoon && comingSoon.dataset.hideBuyButtons === 'true') {
+          comingSoon.classList.remove('hidden');
+          if (formButtons) formButtons.classList.add('hidden');
+          if (qtyForm) qtyForm.classList.add('hidden');
+        }
       }
 
       initQuantityHandlers() {

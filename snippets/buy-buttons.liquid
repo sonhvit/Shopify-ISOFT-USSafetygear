@@ -20,6 +20,21 @@
     if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
       assign show_dynamic_checkout = true
     endif
+
+    assign coming_soon_block = section.blocks | where: 'type', 'coming_soon' | first
+    assign hide_buttons_for_coming_soon = false
+    if coming_soon_block != blank
+      assign hide_by_setting = coming_soon_block.settings.hide_buy_buttons
+      if hide_by_setting == nil or hide_by_setting == true
+        if product.selected_or_first_available_variant == nil or product.selected_or_first_available_variant.available == false
+          assign hide_buttons_for_coming_soon = true
+        endif
+      endif
+    else
+      if product.selected_or_first_available_variant == nil or product.selected_or_first_available_variant.available == false
+        assign hide_buttons_for_coming_soon = true
+      endif
+    endif
   -%}
   <div
     class="product-form"
@@ -73,7 +88,7 @@
       {%- if product.quantity_price_breaks_configured? -%}
         <div
           id="QuantityForm-{{ section_id }}"
-          class="{% if block.settings.show_quantity_selector %} grid gap-4{% else %} hidden{% endif %}"
+          class="{% if block.settings.show_quantity_selector %} grid gap-4{% else %} hidden{% endif %}{% if hide_buttons_for_coming_soon %} hidden{% endif %}"
         >
           {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
 
@@ -290,7 +305,7 @@
         </div>
       {%- endif -%}
 
-      <div class="product-form__buttons flex flex-wrap items-end gap-x-2 gap-y-4" id="QuantityForm-{{ section_id }}">
+      <div class="product-form__buttons flex flex-wrap items-end gap-x-2 gap-y-4{% if hide_buttons_for_coming_soon %} hidden{% endif %}" id="ProductFormButtons-{{ section_id }}">
         {%- if product.quantity_price_breaks_configured? != true -%}
           {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
           <div class="product-form__quantity{% unless block.settings.show_quantity_selector %} hidden{% endunless %}">
@@ -364,6 +379,13 @@
       </div>
       <div class="product-form__error-message blocks-radius-md alert alert--error" role="alert" hidden></div>
     {%- endform -%}
+    {%- if coming_soon_block == nil -%}
+      {%- render 'product-coming-soon',
+        block: nil,
+        product: product,
+        section_id: section_id
+      -%}
+    {%- endif -%}
   </div>
 {%- else -%}
   <div class="product-form">

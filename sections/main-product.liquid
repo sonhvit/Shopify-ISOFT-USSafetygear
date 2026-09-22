@@ -479,6 +479,126 @@
       ]
     },
     {
+      "type": "coming_soon",
+      "name": "Coming Soon / Notify Me",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "hide_buy_buttons",
+          "label": "Hide Add to Cart & Quantity when out of stock",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Alert Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_alert",
+          "label": "Show Coming Soon alert",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "alert_heading",
+          "label": "Alert heading",
+          "default": "Coming Soon!"
+        },
+        {
+          "type": "richtext",
+          "id": "alert_description",
+          "label": "Alert description",
+          "default": "<p>Drop your email below, and we'll let you know when they're live!</p>"
+        },
+        {
+          "type": "select",
+          "id": "alert_icon",
+          "label": "Alert icon",
+          "default": "calendar-blank",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "calendar-blank", "label": "Calendar" },
+            { "value": "bell-ringing", "label": "Bell" },
+            { "value": "clock", "label": "Clock" },
+            { "value": "tag", "label": "Tag" },
+            { "value": "lightning", "label": "Lightning" },
+            { "value": "check", "label": "Check" }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "alert_color",
+          "label": "Alert text and icon color",
+          "default": "#7a34d6"
+        },
+        {
+          "type": "color",
+          "id": "alert_background_color",
+          "label": "Alert background color"
+        },
+        {
+          "type": "header",
+          "content": "Form Settings"
+        },
+        {
+          "type": "select",
+          "id": "form_type",
+          "label": "Form type",
+          "default": "default",
+          "options": [
+            { "value": "default", "label": "Default Form (Coming Soon template)" },
+            { "value": "klaviyo", "label": "Klaviyo Form" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "klaviyo_form_id",
+          "label": "Klaviyo Form ID",
+          "info": "Enter your Klaviyo Form ID (e.g. XXXXXX). The form will render right below the notify button."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Form heading",
+          "default": "Be the first to know!"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Heading size",
+          "default": "h4",
+          "options": [
+            { "value": "h5", "label": "Small" },
+            { "value": "h4", "label": "Medium" },
+            { "value": "h3", "label": "Large" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "notify_button_text",
+          "label": "Notify button text",
+          "default": "Notify me when available"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "default": "btn--primary",
+          "options": [
+            { "value": "btn--primary", "label": "Primary" },
+            { "value": "btn--secondary", "label": "Secondary" },
+            { "value": "btn--outline", "label": "Outline" }
+          ]
+        },
+        {
+          "type": "richtext",
+          "id": "newsletter_term",
+          "label": "Terms / Disclaimer"
+        }
+      ]
+    },
+    {
       "type": "pickup_availability",
       "name": "t:sections.main-product.blocks.pickup_availability.name",
       "limit": 1

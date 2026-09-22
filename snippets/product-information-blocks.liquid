@@ -562,6 +562,18 @@
               {%- endif -%}
             </div>
           </div>
+        {%- when 'coming_soon' -%}
+          <div
+            class="{{ block_classes }}"
+            {{ additional_attributes }}
+            {{ block.shopify_attributes }}
+          >
+            {%- render 'product-coming-soon',
+              block: block,
+              product: product,
+              section_id: section.id
+            -%}
+          </div>
       {%- endcase -%}
     {%- endfor -%}
   </div>
