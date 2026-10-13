@@ -42,8 +42,10 @@ if (!customElements.get('price-per-item')) {
         this.variantIdChangedUnsubscriber = FoxTheme.pubsub.subscribe(
           FoxTheme.pubsub.PUB_SUB_EVENTS.variantChange,
           (event) => {
-            this.variantId = event.data.variant.id.toString();
-            this.getVolumePricingArray();
+            if (event.data.variant?.id) {
+              this.variantId = event.data.variant.id.toString();
+              this.getVolumePricingArray();
+            }
           }
         );
 

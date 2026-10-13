@@ -115,6 +115,7 @@ if (!customElements.get('sticky-atc-bar-minimalist')) {
         );
         const unitPrice = unitPriceWrapper.querySelector('.f-price__unit');
 
+        if (!variant) return;
         const { compare_at_price, price, unit_price_measurement } = variant;
 
         // On sale.
@@ -155,16 +156,16 @@ if (!customElements.get('sticky-atc-bar-minimalist')) {
 
       syncWithMainProductForm() {
         FoxTheme.pubsub.subscribe(FoxTheme.pubsub.PUB_SUB_EVENTS.variantChange, (event) => {
-          const isMainProduct = event.data.sectionId === this.mainProductInfo.dataset.section;
+          const isMainProduct = event.data.sectionId === this.mainProductInfo?.dataset?.section;
           if (!isMainProduct) return;
           const variant = event.data.variant;
+          if (!variant) {
+            this.updateButton(true, FoxTheme.variantStrings.unavailable || '', true);
+            return;
+          }
           this.updatePrice(variant);
           this.updateButton(true, '', false);
-          if (!variant) {
-            this.updateButton(true, '', true);
-          } else {
-            this.updateButton(!variant.available, FoxTheme.variantStrings.soldOut);
-          }
+          this.updateButton(!variant.available, FoxTheme.variantStrings.soldOut);
         });
       }
     }

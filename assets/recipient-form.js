@@ -41,7 +41,7 @@ if (!customElements.get('recipient-form')) {
           FoxTheme.pubsub.PUB_SUB_EVENTS.variantChange,
           (event) => {
             if (event.data.sectionId === this.dataset.sectionId) {
-              this.currentProductVariantId = event.data.variant.id.toString();
+              this.currentProductVariantId = event.data.variant?.id ? event.data.variant.id.toString() : '';
             }
           }
         );

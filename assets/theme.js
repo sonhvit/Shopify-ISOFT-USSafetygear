@@ -561,7 +561,7 @@ class HTMLUpdateUtility {
    * The function currently uses a double buffer approach, but this should be replaced by a view transition once it is more widely supported https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API
    */
   static viewTransition(oldNode, newContent, preProcessCallbacks = [], postProcessCallbacks = []) {
-    if (!oldNode || !newContent) return;
+    if (!oldNode || !oldNode.parentNode || !newContent) return;
     preProcessCallbacks?.forEach((callback) => callback(newContent));
 
     const newNodeWrapper = document.createElement('div');
@@ -1174,7 +1174,7 @@ class QuantityInput extends HTMLElement {
   }
 
   get value() {
-    return this.input.value;
+    return this.input?.value;
   }
 
   connectedCallback() {
@@ -1183,8 +1183,10 @@ class QuantityInput extends HTMLElement {
     this.buttons = Array.from(this.querySelectorAll('button'));
     this.changeEvent = new Event('change', { bubbles: true });
 
-    this.input.addEventListener('change', this.onInputChange.bind(this));
-    this.input.addEventListener('focus', () => setTimeout(() => this.input.select()));
+    if (this.input) {
+      this.input.addEventListener('change', this.onInputChange.bind(this));
+      this.input.addEventListener('focus', () => setTimeout(() => this.input.select()));
+    }
 
     this.buttons.forEach((button) => button.addEventListener('click', this.onButtonClick.bind(this)), {
       signal: this.abortController.signal,
@@ -1207,7 +1209,7 @@ class QuantityInput extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.abortController.abort();
+    this.abortController?.abort();
 
     if (this.quantityUpdateUnsubscriber) {
       this.quantityUpdateUnsubscriber();
@@ -1222,6 +1224,7 @@ class QuantityInput extends HTMLElement {
 
   onButtonClick(event) {
     event.preventDefault();
+    if (!this.input) return;
     const previousValue = this.input.value;
 
     if (event.currentTarget.name === 'plus') {
@@ -1242,13 +1245,15 @@ class QuantityInput extends HTMLElement {
   }
 
   onInputChange() {
+    if (!this.input) return;
     if (this.input.value === '') {
-      this.input.value = parseInt(this.input.min);
+      this.input.value = parseInt(this.input.min || 1);
     }
     this.validateQtyRules();
   }
 
   validateQtyRules() {
+    if (!this.input) return;
     const value = parseInt(this.input.value);
     if (this.input.min) {
       const buttonMinus = this.querySelector('button[name="minus"]');
@@ -1262,9 +1267,12 @@ class QuantityInput extends HTMLElement {
 
   updateQuantityRules({ data: { sectionId, productId, parsedHTML } }) {
     if (sectionId !== this.sectionId || productId !== this.productId) return;
+    if (!parsedHTML) return;
     const selectors = ['.quantity__input', '.quantity__rules', '.quantity__label'];
-    const quantityFormUpdated = parsedHTML.getElementById(`QuantityForm-${sectionId}`);
-    const quantityForm = this.closest(`#QuantityForm-${sectionId}`);
+    const quantityFormUpdated = parsedHTML.getElementById?.(`QuantityForm-${sectionId}`) || parsedHTML.querySelector?.(`#QuantityForm-${sectionId}`) || parsedHTML.querySelector?.('.product-form, form');
+    const quantityForm = this.closest(`#QuantityForm-${sectionId}`) || this.closest('.product-form, form') || this.closest('.product-info') || this.parentElement;
+    if (!quantityForm) return;
+
     for (let selector of selectors) {
       const current = quantityForm.querySelector(selector);
       const updated = quantityFormUpdated?.querySelector(selector);
@@ -1288,6 +1296,7 @@ class QuantityInput extends HTMLElement {
 
   setQuantityBoundries({ data: { sectionId, productId } }) {
     if (sectionId !== this.sectionId || productId !== this.productId) return;
+    if (!this.input) return;
     const data = {
       cartQuantity: this.input.hasAttribute('data-cart-quantity')
         ? parseInt(this.input.getAttribute('data-cart-quantity'))
@@ -1334,17 +1343,18 @@ class QuantitySelector extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.abortController.abort();
+    this.abortController?.abort();
   }
 
   onButtonClick(event) {
     event.preventDefault();
+    if (!this.input) return;
     const previousValue = this.input.value;
 
     if (event.currentTarget.name === 'plus') {
-      this.input.quantity = this.input.quantity + 1;
+      this.input.quantity = (this.input.quantity || 0) + 1;
     } else {
-      this.input.quantity = this.input.quantity - 1;
+      this.input.quantity = (this.input.quantity || 0) - 1;
     }
 
     if (previousValue !== this.input.value) this.input.dispatchEvent(this.changeEvent);
@@ -1652,7 +1662,9 @@ class LocalizationForm extends HTMLElement {
   onItemClick(event) {
     event.preventDefault();
     const form = this.querySelector('form');
-    this.elements.input.value = event.currentTarget.dataset.value;
+    if (this.elements?.input) {
+      this.elements.input.value = event.currentTarget.dataset.value;
+    }
     if (form) form.submit();
   }
 
@@ -2679,7 +2691,8 @@ class NewsletterForm extends HTMLFormElement {
   init() {
     const liveUrl = window.location.href;
     const result = liveUrl.includes('form_type=customer');
-    const inputVal = this.querySelector('[id*="NewsletterForm"]').value.length;
+    const inputEl = this.querySelector('[id*="NewsletterForm"]');
+    const inputVal = inputEl ? inputEl.value.length : 0;
     const modalEl = this.querySelector(this.selectors.modal);
 
     if (result && inputVal != 0) {
@@ -2725,6 +2738,7 @@ class ColorSwatch extends HTMLUListElement {
     this.abortController = new AbortController();
 
     this.pcard = this.closest(this.selectors.card);
+    if (!this.pcard) return;
     this.mainImage = this.pcard.querySelector(this.selectors.mainImg);
 
     this.optionNodes.forEach((button) => {
@@ -2752,7 +2766,7 @@ class ColorSwatch extends HTMLUListElement {
   }
 
   disconnectedCallback() {
-    this.abortController.abort();
+    this.abortController?.abort();
   }
 }
 customElements.define('color-swatch', ColorSwatch, { extends: 'ul' });

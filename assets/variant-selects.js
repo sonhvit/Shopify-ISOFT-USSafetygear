@@ -7,13 +7,16 @@ if (!customElements.get('variant-selects')) {
       }
 
       get selectedOptionValues() {
-        return Array.from(this.querySelectorAll('select option[selected], fieldset input:checked')).map(
-          ({ dataset }) => dataset.optionValueId
-        );
+        return Array.from(
+          this.querySelectorAll('select option:checked, select option[selected], fieldset input:checked, input[type="radio"]:checked')
+        )
+          .map(({ dataset }) => dataset?.optionValueId)
+          .filter(Boolean);
       }
 
       getInputForEventTarget(target) {
-        return target.tagName === 'SELECT' ? target.selectedOptions[0] : target;
+        if (!target) return target;
+        return target.tagName === 'SELECT' ? (target.selectedOptions?.[0] || target) : target;
       }
 
       connectedCallback() {
@@ -64,19 +67,27 @@ if (!customElements.get('variant-selects')) {
         ); // Use CAPTURE phase to catch events before they bubble
       }
 
+      disconnectedCallback() {
+        this._hasChangeListener = false;
+      }
+
       updateSelectedSwatchValue({ target }) {
+        if (!target) return;
         const { value, tagName } = target;
 
-        if (tagName === 'SELECT' && target.selectedOptions.length) {
-          Array.from(target.options)
-            .find((option) => option.getAttribute('selected'))
-            .removeAttribute('selected');
-          target.selectedOptions[0].setAttribute('selected', 'selected');
+        if (tagName === 'SELECT' && target.selectedOptions?.length) {
+          const previouslySelected = Array.from(target.options).find((option) => option.hasAttribute('selected'));
+          if (previouslySelected) {
+            previouslySelected.removeAttribute('selected');
+          }
+          if (target.selectedOptions[0]) {
+            target.selectedOptions[0].setAttribute('selected', 'selected');
+          }
 
-          const swatchValue = target.selectedOptions[0].dataset.optionSwatchValue;
-          const selectedDropdownSwatchValue = target
-            .closest('.product-form__input')
-            .querySelector('[data-selected-value] > .swatch');
+          const selectedOption = target.selectedOptions[0];
+          const swatchValue = selectedOption?.dataset?.optionSwatchValue;
+          const productFormInput = target.closest('.product-form__input');
+          const selectedDropdownSwatchValue = productFormInput?.querySelector('[data-selected-value] > .swatch');
           if (!selectedDropdownSwatchValue) return;
           if (swatchValue) {
             selectedDropdownSwatchValue.style.setProperty('--swatch--background', swatchValue);
@@ -88,10 +99,10 @@ if (!customElements.get('variant-selects')) {
 
           selectedDropdownSwatchValue.style.setProperty(
             '--swatch-focal-point',
-            target.selectedOptions[0].dataset.optionSwatchFocalPoint || 'unset'
+            selectedOption?.dataset?.optionSwatchFocalPoint || 'unset'
           );
         } else if (tagName === 'INPUT' && target.type === 'radio') {
-          const selectedSwatchValue = target.closest(`.product-form__input`).querySelector('[data-selected-value]');
+          const selectedSwatchValue = target.closest(`.product-form__input`)?.querySelector('[data-selected-value]');
           if (selectedSwatchValue) selectedSwatchValue.innerHTML = value;
         }
       }

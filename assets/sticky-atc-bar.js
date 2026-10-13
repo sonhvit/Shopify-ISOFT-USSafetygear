@@ -25,12 +25,19 @@ if (!customElements.get('sticky-atc-bar')) {
           this.isUpdating = true;
 
           this.mainVariantSelects = this.mainProductInfo && this.mainProductInfo.querySelector('variant-selects');
-          const selectedVariantId = this.variantIdSelect.value;
-          this.currentVariant = this.variantData.find((variant) => variant.id === Number(selectedVariantId));
+          const selectedVariantId = this.variantIdSelect?.value;
+          this.currentVariant = this.variantData?.find((variant) => variant.id === Number(selectedVariantId));
+
+          if (!this.currentVariant) {
+            this.updateButton(true, FoxTheme.variantStrings.unavailable || '', true);
+            this.isUpdating = false;
+            return;
+          }
 
           if (this.mainVariantSelects) {
             Array.from(this.mainVariantSelects.querySelectorAll('select, fieldset'), (element, index) => {
-              const variantOptionVal = this.currentVariant.options[index];
+              const variantOptionVal = this.currentVariant.options?.[index];
+              if (!variantOptionVal) return;
               switch (element.tagName) {
                 case 'SELECT':
                   element.value = variantOptionVal;
@@ -62,11 +69,7 @@ if (!customElements.get('sticky-atc-bar')) {
 
           this.updatePrice();
           this.updateButton(true, '', false);
-          if (!this.currentVariant) {
-            this.updateButton(true, '', true);
-          } else {
-            this.updateButton(!this.currentVariant.available, FoxTheme.variantStrings.soldOut);
-          }
+          this.updateButton(!this.currentVariant.available, FoxTheme.variantStrings.soldOut);
         });
       }
 
@@ -139,6 +142,7 @@ if (!customElements.get('sticky-atc-bar')) {
         );
         const unitPrice = unitPriceWrapper.querySelector('.f-price__unit');
 
+        if (!this.currentVariant) return;
         const { compare_at_price, price, unit_price_measurement } = this.currentVariant;
 
         // On sale.
@@ -179,20 +183,21 @@ if (!customElements.get('sticky-atc-bar')) {
 
       syncWithMainProductForm() {
         FoxTheme.pubsub.subscribe(FoxTheme.pubsub.PUB_SUB_EVENTS.variantChange, (event) => {
-          const isMainProduct = event.data.sectionId === this.mainProductInfo.dataset.section;
+          const isMainProduct = event.data.sectionId === this.mainProductInfo?.dataset?.section;
           if (!isMainProduct) return;
           const variant = event.data.variant;
           const variantInput = this.querySelector('[name="id"]');
 
           this.currentVariant = variant;
-          variantInput.value = variant.id;
+          if (!variant) {
+            if (variantInput) variantInput.value = '';
+            this.updateButton(true, FoxTheme.variantStrings.unavailable || '', true);
+            return;
+          }
+          if (variantInput) variantInput.value = variant.id;
           this.updatePrice();
           this.updateButton(true, '', false);
-          if (!variant) {
-            this.updateButton(true, '', true);
-          } else {
-            this.updateButton(!variant.available, FoxTheme.variantStrings.soldOut);
-          }
+          this.updateButton(!variant.available, FoxTheme.variantStrings.soldOut);
         });
       }
     }

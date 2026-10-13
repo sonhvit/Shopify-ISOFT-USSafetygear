@@ -84,7 +84,15 @@ if (!customElements.get('product-info')) {
       }
 
       disconnectedCallback() {
-        this.onVariantChangeUnsubscriber();
+        this.onVariantChangeUnsubscriber?.();
+        this.cartUpdateUnsubscriber?.();
+        if (this.blockPositionHandler) {
+          document.removeEventListener('matchMobile', this.blockPositionHandler);
+          document.removeEventListener('unmatchMobile', this.blockPositionHandler);
+        }
+        if (this.timer) {
+          clearInterval(this.timer);
+        }
       }
 
       initializeProductSwapUtility() {
@@ -95,18 +103,18 @@ if (!customElements.get('product-info')) {
       }
 
       handleOptionValueChange({ data: { event, target, selectedOptionValues } }) {
-        if (!this.contains(event.target)) return;
+        if (!event?.target || !this.contains(event.target)) return;
 
         this.resetProductFormState();
 
-        const productUrl = target.dataset.productUrl || this.pendingRequestUrl || this.dataset.url;
+        const productUrl = target?.dataset?.productUrl || this.pendingRequestUrl || this.dataset.url;
         const shouldSwapProduct = this.dataset.url !== productUrl;
         const shouldFetchFullPage = this.dataset.updateUrl === 'true' && shouldSwapProduct;
         const viewMode = this.dataset.viewMode || 'main-product';
 
         this.renderProductInfo({
-          requestUrl: this.buildRequestUrlWithParams(productUrl, selectedOptionValues, shouldFetchFullPage),
-          targetId: target.id,
+          requestUrl: this.buildRequestUrlWithParams(productUrl, selectedOptionValues || [], shouldFetchFullPage),
+          targetId: target?.id,
           callback: shouldSwapProduct
             ? this.handleSwapProduct(productUrl, shouldFetchFullPage, viewMode)
             : this.handleUpdateProductInfo(productUrl, viewMode),
@@ -124,13 +132,19 @@ if (!customElements.get('product-info')) {
 
       handleSwapProduct(productUrl, updateFullPage, viewMode) {
         return (html) => {
+          if (!html) return;
           const selector = updateFullPage ? "product-info[id^='MainProduct']" : 'product-info';
-          const variant = this.getSelectedVariant(html.querySelector(selector));
+          const targetNode = html.querySelector(selector) || html.querySelector('product-info');
+          const variant = this.getSelectedVariant(targetNode);
 
           this.updateURL(productUrl, variant?.id);
 
           if (updateFullPage) {
-            document.querySelector('head title').innerHTML = html.querySelector('head title').innerHTML;
+            const newTitle = html.querySelector('head title');
+            if (newTitle) {
+              const headTitle = document.querySelector('head title');
+              if (headTitle) headTitle.innerHTML = newTitle.innerHTML;
+            }
             HTMLUpdateUtility.viewTransition(
               document.querySelector('main'),
               html.querySelector('main'),
@@ -146,7 +160,7 @@ if (!customElements.get('product-info')) {
           } else {
             HTMLUpdateUtility.viewTransition(
               this,
-              html.querySelector('product-info'),
+              targetNode,
               this.preProcessHtmlCallbacks,
               this.postProcessHtmlCallbacks,
             );
@@ -158,6 +172,7 @@ if (!customElements.get('product-info')) {
 
       handleUpdateProductInfo(productUrl, viewMode) {
         return (html) => {
+          if (!html) return;
           const variant = this.getSelectedVariant(html);
 
           this.pickupAvailability?.update(variant);
@@ -166,8 +181,24 @@ if (!customElements.get('product-info')) {
           this.updateShareUrl(variant?.id);
           this.updateVariantInputs(variant?.id);
 
+          this.currentVariant = variant;
+
           if (!variant) {
             this.setUnavailable();
+            document.dispatchEvent(
+              new CustomEvent('variant:changed', {
+                detail: {
+                  variant: null,
+                },
+              }),
+            );
+            FoxTheme.pubsub.publish(FoxTheme.pubsub.PUB_SUB_EVENTS.variantChange, {
+              data: {
+                sectionId: this.sectionId,
+                html,
+                variant: null,
+              },
+            });
             return;
           }
 
@@ -175,7 +206,7 @@ if (!customElements.get('product-info')) {
 
           const updateSourceFromDestination = (id, shouldHide = (source) => false) => {
             const source = html.getElementById(`${id}-${this.sectionId}`);
-            const destination = this.querySelector(`#${id}-${this.dataset.section}`);
+            const destination = this.querySelector(`#${id}-${this.dataset.section}`) || this.querySelector(`#${id}-${this.sectionId}`);
             if (source && destination) {
               destination.innerHTML = source.innerHTML;
               destination.classList.toggle('hidden', shouldHide(source));
@@ -183,19 +214,19 @@ if (!customElements.get('product-info')) {
           };
 
           updateSourceFromDestination('price');
-          updateSourceFromDestination('Sku', ({ classList }) => classList.contains('hidden'));
-          updateSourceFromDestination('Barcode', ({ classList }) => classList.contains('hidden'));
-          updateSourceFromDestination('Inventory', ({ innerText }) => innerText === '');
-          updateSourceFromDestination('Badges', ({ classList }) => classList.contains('hidden'));
-          updateSourceFromDestination('PricePerItem', ({ classList }) => classList.contains('hidden'));
+          updateSourceFromDestination('Sku', (source) => source?.classList?.contains('hidden'));
+          updateSourceFromDestination('Barcode', (source) => source?.classList?.contains('hidden'));
+          updateSourceFromDestination('Inventory', (source) => source?.innerText === '');
+          updateSourceFromDestination('Badges', (source) => source?.classList?.contains('hidden'));
+          updateSourceFromDestination('PricePerItem', (source) => source?.classList?.contains('hidden'));
           updateSourceFromDestination('Volume');
-          updateSourceFromDestination('ComingSoon', ({ classList }) => classList.contains('hidden'));
-          updateSourceFromDestination('ProductFormButtons', ({ classList }) => classList.contains('hidden'));
-          updateSourceFromDestination('QuantityForm', ({ classList }) => classList.contains('hidden'));
+          updateSourceFromDestination('ComingSoon', (source) => source?.classList?.contains('hidden'));
+          updateSourceFromDestination('ProductFormButtons', (source) => source?.classList?.contains('hidden'));
+          updateSourceFromDestination('QuantityForm', (source) => source?.classList?.contains('hidden'));
 
-          const comingSoon = this.querySelector(`#ComingSoon-${this.dataset.section}`);
-          const formButtons = this.querySelector(`#ProductFormButtons-${this.dataset.section}`);
-          const qtyForm = this.querySelector(`#QuantityForm-${this.dataset.section}`);
+          const comingSoon = this.querySelector(`#ComingSoon-${this.dataset.section}`) || this.querySelector(`#ComingSoon-${this.sectionId}`);
+          const formButtons = this.querySelector(`#ProductFormButtons-${this.dataset.section}`) || this.querySelector(`#ProductFormButtons-${this.sectionId}`);
+          const qtyForm = this.querySelector(`#QuantityForm-${this.dataset.section}`) || this.querySelector(`#QuantityForm-${this.sectionId}`);
           if (comingSoon && comingSoon.dataset.hideBuyButtons === 'true') {
             const isSoldOut = !variant || !variant.available;
             comingSoon.classList.toggle('hidden', !isSoldOut);
@@ -204,8 +235,10 @@ if (!customElements.get('product-info')) {
           }
 
           this.updateQuantityRules(this.sectionId, this.productId, html);
-          this.querySelector(`#QuantityRules-${this.dataset.section}`)?.classList.remove('hidden');
-          this.querySelector(`#VolumeNote-${this.dataset.section}`)?.classList.remove('hidden');
+          const quantityRules = this.querySelector(`#QuantityRules-${this.dataset.section}`) || this.querySelector(`#QuantityRules-${this.sectionId}`);
+          quantityRules?.classList.remove('hidden');
+          const volumeNote = this.querySelector(`#VolumeNote-${this.dataset.section}`) || this.querySelector(`#VolumeNote-${this.sectionId}`);
+          volumeNote?.classList.remove('hidden');
 
           HTMLUpdateUtility.viewTransition(
             document.querySelector(`#SizeChart-${this.sectionId}`),
@@ -243,16 +276,25 @@ if (!customElements.get('product-info')) {
 
         !shouldFetchFullPage && params.push(`section_id=${this.sectionId}`);
 
-        if (optionValues.length) {
-          params.push(`option_values=${optionValues.join(',')}`);
+        if (optionValues && optionValues.length) {
+          const validValues = optionValues.filter(Boolean);
+          if (validValues.length) {
+            params.push(`option_values=${validValues.join(',')}`);
+          }
         }
 
         return `${url}?${params.join('&')}`;
       }
 
       getSelectedVariant(productInfoNode) {
+        if (!productInfoNode) return null;
         const selectedVariant = productInfoNode.querySelector('variant-selects [data-selected-variant]')?.innerHTML;
-        return !!selectedVariant ? JSON.parse(selectedVariant) : null;
+        try {
+          return selectedVariant ? JSON.parse(selectedVariant) : null;
+        } catch (e) {
+          console.error('Error parsing variant JSON:', e);
+          return null;
+        }
       }
 
       renderProductInfo({ requestUrl, targetId, callback }) {
@@ -268,7 +310,7 @@ if (!customElements.get('product-info')) {
           })
           .then(() => {
             // set focus to last clicked option value
-            document.querySelector(`#${targetId}`)?.focus();
+            if (targetId) document.querySelector(`#${targetId}`)?.focus();
           })
           .catch((error) => {
             if (error.name === 'AbortError') {
@@ -280,8 +322,8 @@ if (!customElements.get('product-info')) {
       }
 
       updateOptionValues(html) {
-        const variantSelects = html.querySelector('variant-selects');
-        if (variantSelects) {
+        const variantSelects = html?.querySelector('variant-selects');
+        if (variantSelects && this.variantSelectors) {
           HTMLUpdateUtility.viewTransition(this.variantSelectors, variantSelects, this.preProcessHtmlCallbacks);
         }
       }
@@ -292,22 +334,28 @@ if (!customElements.get('product-info')) {
       }
 
       updateVariantInputs(variantId) {
-        document
-          .querySelectorAll(`#product-form-${this.dataset.section}, #product-form-installment-${this.dataset.section}`)
-          .forEach((productForm) => {
-            const input = productForm.querySelector('input[name="id"]');
+        const forms = new Set([
+          ...document.querySelectorAll(`#product-form-${this.sectionId}, #product-form-${this.dataset.section}, #product-form-installment-${this.sectionId}, #product-form-installment-${this.dataset.section}`),
+          ...this.querySelectorAll('form[is="product-form"], form[action*="/cart/add"]')
+        ]);
+
+        forms.forEach((productForm) => {
+          const input = productForm.querySelector('input[name="id"], select[name="id"]');
+          if (input) {
             input.value = variantId ?? '';
             input.dispatchEvent(new Event('change', { bubbles: true }));
-          });
+          }
+        });
       }
 
       updateMedia(variant) {
-        const productMedia = this.querySelector(`[id^="MediaGallery-${this.dataset.section}"]`);
+        if (!variant) return;
+        const productMedia = this.querySelector(`[id^="MediaGallery-${this.dataset.section}"]`) || this.querySelector(`[id^="MediaGallery-${this.sectionId}"]`);
         if (!productMedia) return; // Early return if productMedia is not found
 
         const setActiveMedia = () => {
           if (typeof productMedia.setActiveMedia === 'function') {
-            productMedia.init();
+            productMedia.init?.();
             productMedia.setActiveMedia(variant);
             return true; // Indicate success
           }
@@ -325,24 +373,30 @@ if (!customElements.get('product-info')) {
 
       updateShareUrl(variantId) {
         if (!variantId) return;
-        const shareButton = document.getElementById(`ProductShare-${this.dataset.section}`);
+        const shareButton = document.getElementById(`ProductShare-${this.dataset.section}`) || document.getElementById(`ProductShare-${this.sectionId}`);
         if (!shareButton || !shareButton.updateUrl) return;
         shareButton.updateUrl(`${window.shopUrl}${this.dataset.url}?variant=${variantId}`);
       }
 
       toggleAddButton(disable = true, text, modifyClass = true) {
-        const productForm = document.getElementById(`product-form-${this.dataset.section}`);
+        const productForm =
+          this.querySelector('form[is="product-form"]') ||
+          document.getElementById(`product-form-${this.sectionId}`) ||
+          document.getElementById(`product-form-${this.dataset.section}`);
         if (!productForm) return;
         const addButton = productForm.querySelector('[name="add"]');
-        const addButtonText = productForm.querySelector('[name="add"] > span');
         if (!addButton) return;
+        const addButtonText =
+          addButton.querySelector('.btn__text') ||
+          addButton.querySelector('span') ||
+          addButton;
 
         if (disable) {
           addButton.setAttribute('disabled', 'disabled');
-          if (text) addButtonText.textContent = text;
+          if (text && addButtonText) addButtonText.textContent = text;
         } else {
           addButton.removeAttribute('disabled');
-          addButtonText.innerHTML = FoxTheme.variantStrings.addToCart;
+          if (addButtonText) addButtonText.innerHTML = FoxTheme.variantStrings.addToCart;
         }
 
         if (!modifyClass) return;
@@ -350,12 +404,12 @@ if (!customElements.get('product-info')) {
 
       setUnavailable() {
         this.toggleAddButton(true, FoxTheme.variantStrings.unavailable);
-        const price = document.getElementById(`price-${this.dataset.section}`);
-        const inventory = document.getElementById(`Inventory-${this.dataset.section}`);
-        const sku = document.getElementById(`Sku-${this.dataset.section}`);
-        const comingSoon = document.getElementById(`ComingSoon-${this.dataset.section}`);
-        const formButtons = document.getElementById(`ProductFormButtons-${this.dataset.section}`);
-        const qtyForm = document.getElementById(`QuantityForm-${this.dataset.section}`);
+        const price = this.querySelector(`#price-${this.sectionId}`) || document.getElementById(`price-${this.dataset.section}`);
+        const inventory = this.querySelector(`#Inventory-${this.sectionId}`) || document.getElementById(`Inventory-${this.dataset.section}`);
+        const sku = this.querySelector(`#Sku-${this.sectionId}`) || document.getElementById(`Sku-${this.dataset.section}`);
+        const comingSoon = this.querySelector(`#ComingSoon-${this.sectionId}`) || document.getElementById(`ComingSoon-${this.dataset.section}`);
+        const formButtons = this.querySelector(`#ProductFormButtons-${this.sectionId}`) || document.getElementById(`ProductFormButtons-${this.dataset.section}`);
+        const qtyForm = this.querySelector(`#QuantityForm-${this.sectionId}`) || document.getElementById(`QuantityForm-${this.dataset.section}`);
 
         if (price) price.classList.add('hidden');
         if (inventory) inventory.classList.add('hidden');
@@ -434,19 +488,22 @@ if (!customElements.get('product-promotion-alert')) {
 
         this.abortController = new AbortController();
         this.buttonEl = this.querySelector('button');
-        this.buttonEl.addEventListener('click', this.onClick.bind(this), {
-          signal: this.abortController.signal,
-        });
+        if (this.buttonEl) {
+          this.buttonEl.addEventListener('click', this.onClick.bind(this), {
+            signal: this.abortController.signal,
+          });
+        }
       }
 
       onClick(evt) {
         evt.preventDefault();
 
-        this.closest('.product__block').classList.add('hidden');
+        const block = this.closest('.product__block');
+        if (block) block.classList.add('hidden');
       }
 
       disconnectedCallback() {
-        this.abortController.abort();
+        this.abortController?.abort();
       }
     },
   );

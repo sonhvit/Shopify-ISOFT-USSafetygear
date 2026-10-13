@@ -110,20 +110,6 @@ if (!customElements.get('quick-view-modal')) {
 
         this.classList.remove(this.classesToRemoveOnLoad);
       }
-
-      setInnerHTML(element, innerHTML) {
-        element.innerHTML = innerHTML;
-        element.querySelectorAll('script').forEach((oldScriptTag) => {
-          const newScriptTag = document.createElement('script');
-          Array.from(oldScriptTag.attributes).forEach((attribute) => {
-            newScriptTag.setAttribute(attribute.name, attribute.value);
-          });
-          newScriptTag.appendChild(document.createTextNode(oldScriptTag.innerHTML));
-          oldScriptTag.parentNode.replaceChild(newScriptTag, oldScriptTag);
-        });
-
-        this.classList.remove(this.classesToRemoveOnLoad);
-      }
     }
   );
 }
